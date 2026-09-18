@@ -110,10 +110,11 @@ export class AisSession {
     this.lastRefresh = Date.now();
   }
 
-  // Raw JSON GET against /ais/rest/portal/<path>
+  // Raw JSON GET against /ais/rest/<path>. Callers pass the namespace, because AIS
+  // splits its API in two: portal/* (studies, fees, messages) and apps/* (rozvrh).
   async get(path, { query } = {}) {
     await this.refreshIfStale();
-    const url = new URL(`${BASE}/ais/rest/portal/${path.replace(/^\/+/, '')}`);
+    const url = new URL(`${BASE}/ais/rest/${path.replace(/^\/+/, '')}`);
     url.searchParams.set('lng', LNG);
     if (query) for (const [k, v] of Object.entries(query)) url.searchParams.set(k, v);
 
@@ -200,18 +201,44 @@ export function normalizeMessages(raw) {
   }));
 }
 
-// Weekly schedule. The rozvrh REST path is a best guess (its SPA bundle could not be
-// downloaded at build time). Adjust ROZVRH_PATH once the real endpoint is confirmed.
-export const ROZVRH_PATH = process.env.AIS_ROZVRH_PATH || 'rozvrh/student';
+// Weekly schedule. Confirmed from the live rozvrh app's network log — note these sit
+// under apps/, not portal/.
+export const ROZVRH_PATH = process.env.AIS_ROZVRH_PATH || 'apps/rozvrh/data';
+export const ROZVRH_YEARS = 'apps/rozvrh/akademickeRoky';
+export const ROZVRH_CURRENT_YEAR = 'apps/rozvrh/aktualnyAkRok';
+export const ROZVRH_GROUPS = 'apps/rozvrh/studijneSkupinyStudenta';
+
+// Slovak weekday names, in case the API returns a label rather than an index.
+const DAY_INDEX = { pondelok: 1, utorok: 2, streda: 3, stvrtok: 4, 'štvrtok': 4, piatok: 5 };
+function dayToIndex(v) {
+  if (v == null) return undefined;
+  const n = Number(v);
+  if (Number.isFinite(n)) return n;
+  return DAY_INDEX[String(v).toLowerCase().trim()];
+}
+// "09:15 - 10:45 (90min)" style values appear in the UI; keep only HH:MM.
+const hhmm = (v) => {
+  const m = String(v ?? '').match(/(\d{1,2}):(\d{2})/);
+  return m ? `${m[1].padStart(2, '0')}:${m[2]}` : undefined;
+};
 export function normalizeSchedule(raw) {
-  return asArray(raw).map((e) => ({
-    day: pick(e, 'den', 'dayOfWeek', 'day'),
-    from: pick(e, 'od', 'zaciatok', 'timeFrom', 'from'),
-    to: pick(e, 'do', 'koniec', 'timeTo', 'to'),
-    subject: pick(e, 'predmet', 'nazovPredmetu', 'subject', 'nazov'),
-    type: pick(e, 'typ', 'druh', 'type'), // prednáška / cvičenie
-    room: pick(e, 'miestnost', 'ucebna', 'room'),
-    teacher: pick(e, 'ucitel', 'vyucujuci', 'teacher'),
+  // The rozvrh payload may be wrapped; take the first array-ish member we find.
+  let list = asArray(raw);
+  if (!list.length && raw && typeof raw === 'object') {
+    for (const v of Object.values(raw)) if (Array.isArray(v) && v.length) { list = v; break; }
+  }
+  return list.map((e) => ({
+    day: dayToIndex(pick(e, 'den', 'denVTyzdni', 'dayOfWeek', 'day')),
+    from: hhmm(pick(e, 'casOd', 'od', 'zaciatok', 'timeFrom', 'from')),
+    to: hhmm(pick(e, 'casDo', 'do', 'koniec', 'timeTo', 'to')),
+    subject: pick(e, 'nazovPredmetu', 'predmet', 'subject', 'nazov'),
+    code: pick(e, 'skratkaPredmetu', 'kodPredmetu', 'skratka', 'kod'),
+    type: pick(e, 'typVyucby', 'typ', 'druh', 'type'), // prednáška / cvičenie
+    room: pick(e, 'miestnost', 'ucebna', 'miestnosti', 'room'),
+    teacher: pick(e, 'ucitel', 'ucitelia', 'vyucujuci', 'teacher'),
+    period: pick(e, 'tyzden', 'periodicita', 'opakovanie'), // e.g. TYZ = weekly
+    dateFrom: pick(e, 'datumOd', 'platnostOd'),
+    dateTo: pick(e, 'datumDo', 'platnostDo'),
     raw: e,
   }));
 }

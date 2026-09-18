@@ -86,11 +86,14 @@ app.post('/api/logout', (req, res) => {
   res.json({ ok: true });
 });
 
-app.get('/api/me', (req, res) => {
+app.get('/api/me', wrap(async (req, res) => {
   if (MOCK) return res.json({ authenticated: true, user: mock.mockUser });
   const s = getSession(req);
-  res.json({ authenticated: !!s });
-});
+  if (!s) return res.json({ authenticated: false });
+  let user = null;
+  try { user = await s.get('portal/users/info'); } catch { /* identity is optional */ }
+  res.json({ authenticated: true, user });
+}));
 
 // --- Data ------------------------------------------------------------------
 app.get(
@@ -107,7 +110,7 @@ app.get(
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.json(mock.mockSubjects);
-    res.json(normalizeSubjects(await req.ais.get('studium/list')));
+    res.json(normalizeSubjects(await req.ais.get('portal/studium/list')));
   })
 );
 
@@ -116,7 +119,7 @@ app.get(
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.json(mock.mockPayments);
-    res.json(normalizePayments(await req.ais.get('portal/osoba/poplatky')));
+    res.json(normalizePayments(await req.ais.get('portal/portal/osoba/poplatky')));
   })
 );
 
@@ -125,7 +128,7 @@ app.get(
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.json(mock.mockMessages);
-    res.json(normalizeMessages(await req.ais.get('messages/list2')));
+    res.json(normalizeMessages(await req.ais.get('portal/messages/list2')));
   })
 );
 
@@ -134,7 +137,7 @@ app.get(
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.json(mock.mockStudies);
-    res.json(normalizeStudies(await req.ais.get('studium/list')));
+    res.json(normalizeStudies(await req.ais.get('portal/studium/list')));
   })
 );
 
@@ -144,6 +147,7 @@ app.get(
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.status(400).json({ error: 'raw disabled in mock mode' });
+    // e.g. /api/raw/portal/studium/list or /api/raw/apps/rozvrh/data
     res.json(await req.ais.get(req.params.path, { query: req.query }));
   })
 );

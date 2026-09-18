@@ -95,11 +95,17 @@ function applyTheme() {
   try { saved = localStorage.getItem('theme'); } catch {}
   if (saved) document.documentElement.dataset.theme = saved;
 }
+let themingTimer;
 function toggleTheme() {
-  const cur = document.documentElement.dataset.theme
+  const root = document.documentElement;
+  const cur = root.dataset.theme
     || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   const next = cur === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
+  // Scoped to the flip itself so nothing else pays for the transition.
+  root.classList.add('theming');
+  clearTimeout(themingTimer);
+  themingTimer = setTimeout(() => root.classList.remove('theming'), 220);
+  root.dataset.theme = next;
   try { localStorage.setItem('theme', next); } catch {}
 }
 
@@ -189,7 +195,7 @@ function lessonCard(l, live = false) {
 
 // --- Today
 async function viewToday(root) {
-  const wrap = h('<div class="view stagger"></div>');
+  const wrap = h('<div class="view"></div>');
   root.appendChild(wrap);
   const hero = h('<div class="hero skel" style="height:150px"></div>');
   wrap.appendChild(hero);
@@ -209,7 +215,8 @@ async function viewToday(root) {
 
   let heroHtml;
   if (liveL) {
-    heroHtml = `<div class="hero"><div class="eyebrow" style="color:var(--now)">Práve prebieha</div>
+    heroHtml = `<div class="hero"><div class="eyebrow" style="color:var(--now);display:flex;align-items:center;gap:7px">
+      <span class="livedot"><i></i></span>Práve prebieha</div>
       <div class="big">${esc(liveL.subject)}</div>
       <div class="meta"><span>${I.clock2()} <b class="tnum">${esc(liveL.from)}–${esc(liveL.to)}</b></span>
       ${liveL.room ? `<span>${esc(liveL.room)}</span>` : ''}${liveL.teacher ? `<span>${esc(liveL.teacher)}</span>` : ''}</div></div>`;
@@ -238,7 +245,7 @@ async function viewToday(root) {
     let placedNow = false;
     todays.forEach((l) => {
       if (!placedNow && !liveL && toMin(l.from) > cur && cur > (todays[0] ? toMin(todays[0].from) - 1 : 0)) {
-        ag.appendChild(h(`<div class="nowline">teraz ${new Date().toLocaleTimeString('sk', { hour: '2-digit', minute: '2-digit' })}</div>`));
+        ag.appendChild(h(`<div class="nowline"><span class="livedot"><i></i></span>teraz ${new Date().toLocaleTimeString('sk', { hour: '2-digit', minute: '2-digit' })}</div>`));
         placedNow = true;
       }
       ag.appendChild(lessonCard(l, liveL === l));
@@ -268,7 +275,7 @@ async function viewSchedule(root) {
   mob.appendChild(sw);
   const dayL = sch.filter((l) => Number(l.day) === state.day).sort((a, b) => toMin(a.from) - toMin(b.from));
   if (!dayL.length) mob.appendChild(empty(I.schedule, 'Voľný deň', `V ${DAYS[state.day].toLowerCase()} nemáte hodiny.`));
-  else { const ag = h('<div class="agenda stagger"></div>'); dayL.forEach((l) => ag.appendChild(lessonCard(l, false))); mob.appendChild(ag); }
+  else { const ag = h('<div class="agenda"></div>'); dayL.forEach((l) => ag.appendChild(lessonCard(l, false))); mob.appendChild(ag); }
   wrap.appendChild(mob);
 
   // desktop: week grid
@@ -385,7 +392,7 @@ async function viewMessages(root) {
   const unread = msgs.filter((m) => m.unread).length;
   wrap.appendChild(h(`<div class="section-h"><h2>Správy</h2>${unread ? `<span class="badge accent">${unread} nové</span>` : '<span class="muted">všetko prečítané</span>'}</div>`));
   if (!msgs.length) { wrap.appendChild(empty(I.inbox, 'Žiadne správy')); return; }
-  const list = h('<div class="card stagger" style="padding:2px 16px"></div>');
+  const list = h('<div class="card" style="padding:2px 16px"></div>');
   msgs.forEach((m) => {
     const d = m.date ? new Date(m.date) : null;
     const when = d && !isNaN(d) ? `${d.getDate()}. ${MONTHS[d.getMonth()]}` : '';

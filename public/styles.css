@@ -44,7 +44,9 @@
   --sh-2: 0 4px 10px -2px rgba(23, 21, 15, 0.08), 0 2px 6px -2px rgba(23, 21, 15, 0.07);
   --sh-3: 0 18px 40px -12px rgba(23, 21, 15, 0.22), 0 6px 14px -8px rgba(23, 21, 15, 0.14);
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);      /* entrances, exits, hover */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);  /* on-screen movement */
   --tab-h: 66px;
   --maxw: 940px;
 }
@@ -165,7 +167,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   display: inline-grid; place-items: center;
   width: 40px; height: 40px; border-radius: var(--r-full);
   background: transparent; border: 1px solid transparent; color: var(--ink-2);
-  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+  transition: background 0.18s var(--ease-out), color 0.18s var(--ease-out);
 }
 .iconbtn:hover { background: var(--surface-2); color: var(--ink); }
 .iconbtn svg { width: 21px; height: 21px; }
@@ -189,7 +191,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
     display: flex; align-items: center; gap: 13px;
     padding: 11px 13px; border-radius: var(--r); border: 1px solid transparent;
     color: var(--ink-2); font-weight: 500; text-decoration: none;
-    transition: background 0.16s var(--ease), color 0.16s var(--ease);
+    transition: background 0.16s var(--ease-out), color 0.16s var(--ease-out);
   }
   .navitem svg { width: 20px; height: 20px; flex-shrink: 0; }
   .navitem:hover { background: var(--surface-2); color: var(--ink); }
@@ -211,12 +213,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tabbar a {
   flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
   color: var(--ink-3); text-decoration: none; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.01em;
-  position: relative; transition: color 0.16s var(--ease);
+  position: relative; transition: color 0.16s var(--ease-out);
 }
 .tabbar a .ic { position: relative; display: grid; place-items: center; }
-.tabbar a svg { width: 23px; height: 23px; transition: transform 0.24s var(--ease); }
+.tabbar a svg { width: 23px; height: 23px; }
 .tabbar a.active { color: var(--accent); }
-.tabbar a.active svg { transform: translateY(-1px); }
 .tabbar a .dot { position: absolute; top: -2px; right: -6px; }
 @media (min-width: 860px) { .tabbar { display: none; } }
 
@@ -247,7 +248,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 12px 18px; border-radius: var(--r); border: 1px solid var(--line-strong);
   background: var(--surface); color: var(--ink); font-weight: 600;
-  transition: transform 0.14s var(--ease), background 0.16s var(--ease), border-color 0.16s var(--ease);
+  transition: transform 0.14s var(--ease-out), background 0.16s var(--ease-out), border-color 0.16s var(--ease-out);
 }
 .btn:hover { background: var(--surface-2); }
 .btn:active { transform: scale(0.98); }
@@ -273,9 +274,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .glance { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-top: 14px; }
 .glance .g {
   padding: 15px 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line);
-  display: flex; flex-direction: column; gap: 3px; text-decoration: none; transition: border-color 0.16s var(--ease), transform 0.14s var(--ease);
+  display: flex; flex-direction: column; gap: 3px; text-decoration: none; transition: border-color 0.16s var(--ease-out), transform 0.14s var(--ease-out);
 }
-.glance .g:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) {
+  .glance .g:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+}
 .glance .g .n { font-family: var(--display); font-size: 1.5rem; letter-spacing: -0.02em; }
 .glance .g .l { color: var(--ink-3); font-size: 0.8rem; }
 
@@ -285,7 +288,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .dayswitch button {
   flex-shrink: 0; padding: 8px 15px; border-radius: var(--r-full); border: 1px solid var(--line);
   background: var(--surface); color: var(--ink-2); font-weight: 600; font-size: 0.86rem;
-  transition: all 0.16s var(--ease);
+  transition: background-color 0.16s var(--ease-out), border-color 0.16s var(--ease-out),
+              color 0.16s var(--ease-out);
 }
 .dayswitch button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .dayswitch button.today { border-color: color-mix(in oklab, var(--now) 45%, transparent); }
@@ -310,7 +314,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .lesson.now { border-color: color-mix(in oklab, var(--now) 40%, transparent); box-shadow: 0 0 0 1px color-mix(in oklab, var(--now) 30%, transparent), var(--sh-1); }
 
 .nowline { display: flex; align-items: center; gap: 8px; margin: 4px 0; color: var(--now); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.03em; }
-.nowline::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--now); box-shadow: 0 0 0 4px var(--now-soft); }
 .nowline::after { content: ''; flex: 1; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--now), transparent); }
 
 /* week grid (desktop) */
@@ -398,7 +401,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
 .field input {
   width: 100%; padding: 13px 15px; border-radius: var(--r); border: 1px solid var(--line-strong);
-  background: var(--surface); color: var(--ink); font: inherit; transition: border-color 0.16s var(--ease), box-shadow 0.16s var(--ease);
+  background: var(--surface); color: var(--ink); font: inherit; transition: border-color 0.16s var(--ease-out), box-shadow 0.16s var(--ease-out);
 }
 .field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .login .err { color: var(--bad); font-size: 0.86rem; margin: 4px 0 14px; min-height: 1.1em; }
@@ -408,28 +411,44 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .empty { text-align: center; padding: 48px 20px; color: var(--ink-3); }
 .empty svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 12px; }
 .empty .t { font-weight: 600; color: var(--ink-2); }
-.skel { background: linear-gradient(90deg, var(--surface-2) 25%, var(--line) 37%, var(--surface-2) 63%);
-  background-size: 400% 100%; animation: sh 1.3s ease-in-out infinite; border-radius: var(--r); }
-@keyframes sh { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+.skel { background: var(--surface-2); border-radius: var(--r); animation: breathe 1.4s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-/* entrance — one authored moment, staggered subtly, respects reduced motion */
-.view { animation: rise 0.5s var(--ease) both; }
-@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.stagger > * { animation: rise 0.5s var(--ease) both; }
-.stagger > *:nth-child(2) { animation-delay: 0.04s; }
-.stagger > *:nth-child(3) { animation-delay: 0.08s; }
-.stagger > *:nth-child(4) { animation-delay: 0.12s; }
-.stagger > *:nth-child(5) { animation-delay: 0.16s; }
-.stagger > *:nth-child(n+6) { animation-delay: 0.2s; }
+/* entrance — near-imperceptible: tab switching happens all session long */
+.view { animation: rise 0.14s var(--ease-out) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* live "now" marker — the one looping animation, and the only thing on screen
+   that earns it: it says this is happening right now. */
+.livedot { position: relative; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--now); flex-shrink: 0; }
+.livedot i { position: absolute; inset: 0; border-radius: 50%; background: var(--now);
+  animation: ping 2.4s var(--ease-out) infinite; }
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.45; }
+  70%, 100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* theme flip would otherwise hard-cut every surface at once */
+.theming, .theming *, .theming *::before, .theming *::after {
+  transition: background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out),
+              color 0.2s var(--ease-out) !important;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .view { animation: fade 0.14s var(--ease-out) both; }
+  .livedot i { animation: none; opacity: 0.35; transform: scale(2); }
+  .skel { animation: none; opacity: 0.7; }
+  .glance .g:hover { transform: none; }
+  .btn:active { transform: none; }
+  .toast, .toast.show { transform: translateX(-50%); transition: opacity 0.2s var(--ease-out); }
 }
 
 .toast {
   position: fixed; left: 50%; bottom: calc(var(--tab-h) + 20px); transform: translateX(-50%) translateY(20px);
   background: var(--ink); color: var(--paper); padding: 11px 18px; border-radius: var(--r-full);
   font-size: 0.88rem; font-weight: 500; box-shadow: var(--sh-3); opacity: 0; pointer-events: none;
-  transition: opacity 0.24s var(--ease), transform 0.24s var(--ease); z-index: 50;
+  transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out); z-index: 50;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }

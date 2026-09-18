@@ -25,7 +25,7 @@ npm start                     # боевой режим, вход по логи�
 1. `POST /ais/login.do` (форма `login`, `password`, без CSRF) → ставит cookie `JSESSIONID`.
 2. `POST /ais/rest/apps/get-access-token` с константным заголовком-обфускацией,
    который SPA зашивает в бандл → возвращает токен в **response-заголовке** `AISAuth`.
-3. Каждый вызов `/ais/rest/portal/*` несёт `Cookie: JSESSIONID` + заголовок `AISAuth` + `?lng=SK`.
+3. Каждый вызов `/ais/rest/*` несёт `Cookie: JSESSIONID` + заголовок `AISAuth` + `?lng=SK`.
 4. Токен обновляется через `GET /ais/rest/apps/check-session/check-light`
    (свежий токен приходит в заголовке `aisAuth`). Клиент делает это лениво, раз в ~45 сек.
 5. На `401` клиент сам перелогинивается, если креды ещё в памяти.
@@ -41,30 +41,42 @@ npm start                     # боевой режим, вход по логи�
 | `AIS_MOCK` | — | `1` — демо-данные, без обращения к AIS |
 | `AIS_BASE` | `https://ais2.euba.sk` | база AIS |
 | `AIS_LNG` | `SK` | язык ответов (`SK` / `EN`) |
-| `AIS_ROZVRH_PATH` | `rozvrh/student` | путь эндпоинта расписания, см. ниже |
+| `AIS_ROZVRH_PATH` | `apps/rozvrh/data` | эндпоинт расписания |
 
-## Калибровка адаптеров — обязательный шаг
+## Эндпоинты AIS
 
-Пути эндпоинтов вытащены из бандла `student/main.js`, но **JSON-схемы ответов не проверены
-на живой сессии** — на момент сборки рабочей сессии не было. Поэтому `normalize*` в
-`aisClient.js` подбирают поля защитно (`nazov` / `nazovPredmetu` / `name` …) и всегда
-кладут исходный объект в `raw`.
+API разбит на два namespace, и это важно: часть путей ещё и двойная (`portal/portal/...`).
 
-Порядок калибровки после первого успешного логина:
+| Наше | Путь AIS |
+|---|---|
+| расписание | `apps/rozvrh/data` |
+| учебные группы | `apps/rozvrh/studijneSkupinyStudenta` |
+| академ. годы / текущий | `apps/rozvrh/akademickeRoky`, `apps/rozvrh/aktualnyAkRok` |
+| предметы, штудии | `portal/studium/list` |
+| платежи | `portal/portal/osoba/poplatky` |
+| сообщения | `portal/messages/list2` |
+| профиль | `portal/users/info` |
+
+Ещё есть, пока не используем: `portal/studium/dotazniky`, `portal/diskusia/list`,
+`portal/flash/list`, `portal/pracovne-ponuky/list`, `portal/portal/zalozky`.
+
+## Калибровка адаптеров
+
+Пути подтверждены по живому network-логу, но **имена полей в JSON-ответах ещё не
+сверены**. Поэтому `normalize*` в `aisClient.js` подбирают поля защитно
+(`nazovPredmetu` / `predmet` / `subject` …) и всегда кладут исходный объект в `raw`.
+
+После первого успешного логина:
 
 ```bash
-# посмотреть сырой ответ любого portal-эндпоинта
-curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/studium/list' | jq .
-curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/portal/osoba/poplatky' | jq .
+curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/apps/rozvrh/data' | jq .
+curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/portal/studium/list' | jq .
+curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/portal/portal/osoba/poplatky' | jq .
 ```
 
 Дальше поправить соответствующий `normalize*` под реальные имена полей.
-
-**Расписание — главная неизвестная.** Бандл приложения `/ais/apps/rozvrh/` скачать не
-удалось, поэтому путь `rozvrh/student` — предположение. Найти настоящий можно так:
-открыть `https://ais2.euba.sk/ais/apps/rozvrh/sk/`, в DevTools → Network отфильтровать
-`rest/portal`, посмотреть реальный путь и положить его в `AIS_ROZVRH_PATH`.
-Формат, который ждёт фронтенд: `{ day: 1..5, from: "08:00", to: "09:30", subject, type, room, teacher }`.
+Формат, который ждёт фронтенд для расписания:
+`{ day: 1..5, from: "08:00", to: "09:30", subject, code, type, room, teacher }`.
 
 ## Деплой на VPS
 
@@ -89,7 +101,13 @@ Service worker кэширует только оболочку приложени
 для QA и шаринга есть `?theme=dark` / `?theme=light`. Токены — в начале `styles.css`.
 Контраст вторичного текста проверен: ≥4.8:1 в обеих темах.
 
+Мотион держится в бюджете: переход между вкладками — 140 мс (это действие повторяется
+весь день, ему положено быть почти незаметным), hover-движение закрыто
+`@media (hover: hover)`, кривые взяты готовые, а не подобраны на глаз.
+Единственная зацикленная анимация — пульс маркера «сейчас идёт». При
+`prefers-reduced-motion` движение убирается, но не всё подряд: прозрачность и цвет остаются.
+
 ## Границы
 
-- Приложение только читает. Ничего не записывает в AIS (записи на экзамены, зápis и т.п.).
+- Приложение только читает. Ничего не записывает в AIS (записи на экзамены, zápis и т.п.).
 - Один пользователь на инстанс — ставьте себе, а не «для всех».
