@@ -10,8 +10,8 @@
   --paper: #f4f1ea;
   --surface: #fbf9f4;
   --surface-2: #efece3;
-  --line: #e2ddd1;
-  --line-strong: #d3ccbb;
+  --line: #ddd6c6;
+  --line-strong: #c8bfa9;
   --ink: #17150f;
   --ink-2: #524d40;
   --ink-3: #6f6959;
@@ -24,7 +24,7 @@
   /* semantic */
   --ok: #2f7d4f;
   --ok-soft: #e3f0e6;
-  --warn: #9a6a10;
+  --warn: #8a5d0b;
   --warn-soft: #f6ecd6;
   --bad: #a52222;
   --bad-soft: #f4dede;
@@ -60,9 +60,9 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --paper: #131210;
-    --surface: #1c1a16;
-    --surface-2: #26231d;
-    --line: #302c25;
+    --surface: #211e19;
+    --surface-2: #2a2620;
+    --line: #383229;
     --line-strong: #3d382f;
     --ink: #f3efe4;
     --ink-2: #b7b1a2;
@@ -87,9 +87,9 @@
 [data-theme='dark'] {
   color-scheme: dark;
   --paper: #131210;
-  --surface: #1c1a16;
-  --surface-2: #26231d;
-  --line: #302c25;
+  --surface: #211e19;
+  --surface-2: #2a2620;
+  --line: #383229;
   --line-strong: #3d382f;
   --ink: #f3efe4;
   --ink-2: #b7b1a2;
@@ -122,7 +122,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
 }
 
 /* browser surfaces themed from the palette */
@@ -392,21 +392,73 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .msg.unread .t::after { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-left: 7px; vertical-align: middle; }
 
 /* ---------------- Login ---------------- */
-.login { min-height: 100dvh; display: grid; place-items: center; padding: 24px; }
-.login .box { width: 100%; max-width: 380px; }
-.login .mark { width: 52px; height: 52px; border-radius: 15px; background: var(--accent); color: var(--accent-ink);
-  display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 1.5rem; box-shadow: var(--sh-2); margin-bottom: 20px; }
-.login h1 { font-size: 1.7rem; letter-spacing: -0.03em; }
-.login p.sub { color: var(--ink-3); margin: 8px 0 26px; }
+/* Two panes from 900px: a photograph on the left, the form on the right. On a phone
+   the photograph becomes a band above the form. If the photo file is missing the
+   gradient under it still paints, so the panel is never an empty grey box. */
+.login { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr; }
+.login__art {
+  min-height: 34vw; max-height: 210px;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--surface-2);
+  background-image:
+    radial-gradient(120% 150% at 80% 0%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%),
+    url('/photos/login-band.webp');
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+}
+.login__pane { display: grid; place-items: center; padding: 26px 22px 40px; }
+.login .box { width: 100%; max-width: 400px; }
+
+@media (min-width: 900px) {
+  .login { grid-template-rows: none; grid-template-columns: minmax(0, 44%) minmax(0, 56%); }
+  .login__art {
+    min-height: 100dvh; max-height: none;
+    border-bottom: none; border-right: 1px solid var(--line);
+    background-image:
+      radial-gradient(90% 60% at 50% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 60%),
+      url('/photos/login.webp');
+  }
+  .login__pane { padding: 40px; }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .login__art { filter: brightness(0.74) saturate(0.9); }
+}
+[data-theme='dark'] .login__art { filter: brightness(0.74) saturate(0.9); }
+
+.brandline { display: flex; align-items: center; gap: 11px; margin-bottom: 24px; }
+.brandline .mark {
+  width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
+  background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; box-shadow: var(--sh-1);
+}
+.brandline .mark svg { width: 21px; height: 21px; }
+.brandline b { font-family: var(--display); font-size: 1.16rem; letter-spacing: -0.03em; display: block; }
+.brandline span { display: block; font-size: 0.74rem; color: var(--ink-3); }
+
+.login h1 { font-size: clamp(1.4rem, 5.2vw, 1.75rem); line-height: 1.16; }
+.login p.sub { color: var(--ink-2); margin: 10px 0 24px; font-size: 0.94rem; line-height: 1.55; }
 .field { margin-bottom: 14px; }
 .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
 .field input {
+
   width: 100%; padding: 13px 15px; border-radius: var(--r); border: 1px solid var(--line-strong);
   background: var(--surface); color: var(--ink); font: inherit; transition: border-color 0.16s var(--ease-out), box-shadow 0.16s var(--ease-out);
 }
 .field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .login .err { color: var(--bad); font-size: 0.86rem; margin: 4px 0 14px; min-height: 1.1em; }
-.login .note { color: var(--ink-3); font-size: 0.78rem; margin-top: 20px; line-height: 1.5; text-align: center; }
+
+.check { display: flex; align-items: center; gap: 10px; margin: 2px 0 10px; font-size: 0.88rem; color: var(--ink-2); cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); flex-shrink: 0; }
+
+/* What the app is and what it does with the password — the questions a sign-in form
+   that asks for university credentials has to answer before it is typed into. */
+.trust { list-style: none; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 13px; }
+.trust li { display: flex; gap: 10px; font-size: 0.82rem; line-height: 1.5; color: var(--ink-3); }
+.trust svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 1px; }
+.trust b { color: var(--ink-2); font-weight: 600; }
+.trust a { color: var(--accent); text-underline-offset: 2px; }
 
 /* ---------------- States ---------------- */
 .empty { text-align: center; padding: 48px 20px; color: var(--ink-3); }
@@ -481,3 +533,209 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* exam / plan rows reuse .grade as a status chip */
 .grade svg { width: 19px; height: 19px; }
+
+
+/* ---------------- Page header (desktop) ---------------- */
+/* The top bar is hidden from 860px up, which left four screens with no title at all
+   and nowhere to say how fresh the data is. */
+.pagehead { display: none; }
+@media (min-width: 860px) {
+  .pagehead {
+    display: flex; align-items: flex-end; gap: 14px;
+    margin: 0 0 22px; padding-bottom: 18px; border-bottom: 1px solid var(--line);
+  }
+  .pagehead h1 { font-size: 1.9rem; letter-spacing: -0.035em; }
+  .pagehead .sub { color: var(--ink-3); font-size: 0.86rem; margin-top: 3px; }
+  .pagehead .grow { flex: 1; }
+  .pagehead .synced { color: var(--ink-3); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+}
+
+.topbar .tb-txt { min-width: 0; }
+.refreshbtn svg { transition: transform 0.2s var(--ease-out); }
+.syncing .refreshbtn svg { animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(-360deg); } }
+
+/* ---------------- Quiet day / next lesson ---------------- */
+/* An empty day is a fact, not a failure: the hero drops the indigo wash (which on an
+   empty card reads as a skeleton that never finished) and takes a photograph instead. */
+.hero.quiet {
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(100deg, var(--surface) 34%, color-mix(in oklab, var(--surface) 62%, transparent) 62%, transparent),
+    url('/photos/quiet.webp');
+  background-size: cover, cover;
+  background-position: center, center right;
+  background-repeat: no-repeat, no-repeat;
+  min-height: 108px;
+}
+.hero.quiet .big { font-size: clamp(1.25rem, 4.4vw, 1.65rem); color: var(--ink); max-width: 20ch; }
+.hero.quiet .meta { color: var(--ink-2); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .hero.quiet {
+    background-image:
+      linear-gradient(100deg, var(--surface) 34%, color-mix(in oklab, var(--surface) 70%, transparent) 64%, color-mix(in oklab, var(--surface) 30%, transparent)),
+      url('/photos/quiet.webp');
+  }
+}
+[data-theme='dark'] .hero.quiet {
+  background-image:
+    linear-gradient(100deg, var(--surface) 34%, color-mix(in oklab, var(--surface) 70%, transparent) 64%, color-mix(in oklab, var(--surface) 30%, transparent)),
+    url('/photos/quiet.webp');
+}
+
+.nextcard {
+  display: flex; align-items: center; gap: 14px;
+  padding: 15px 16px; border-radius: var(--r);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--sh-1);
+  text-decoration: none; color: inherit;
+  transition: border-color 0.16s var(--ease-out), transform 0.14s var(--ease-out);
+}
+.nextcard:active { transform: scale(0.995); }
+@media (hover: hover) and (pointer: fine) { .nextcard:hover { border-color: var(--line-strong); } }
+.nextcard .when { display: flex; flex-direction: column; gap: 2px; min-width: 92px; }
+.nextcard .when .d { font-weight: 700; font-size: 0.95rem; }
+.nextcard .when .t { color: var(--ink-3); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.nextcard .body { flex: 1; min-width: 0; }
+.nextcard .body .name { font-weight: 600; letter-spacing: -0.01em; }
+.nextcard .body .info { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 5px; color: var(--ink-2); font-size: 0.82rem; }
+.nextcard .body .info .i { display: inline-flex; align-items: center; gap: 5px; }
+.nextcard .body .info svg { width: 14px; height: 14px; opacity: 0.7; }
+.nextcard .go { color: var(--ink-3); display: grid; place-items: center; flex-shrink: 0; }
+.nextcard .go svg { width: 20px; height: 20px; }
+
+/* ---------------- State cards ---------------- */
+/* Replaces "0 / — / 0" and doubled empty states: one card that says what is true and
+   when it changes. */
+.statecard {
+  padding: 20px; border-radius: var(--r-lg);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--sh-1);
+}
+.statecard .t { font-family: var(--display); font-size: 1.22rem; letter-spacing: -0.02em; }
+.statecard .s { color: var(--ink-2); font-size: 0.9rem; line-height: 1.55; margin-top: 7px; max-width: 54ch; }
+.statecard .m { color: var(--ink-3); font-size: 0.82rem; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.statecard.ok .t { color: var(--ok); }
+.footnote { color: var(--ink-3); font-size: 0.78rem; line-height: 1.55; margin: 14px 2px 0; max-width: 60ch; }
+.owe .m { color: var(--ink-3); font-size: 0.82rem; margin-top: 6px; }
+
+/* ---------------- University news ---------------- */
+.newslist { display: flex; flex-direction: column; gap: 10px; }
+.newsitem {
+  display: flex; gap: 13px; align-items: flex-start;
+  padding: 12px 13px; border-radius: var(--r);
+  background: var(--surface); border: 1px solid var(--line);
+  text-decoration: none; color: inherit;
+  transition: border-color 0.16s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .newsitem:hover { border-color: var(--line-strong); } }
+.newsitem .thumb {
+  width: 64px; height: 64px; border-radius: 10px; flex-shrink: 0;
+  object-fit: cover; background: var(--surface-2);
+}
+.newsitem .thumb.ph { display: grid; place-items: center; color: var(--ink-3); }
+.newsitem .thumb.ph svg { width: 22px; height: 22px; }
+.newsitem .nbody { display: flex; flex-direction: column; min-width: 0; }
+.newsitem .t { font-weight: 600; font-size: 0.92rem; line-height: 1.35; letter-spacing: -0.01em;
+  overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.newsitem .s { color: var(--ink-2); font-size: 0.82rem; line-height: 1.45; margin-top: 4px;
+  overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.newsitem .f { color: var(--ink-3); font-size: 0.75rem; margin-top: 6px; }
+
+/* ---------------- Signed in as (sidebar) ---------------- */
+.whoami { display: none; }
+@media (min-width: 860px) {
+  .whoami { display: flex; align-items: center; gap: 10px; padding: 12px 13px 14px; margin-bottom: 4px;
+    border-top: 1px solid var(--line); }
+  .whoami .av { width: 30px; height: 30px; border-radius: var(--r-full); flex-shrink: 0;
+    background: var(--accent-soft); color: var(--accent);
+    display: grid; place-items: center; font-size: 0.72rem; font-weight: 700; }
+  .whoami .wb { min-width: 0; }
+  .whoami .n { display: block; font-size: 0.82rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .whoami .m { display: block; font-size: 0.7rem; color: var(--ink-3); }
+}
+
+/* ---------------- Fixes on existing parts ---------------- */
+/* A dashed ring with a dot reads as an image that failed to load, six rows in a row. */
+.grade.pending { background: var(--surface-2); color: var(--ink-3); border-style: solid; border-color: var(--line); }
+.grade.pending svg { width: 17px; height: 17px; opacity: 0.8; }
+
+/* Practice sessions differ by edge, not by the alarm colour. */
+.lesson.practice { border-left-width: 3px; }
+.wk-lesson.practice { border-left-width: 3px; }
+
+/* Days that actually carry lessons, and a 44px touch target. */
+.dayswitch button { padding: 11px 16px; position: relative; }
+.dayswitch button.has::after {
+  content: ''; position: absolute; left: 50%; bottom: 5px; transform: translateX(-50%);
+  width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.45;
+}
+.dayswitch button.active.has::after { opacity: 0.7; }
+
+/* Messages: category icon instead of the initials of a category, date and link. */
+.msg { align-items: center; }
+.msg .av { border-radius: 11px; background: var(--accent-soft); color: var(--accent); }
+.msg .av svg { width: 20px; height: 20px; }
+.msg .av.money { background: var(--warn-soft); color: var(--warn); }
+.msg .av.doc { background: var(--surface-2); color: var(--ink-2); }
+.msg .mbody .t { -webkit-line-clamp: 2; font-weight: 600; }
+.msg .mbody .f { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.msg .mbody .f .when { color: var(--ink-3); font-size: 0.75rem; }
+.msg .go { color: var(--ink-3); flex-shrink: 0; display: grid; place-items: center; }
+.msg .go svg { width: 17px; height: 17px; }
+
+/* The segmented control's active pill was darker than its own track after dark. */
+.seg button.active { border: 1px solid var(--line); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .seg { background: color-mix(in oklab, var(--ink) 6%, var(--paper)); }
+  :root:not([data-theme='light']) .seg button.active { background: var(--surface-2); border-color: var(--line-strong); }
+}
+[data-theme='dark'] .seg { background: color-mix(in oklab, var(--ink) 6%, var(--paper)); }
+[data-theme='dark'] .seg button.active { background: var(--surface-2); border-color: var(--line-strong); }
+
+/* Black shadows do nothing on a near-black ground; a top highlight does. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .card,
+  :root:not([data-theme='light']) .hero,
+  :root:not([data-theme='light']) .owe,
+  :root:not([data-theme='light']) .statecard,
+  :root:not([data-theme='light']) .summary .s,
+  :root:not([data-theme='light']) .glance .g,
+  :root:not([data-theme='light']) .nextcard {
+    box-shadow: var(--sh-1), inset 0 1px 0 color-mix(in oklab, var(--ink) 7%, transparent);
+  }
+}
+[data-theme='dark'] .card,
+[data-theme='dark'] .hero,
+[data-theme='dark'] .owe,
+[data-theme='dark'] .statecard,
+[data-theme='dark'] .summary .s,
+[data-theme='dark'] .glance .g,
+[data-theme='dark'] .nextcard {
+  box-shadow: var(--sh-1), inset 0 1px 0 color-mix(in oklab, var(--ink) 7%, transparent);
+}
+
+/* Three summary tiles wrapped 2 + 1 on a phone and the orphan stretched full width. */
+@media (max-width: 519px) {
+  .summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summary .s { min-width: 0; }
+  .summary .s:nth-child(3) { grid-column: 1 / -1; }
+  .summary .s .l { text-wrap: wrap; }
+}
+
+/* A row whose value sits 700px from its name is two unrelated things. */
+@media (min-width: 860px) {
+  .rowlist.card, .card .pay, .card .msg { max-width: 760px; }
+}
+
+/* The greeting is longer than a tab name: keep it off the three icon buttons. */
+@media (max-width: 859px) {
+  .topbar { align-items: flex-start; gap: 8px; }
+  .topbar h1 { font-size: 1.18rem; line-height: 1.2; }
+  .topbar .sub { font-size: 0.78rem; }
+  .topbar .iconbtn { width: 38px; height: 38px; }
+}
+@media (max-width: 400px) {
+  .topbar .sub .meniny { display: none; }
+}
+
+/* Inputs on paper: surface over paper is a 1.08:1 edge, which reads as a mock-up. */
+.field input { background: color-mix(in oklab, var(--paper) 45%, var(--surface)); border-color: color-mix(in oklab, var(--ink-3) 38%, transparent); }
