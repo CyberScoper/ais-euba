@@ -6,8 +6,10 @@ import {
   AisSession,
   AisError,
   ROZVRH_PATH,
+  currentSheetId,
   normalizeStudies,
   normalizeSubjects,
+  normalizeAverages,
   normalizePayments,
   normalizeMessages,
   normalizeSchedule,
@@ -17,6 +19,8 @@ import * as mock from './mock.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 4173;
 const MOCK = process.env.AIS_MOCK === '1';
+const USE_FIXTURE = MOCK && process.env.AIS_FIXTURE === '1';
+const fx = USE_FIXTURE ? await import('./fixture.js') : null;
 
 const app = express();
 app.use(express.json());
@@ -87,7 +91,7 @@ app.post('/api/logout', (req, res) => {
 });
 
 app.get('/api/me', wrap(async (req, res) => {
-  if (MOCK) return res.json({ authenticated: true, user: mock.mockUser });
+  if (MOCK) return res.json({ authenticated: true, user: (fx && fx.user) || mock.mockUser });
   const s = getSession(req);
   if (!s) return res.json({ authenticated: false });
   let user = null;
@@ -100,7 +104,7 @@ app.get(
   '/api/schedule',
   requireAuth,
   wrap(async (req, res) => {
-    if (MOCK) return res.json(mock.mockSchedule);
+    if (MOCK) return res.json(fx ? fx.schedule : mock.mockSchedule);
     res.json(normalizeSchedule(await req.ais.get(ROZVRH_PATH)));
   })
 );
@@ -109,8 +113,15 @@ app.get(
   '/api/subjects',
   requireAuth,
   wrap(async (req, res) => {
-    if (MOCK) return res.json(mock.mockSubjects);
-    res.json(normalizeSubjects(await req.ais.get('portal/studium/list')));
+    if (MOCK) return res.json(fx ? { subjects: fx.subjects, averages: fx.averages } : { subjects: mock.mockSubjects, averages: mock.mockAverages });
+    const studies = normalizeStudies(await req.ais.get('portal/student-predmety/studia'));
+    const zl = currentSheetId(studies);
+    if (zl == null) return res.json({ subjects: [], averages: {} });
+    const [znamky, priemery] = await Promise.all([
+      req.ais.get(`portal/student-predmety/znamky/${zl}`),
+      req.ais.get(`portal/student-predmety/studium-priemery/${zl}`).catch(() => null),
+    ]);
+    res.json({ subjects: normalizeSubjects(znamky), averages: normalizeAverages(priemery) });
   })
 );
 
@@ -118,7 +129,7 @@ app.get(
   '/api/payments',
   requireAuth,
   wrap(async (req, res) => {
-    if (MOCK) return res.json(mock.mockPayments);
+    if (MOCK) return res.json(fx ? fx.payments : mock.mockPayments);
     res.json(normalizePayments(await req.ais.get('portal/portal/osoba/poplatky')));
   })
 );
@@ -127,7 +138,7 @@ app.get(
   '/api/messages',
   requireAuth,
   wrap(async (req, res) => {
-    if (MOCK) return res.json(mock.mockMessages);
+    if (MOCK) return res.json(fx ? fx.messages : mock.mockMessages);
     res.json(normalizeMessages(await req.ais.get('portal/messages/list2')));
   })
 );
@@ -137,7 +148,7 @@ app.get(
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.json(mock.mockStudies);
-    res.json(normalizeStudies(await req.ais.get('portal/studium/list')));
+    res.json(normalizeStudies(await req.ais.get('portal/student-predmety/studia')));
   })
 );
 

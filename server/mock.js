@@ -8,13 +8,14 @@ export const mockStudies = [
 ];
 
 export const mockSubjects = [
-  { code: 'KME_1', name: 'Mikroekonómia', credits: 6, semester: 'ZS', grade: 'A', points: 94, completed: 'skúška' },
-  { code: 'KUF_2', name: 'Účtovníctvo', credits: 5, semester: 'ZS', grade: 'B', points: 82, completed: 'skúška' },
-  { code: 'KMV_3', name: 'Matematika B', credits: 6, semester: 'ZS', grade: null, points: 61, completed: 'skúška' },
-  { code: 'KAJ_4', name: 'Angličtina II', credits: 3, semester: 'ZS', grade: 'A', points: 97, completed: 'zápočet' },
-  { code: 'KIS_5', name: 'Informatika', credits: 4, semester: 'ZS', grade: 'C', points: 74, completed: 'skúška' },
-  { code: 'KPR_6', name: 'Právo v podnikaní', credits: 4, semester: 'ZS', grade: null, points: null, completed: 'skúška' },
+  { code: 'OOC21151', name: 'Cestovný ruch', credits: 8, semester: 'Z', grade: 'A', completed: 'Skúška' },
+  { code: 'OOE25087', name: 'Právo pre podnikateľov', credits: 5, semester: 'Z', grade: 'B', completed: 'Skúška' },
+  { code: 'OOA25183', name: 'Marketing', credits: 6, semester: 'Z', grade: null, completed: 'Skúška' },
+  { code: 'KAJ_4', name: 'Angličtina II', credits: 3, semester: 'Z', grade: 'A', completed: 'Zápočet' },
+  { code: 'KIS_5', name: 'Informatika', credits: 4, semester: 'Z', grade: 'C', completed: 'Skúška' },
+  { code: 'KMV_3', name: 'Matematika B', credits: 6, semester: 'Z', grade: null, completed: 'Skúška' },
 ];
+export const mockAverages = { all: 2.1, graded: 1.5, gradedRecognised: 1.5 };
 
 export const mockPayments = [
   { title: 'Školné za semester', amount: 0, currency: 'EUR', dueDate: '2026-10-15', paid: true, variableSymbol: '100200300' },
@@ -23,9 +24,9 @@ export const mockPayments = [
 ];
 
 export const mockMessages = [
-  { id: 'm1', subject: 'Zmena termínu skúšky — Matematika B', from: 'doc. Nováková', date: '2026-09-17T09:12:00', unread: true, body: 'Skúška sa presúva na 12. 1. 2027, miestnosť B1.14.' },
-  { id: 'm2', subject: 'Zverejnené hodnotenie — Informatika', from: 'AIS', date: '2026-09-16T14:03:00', unread: true, body: 'Bolo zverejnené hodnotenie predmetu Informatika.' },
-  { id: 'm3', subject: 'Zápis na letný semester', from: 'Študijné oddelenie', date: '2026-09-10T08:00:00', unread: false, body: 'Zápis na LS 2026/2027 prebieha od 20. 1. do 5. 2. 2027.' },
+  { id: 1, category: 'Rozvrh', body: 'Zmena miestnosti pre Marketing — po novom B208.', date: '2026-09-17T09:12:00' },
+  { id: 2, category: 'Hodnotenie', body: 'Bolo zverejnené hodnotenie predmetu Cestovný ruch.', date: '2026-09-16T14:03:00' },
+  { id: 3, category: 'Štúdium', body: 'Zápis na letný semester prebieha od 20. 1. do 5. 2. 2027.', date: '2026-09-10T08:00:00' },
 ];
 
 // day: 1=Mon .. 5=Fri; times in HH:MM

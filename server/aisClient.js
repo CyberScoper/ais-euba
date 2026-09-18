@@ -155,26 +155,50 @@ const pick = (obj, ...keys) => {
 const asArray = (x) => (Array.isArray(x) ? x : x && Array.isArray(x.list) ? x.list : x ? [x] : []);
 
 export function normalizeStudies(raw) {
-  return asArray(raw).map((s) => ({
-    id: pick(s, 'id', 'studiumId', 'idStudium'),
-    program: pick(s, 'program', 'studijnyProgram', 'nazovProgramu', 'nazov'),
-    year: pick(s, 'rocnik', 'year'),
-    status: pick(s, 'stav', 'status'),
-    raw: s,
+  const list = raw && Array.isArray(raw.data) ? raw.data : asArray(raw);
+  return list.map((st) => ({
+    id: pick(st, 'id'),
+    program: pick(st, 'name', 'program'),
+    sheets: asArray(st.zapisneListy).map((z) => ({
+      id: pick(z, 'id'),
+      year: pick(z, 'akRok'),
+      name: pick(z, 'name'),
+    })),
+    raw: st,
   }));
 }
 
+// The id of the enrollment sheet (zapisný list) to show — newest by academic year.
+export function currentSheetId(studies) {
+  const sheets = studies.flatMap((s) => s.sheets || []);
+  if (!sheets.length) return undefined;
+  sheets.sort((a, b) => String(b.year || '').localeCompare(String(a.year || '')));
+  return sheets[0].id;
+}
+
 export function normalizeSubjects(raw) {
-  return asArray(raw).map((p) => ({
-    code: pick(p, 'skratka', 'kod', 'code'),
-    name: pick(p, 'nazov', 'nazovPredmetu', 'name'),
+  const list = raw && Array.isArray(raw.znamky) ? raw.znamky : asArray(raw);
+  return list.map((p) => ({
+    code: pick(p, 'predmetSkratka', 'skratka', 'kod'),
+    name: pick(p, 'predmetNazov', 'nazov', 'name'),
     credits: pick(p, 'kredit', 'kredity', 'credits'),
-    semester: pick(p, 'semester', 'obdobie'),
-    grade: pick(p, 'znamka', 'hodnotenie', 'grade'),
-    points: pick(p, 'body', 'points'),
-    completed: pick(p, 'ukoncenie', 'stav'),
+    semester: pick(p, 'kodSemesterSK', 'kodSemester', 'semester'), // Z / L
+    grade: pick(p, 'hodnotenieKod', 'znamka', 'grade'),            // A..FX, null until graded
+    gradeText: pick(p, 'hodnoteniePopis'),
+    gradeDate: pick(p, 'hodnotenieDatum'),
+    completed: pick(p, 'popisSposobUkoncenia', 'ukoncenie'),       // Skúška / Zápočet
+    scope: pick(p, 'rozsah'),                                       // e.g. 2P+2C
     raw: p,
   }));
+}
+
+export function normalizeAverages(raw) {
+  if (!raw || typeof raw !== 'object') return {};
+  return {
+    all: pick(raw, 'priemerVsetkych'),
+    graded: pick(raw, 'priemerHodnotenych'),
+    gradedRecognised: pick(raw, 'priemerHodnotenychAjUznanych'),
+  };
 }
 
 export function normalizePayments(raw) {
@@ -190,15 +214,24 @@ export function normalizePayments(raw) {
 }
 
 export function normalizeMessages(raw) {
-  return asArray(raw).map((m) => ({
-    id: pick(m, 'id', 'idSprava'),
-    subject: pick(m, 'predmet', 'nazov', 'subject', 'titulok'),
-    from: pick(m, 'od', 'odosielatel', 'from'),
-    date: pick(m, 'datum', 'date'),
-    unread: pick(m, 'neprecitane', 'unread'),
-    body: pick(m, 'text', 'obsah', 'body'),
-    raw: m,
-  }));
+  const groups = asArray(raw);
+  const out = [];
+  for (const g of groups) {
+    const cat = pick(g, 'key');
+    for (const m of asArray(g.messages)) {
+      out.push({
+        id: pick(m, 'id'),
+        category: cat,
+        body: pick(m, 'text', 'obsah'),
+        date: pick(m, 'casVzniku', 'datum', 'date'),
+        url: pick(m, 'aplikaciaUrl'),
+        download: pick(m, 'download'),
+        raw: m,
+      });
+    }
+  }
+  out.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  return out;
 }
 
 // Weekly schedule. Confirmed from the live rozvrh app's network log — note these sit
@@ -221,24 +254,28 @@ const hhmm = (v) => {
   const m = String(v ?? '').match(/(\d{1,2}):(\d{2})/);
   return m ? `${m[1].padStart(2, '0')}:${m[2]}` : undefined;
 };
+const TYP_LABEL = { RSP: 'prednáška', RSC: 'cvičenie', RSS: 'seminár' };
 export function normalizeSchedule(raw) {
-  // The rozvrh payload may be wrapped; take the first array-ish member we find.
-  let list = asArray(raw);
-  if (!list.length && raw && typeof raw === 'object') {
-    for (const v of Object.values(raw)) if (Array.isArray(v) && v.length) { list = v; break; }
-  }
-  return list.map((e) => ({
-    day: dayToIndex(pick(e, 'den', 'denVTyzdni', 'dayOfWeek', 'day')),
-    from: hhmm(pick(e, 'casOd', 'od', 'zaciatok', 'timeFrom', 'from')),
-    to: hhmm(pick(e, 'casDo', 'do', 'koniec', 'timeTo', 'to')),
-    subject: pick(e, 'nazovPredmetu', 'predmet', 'subject', 'nazov'),
-    code: pick(e, 'skratkaPredmetu', 'kodPredmetu', 'skratka', 'kod'),
-    type: pick(e, 'typVyucby', 'typ', 'druh', 'type'), // prednáška / cvičenie
-    room: pick(e, 'miestnost', 'ucebna', 'miestnosti', 'room'),
-    teacher: pick(e, 'ucitel', 'ucitelia', 'vyucujuci', 'teacher'),
-    period: pick(e, 'tyzden', 'periodicita', 'opakovanie'), // e.g. TYZ = weekly
-    dateFrom: pick(e, 'datumOd', 'platnostOd'),
-    dateTo: pick(e, 'datumDo', 'platnostDo'),
-    raw: e,
-  }));
+  const list = raw && Array.isArray(raw.data) ? raw.data
+    : Array.isArray(raw) ? raw : [];
+  return list.map((e) => {
+    const rooms = asArray(e.miestnosti);
+    const teachers = asArray(e.vyucujuci);
+    const typ = pick(e, 'typ');
+    return {
+      day: Number(pick(e, 'den', 'dayOfWeek')) || undefined,
+      from: hhmm(pick(e, 'casOd', 'od')),
+      to: hhmm(pick(e, 'casDo', 'do')),
+      subject: pick(e, 'predmetNazov', 'popis', 'nazov'),
+      code: pick(e, 'predmetSkratka', 'skratka'),
+      type: TYP_LABEL[typ] || pick(e, 'typRozsahu') || typ,
+      room: pick(e, 'miestnostNazov') || rooms[0] || '',
+      building: pick(e, 'budovaKod'),
+      teacher: teachers[0] || pick(e, 'ucitel'),
+      period: pick(e, 'pravidelnost'), // TYZ = weekly
+      dateFrom: pick(e, 'datumOd'),
+      dateTo: pick(e, 'datumDo'),
+      raw: e,
+    };
+  });
 }

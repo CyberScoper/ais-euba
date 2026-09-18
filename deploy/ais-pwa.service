@@ -1,0 +1,18 @@
+[Unit]
+Description=AIS PWA (convenient client over ais2.euba.sk)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/ais-pwa
+Environment=PORT=4176
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node server/index.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

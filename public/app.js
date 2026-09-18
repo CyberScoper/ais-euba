@@ -211,7 +211,7 @@ async function viewToday(root) {
   const liveL = todays.find((l) => toMin(l.from) <= cur && toMin(l.to) > cur);
   const due = pays.filter((p) => !p.paid);
   const oweSum = due.reduce((s, p) => s + (Number(p.amount) || 0), 0);
-  const unread = msgs.filter((m) => m.unread).length;
+  const msgCount = msgs.length;
 
   let heroHtml;
   if (liveL) {
@@ -233,7 +233,7 @@ async function viewToday(root) {
 
   const glance = h(`<div class="glance">
     <a class="g" href="#financie"><span class="n tnum">${oweSum ? oweSum.toFixed(0) + ' €' : '0 €'}</span><span class="l">${due.length ? `${due.length} nezaplatené` : 'Nič nedlhujete'}</span></a>
-    <a class="g" href="#spravy"><span class="n tnum">${unread}</span><span class="l">${unread ? 'nové správy' : 'žiadne nové správy'}</span></a>
+    <a class="g" href="#spravy"><span class="n tnum">${msgCount}</span><span class="l">${msgCount ? 'správ v schránke' : 'prázdna schránka'}</span></a>
   </div>`);
   wrap.appendChild(glance);
 
@@ -322,16 +322,16 @@ function buildWeekGrid(sch, today) {
 async function viewSubjects(root) {
   const wrap = h('<div class="view"></div>'); root.appendChild(wrap);
   wrap.appendChild(skeletonList(5));
-  const subs = await load('subjects', 'subjects');
+  const resp = await load('subjects', 'subjects');
+  const subs = Array.isArray(resp) ? resp : (resp.subjects || []);
+  const avg = (resp && resp.averages) || {};
   wrap.innerHTML = '';
 
-  const graded = subs.filter((s) => s.grade);
-  const gp = { A: 1, B: 1.5, C: 2, D: 2.5, E: 3, FX: 4 };
-  const totalCr = subs.reduce((a, s) => a + (Number(s.credits) || 0), 0);
-  const gpa = graded.length
-    ? (graded.reduce((a, s) => a + (gp[String(s.grade).toUpperCase()] ?? 0) * (Number(s.credits) || 1), 0) /
-       graded.reduce((a, s) => a + (Number(s.credits) || 1), 0)).toFixed(2)
-    : '—';
+  const graded = subs.filter((sx) => sx.grade);
+  const totalCr = subs.reduce((a, sx) => a + (Number(sx.credits) || 0), 0);
+  const gpa = (avg.graded != null && Number(avg.graded) > 0)
+    ? Number(avg.graded).toFixed(2)
+    : (graded.length ? weightedGpa(graded) : '—');
 
   wrap.appendChild(h(`<div class="summary">
     <div class="s"><div class="n tnum">${totalCr}</div><div class="l">kreditov spolu</div></div>
@@ -342,19 +342,27 @@ async function viewSubjects(root) {
   wrap.appendChild(h('<div class="section-h"><h2>Predmety</h2><span class="muted">tento semester</span></div>'));
   if (!subs.length) { wrap.appendChild(empty(I.subjects, 'Žiadne predmety')); return; }
   const list = h('<div class="rowlist card" style="padding:2px 16px"></div>');
-  subs.forEach((s) => {
-    const g = s.grade ? String(s.grade).toUpperCase() : null;
+  subs.forEach((sx) => {
+    const g = sx.grade ? String(sx.grade).toUpperCase() : null;
     const gradeEl = g
       ? `<div class="grade g-${g}">${esc(g)}</div>`
-      : `<div class="grade pending">${s.points != null ? esc(s.points) : '·'}</div>`;
+      : `<div class="grade pending" title="zatiaľ bez hodnotenia">·</div>`;
+    const sem = sx.semester ? (String(sx.semester).toUpperCase() === 'Z' ? 'ZS' : 'LS') : '';
     list.appendChild(h(`<div class="row">
       ${gradeEl}
-      <div class="rbody"><div class="t">${esc(s.name || s.code || 'Predmet')}</div>
-        <div class="m"><span>${esc(s.code || '')}</span>${s.completed ? `<span>${esc(s.completed)}</span>` : ''}${s.points != null && g ? `<span class="tnum">${esc(s.points)} b.</span>` : ''}</div></div>
-      <div class="rmeta"><div class="cr tnum">${esc(s.credits ?? '–')}</div><div class="cl">kr.</div></div>
+      <div class="rbody"><div class="t">${esc(sx.name || sx.code || 'Predmet')}</div>
+        <div class="m"><span>${esc(sx.code || '')}</span>${sx.completed ? `<span>${esc(sx.completed)}</span>` : ''}${sem ? `<span>${esc(sem)}</span>` : ''}</div></div>
+      <div class="rmeta"><div class="cr tnum">${esc(sx.credits ?? '–')}</div><div class="cl">kr.</div></div>
     </div>`));
   });
   wrap.appendChild(list);
+}
+
+function weightedGpa(graded) {
+  const gp = { A: 1, B: 1.5, C: 2, D: 2.5, E: 3, FX: 4 };
+  const num = graded.reduce((a, sx) => a + (gp[String(sx.grade).toUpperCase()] ?? 0) * (Number(sx.credits) || 1), 0);
+  const den = graded.reduce((a, sx) => a + (Number(sx.credits) || 1), 0);
+  return den ? (num / den).toFixed(2) : '—';
 }
 
 // --- Payments
@@ -389,18 +397,17 @@ async function viewMessages(root) {
   wrap.appendChild(skeletonList(4));
   const msgs = await load('messages', 'messages');
   wrap.innerHTML = '';
-  const unread = msgs.filter((m) => m.unread).length;
-  wrap.appendChild(h(`<div class="section-h"><h2>Správy</h2>${unread ? `<span class="badge accent">${unread} nové</span>` : '<span class="muted">všetko prečítané</span>'}</div>`));
+  wrap.appendChild(h(`<div class="section-h"><h2>Správy</h2><span class="muted">${msgs.length ? msgs.length + ' celkom' : 'žiadne'}</span></div>`));
   if (!msgs.length) { wrap.appendChild(empty(I.inbox, 'Žiadne správy')); return; }
   const list = h('<div class="card" style="padding:2px 16px"></div>');
   msgs.forEach((m) => {
     const d = m.date ? new Date(m.date) : null;
     const when = d && !isNaN(d) ? `${d.getDate()}. ${MONTHS[d.getMonth()]}` : '';
-    list.appendChild(h(`<div class="msg ${m.unread ? 'unread' : ''}">
-      <div class="av">${esc(initials(m.from))}</div>
-      <div class="mbody"><div class="t">${esc(m.subject || '(bez predmetu)')}</div>
-        ${m.body ? `<div class="p">${esc(m.body)}</div>` : ''}
-        <div class="f">${esc(m.from || '')}${when ? ' · ' + when : ''}</div></div>
+    const cat = m.category ? esc(m.category) : 'Oznam';
+    list.appendChild(h(`<div class="msg">
+      <div class="av">${esc(initials(cat))}</div>
+      <div class="mbody"><div class="t">${esc(m.body || '(bez textu)')}</div>
+        <div class="f">${cat}${when ? ' · ' + when : ''}</div></div>
     </div>`));
   });
   wrap.appendChild(list);
