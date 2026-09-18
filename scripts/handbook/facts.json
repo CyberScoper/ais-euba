@@ -1,0 +1,314 @@
+{
+  "source": "https://sp.euba.sk",
+  "source_name_sk": "Študentský parlament EU v Bratislave",
+  "checked": "2026-09-18",
+  "entries": [
+    {
+      "id": "doprava",
+      "icon_hint": "bus",
+      "title_sk": "Doprava z internátov na univerzitu",
+      "items": [
+        { "label_sk": "ŠD Starohájska 4 a 8", "value_sk": "Zastávka Starohájska, autobus č. 68" },
+        { "label_sk": "ŠD Ekonóm", "value_sk": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská" },
+        { "label_sk": "ŠD Vlčie hrdlo", "value_sk": "Zastávka Refinery Gallery, autobus č. 87" },
+        { "label_sk": "ŠD HOPA a DOPA", "value_sk": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého" },
+        { "label_sk": "Cestovné poriadky MHD", "value_sk": "imhd.sk/ba, prípadne ich mobilná aplikácia", "url": "https://imhd.sk/ba" }
+      ],
+      "source_url": "https://sp.euba.sk/student/doprava",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "internaty",
+      "icon_hint": "bed",
+      "title_sk": "Internáty a ubytovanie",
+      "items": [
+        { "label_sk": "Prideľovanie miest", "value_sk": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov" },
+        { "label_sk": "Zásady prideľovania (článok 4)", "value_sk": "PDF s postupom prideľovania a výpočtom bodov", "url": "https://sp.euba.sk/www_write/files/b-zasady_pridelovania_ubytovania_2022__oprava.pdf" },
+        { "label_sk": "ŠD Prokopa Veľkého 41 – Hopa", "value_sk": "Prokopa Veľkého 41, 811 04 Bratislava", "url": "https://sp.euba.sk/ubytovanie/sd-prokopa-velkeho-41" },
+        { "label_sk": "ŠD Dolnozemská", "value_sk": "Dolnozemská cesta 1, 852 19 Bratislava", "url": "https://sp.euba.sk/ubytovanie/sd-dolnozemska" },
+        { "label_sk": "ŠD Starohájska 8", "value_sk": "Starohájska 8, 852 19 Bratislava", "url": "https://sp.euba.sk/ubytovanie/sd-starohajska-8" },
+        { "label_sk": "ŠD Starohájska 4", "value_sk": "Starohájska 4, 852 19 Bratislava", "url": "https://sp.euba.sk/ubytovanie/sd-starohajska-4" },
+        { "label_sk": "ŠD Vlčie hrdlo", "value_sk": "Vlčie Hrdlo 74, 821 07 Bratislava", "url": "https://sp.euba.sk/ubytovanie/sd-vlcie-hrdlo" },
+        { "label_sk": "ŠD Ekonóm", "value_sk": "Prístavná 8, 821 09 Bratislava", "url": "https://sp.euba.sk/ubytovanie/sd-ekonom" },
+        { "label_sk": "ŠD Bellova v Košiciach", "value_sk": "Bellova 1, 040 01 Košice", "url": "https://sp.euba.sk/ubytovanie/sd-bellova-kosice" }
+      ],
+      "source_url": "https://sp.euba.sk/ubytovanie",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "stravovanie",
+      "icon_hint": "food",
+      "title_sk": "Jedáleň a bufety",
+      "items": [
+        { "label_sk": "Hlavná jedáleň", "value_sk": "V priestoroch ŠD Dolnozemská (v starej budove)" },
+        { "label_sk": "Platba za obed", "value_sk": "ISIC kartou; kartu treba najprv aktivovať a dobiť" },
+        { "label_sk": "Objednávanie obedov", "value_sk": "Cez internet alebo na termináloch v škole, spravidla na chodbách" },
+        { "label_sk": "Bufet – stará budova", "value_sk": "Hneď pri vchode" },
+        { "label_sk": "Bufet – nová budova", "value_sk": "Napravo od výťahov" },
+        { "label_sk": "Menšie prevádzky", "value_sk": "Pizza, smoothie, káva" },
+        { "label_sk": "Jedáleň na internáte", "value_sk": "Priamo v budove ŠD Ekonóm" },
+        { "label_sk": "Stravovanie na stránke EUBA", "value_sk": "Ceny, čipovanie a prevádzkové časy", "url": "https://euba.sk/sluzby/stravovanie" }
+      ],
+      "source_url": "https://sp.euba.sk/student/stravovanie",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "kniznica",
+      "icon_hint": "book",
+      "title_sk": "Slovenská ekonomická knižnica (SEK)",
+      "items": [
+        { "label_sk": "Kde sídli", "value_sk": "Stará budova, 2. až 4. poschodie" },
+        { "label_sk": "Požičovňa", "value_sk": "2. poschodie starej budovy" },
+        { "label_sk": "Registrácia", "value_sk": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok" },
+        { "label_sk": "Prihlásenie do online katalógu", "value_sk": "Číslo ISICu a heslo zadané pri registrácii v knižnici" },
+        { "label_sk": "Objednanie knihy", "value_sk": "Iba cez žiadanku v online katalógu" },
+        { "label_sk": "Prevzatie", "value_sk": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa" },
+        { "label_sk": "Limit výpožičiek", "value_sk": "30 kníh naraz" },
+        { "label_sk": "Výpožičná doba", "value_sk": "Knihy 1 mesiac, učebnice a skriptá 1 semester" },
+        { "label_sk": "Web knižnice", "value_sk": "sek.euba.sk", "url": "https://sek.euba.sk/" }
+      ],
+      "source_url": "https://sp.euba.sk/student/kniznica",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "isic",
+      "icon_hint": "card",
+      "title_sk": "ISIC a prolongácia",
+      "items": [
+        { "label_sk": "Čo to je", "value_sk": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa" },
+        { "label_sk": "Na čo slúži", "value_sk": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy" },
+        { "label_sk": "Poplatok za prolongáciu", "value_sk": "15 €" },
+        { "label_sk": "IBAN", "value_sk": "SK47 8180 0000 0070 0008 0671" },
+        { "label_sk": "Variabilný symbol", "value_sk": "Rodné číslo bez lomky" },
+        { "label_sk": "Špecifický symbol – NHF", "value_sk": "1010007" },
+        { "label_sk": "Špecifický symbol – OF", "value_sk": "1020007" },
+        { "label_sk": "Špecifický symbol – FHI", "value_sk": "1030007" },
+        { "label_sk": "Špecifický symbol – FPM", "value_sk": "1040007" },
+        { "label_sk": "Špecifický symbol – FMV", "value_sk": "1050007" },
+        { "label_sk": "Špecifický symbol – FAJ", "value_sk": "1060007" },
+        { "label_sk": "Špecifický symbol – PHF v Košiciach", "value_sk": "1070007" },
+        { "label_sk": "Postup", "value_sk": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka" },
+        { "label_sk": "Kde vyzdvihnúť známku", "value_sk": "Miestnosť A9.05, treba doklad o zaplatení poplatku" },
+        { "label_sk": "Aktivácia preukazu", "value_sk": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie" },
+        { "label_sk": "Preukaz študenta na stránke EUBA", "value_sk": "Podrobnosti o preukaze a prolongácii", "url": "https://euba.sk/student/preukaz-studenta-isic" }
+      ],
+      "source_url": "https://sp.euba.sk/student/isic",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "email-teams",
+      "icon_hint": "mail",
+      "title_sk": "Školský e-mail, Office 365 a MS Teams",
+      "items": [
+        { "label_sk": "Kde nájdeš svoju adresu", "value_sk": "Pridelený školský e-mail je uvedený v AiS" },
+        { "label_sk": "Heslo", "value_sk": "Pridelené heslo príde e-mailom" },
+        { "label_sk": "Webmail", "value_sk": "http://outlook.com/student.euba.sk", "url": "http://outlook.com/student.euba.sk" },
+        { "label_sk": "Čo dáva školský e-mail", "value_sk": "Prístup do MS Office 365 počas celého štúdia" },
+        { "label_sk": "Outlook v počítači", "value_sk": "Súčasť licencie balíka MS Office" },
+        { "label_sk": "Outlook v mobile", "value_sk": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia" },
+        { "label_sk": "Manuál na inštaláciu Office 365", "value_sk": "PDF od Študentského parlamentu", "url": "https://sp.euba.sk/www_write/files/manual_na_instalaciu_balika_ms_office_365.pdf" },
+        { "label_sk": "Ako sa dostaneš do Teams", "value_sk": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu" },
+        { "label_sk": "Teams v mobile", "value_sk": "Aplikácia je bezplatne v Google Play aj App Store" },
+        { "label_sk": "Tímy predmetov", "value_sk": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov" },
+        { "label_sk": "Pripojenie kódom", "value_sk": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu" },
+        { "label_sk": "Nahrávanie hodín", "value_sk": "Iba so súhlasom vyučujúceho" }
+      ],
+      "source_url": "https://sp.euba.sk/student/e-mail-a-ms-teams",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "kampus",
+      "icon_hint": "campus",
+      "title_sk": "Areál, budovy a orientácia",
+      "items": [
+        { "label_sk": "Stará budova V1", "value_sk": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet" },
+        { "label_sk": "Nová budova V2 (vyššia)", "value_sk": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP" },
+        { "label_sk": "Aula", "value_sk": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu" },
+        { "label_sk": "Prepojenie budov", "value_sk": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch" },
+        { "label_sk": "Čísla miestností V1", "value_sk": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203" },
+        { "label_sk": "Čísla miestností V2", "value_sk": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08" },
+        { "label_sk": "Šatňa v budove V1", "value_sk": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1" },
+        { "label_sk": "Šatňa v budove V2", "value_sk": "Vo vestibule za výťahmi, miestnosť 1.08" },
+        { "label_sk": "EUBA FAN SHOP", "value_sk": "shop.euba.sk", "url": "https://shop.euba.sk" }
+      ],
+      "source_url": "https://sp.euba.sk/student/orientacia-na-univerzite",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "ais",
+      "icon_hint": "doc",
+      "title_sk": "Čo vybavíš v AiS",
+      "items": [
+        { "label_sk": "Skúšky", "value_sk": "Prihlasovanie na termíny a zapísané známky" },
+        { "label_sk": "Zápis predmetov", "value_sk": "Na nasledujúci semester alebo celý akademický rok" },
+        { "label_sk": "Ubytovanie", "value_sk": "Žiadosť o internát sa podáva cez AiS" },
+        { "label_sk": "Hodnotenie výučby", "value_sk": "Prebieha vždy na konci semestra" }
+      ],
+      "source_url": "https://sp.euba.sk/student/ais",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "studium",
+      "icon_hint": "schedule",
+      "title_sk": "Organizácia štúdia",
+      "items": [
+        { "label_sk": "Harmonogram akademického roka", "value_sk": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom", "url": "https://euba.sk/student/harmonogram-akademickeho-roka" },
+        { "label_sk": "Rozvrh", "value_sk": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť" },
+        { "label_sk": "Prednáška a seminár", "value_sk": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku" },
+        { "label_sk": "Podmienka pripustenia ku skúške", "value_sk": "Úspešné absolvovanie seminára počas semestra" },
+        { "label_sk": "Termíny skúšky", "value_sk": "Jeden riadny a jeden opravný" }
+      ],
+      "source_url": "https://sp.euba.sk/student/organizacia-studia",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "erasmus",
+      "icon_hint": "globe",
+      "title_sk": "Erasmus+",
+      "items": [
+        { "label_sk": "Čo ponúka", "value_sk": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže" },
+        { "label_sk": "Limit mobilít", "value_sk": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane" },
+        { "label_sk": "Výber – štúdium v EÚ", "value_sk": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility", "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-v-eu" },
+        { "label_sk": "Výber – štúdium mimo EÚ", "value_sk": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred", "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-mimo-eu" },
+        { "label_sk": "Praktické stáže", "value_sk": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku", "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-prakticke-staze" },
+        { "label_sk": "Absolventské stáže", "value_sk": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe", "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-absolventske-staze" },
+        { "label_sk": "WorkSpace Europe", "value_sk": "workspaceeurope.sk", "url": "http://www.workspaceeurope.sk/" },
+        { "label_sk": "Erasmus+ štúdium v 10 krokoch", "value_sk": "Postup krok za krokom na stránke EUBA", "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-v-eu#erasmus-v-10-krokoch" },
+        { "label_sk": "Manuál k študijnému pobytu", "value_sk": "PDF s podmienkami grantu", "url": "https://euba.sk/www_write/files/SK/medzinarodne-vztahy/manual/2019/manual_grant_2019.pdf" }
+      ],
+      "source_url": "https://sp.euba.sk/zapoj-sa/erasmus",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "vymenne-programy",
+      "icon_hint": "globe",
+      "title_sk": "Ďalšie výmenné programy",
+      "items": [
+        { "label_sk": "Programy okrem Erasmu", "value_sk": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity" },
+        { "label_sk": "Bilaterálne pobyty", "value_sk": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty" },
+        { "label_sk": "Medzinárodné vzťahy EUBA", "value_sk": "Všetky informácie o mobilitách", "url": "https://euba.sk/medzinarodne-vztahy" }
+      ],
+      "source_url": "https://sp.euba.sk/zapoj-sa/ponuka-vymennych-programov",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "euromates",
+      "icon_hint": "globe",
+      "title_sk": "Euromates",
+      "items": [
+        { "label_sk": "Čo to je", "value_sk": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017" },
+        { "label_sk": "Pre koho", "value_sk": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené" },
+        { "label_sk": "Kedy", "value_sk": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach" },
+        { "label_sk": "Tlačová správa z roku 2018", "value_sk": "Popis programu na stránke EUBA", "url": "https://euba.sk/en/activities/news/1504-euromates-unique-v4-universities-exchange-program" }
+      ],
+      "source_url": "https://sp.euba.sk/zapoj-sa/euromates",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "svoc",
+      "icon_hint": "doc",
+      "title_sk": "ŠVOČ – študentská vedecká odborná činnosť",
+      "items": [
+        { "label_sk": "Čo to je", "value_sk": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka" },
+        { "label_sk": "Čo z toho máš", "value_sk": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu" },
+        { "label_sk": "Kolá súťaže", "value_sk": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni" },
+        { "label_sk": "Odmena", "value_sk": "Najlepšie práce sú každoročne ocenené aj finančne" },
+        { "label_sk": "ŠVOČ na EUBA", "value_sk": "Celouniverzitné informácie", "url": "https://euba.sk/veda-vyskum/aktualne-informacie/svoc" },
+        { "label_sk": "ŠVOČ – FAJ", "value_sk": "Fakulta aplikovaných jazykov", "url": "https://faj.euba.sk/veda-a-vyskum/svoc" },
+        { "label_sk": "ŠVOČ – FHI", "value_sk": "Fakulta hospodárskej informatiky", "url": "https://fhi.euba.sk/veda-a-vyskum/svoc" },
+        { "label_sk": "ŠVOČ – FMV", "value_sk": "Fakulta medzinárodných vzťahov", "url": "https://fmv.euba.sk/veda-a-vyskum/svoc/pravidla-pre-svoc" },
+        { "label_sk": "ŠVOČ – FPM", "value_sk": "Fakulta podnikového manažmentu", "url": "https://fpm.euba.sk/veda-a-vyskum/svoc" },
+        { "label_sk": "ŠVOČ – NHF", "value_sk": "Národohospodárska fakulta", "url": "https://nhf.euba.sk/veda-a-vyskum/svoc" },
+        { "label_sk": "ŠVOČ – OF", "value_sk": "Obchodná fakulta", "url": "https://of.euba.sk/veda-a-vyskum/svoc/statut-svoc" },
+        { "label_sk": "ŠVOČ – PHF", "value_sk": "Podnikovohospodárska fakulta so sídlom v Košiciach", "url": "https://phf.euba.sk/veda-a-vyskum/vedeckovyskumna-cinnost/svoc" }
+      ],
+      "source_url": "https://sp.euba.sk/zapoj-sa/svoc",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "prieskumy",
+      "icon_hint": "doc",
+      "title_sk": "Prieskumy Študentského parlamentu",
+      "items": [
+        { "label_sk": "Stránka prieskumov", "value_sk": "V čase kontroly 18. 9. 2026 bola stránka bez obsahu", "url": "https://sp.euba.sk/zapoj-sa/prieskumy" }
+      ],
+      "source_url": "https://sp.euba.sk/zapoj-sa/prieskumy",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "kontakt",
+      "icon_hint": "user",
+      "title_sk": "Kontakt na Študentský parlament",
+      "items": [
+        { "label_sk": "E-mail", "value_sk": "prezident@sp.euba.sk", "url": "mailto:prezident@sp.euba.sk" },
+        { "label_sk": "Kancelária ŠP", "value_sk": "Miestnosť E9.06, kontaktné miesto pre študentov" },
+        { "label_sk": "Adresa", "value_sk": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava" },
+        { "label_sk": "Osobné stretnutie", "value_sk": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom" }
+      ],
+      "source_url": "https://sp.euba.sk/kontakt",
+      "checked": "2026-09-18"
+    },
+    {
+      "id": "univerzita",
+      "icon_hint": "campus",
+      "title_sk": "O univerzite",
+      "items": [
+        { "label_sk": "Zameranie", "value_sk": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia" },
+        { "label_sk": "Postavenie", "value_sk": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu" },
+        { "label_sk": "Fakulty", "value_sk": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach" }
+      ],
+      "source_url": "https://sp.euba.sk/univerzita/zakladne-informacie",
+      "checked": "2026-09-18"
+    }
+  ],
+  "notes": [
+    {
+      "entry": "doprava",
+      "source_url": "https://sp.euba.sk/student/doprava",
+      "quote_sk": "ŠD HOPA a DOPA — Zastávka \"Hroboňova\" autobus č. 84 výstup na zastávke \"Bulíková\", počas semestra autobus č. 184 v smere na univerzitu zo zastávky \"Hroboňova\" a v smere z univerzity výstup na zastávke \"Prokopa Veľkého\".",
+      "question_sk": "Zoznam internátov na /ubytovanie pozná iba ŠD Prokopa Veľkého 41 – Hopa, žiadny internát DOPA tam nie je. Ide o iný internát, alebo o hovorové označenie inej budovy?"
+    },
+    {
+      "entry": "stravovanie",
+      "source_url": "https://sp.euba.sk/student/stravovanie",
+      "quote_sk": "V areáli univerzity sa nachádza viacero bufetov, spolu s hlavnou jedálňou v priestoroch ŠD Dolnozemská (v starej budove).",
+      "question_sk": "Je hlavná jedáleň v budove internátu ŠD Dolnozemská, alebo v starej budove univerzity V1? Veta pripúšťa oboje."
+    },
+    {
+      "entry": "kniznica",
+      "source_url": "https://sp.euba.sk/student/kniznica",
+      "quote_sk": "Zaplať registračný poplatok",
+      "question_sk": "Stránka neuvádza sumu registračného poplatku, preto v dátach chýba. Doplniť zo stránky knižnice?"
+    },
+    {
+      "entry": "kniznica",
+      "source_url": "https://sp.euba.sk/student/kniznica",
+      "quote_sk": "Knihy, časopisy a články nájdeš v online katalógu knižnice",
+      "question_sk": "Stránka nikde neuvádza adresu online katalógu (na celej stránke nie je ani jeden odkaz), jediná uvedená adresa je https://sek.euba.sk/. Adresu katalógu sme nedopĺňali."
+    },
+    {
+      "entry": "email-teams",
+      "source_url": "https://sp.euba.sk/student/e-mail-a-ms-teams",
+      "quote_sk": "Heslo k školskému mailu, ktoré ti bolo pridelené nájdeš v emaily.",
+      "question_sk": "Do ktorej schránky heslo príde – na súkromný e-mail zadaný v prihláške?"
+    },
+    {
+      "entry": "email-teams",
+      "source_url": "https://sp.euba.sk/student/e-mail-a-ms-teams",
+      "quote_sk": "MS Teams – bude cez ňu prebiehať prvý týždeň semestra ( 28. 9. - 02. 10.) – učitelia vytvoria tímy (študijné skupiny)",
+      "question_sk": "Dátumy sú bez roka a zjavne z niektorého staršieho akademického roka, preto nie sú v dátach."
+    },
+    {
+      "entry": "email-teams",
+      "source_url": "https://sp.euba.sk/student/e-mail-a-ms-teams",
+      "quote_sk": "Internetový Outlook : http://outlook.com/student.euba.sk",
+      "question_sk": "Adresa je uvedená cez http a v tomto nezvyčajnom tvare; prevzali sme ju presne tak, ako je na stránke. Stránka neuvádza žiadnu priamu adresu MS Teams."
+    },
+    {
+      "entry": "prieskumy",
+      "source_url": "https://sp.euba.sk/zapoj-sa/prieskumy",
+      "quote_sk": "(stránka bez obsahu)",
+      "question_sk": "Stránka Prieskumy mala 18. 9. 2026 prázdne telo článku – žiadny text ani odkaz na konkrétny prieskum. Skontrolovať neskôr."
+    }
+  ]
+}

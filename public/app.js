@@ -3,6 +3,7 @@
 // Every user-facing sentence comes from i18n.js (sk/ru/uk). Nothing here builds a
 // sentence out of pieces: a count goes into the string as {n} so each language can
 // put the number where its grammar wants it.
+import { HANDBOOK, HANDBOOK_CHECKED } from './handbook.js';
 import {
   LANGS, getLang, setLang, applyLangToDocument, t, aisTerm,
   dayName, dayShort, dayIn, fmtDate, fmtDateLong, hhmm, greeting, cap,
@@ -36,6 +37,14 @@ const I = {
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg>',
   dot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="4.5"/></svg>',
   more: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
+  campus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18M5 20.5V9l5-3 5 3v11.5M15 20.5V12l4-2v10.5"/><path d="M8 12.5h2M8 16h2"/></svg>',
+  bus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="12.5" rx="2.5"/><path d="M4 10.5h16M7.5 20v-3.5M16.5 20v-3.5"/><circle cx="8" cy="13.6" r="0.9" fill="currentColor" stroke="none"/><circle cx="16" cy="13.6" r="0.9" fill="currentColor" stroke="none"/></svg>',
+  food: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7.5a2 2 0 0 0 4 0V3M8 10.5V21"/><path d="M17 3c-1.6 1.2-2.5 3-2.5 5.2 0 1.6.8 2.6 2.5 2.8V21"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5V5.5Z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5V5.5Z"/></svg>',
+  card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><circle cx="8.5" cy="11" r="2"/><path d="M6 15.5c.6-1.2 1.5-1.8 2.5-1.8s1.9.6 2.5 1.8M14 10h4M14 13.5h4"/></svg>',
+  bed: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18.5V7M3 12.5h18v6M21 18.5v-4"/><circle cx="7.5" cy="10" r="2"/><path d="M11 12.5V10a1.5 1.5 0 0 1 1.5-1.5H19A2 2 0 0 1 21 10.5v2"/></svg>',
+  chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 10 4 4 4-4"/></svg>',
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5.5 15H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v.5"/></svg>',
 };
 
 // Rebuilt on every render: the labels change when the language does.
@@ -800,8 +809,80 @@ function msgIcon(cat = '') {
   return I.bell;
 }
 
+
+// --- University handbook
+// The things AIS never tells you: which bus leaves from which dorm, where the canteen
+// and the library are, what ISIC prolongation costs. A curated snapshot of the student
+// union's pages, so it opens instantly and works offline; see scripts/handbook.
+const UNI_ICON = {
+  campus: I.campus, bus: I.bus, food: I.food, book: I.book, card: I.card,
+  mail: I.messages, bed: I.bed, globe: I.ext, doc: I.doc,
+  schedule: I.schedule, user: I.user,
+};
+
+function pick(value) {
+  if (value == null) return '';
+  if (typeof value === 'string') return value;
+  return value[getLang()] || value.sk || '';
+}
+
+/** One fact: a label, its value, optionally a link or a value worth copying. */
+function uniFact(item) {
+  const label = esc(pick(item.label));
+  const value = pick(item.value);
+  const row = h(`<div class="unifact"><dt>${label}</dt><dd></dd></div>`);
+  const dd = row.querySelector('dd');
+  if (item.copy) {
+    const btn = h(`<button class="copyval" title="${esc(t('uni.copy'))}"><span class="tnum">${esc(value)}</span>${I.copy}</button>`);
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(value);
+        toast(t('uni.copied'));
+      } catch { toast(t('uni.copyFailed')); }
+    });
+    dd.appendChild(btn);
+  } else if (item.url) {
+    dd.appendChild(h(`<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(value || item.url)}${I.ext}</a>`));
+  } else {
+    dd.textContent = value;
+  }
+  return row;
+}
+
+function uniCard(card, open) {
+  const el = h(`<section class="unicard"></section>`);
+  const head = h(`<button class="unicard__head" aria-expanded="${open ? 'true' : 'false'}">
+    <span class="ic">${UNI_ICON[card.icon] || I.doc}</span>
+    <span class="tx"><span class="t">${esc(pick(card.title))}</span><span class="s">${esc(pick(card.summary))}</span></span>
+    <span class="chev">${I.chev}</span></button>`);
+  const body = h(`<div class="unicard__body"${open ? '' : ' hidden'}><div class="unicard__inner"></div></div>`);
+  const inner = body.querySelector('.unicard__inner');
+  const facts = h('<dl class="unifacts"></dl>');
+  (card.items || []).forEach((item) => facts.appendChild(uniFact(item)));
+  inner.appendChild(facts);
+  if (card.source) {
+    inner.appendChild(h(`<a class="unisrc" href="${esc(card.source)}" target="_blank" rel="noopener noreferrer">${esc(t('uni.source'))}${I.ext}</a>`));
+  }
+  head.addEventListener('click', () => {
+    const isOpen = head.getAttribute('aria-expanded') === 'true';
+    head.setAttribute('aria-expanded', String(!isOpen));
+    body.hidden = isOpen;
+  });
+  el.appendChild(head); el.appendChild(body);
+  return el;
+}
+
+async function viewUniversity(root) {
+  const wrap = h('<div class="view"></div>'); root.appendChild(wrap);
+  wrap.appendChild(h(`<p class="uni-intro">${esc(t('uni.intro'))}</p>`));
+  const list = h('<div class="unilist"></div>');
+  HANDBOOK.forEach((card, i) => list.appendChild(uniCard(card, i === 0)));
+  wrap.appendChild(list);
+  wrap.appendChild(h(`<p class="footnote">${esc(t('uni.footnote', { date: fmtDate(new Date(`${HANDBOOK_CHECKED}T00:00:00`)) }))}</p>`));
+}
+
 // ---- shell + router --------------------------------------------------------
-const VIEWS = { dnes: viewToday, rozvrh: viewSchedule, predmety: viewSubjects, financie: viewPayments, spravy: viewMessages };
+const VIEWS = { dnes: viewToday, rozvrh: viewSchedule, predmety: viewSubjects, financie: viewPayments, spravy: viewMessages, univerzita: viewUniversity };
 const routeTitle = (route) => t(`nav.${route}`);
 
 /** The title of the current screen, and the line under it. On Dnes it greets by name. */
@@ -820,7 +901,10 @@ function headings() {
 
 /** "Aktualizované o 22:58" — how old the numbers on the screen are. */
 function syncLabel() {
-  return fetchedAt ? t('app.updatedAt', { t: hhmm(fetchedAt) }) : t('app.loading');
+  // A screen that fetches nothing (the handbook) has no freshness to report, and
+  // "loading…" that never resolves is worse than nothing.
+  if (fetchedAt) return t('app.updatedAt', { t: hhmm(fetchedAt) });
+  return state.route === 'univerzita' ? '' : t('app.loading');
 }
 
 function refreshButton(cls = 'iconbtn') {
@@ -843,6 +927,9 @@ function settingsMenu() {
   </div>`);
   panel.appendChild(langSwitch());
   panel.appendChild(h(`<p class="menu__note">${esc(t('app.langNote'))}</p>`));
+  const uni = h(`<a class="menu__item" href="#univerzita">${I.campus}<span>${esc(t('nav.univerzita'))}</span></a>`);
+  uni.addEventListener('click', () => close());
+  panel.appendChild(uni);
   const theme = h(`<button class="menu__item">${I.theme}<span>${esc(t('app.theme'))}</span></button>`);
   const out = h(`<button class="menu__item">${I.logout}<span>${esc(t('app.logout'))}</span></button>`);
   panel.appendChild(theme);
@@ -881,6 +968,8 @@ function shell() {
     const a = h(`<a class="navitem ${state.route === tab.id ? 'active' : ''}" href="#${tab.id}">${tab.icon}<span>${esc(tab.label)}</span></a>`);
     side.appendChild(a);
   });
+  const uniItem = h(`<a class="navitem ${state.route === 'univerzita' ? 'active' : ''}" href="#univerzita">${I.campus}<span>${esc(t('nav.univerzita'))}</span></a>`);
+  side.appendChild(uniItem);
   side.appendChild(h('<div class="spacer"></div>'));
   // Who you are signed in as: an app that holds university credentials should never
   // leave that question open.

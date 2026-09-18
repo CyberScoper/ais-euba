@@ -61,6 +61,14 @@ const SK = {
   'nav.predmety': 'Predmety',
   'nav.financie': 'Financie',
   'nav.spravy': 'Správy',
+  'nav.univerzita': 'Univerzita',
+
+  'uni.intro': 'Praktické veci, ktoré v AIS nenájdeš: doprava, jedáleň, knižnica, ISIC, školský e-mail.',
+  'uni.source': 'Zdroj na sp.euba.sk',
+  'uni.footnote': 'Údaje sú prepísané zo stránok Študentského parlamentu EU a naposledy overené {date}. Ak sa niečo zmenilo, platí stránka univerzity.',
+  'uni.copy': 'Kopírovať',
+  'uni.copied': 'Skopírované',
+  'uni.copyFailed': 'Kopírovanie sa nepodarilo',
 
   'app.tagline': 'neoficiálny klient AIS',
   'app.updatedAt': 'Aktualizované o {t}',
@@ -187,6 +195,14 @@ const RU = {
   'nav.predmety': 'Предметы',
   'nav.financie': 'Финансы',
   'nav.spravy': 'Сообщения',
+  'nav.univerzita': 'Университет',
+
+  'uni.intro': 'Практические вещи, которых нет в AIS: транспорт, столовая, библиотека, ISIC, университетская почта.',
+  'uni.source': 'Источник на sp.euba.sk',
+  'uni.footnote': 'Данные переписаны со страниц Студенческого парламента EU и последний раз сверены {date}. Если что-то изменилось, верна страница университета.',
+  'uni.copy': 'Скопировать',
+  'uni.copied': 'Скопировано',
+  'uni.copyFailed': 'Скопировать не удалось',
 
   'app.tagline': 'неофициальный клиент AIS',
   'app.updatedAt': 'Обновлено в {t}',
@@ -313,6 +329,14 @@ const UK = {
   'nav.predmety': 'Предмети',
   'nav.financie': 'Фінанси',
   'nav.spravy': 'Повідомлення',
+  'nav.univerzita': 'Університет',
+
+  'uni.intro': 'Практичні речі, яких немає в AIS: транспорт, їдальня, бібліотека, ISIC, університетська пошта.',
+  'uni.source': 'Джерело на sp.euba.sk',
+  'uni.footnote': 'Дані переписані зі сторінок Студентського парламенту EU і востаннє звірені {date}. Якщо щось змінилося, чинною є сторінка університету.',
+  'uni.copy': 'Скопіювати',
+  'uni.copied': 'Скопійовано',
+  'uni.copyFailed': 'Скопіювати не вдалося',
 
   'app.tagline': 'неофіційний клієнт AIS',
   'app.updatedAt': 'Оновлено о {t}',

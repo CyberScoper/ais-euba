@@ -854,3 +854,65 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 480px) {
   .brandline .langsw button { min-width: 30px; padding: 5px 7px; font-size: 0.72rem; }
 }
+
+/* ---------------- University handbook ---------------- */
+/* Practical facts the university system never shows: transport, canteen, library,
+   ISIC, mail. A list of cards that open in place — no second screen to get lost in. */
+.uni-intro { color: var(--ink-2); font-size: 0.92rem; line-height: 1.55; margin: 0 2px 16px; max-width: 60ch; }
+.unilist { display: flex; flex-direction: column; gap: 10px; max-width: 760px; }
+
+.unicard {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-lg); box-shadow: var(--sh-1); overflow: hidden;
+}
+.unicard__head {
+  display: flex; align-items: center; gap: 13px; width: 100%;
+  padding: 14px 16px; background: transparent; border: 0; text-align: left;
+  transition: background 0.16s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .unicard__head:hover { background: var(--surface-2); } }
+.unicard__head .ic {
+  width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
+  background: var(--accent-soft); color: var(--accent); display: grid; place-items: center;
+}
+.unicard__head .ic svg { width: 20px; height: 20px; }
+.unicard__head .tx { flex: 1; min-width: 0; }
+.unicard__head .t { display: block; font-weight: 600; letter-spacing: -0.01em; }
+.unicard__head .s { display: block; color: var(--ink-3); font-size: 0.82rem; margin-top: 2px; }
+.unicard__head .chev { color: var(--ink-3); display: grid; place-items: center; flex-shrink: 0;
+  transition: transform 0.2s var(--ease-out); }
+.unicard__head .chev svg { width: 20px; height: 20px; }
+.unicard__head[aria-expanded='true'] .chev { transform: rotate(180deg); }
+
+.unicard__body { border-top: 1px solid var(--line); }
+.unicard__inner { padding: 4px 16px 16px; animation: rise 0.16s var(--ease-out) both; }
+
+.unifacts { margin: 0; }
+.unifact { display: flex; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.unifact:last-child { border-bottom: none; }
+.unifact dt { flex: 0 0 38%; max-width: 220px; color: var(--ink-3); font-size: 0.84rem; line-height: 1.45; }
+.unifact dd { flex: 1; margin: 0; min-width: 0; font-size: 0.92rem; line-height: 1.5; }
+.unifact dd a { color: var(--accent); display: inline-flex; align-items: center; gap: 5px; text-underline-offset: 2px; word-break: break-word; }
+.unifact dd a svg { width: 14px; height: 14px; opacity: 0.7; flex-shrink: 0; }
+
+/* A value worth copying (an IBAN, a variable symbol) copies on tap. */
+.copyval {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 9px; margin: -4px -9px; border-radius: 9px;
+  border: 1px solid transparent; background: transparent; font-size: 0.92rem;
+  transition: background 0.16s var(--ease-out), border-color 0.16s var(--ease-out), transform 0.14s var(--ease-out);
+}
+.copyval svg { width: 15px; height: 15px; color: var(--ink-3); flex-shrink: 0; }
+@media (hover: hover) and (pointer: fine) { .copyval:hover { background: var(--surface-2); border-color: var(--line); } }
+.copyval:active { transform: scale(0.98); }
+
+.unisrc { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  color: var(--ink-3); font-size: 0.78rem; text-decoration: none; }
+.unisrc svg { width: 13px; height: 13px; }
+@media (hover: hover) and (pointer: fine) { .unisrc:hover { color: var(--ink-2); } }
+
+/* A phone has no room for a label column. */
+@media (max-width: 439px) {
+  .unifact { display: block; padding: 10px 0; }
+  .unifact dt { max-width: none; margin-bottom: 3px; }
+}
