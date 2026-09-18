@@ -74,6 +74,15 @@ curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/portal/studiu
 curl -s --cookie "sid=<ваш sid>" 'http://localhost:4173/api/raw/portal/portal/osoba/poplatky' | jq .
 ```
 
+Либо разом, скриптом (просит cookie, а не пароль — она менее чувствительна и сама истекает):
+
+```bash
+AIS_JSESSIONID=<значение из залогиненного браузера> node tools/calibrate.js
+```
+
+Он минтит токен, обходит все эндпоинты и кладёт сырые ответы + сводку имён полей
+в `calibration/` (папка в .gitignore — там персональные данные).
+
 Дальше поправить соответствующий `normalize*` под реальные имена полей.
 Формат, который ждёт фронтенд для расписания:
 `{ day: 1..5, from: "08:00", to: "09:30", subject, code, type, room, teacher }`.
