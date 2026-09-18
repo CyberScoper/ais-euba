@@ -82,7 +82,7 @@ async function load(key, path) {
 }
 
 // ---- state / theme ---------------------------------------------------------
-const state = { authed: false, user: null, route: 'dnes', day: (new Date().getDay() || 1) };
+const state = { authed: false, user: null, route: 'dnes', day: (new Date().getDay() || 1), subTab: 'sem' };
 
 function applyTheme() {
   // ?theme=dark|light forces a theme (handy for QA and for sharing a link).
@@ -231,6 +231,22 @@ async function viewToday(root) {
   }
   hero.replaceWith(h(heroHtml));
 
+  // Academic period: which part of the year we are in, at a glance.
+  try {
+    const cal = await load('calendar', 'calendar');
+    const st = (cal && cal.status) || {};
+    let periodHtml = '';
+    if (st.current) {
+      periodHtml = `<span class="pname">${esc(st.current.title)}</span>
+        <span class="pdot"></span><span>${st.week ? `${st.week}. týždeň` : ''}</span>
+        <span class="pdot"></span><span>zostáva ${st.daysLeft} dní</span>`;
+    } else if (st.next) {
+      periodHtml = `<span class="pname">${esc(st.next.title)}</span>
+        <span class="pdot"></span><span>o ${st.daysToNext} ${st.daysToNext === 1 ? 'deň' : 'dní'}</span>`;
+    }
+    if (periodHtml) wrap.appendChild(h(`<div class="period">${periodHtml}</div>`));
+  } catch { /* the calendar is a nicety, never block the screen on it */ }
+
   const glance = h(`<div class="glance">
     <a class="g" href="#financie"><span class="n tnum">${oweSum ? oweSum.toFixed(0) + ' €' : '0 €'}</span><span class="l">${due.length ? `${due.length} nezaplatené` : 'Nič nedlhujete'}</span></a>
     <a class="g" href="#spravy"><span class="n tnum">${msgCount}</span><span class="l">${msgCount ? 'správ v schránke' : 'prázdna schránka'}</span></a>
@@ -322,7 +338,11 @@ function buildWeekGrid(sch, today) {
 async function viewSubjects(root) {
   const wrap = h('<div class="view"></div>'); root.appendChild(wrap);
   wrap.appendChild(skeletonList(5));
-  const resp = await load('subjects', 'subjects');
+  const [resp, progress, exams] = await Promise.all([
+    load('subjects', 'subjects'),
+    load('progress', 'progress').catch(() => null),
+    load('exams', 'exams').catch(() => []),
+  ]);
   const subs = Array.isArray(resp) ? resp : (resp.subjects || []);
   const avg = (resp && resp.averages) || {};
   wrap.innerHTML = '';
@@ -333,13 +353,42 @@ async function viewSubjects(root) {
     ? Number(avg.graded).toFixed(2)
     : (graded.length ? weightedGpa(graded) : '—');
 
+  const tot = (progress && progress.total) || {};
+  const crPassed = tot.creditsPassed ?? 0;
+  const crEnrolled = tot.creditsEnrolled ?? totalCr;
+
   wrap.appendChild(h(`<div class="summary">
-    <div class="s"><div class="n tnum">${totalCr}</div><div class="l">kreditov spolu</div></div>
+    <div class="s"><div class="n tnum">${crPassed}<span class="of">/${crEnrolled}</span></div><div class="l">kreditov získaných</div></div>
     <div class="s"><div class="n tnum">${gpa}</div><div class="l">vážený priemer</div></div>
     <div class="s"><div class="n tnum">${graded.length}/${subs.length}</div><div class="l">ohodnotených</div></div>
   </div>`));
 
-  wrap.appendChild(h('<div class="section-h"><h2>Predmety</h2><span class="muted">tento semester</span></div>'));
+  // Exam terms only earn space once they exist.
+  if (exams && exams.length) {
+    wrap.appendChild(h(`<div class="section-h"><h2>Skúšky</h2><span class="muted">${exams.length} termínov</span></div>`));
+    const ex = h('<div class="card" style="padding:2px 16px"></div>');
+    exams.forEach((e) => {
+      ex.appendChild(h(`<div class="row">
+        <div class="grade ${e.registered ? 'g-A' : 'pending'}">${e.registered ? I.check : '·'}</div>
+        <div class="rbody"><div class="t">${esc(e.subject || e.code || 'Skúška')}</div>
+          <div class="m"><span>${esc(e.date || '')}${e.time ? ' · ' + esc(e.time) : ''}</span>${e.room ? `<span>${esc(e.room)}</span>` : ''}</div></div>
+        ${e.capacity ? `<div class="rmeta"><div class="cr tnum">${esc(e.taken ?? 0)}/${esc(e.capacity)}</div><div class="cl">miest</div></div>` : ''}
+      </div>`));
+    });
+    wrap.appendChild(ex);
+  }
+
+  const seg = h(`<div class="seg">
+    <button class="${state.subTab === 'plan' ? '' : 'active'}" data-t="sem">Semester</button>
+    <button class="${state.subTab === 'plan' ? 'active' : ''}" data-t="plan">Plán štúdia</button>
+  </div>`);
+  seg.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+    state.subTab = b.dataset.t === 'plan' ? 'plan' : 'sem';
+    render();
+  }));
+  wrap.appendChild(seg);
+
+  if (state.subTab === 'plan') { await renderPlan(wrap); return; }
   if (!subs.length) { wrap.appendChild(empty(I.subjects, 'Žiadne predmety')); return; }
   const list = h('<div class="rowlist card" style="padding:2px 16px"></div>');
   subs.forEach((sx) => {
@@ -356,6 +405,36 @@ async function viewSubjects(root) {
     </div>`));
   });
   wrap.appendChild(list);
+}
+
+async function renderPlan(wrap) {
+  const plan = await load('plan', 'plan');
+  const subs = (plan && plan.subjects) || [];
+  if (!subs.length) { wrap.appendChild(empty(I.subjects, 'Plán nie je dostupný')); return; }
+  // Group by year, then winter/summer semester — the shape students think in.
+  const byYear = new Map();
+  subs.forEach((p) => {
+    const y = p.year || '?';
+    if (!byYear.has(y)) byYear.set(y, []);
+    byYear.get(y).push(p);
+  });
+  [...byYear.keys()].sort().forEach((y) => {
+    const items = byYear.get(y);
+    const cr = items.reduce((a, p) => a + (Number(p.credits) || 0), 0);
+    wrap.appendChild(h(`<div class="section-h"><h2>${esc(y)}. ročník</h2><span class="muted">${items.length} predmetov · ${cr} kr.</span></div>`));
+    const list = h('<div class="rowlist card" style="padding:2px 16px"></div>');
+    items.sort((a, b) => String(a.semester).localeCompare(String(b.semester)));
+    items.forEach((p) => {
+      const sem = String(p.semester).toUpperCase() === 'Z' ? 'ZS' : 'LS';
+      list.appendChild(h(`<div class="row">
+        <div class="grade ${p.done ? 'g-A' : 'pending'}">${p.done ? I.check : '·'}</div>
+        <div class="rbody"><div class="t">${esc(p.name || p.code)}</div>
+          <div class="m"><span>${esc(sem)}</span>${p.kind ? `<span>${esc(p.kind)}</span>` : ''}</div></div>
+        <div class="rmeta"><div class="cr tnum">${esc(p.credits ?? '–')}</div><div class="cl">kr.</div></div>
+      </div>`));
+    });
+    wrap.appendChild(list);
+  });
 }
 
 function weightedGpa(graded) {

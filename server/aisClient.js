@@ -12,6 +12,8 @@
 // the fields defensively and fall back to returning the raw payload, so the UI keeps
 // working; correct them once a live response is seen (see README "Calibrating adapters").
 
+import { Pacer, SingleFlight, TtlCache, ttlFor, LoginGuard } from './guard.js';
+
 const BASE = process.env.AIS_BASE || 'https://ais2.euba.sk';
 const LNG = (process.env.AIS_LNG || 'SK').toUpperCase();
 
@@ -21,6 +23,10 @@ const TOKEN_HEADER_VALUE = '2llVM1Fl3M';
 
 const UA =
   'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Mobile Safari/537.36';
+
+// One pacer and one login guard for the whole process: AIS sees a single client.
+const pacer = new Pacer();
+const loginGuard = new LoginGuard();
 
 function parseSetCookie(headers) {
   // Node fetch exposes multiple Set-Cookie via getSetCookie() (Node 20.15+/undici).
@@ -43,6 +49,9 @@ export class AisSession {
     this.token = null;
     this.creds = null; // {login, password} kept in memory only, for silent re-login
     this.lastRefresh = 0;
+    this.cache = new TtlCache();
+    this.flight = new SingleFlight();
+    this.reloginAt = 0; // guards against re-login loops
   }
 
   get cookieHeader() {
@@ -50,6 +59,8 @@ export class AisSession {
   }
 
   async login(login, password) {
+    await loginGuard.beforeAttempt();
+    await pacer.slot();
     const body = new URLSearchParams({ login, password }).toString();
     const res = await fetch(`${BASE}/ais/login.do`, {
       method: 'POST',
@@ -66,15 +77,22 @@ export class AisSession {
     // A 302 to the portal means success; a 200 (login page again) means bad credentials.
     const redirected = res.status >= 300 && res.status < 400;
     if (!redirected && !this.jsessionid) {
+      loginGuard.failure();
       throw new AisError(401, 'Login failed (no session established)');
     }
     this.creds = { login, password };
     await this.retrieveToken();
-    if (!this.token) throw new AisError(401, 'Login failed (wrong username or password)');
+    if (!this.token) {
+      loginGuard.failure();
+      throw new AisError(401, 'Login failed (wrong username or password)');
+    }
+    loginGuard.success();
+    this.cache.clear();
     return true;
   }
 
   async retrieveToken() {
+    await pacer.slot();
     const res = await fetch(`${BASE}/ais/rest/apps/get-access-token`, {
       method: 'POST',
       headers: {
@@ -93,13 +111,14 @@ export class AisSession {
 
   async refreshIfStale() {
     if (Date.now() - this.lastRefresh < 45_000) return;
+    await pacer.slot();
     const res = await fetch(`${BASE}/ais/rest/apps/check-session/check-light`, {
       headers: { AISAuth: this.token || '', Cookie: this.cookieHeader, 'User-Agent': UA },
     });
     if (res.status === 401) {
       // Session died server-side: silently re-login if we still hold credentials.
       if (this.creds) {
-        await this.login(this.creds.login, this.creds.password);
+        await this.relogin();
       } else {
         throw new AisError(401, 'Session expired');
       }
@@ -110,32 +129,57 @@ export class AisSession {
     this.lastRefresh = Date.now();
   }
 
-  // Raw JSON GET against /ais/rest/<path>. Callers pass the namespace, because AIS
-  // splits its API in two: portal/* (studies, fees, messages) and apps/* (rozvrh).
-  async get(path, { query } = {}) {
-    await this.refreshIfStale();
-    const url = new URL(`${BASE}/ais/rest/${path.replace(/^\/+/, '')}`);
-    url.searchParams.set('lng', LNG);
-    if (query) for (const [k, v] of Object.entries(query)) url.searchParams.set(k, v);
-
-    const res = await fetch(url, {
-      headers: {
-        AISAuth: this.token || '',
-        Cookie: this.cookieHeader,
-        Accept: 'application/json',
-        'User-Agent': UA,
-      },
-    });
-    if (res.status === 401) {
-      if (this.creds) {
-        await this.login(this.creds.login, this.creds.password);
-        return this.get(path, { query });
-      }
+  // At most one re-login per minute, whatever asks for it.
+  async relogin() {
+    if (Date.now() - this.reloginAt < 60_000) {
       throw new AisError(401, 'Session expired');
     }
-    if (!res.ok) throw new AisError(res.status, `AIS ${res.status} for ${path}`);
-    const ct = res.headers.get('content-type') || '';
-    return ct.includes('json') ? res.json() : res.text();
+    this.reloginAt = Date.now();
+    await this.login(this.creds.login, this.creds.password);
+  }
+
+  // Raw JSON GET against /ais/rest/<path>. Callers pass the namespace, because AIS
+  // splits its API in two: portal/* (studies, fees, messages) and apps/* (rozvrh).
+  // Served from cache when fresh; concurrent identical reads share one upstream call.
+  async get(path, { query, force = false, _retry = false } = {}) {
+    const key = path + (query ? '?' + new URLSearchParams(query).toString() : '');
+    if (!force) {
+      const hit = this.cache.get(key);
+      if (hit !== undefined) return hit;
+    }
+    return this.flight.run(key, async () => {
+      if (!force) {
+        const hit = this.cache.get(key);
+        if (hit !== undefined) return hit;
+      }
+      await this.refreshIfStale();
+      const url = new URL(`${BASE}/ais/rest/${path.replace(/^\/+/, '')}`);
+      url.searchParams.set('lng', LNG);
+      if (query) for (const [k, v] of Object.entries(query)) url.searchParams.set(k, v);
+
+      await pacer.slot();
+      const res = await fetch(url, {
+        headers: {
+          AISAuth: this.token || '',
+          Cookie: this.cookieHeader,
+          Accept: 'application/json',
+          'User-Agent': UA,
+        },
+      });
+      if (res.status === 401) {
+        // One retry only — never recurse into a login loop.
+        if (this.creds && !_retry) {
+          await this.relogin();
+          return this.get(path, { query, force: true, _retry: true });
+        }
+        throw new AisError(401, 'Session expired');
+      }
+      if (!res.ok) throw new AisError(res.status, `AIS ${res.status} for ${path}`);
+      const ct = res.headers.get('content-type') || '';
+      const data = ct.includes('json') ? await res.json() : await res.text();
+      this.cache.set(key, data, ttlFor(path));
+      return data;
+    });
   }
 }
 
@@ -278,4 +322,112 @@ export function normalizeSchedule(raw) {
       raw: e,
     };
   });
+}
+
+// --- Academic calendar -----------------------------------------------------
+// AIS calls these "upozornenia", but they are really the term calendar: semester
+// spans, exam periods and registration windows, each with a date range.
+// Dates arrive as "dd.mm.yyyy" optionally followed by "HH:MM".
+function skDate(v, endOfDay = false) {
+  const m = String(v ?? '').match(/(\d{2})\.(\d{2})\.(\d{4})(?:\s+(\d{2}):(\d{2}))?/);
+  if (!m) return undefined;
+  const [, d, mo, y, hh, mi] = m;
+  const date = new Date(
+    Number(y), Number(mo) - 1, Number(d),
+    hh != null ? Number(hh) : (endOfDay ? 23 : 0),
+    mi != null ? Number(mi) : (endOfDay ? 59 : 0)
+  );
+  return isNaN(date) ? undefined : date.toISOString();
+}
+
+export function normalizeCalendar(raw) {
+  return asArray(raw)
+    .map((e) => ({
+      title: pick(e, 'text'),
+      note: pick(e, 'popis'),
+      from: skDate(pick(e, 'odDatumu')),
+      to: skDate(pick(e, 'doDatumu'), true),
+    }))
+    .filter((e) => e.from)
+    .sort((a, b) => a.from.localeCompare(b.from));
+}
+
+// Which period we are in right now, and what comes next.
+export function calendarStatus(entries, now = new Date()) {
+  const t = now.toISOString();
+  // Prefer the long spans (semester / exam period) over one-day registration windows.
+  const spans = entries.filter((e) => e.to && e.to > e.from);
+  const current = spans.find((e) => e.from <= t && t <= e.to);
+  const next = entries.find((e) => e.from > t);
+  let dayOfSpan, daysLeft;
+  if (current) {
+    const start = new Date(current.from), end = new Date(current.to);
+    dayOfSpan = Math.floor((now - start) / 86400000) + 1;
+    daysLeft = Math.ceil((end - now) / 86400000);
+  }
+  return {
+    current: current || null,
+    next: next || null,
+    week: current ? Math.ceil(dayOfSpan / 7) : undefined,
+    daysLeft,
+    daysToNext: next ? Math.ceil((new Date(next.from) - now) / 86400000) : undefined,
+  };
+}
+
+// --- Exam terms ------------------------------------------------------------
+export function normalizeExams(raw) {
+  return asArray(raw).map((e) => ({
+    id: pick(e, 'id', 'terminId'),
+    subject: pick(e, 'predmetNazov', 'nazovPredmetu', 'predmet'),
+    code: pick(e, 'predmetSkratka', 'skratka'),
+    date: pick(e, 'datum', 'terminDatum', 'datumKonania'),
+    time: hhmm(pick(e, 'cas', 'casOd')),
+    room: pick(e, 'miestnost', 'miestnostNazov'),
+    teacher: pick(e, 'hodnotiaci', 'ucitel', 'vyucujuci'),
+    type: pick(e, 'terminPopis', 'typ'),
+    registered: pick(e, 'prihlaseny', 'jePrihlaseny'),
+    capacity: pick(e, 'kapacita', 'maxPocet'),
+    taken: pick(e, 'pocetPrihlasenych', 'obsadene'),
+    raw: e,
+  }));
+}
+
+// --- Degree progress -------------------------------------------------------
+const TYP_VYUCBY = { A: 'Povinné', B: 'Povinne voliteľné', C: 'Výberové', UZNANE: 'Uznané' };
+export function normalizeProgress(raw) {
+  const rows = asArray(raw)
+    .map((r) => ({
+      kind: TYP_VYUCBY[pick(r, 'kodTypVyucby')] || pick(r, 'kodTypVyucby'),
+      enrolled: pick(r, 'pocetZapisane') ?? 0,
+      passed: pick(r, 'pocetAbsolvovane') ?? 0,
+      creditsEnrolled: pick(r, 'kredityZapisane') ?? 0,
+      creditsPassed: pick(r, 'kredityAbsolvovane') ?? 0,
+    }))
+    .filter((r) => r.enrolled || r.creditsEnrolled);
+  const total = rows.reduce(
+    (a, r) => ({
+      enrolled: a.enrolled + r.enrolled,
+      passed: a.passed + r.passed,
+      creditsEnrolled: a.creditsEnrolled + r.creditsEnrolled,
+      creditsPassed: a.creditsPassed + r.creditsPassed,
+    }),
+    { enrolled: 0, passed: 0, creditsEnrolled: 0, creditsPassed: 0 }
+  );
+  return { rows, total };
+}
+
+// --- Study plan ------------------------------------------------------------
+export function normalizePlan(raw) {
+  const subjects = asArray(raw && raw.predmety).map((p) => ({
+    code: pick(p, 'skratka'),
+    name: pick(p, 'nazov'),
+    credits: pick(p, 'kredit'),
+    year: pick(p, 'rocnik'),
+    semester: pick(p, 'semester'),
+    kind: (p.typ && pick(p.typ, 'popis')) || undefined,
+    block: (p.blok && pick(p.blok, 'popis')) || undefined,
+    completion: pick(p, 'sposobUkoncenia'),
+    done: !!pick(p, 'absolvovany'),
+  }));
+  return { code: pick(raw, 'skratka'), name: pick(raw, 'nazov'), subjects };
 }

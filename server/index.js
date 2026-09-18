@@ -13,8 +13,14 @@ import {
   normalizePayments,
   normalizeMessages,
   normalizeSchedule,
+  normalizeCalendar,
+  calendarStatus,
+  normalizeExams,
+  normalizeProgress,
+  normalizePlan,
 } from './aisClient.js';
 import * as mock from './mock.js';
+import { isReadOnly } from './guard.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 4173;
@@ -99,6 +105,12 @@ app.get('/api/me', wrap(async (req, res) => {
   res.json({ authenticated: true, user });
 }));
 
+// Resolve the current enrolment sheet id; every student-predmety call needs it.
+async function sheetId(ais) {
+  const studies = normalizeStudies(await ais.get('portal/student-predmety/studia'));
+  return currentSheetId(studies);
+}
+
 // --- Data ------------------------------------------------------------------
 app.get(
   '/api/schedule',
@@ -152,13 +164,62 @@ app.get(
   })
 );
 
-// Escape hatch: proxy any portal endpoint raw (for calibrating adapters).
+app.get(
+  '/api/calendar',
+  requireAuth,
+  wrap(async (req, res) => {
+    if (MOCK) return res.json(fx ? fx.calendar : { entries: [], status: {} });
+    const zl = await sheetId(req.ais);
+    if (zl == null) return res.json({ entries: [], status: {} });
+    const entries = normalizeCalendar(await req.ais.get(`portal/student-predmety/upozornenia/${zl}`));
+    res.json({ entries, status: calendarStatus(entries) });
+  })
+);
+
+app.get(
+  '/api/exams',
+  requireAuth,
+  wrap(async (req, res) => {
+    if (MOCK) return res.json(fx ? fx.exams : []);
+    const zl = await sheetId(req.ais);
+    if (zl == null) return res.json([]);
+    res.json(normalizeExams(await req.ais.get(`portal/student-predmety/skusky/${zl}`)));
+  })
+);
+
+app.get(
+  '/api/progress',
+  requireAuth,
+  wrap(async (req, res) => {
+    if (MOCK) return res.json(fx ? fx.progress : { rows: [], total: {} });
+    const zl = await sheetId(req.ais);
+    if (zl == null) return res.json({ rows: [], total: {} });
+    res.json(normalizeProgress(await req.ais.get(`portal/student-predmety/studium-prehlad/${zl}`)));
+  })
+);
+
+app.get(
+  '/api/plan',
+  requireAuth,
+  wrap(async (req, res) => {
+    if (MOCK) return res.json(fx ? fx.plan : { subjects: [] });
+    const zl = await sheetId(req.ais);
+    if (zl == null) return res.json({ subjects: [] });
+    res.json(normalizePlan(await req.ais.get(`portal/student-predmety/studijny-plan/${zl}`)));
+  })
+);
+
+// Escape hatch for calibrating adapters. Explicitly allowlisted: AIS exposes
+// destructive actions over GET too (slavnosti/odhlasit, zaverecne-prace/odhlasit,
+// statne-skusky/ziadost-zrusit), so refusing by verb would not be enough.
 app.get(
   '/api/raw/:path(*)',
   requireAuth,
   wrap(async (req, res) => {
     if (MOCK) return res.status(400).json({ error: 'raw disabled in mock mode' });
-    // e.g. /api/raw/portal/studium/list or /api/raw/apps/rozvrh/data
+    if (!isReadOnly(req.params.path)) {
+      return res.status(403).json({ error: 'not a read-only endpoint', path: req.params.path });
+    }
     res.json(await req.ais.get(req.params.path, { query: req.query }));
   })
 );
