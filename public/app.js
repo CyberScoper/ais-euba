@@ -1,4 +1,12 @@
 // AIS-PWA front-end — vanilla ES modules, no build step.
+//
+// Every user-facing sentence comes from i18n.js (sk/ru/uk). Nothing here builds a
+// sentence out of pieces: a count goes into the string as {n} so each language can
+// put the number where its grammar wants it.
+import {
+  LANGS, getLang, setLang, applyLangToDocument, t, aisTerm,
+  dayName, dayShort, dayIn, fmtDate, fmtDateLong, hhmm, greeting, cap,
+} from './i18n.js';
 
 // ---- icons (single consistent 1.75 stroke, currentColor) -------------------
 const I = {
@@ -27,32 +35,40 @@ const I = {
   bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 10a5.5 5.5 0 0 1 11 0c0 4 1.5 5.5 1.5 5.5h-14S6.5 14 6.5 10Z"/><path d="M10.2 19a2 2 0 0 0 3.6 0"/></svg>',
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg>',
   dot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="4.5"/></svg>',
+  more: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
 };
 
-const DAYS = ['Nedeľa', 'Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota'];
-const DAYS_SHORT = ['Ne', 'Po', 'Ut', 'St', 'Št', 'Pi', 'So'];
-const MONTHS = ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra'];
-
-const TABS = [
-  { id: 'dnes', label: 'Dnes', icon: I.today },
-  { id: 'rozvrh', label: 'Rozvrh', icon: I.schedule },
-  { id: 'predmety', label: 'Predmety', icon: I.subjects },
-  { id: 'financie', label: 'Financie', icon: I.finance },
-  { id: 'spravy', label: 'Správy', icon: I.messages },
+// Rebuilt on every render: the labels change when the language does.
+const tabs = () => [
+  { id: 'dnes', label: t('nav.dnes'), icon: I.today },
+  { id: 'rozvrh', label: t('nav.rozvrh'), icon: I.schedule },
+  { id: 'predmety', label: t('nav.predmety'), icon: I.subjects },
+  { id: 'financie', label: t('nav.financie'), icon: I.finance },
+  { id: 'spravy', label: t('nav.spravy'), icon: I.messages },
 ];
 
 /**
- * Lessons all wear the one accent colour. Seminars used to be painted in the live
- * marker's burnt orange, which made half a normal week look like an alarm and made
- * "today" and "seminar" the same colour; the type is already spelled out on the badge.
+ * Lectures indigo, cvičenia and semináre teal. They were briefly painted in the live
+ * marker's burnt orange, which made a normal week look like an alarm and made "now"
+ * and "seminar" the same colour — so the second kind gets its own quiet accent, and
+ * orange stays with "now" alone.
  */
 function lessonColors(type = '') {
-  const t = String(type).toLowerCase();
+  const kind = String(type).toLowerCase();
+  const practice = kind.includes('cvič') || kind.includes('sem');
   return {
-    color: 'var(--accent)',
-    soft: 'var(--accent-soft)',
-    practice: t.includes('cvič') || t.includes('sem'),
+    color: practice ? 'var(--accent-2)' : 'var(--accent)',
+    soft: practice ? 'var(--accent-2-soft)' : 'var(--accent-soft)',
+    practice,
   };
+}
+
+/** Two dots telling the reader what the two colours mean. */
+function lessonLegend() {
+  return h(`<div class="legend">
+    <span style="--legend-color:var(--accent)"><i></i>${esc(cap(aisTerm('prednáška')))}</span>
+    <span style="--legend-color:var(--accent-2)"><i></i>${esc(cap(aisTerm('cvičenie')))}</span>
+  </div>`);
 }
 
 // ---- tiny helpers ----------------------------------------------------------
@@ -78,7 +94,7 @@ const api = {
     if (r.status === 401) {
       if (state.authed) {
         state.authed = false;
-        state.notice = 'Prihlásenie vypršalo. Prihláste sa znova.';
+        state.notice = t('login.expired');
         render();
       }
       throw new Error('unauth');
@@ -129,7 +145,7 @@ async function refreshAll() {
   dropCache();
   try {
     await render();
-    toast(`Aktualizované o ${hhmm(new Date())}`);
+    toast(t('app.updatedAt', { t: hhmm(new Date()) }));
   } finally {
     refreshing = false;
     document.documentElement.classList.remove('syncing');
@@ -171,24 +187,6 @@ function toggleTheme() {
 }
 
 // ---- views -----------------------------------------------------------------
-function fmtDateLong(d = new Date()) {
-  return `${DAYS[d.getDay()]}, ${d.getDate()}. ${MONTHS[d.getMonth()]}`;
-}
-
-/** "21. septembra" — the date without the weekday. */
-function fmtDate(d) {
-  return `${d.getDate()}. ${MONTHS[d.getMonth()]}`;
-}
-
-/** Slovak counts: 1 deň, 2-4 dni, 5+ dní. */
-function plural(n, one, few, many) {
-  if (n === 1) return one;
-  if (n >= 2 && n <= 4) return few;
-  return many;
-}
-
-const DAY_IN = ['v nedeľu', 'v pondelok', 'v utorok', 'v stredu', 'vo štvrtok', 'v piatok', 'v sobotu'];
-
 /** Midnight-to-midnight distance, so "tomorrow" does not depend on the clock. */
 function daysUntil(date, from = new Date()) {
   const a = new Date(from.getFullYear(), from.getMonth(), from.getDate());
@@ -199,28 +197,19 @@ function daysUntil(date, from = new Date()) {
 /** "dnes", "zajtra", "v pondelok", or the plain date once the week runs out. */
 function whenWord(date) {
   const d = daysUntil(date);
-  if (d === 0) return 'dnes';
-  if (d === 1) return 'zajtra';
-  if (d > 1 && d < 7) return DAY_IN[date.getDay()];
+  if (d === 0) return t('common.today');
+  if (d === 1) return t('common.tomorrow');
+  if (d > 1 && d < 7) return dayIn(date.getDay());
   return fmtDate(date);
 }
 
-function greeting(d = new Date()) {
-  const hh = d.getHours();
-  if (hh < 5) return 'Dobrú noc';
-  if (hh < 10) return 'Dobré ráno';
-  if (hh < 18) return 'Dobrý deň';
-  return 'Dobrý večer';
+/** "o 09:15" / "в 09:15" — bold tabular figures inside each language's phrase. */
+function atTime(time) {
+  return t('today.atTime', { t: `<b class="tnum">${esc(time)}</b>` });
 }
-
-function cap(s) { return String(s).charAt(0).toUpperCase() + String(s).slice(1); }
 
 function firstName(full) {
   return String(full || '').trim().split(/\s+/)[0] || '';
-}
-
-function hhmm(d) {
-  return d.toLocaleTimeString('sk', { hour: '2-digit', minute: '2-digit' });
 }
 
 /**
@@ -252,11 +241,27 @@ function daysWithLessons(sch) {
  * exactly what would lock the AIS account.
  */
 function loginError(ex) {
-  if (ex.status === 429) return 'Príliš veľa neúspešných pokusov. Prihlasovanie je na 15 minút pozastavené, aby sa účet v AIS nezablokoval.';
-  if (ex.message === 'missing_credentials') return 'Zadajte meno aj heslo.';
-  if (ex.status === 401) return 'Nesprávne meno alebo heslo. Sú to tie isté údaje ako do AIS2.';
-  if (ex.status >= 500 || ex.message === 'Failed to fetch') return 'AIS teraz neodpovedá. Skúste o chvíľu — nie je to vaším heslom.';
-  return 'Prihlásenie zlyhalo. Skúste to znova.';
+  if (ex.status === 429) return t('login.err.blocked');
+  if (ex.message === 'missing_credentials') return t('login.err.missing');
+  if (ex.status === 401) return t('login.err.wrong');
+  if (ex.status >= 500 || ex.message === 'Failed to fetch') return t('login.err.ais');
+  return t('login.err.generic');
+}
+
+/**
+ * SK · RU · UA. The whole screen is re-rendered on a switch rather than patched,
+ * because the language changes headings, counts and dates at once.
+ */
+function langSwitch() {
+  const el = h(`<div class="langsw" role="group" aria-label="${esc(t('app.language'))}"></div>`);
+  LANGS.forEach((l) => {
+    const on = l.id === getLang();
+    const b = h(`<button type="button" class="${on ? 'active' : ''}" lang="${l.id}"
+      title="${esc(l.native)}" aria-pressed="${on}">${esc(l.short)}</button>`);
+    b.addEventListener('click', () => { if (!on) { setLang(l.id); render(); } });
+    el.appendChild(b);
+  });
+  return el;
 }
 
 function viewLogin() {
@@ -267,47 +272,45 @@ function viewLogin() {
         <div class="box view">
           <div class="brandline">
             <div class="mark">${I.mark}</div>
-            <div><b>Index</b><span>neoficiálny klient AIS</span></div>
+            <div><b>Index</b><span>${esc(t('app.tagline'))}</span></div>
+            <div class="bgrow"></div>
           </div>
-          <h1>Rozvrh, predmety a financie z AIS na jednej obrazovke</h1>
-          <p class="sub">Prihlásite sa tými istými údajmi ako do AIS2 Ekonomickej univerzity. Vidíte presne to, čo v AIS — len rýchlejšie a v telefóne.</p>
+          <h1>${esc(t('login.title'))}</h1>
+          <p class="sub">${esc(t('login.sub'))}</p>
           <form id="lf">
             <div class="field">
-              <label for="lg">Používateľ</label>
+              <label for="lg">${esc(t('login.user'))}</label>
               <input id="lg" name="login" autocomplete="username" autocapitalize="none" spellcheck="false" enterkeyhint="next" required />
             </div>
             <div class="field">
-              <label for="pw">Heslo</label>
+              <label for="pw">${esc(t('login.password'))}</label>
               <input id="pw" name="password" type="password" autocomplete="current-password" enterkeyhint="go" required />
             </div>
-            <label class="check"><input type="checkbox" id="rm" name="remember" checked /><span>Zostať prihlásený na tomto zariadení</span></label>
+            <label class="check"><input type="checkbox" id="rm" name="remember" checked /><span>${esc(t('login.remember'))}</span></label>
             <div class="err" id="le" role="alert">${esc(state.notice || '')}</div>
-            <button class="btn primary full" type="submit" id="lb">Prihlásiť sa</button>
+            <button class="btn primary full" type="submit" id="lb">${esc(t('login.submit'))}</button>
           </form>
           <ul class="trust">
-            <li>${I.shield}<span><b>Toto nie je stránka univerzity.</b> Neoficiálny klient beží na súkromnom serveri, nie na euba.sk.</span></li>
+            <li>${I.shield}<span>${t('login.trust.notUni')}</span></li>
             <li>${I.key}<span id="pwnote"></span></li>
-            <li>${I.ext}<span><b>Údaje idú priamo do AIS2.</b> <a href="https://ais2.euba.sk" target="_blank" rel="noopener noreferrer">Otvoriť oficiálny AIS</a></span></li>
+            <li>${I.ext}<span>${t('login.trust.direct')} <a href="https://ais2.euba.sk" target="_blank" rel="noopener noreferrer">${esc(t('login.trust.openAis'))}</a></span></li>
           </ul>
         </div>
       </div>
     </div>`);
+  box.querySelector('.brandline').appendChild(langSwitch());
   state.notice = '';
   // What happens to the password depends on the checkbox, so the sentence under the
   // form follows it instead of stating one convenient half of the truth.
   const rm = box.querySelector('#rm');
   const pwnote = box.querySelector('#pwnote');
-  const notes = {
-    on: '<b>Heslo ostane na serveri zašifrované</b>, aby ste sa nemuseli prihlasovať po každom reštarte. Kľúč leží na tom istom serveri, takže to chráni pred ukradnutou zálohou, nie pred niekým, kto sa k serveru dostane. Odhlásením ho vymažete.',
-    off: '<b>Heslo sa neukladá na disk.</b> Drží sa len v pamäti servera, takže po jeho reštarte sa prihlásite znova.',
-  };
-  const syncNote = () => { pwnote.innerHTML = rm.checked ? notes.on : notes.off; };
+  const syncNote = () => { pwnote.innerHTML = rm.checked ? t('login.pw.on') : t('login.pw.off'); };
   syncNote();
   rm.addEventListener('change', syncNote);
   box.querySelector('#lf').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = box.querySelector('#lb'); const err = box.querySelector('#le');
-    err.textContent = ''; btn.disabled = true; btn.textContent = 'Prihlasujem…';
+    err.textContent = ''; btn.disabled = true; btn.textContent = t('login.submitting');
     try {
       const fd = new FormData(e.target);
       const res = await api.post('login', {
@@ -320,7 +323,7 @@ function viewLogin() {
       render();
     } catch (ex) {
       err.textContent = loginError(ex);
-      btn.disabled = false; btn.textContent = 'Prihlásiť sa';
+      btn.disabled = false; btn.textContent = t('login.submit');
     }
   });
   return box;
@@ -353,9 +356,9 @@ function lessonCard(l, live = false) {
         <span class="to tnum">${esc(l.to || '')}</span>
       </div>
       <div class="body">
-        <div class="name">${esc(l.subject || 'Predmet')}</div>
+        <div class="name">${esc(l.subject || t('common.subject'))}</div>
         <div class="info">
-          ${l.type ? `<span class="badge accent" style="background:${c.soft};color:${c.color}">${esc(l.type)}</span>` : ''}
+          ${l.type ? `<span class="badge accent" style="background:${c.soft};color:${c.color}">${esc(aisTerm(l.type))}</span>` : ''}
           ${l.room ? `<span class="i">${I.pin}${esc(l.room)}</span>` : ''}
           ${l.teacher ? `<span class="i">${I.user}${esc(l.teacher)}</span>` : ''}
         </div>
@@ -395,28 +398,28 @@ async function viewToday(root) {
   let heroHtml;
   if (liveL) {
     heroHtml = `<div class="hero"><div class="eyebrow" style="color:var(--now);display:flex;align-items:center;gap:7px">
-      <span class="livedot"><i></i></span>Práve prebieha</div>
+      <span class="livedot"><i></i></span>${esc(t('today.live'))}</div>
       <div class="big">${esc(liveL.subject)}</div>
       <div class="meta"><span>${I.clock2()} <b class="tnum">${esc(liveL.from)}–${esc(liveL.to)}</b></span>
       ${liveL.room ? `<span>${esc(liveL.room)}</span>` : ''}${liveL.teacher ? `<span>${esc(liveL.teacher)}</span>` : ''}</div></div>`;
   } else if (nextL) {
-    heroHtml = `<div class="hero"><div class="eyebrow">Ďalšia hodina</div>
+    heroHtml = `<div class="hero"><div class="eyebrow">${esc(t('today.next'))}</div>
       <div class="big">${esc(nextL.subject)}</div>
-      <div class="meta"><span>o <b class="tnum">${esc(nextL.from)}</b></span>
-      ${nextL.room ? `<span>${esc(nextL.room)}</span>` : ''}${nextL.type ? `<span>${esc(nextL.type)}</span>` : ''}</div></div>`;
+      <div class="meta"><span>${atTime(nextL.from)}</span>
+      ${nextL.room ? `<span>${esc(nextL.room)}</span>` : ''}${nextL.type ? `<span>${esc(aisTerm(nextL.type))}</span>` : ''}</div></div>`;
   } else if (!st.current && st.next && st.daysToNext >= 0) {
     // Nothing today because the semester has not started. Say so, and say when it does:
     // an empty screen with no explanation is what makes the app look broken.
     const start = new Date(st.next.from);
     const d = st.daysToNext;
     heroHtml = `<div class="hero quiet"><div class="eyebrow">${esc(fmtDateLong())}</div>
-      <div class="big">${esc(st.next.title)} sa začína ${esc(whenWord(start))}</div>
-      <div class="meta"><span>${d === 0 ? 'dnes' : `o ${d} ${plural(d, 'deň', 'dni', 'dní')}`}<b class="tnum"> · ${esc(fmtDate(start))}</b></span>
-      ${upcoming ? `<span>prvá hodina ${esc(DAY_IN[upcoming.date.getDay()])} o <b class="tnum">${esc(upcoming.lesson.from)}</b></span>` : ''}</div></div>`;
+      <div class="big">${esc(t('today.semStarts', { title: aisTerm(st.next.title), when: whenWord(start) }))}</div>
+      <div class="meta"><span>${esc(d === 0 ? t('common.today') : t('today.inDays', { n: d }))}<b class="tnum"> · ${esc(fmtDate(start))}</b></span>
+      ${upcoming ? `<span>${t('today.firstLesson', { dayIn: esc(dayIn(upcoming.date.getDay())), t: `<b class="tnum">${esc(upcoming.lesson.from)}</b>` })}</span>` : ''}</div></div>`;
   } else {
     heroHtml = `<div class="hero quiet"><div class="eyebrow">${esc(fmtDateLong())}</div>
-      <div class="big">${todays.length ? 'Dnešné hodiny máte za sebou' : 'Dnes žiadne hodiny'}</div>
-      ${upcoming ? `<div class="meta"><span>Najbližšia ${esc(whenWord(upcoming.date))} o <b class="tnum">${esc(upcoming.lesson.from)}</b></span><span>${esc(upcoming.lesson.subject)}</span></div>` : ''}</div>`;
+      <div class="big">${esc(todays.length ? t('today.done') : t('today.none'))}</div>
+      ${upcoming ? `<div class="meta"><span>${t('today.nearest', { when: esc(whenWord(upcoming.date)), t: `<b class="tnum">${esc(upcoming.lesson.from)}</b>` })}</span><span>${esc(upcoming.lesson.subject)}</span></div>` : ''}</div>`;
   }
   hero.replaceWith(h(heroHtml));
 
@@ -424,37 +427,39 @@ async function viewToday(root) {
   // hero above already says the same sentence.
   let periodHtml = '';
   if (st.current) {
-    periodHtml = `<span class="pname">${esc(st.current.title)}</span>
-      ${st.week ? `<span class="pdot"></span><span>${st.week}. týždeň</span>` : ''}
-      <span class="pdot"></span><span>zostáva ${st.daysLeft} ${plural(st.daysLeft, 'deň', 'dni', 'dní')}</span>`;
+    periodHtml = `<span class="pname">${esc(aisTerm(st.current.title))}</span>
+      ${st.week ? `<span class="pdot"></span><span>${esc(t('period.week', { n: st.week }))}</span>` : ''}
+      <span class="pdot"></span><span>${esc(t('period.left', { n: st.daysLeft }))}</span>`;
   }
   if (periodHtml) wrap.appendChild(h(`<div class="period">${periodHtml}</div>`));
 
   const glance = h(`<div class="glance">
-    <a class="g" href="#financie"><span class="n tnum">${oweSum ? oweSum.toFixed(0) + ' €' : '0 €'}</span><span class="l">${due.length ? `${due.length} ${plural(due.length, 'nezaplatená položka', 'nezaplatené položky', 'nezaplatených položiek')}` : 'Nič nedlhujete'}</span></a>
-    <a class="g" href="#spravy"><span class="n tnum">${msgCount}</span><span class="l">${msgCount ? `${plural(msgCount, 'správa', 'správy', 'správ')} v schránke` : 'prázdna schránka'}</span></a>
+    <a class="g" href="#financie"><span class="n tnum">${oweSum ? oweSum.toFixed(0) + ' €' : '0 €'}</span><span class="l">${esc(due.length ? t('today.unpaid', { n: due.length }) : t('today.oweNothing'))}</span></a>
+    <a class="g" href="#spravy"><span class="n tnum">${msgCount}</span><span class="l">${esc(msgCount ? t('today.inbox', { n: msgCount }) : t('today.inboxEmpty'))}</span></a>
   </div>`);
   wrap.appendChild(glance);
 
-  wrap.appendChild(h(`<div class="section-h"><h2>Dnes</h2><span class="muted">${esc(DAYS[today])}</span><span class="grow"></span></div>`));
-  if (!todays.length && upcoming) {
+  const showsNext = !todays.length && !!upcoming;
+  wrap.appendChild(h(`<div class="section-h"><h2>${esc(showsNext ? t('today.headingNext') : t('today.headingToday'))}</h2>
+    <span class="muted">${esc(showsNext ? fmtDate(upcoming.date) : dayName(today))}</span><span class="grow"></span></div>`));
+  if (showsNext) {
     // An empty day is a fact, not an error. Show the next real lesson instead of a shrug.
     const l = upcoming.lesson;
     const card = h(`<a class="nextcard" href="#rozvrh">
-      <div class="when"><span class="d">${esc(whenWord(upcoming.date))}</span><span class="t tnum">${esc(l.from)}–${esc(l.to)}</span></div>
-      <div class="body"><div class="name">${esc(l.subject || 'Predmet')}</div>
+      <div class="when"><span class="d">${esc(cap(whenWord(upcoming.date)))}</span><span class="t tnum">${esc(l.from)}–${esc(l.to)}</span></div>
+      <div class="body"><div class="name">${esc(l.subject || t('common.subject'))}</div>
         <div class="info">${l.room ? `<span class="i">${I.pin}${esc(l.room)}</span>` : ''}${l.teacher ? `<span class="i">${I.user}${esc(l.teacher)}</span>` : ''}
-        ${upcoming.count > 1 ? `<span class="i">+ ${upcoming.count - 1} ${plural(upcoming.count - 1, 'ďalšia hodina', 'ďalšie hodiny', 'ďalších hodín')} v ten deň</span>` : ''}</div></div>
+        ${upcoming.count > 1 ? `<span class="i">${esc(t('today.moreThatDay', { n: upcoming.count - 1 }))}</span>` : ''}</div></div>
       <span class="go">${I.arrow}</span></a>`);
     wrap.appendChild(card);
   } else if (!todays.length) {
-    wrap.appendChild(empty(I.schedule, 'Voľný deň', 'Na dnes nemáte žiadne hodiny.'));
+    wrap.appendChild(empty(I.schedule, t('today.freeDay'), t('today.freeDaySub')));
   } else {
     const ag = h('<div class="agenda"></div>');
     let placedNow = false;
     todays.forEach((l) => {
       if (!placedNow && !liveL && toMin(l.from) > cur && cur > (todays[0] ? toMin(todays[0].from) - 1 : 0)) {
-        ag.appendChild(h(`<div class="nowline"><span class="livedot"><i></i></span>teraz ${new Date().toLocaleTimeString('sk', { hour: '2-digit', minute: '2-digit' })}</div>`));
+        ag.appendChild(h(`<div class="nowline"><span class="livedot"><i></i></span>${esc(t('common.now', { t: hhmm(new Date()) }))}</div>`));
         placedNow = true;
       }
       ag.appendChild(lessonCard(l, liveL === l));
@@ -466,7 +471,7 @@ async function viewToday(root) {
   // Absent endpoint or empty feed renders nothing at all.
   const news = await loadSoft('news', 'news', []);
   if (Array.isArray(news) && news.length) {
-    wrap.appendChild(h(`<div class="section-h"><h2>Z univerzity</h2><span class="muted">euba.sk</span></div>`));
+    wrap.appendChild(h(`<div class="section-h"><h2>${esc(t('today.news'))}</h2><span class="muted">euba.sk</span></div>`));
     const list = h('<div class="newslist"></div>');
     news.slice(0, 4).forEach((n) => {
       const d = n.date ? new Date(n.date) : null;
@@ -498,32 +503,42 @@ async function viewSchedule(root) {
   if (validFrom) {
     const vf = new Date(`${validFrom}T00:00:00`);
     if (!isNaN(vf) && daysUntil(vf) > 0) {
-      wrap.appendChild(h(`<div class="period"><span class="pname">Rozvrh platí od ${esc(fmtDate(vf))}</span>
+      wrap.appendChild(h(`<div class="period"><span class="pname">${esc(t('sched.validFrom', { d: fmtDate(vf) }))}</span>
         <span class="pdot"></span><span>${esc(whenWord(vf))}</span></div>`));
     }
   }
+
+  wrap.appendChild(lessonLegend());
 
   // mobile: day switcher + agenda
   const mob = h('<div class="agenda-wrap desktop-hide"></div>');
   const sw = h('<div class="dayswitch"></div>');
   for (let d = 1; d <= 5; d++) {
     const b = h(`<button class="${d === state.day ? 'active' : ''} ${d === today ? 'today' : ''} ${has.has(d) ? 'has' : ''}"
-      aria-pressed="${d === state.day}">${DAYS_SHORT[d]}</button>`);
+      aria-pressed="${d === state.day}">${dayShort(d)}</button>`);
     b.addEventListener('click', () => { state.day = d; render(); });
     sw.appendChild(b);
   }
   mob.appendChild(sw);
   const dayL = sch.filter((l) => Number(l.day) === state.day).sort((a, b) => toMin(a.from) - toMin(b.from));
   if (!dayL.length) {
-    // Point at the nearest day that does have lessons instead of ending the screen here.
+    // A free day used to end the screen with a button and 500px of nothing. The
+    // nearest day that does carry lessons is what the question "and when, then?"
+    // actually wants, so it is shown in full right here.
     const near = [1, 2, 3, 4, 5].filter((d) => has.has(d)).sort((a, b) => ((a - state.day + 7) % 7) - ((b - state.day + 7) % 7))[0];
-    const emp = empty(I.schedule, 'Voľný deň', `${cap(DAY_IN[state.day])} nemáte v rozvrhu žiadnu hodinu.`);
-    if (near) {
-      const jump = h(`<button class="btn" style="margin-top:14px">${DAYS_SHORT[near]} — ukázať ${esc(DAYS[near].toLowerCase())}</button>`);
-      jump.addEventListener('click', () => { state.day = near; render(); });
-      emp.appendChild(jump);
-    }
+    const emp = empty(I.schedule, t('today.freeDay'), t('sched.freeDayFor', { dayIn: cap(dayIn(state.day)) }));
+    emp.classList.add('tight');
     mob.appendChild(emp);
+    if (near) {
+      const head = h(`<div class="section-h"><h2>${esc(cap(dayName(near)))}</h2>
+        <span class="muted">${esc(t('sched.nextWithLessons'))}</span></div>`);
+      mob.appendChild(head);
+      const ag = h('<div class="agenda"></div>');
+      sch.filter((l) => Number(l.day) === near)
+        .sort((a, b) => toMin(a.from) - toMin(b.from))
+        .forEach((l) => ag.appendChild(lessonCard(l, false)));
+      mob.appendChild(ag);
+    }
   } else { const ag = h('<div class="agenda"></div>'); dayL.forEach((l) => ag.appendChild(lessonCard(l, false))); mob.appendChild(ag); }
   wrap.appendChild(mob);
 
@@ -542,7 +557,7 @@ function buildWeekGrid(sch, today) {
   const pxPerMin = 0.9;
   const grid = h('<div class="weekgrid"></div>');
   grid.appendChild(h('<div class="dh"></div>'));
-  for (let d = 1; d <= 5; d++) grid.appendChild(h(`<div class="dh ${d === today ? 'today' : ''}">${DAYS_SHORT[d]}</div>`));
+  for (let d = 1; d <= 5; d++) grid.appendChild(h(`<div class="dh ${d === today ? 'today' : ''}">${dayShort(d)}</div>`));
   // rows per hour
   const totalH = (end - start) / 60;
   const colH = totalH * 60 * pxPerMin;
@@ -597,36 +612,39 @@ async function viewSubjects(root) {
     const cal = await loadSoft('calendar', 'calendar', null);
     const exam = ((cal && cal.entries) || []).find((e) => /skúškové/i.test(e.title || '') && new Date(e.from) > new Date());
     wrap.appendChild(h(`<div class="statecard">
-      <div class="t">Zatiaľ bez známok</div>
-      <div class="s">Zapísaných ${subs.length} ${plural(subs.length, 'predmet', 'predmety', 'predmetov')} za ${crEnrolled} ${plural(crEnrolled, 'kredit', 'kredity', 'kreditov')}. Hodnotenia sa v AIS objavia počas skúškového obdobia.</div>
-      ${exam ? `<div class="m">${esc(exam.title)} od ${esc(fmtDate(new Date(exam.from)))}</div>` : ''}
+      <div class="t">${esc(t('subj.noGrades'))}</div>
+      <div class="s">${esc(t('subj.noGradesSub', {
+        subjects: t('subj.subjects', { n: subs.length }),
+        credits: t('subj.credits', { n: crEnrolled }),
+      }))}</div>
+      ${exam ? `<div class="m">${esc(t('subj.examFrom', { title: aisTerm(exam.title), d: fmtDate(new Date(exam.from)) }))}</div>` : ''}
     </div>`));
   } else {
     wrap.appendChild(h(`<div class="summary">
-      <div class="s"><div class="n tnum">${crPassed}<span class="of">/${crEnrolled}</span></div><div class="l">kreditov získaných</div></div>
-      <div class="s"><div class="n tnum">${gpa}</div><div class="l">vážený priemer</div></div>
-      <div class="s"><div class="n tnum">${graded.length}/${subs.length}</div><div class="l">ohodnotených</div></div>
+      <div class="s"><div class="n tnum">${crPassed}<span class="of">/${crEnrolled}</span></div><div class="l">${esc(t('subj.creditsEarned'))}</div></div>
+      <div class="s"><div class="n tnum">${gpa}</div><div class="l">${esc(t('subj.gpa'))}</div></div>
+      <div class="s"><div class="n tnum">${graded.length}/${subs.length}</div><div class="l">${esc(t('subj.graded'))}</div></div>
     </div>`));
   }
 
   // Exam terms only earn space once they exist.
   if (exams && exams.length) {
-    wrap.appendChild(h(`<div class="section-h"><h2>Skúšky</h2><span class="muted">${exams.length} ${plural(exams.length, 'termín', 'termíny', 'termínov')}</span></div>`));
+    wrap.appendChild(h(`<div class="section-h"><h2>${esc(t('subj.exams'))}</h2><span class="muted">${esc(t('subj.terms', { n: exams.length }))}</span></div>`));
     const ex = h('<div class="card" style="padding:2px 16px"></div>');
     exams.forEach((e) => {
       ex.appendChild(h(`<div class="row">
         <div class="grade ${e.registered ? 'g-A' : 'pending'}">${e.registered ? I.check : I.clock}</div>
-        <div class="rbody"><div class="t">${esc(e.subject || e.code || 'Skúška')}</div>
+        <div class="rbody"><div class="t">${esc(e.subject || e.code || t('subj.exam'))}</div>
           <div class="m"><span>${esc(e.date || '')}${e.time ? ' · ' + esc(e.time) : ''}</span>${e.room ? `<span>${esc(e.room)}</span>` : ''}</div></div>
-        ${e.capacity ? `<div class="rmeta"><div class="cr tnum">${esc(e.taken ?? 0)}/${esc(e.capacity)}</div><div class="cl">miest</div></div>` : ''}
+        ${e.capacity ? `<div class="rmeta"><div class="cr tnum">${esc(e.taken ?? 0)}/${esc(e.capacity)}</div><div class="cl">${esc(t('subj.seats'))}</div></div>` : ''}
       </div>`));
     });
     wrap.appendChild(ex);
   }
 
   const seg = h(`<div class="seg">
-    <button class="${state.subTab === 'plan' ? '' : 'active'}" data-t="sem">Semester</button>
-    <button class="${state.subTab === 'plan' ? 'active' : ''}" data-t="plan">Plán štúdia</button>
+    <button class="${state.subTab === 'plan' ? '' : 'active'}" data-t="sem">${esc(t('subj.semester'))}</button>
+    <button class="${state.subTab === 'plan' ? 'active' : ''}" data-t="plan">${esc(t('subj.plan'))}</button>
   </div>`);
   seg.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
     state.subTab = b.dataset.t === 'plan' ? 'plan' : 'sem';
@@ -635,19 +653,19 @@ async function viewSubjects(root) {
   wrap.appendChild(seg);
 
   if (state.subTab === 'plan') { await renderPlan(wrap); return; }
-  if (!subs.length) { wrap.appendChild(empty(I.subjects, 'Žiadne predmety')); return; }
+  if (!subs.length) { wrap.appendChild(empty(I.subjects, t('subj.none'))); return; }
   const list = h('<div class="rowlist card" style="padding:2px 16px"></div>');
   subs.forEach((sx) => {
     const g = sx.grade ? String(sx.grade).toUpperCase() : null;
     const gradeEl = g
       ? `<div class="grade g-${g}">${esc(g)}</div>`
-      : `<div class="grade pending" title="zatiaľ bez hodnotenia">${I.clock}</div>`;
+      : `<div class="grade pending" title="${esc(t('subj.pending'))}">${I.clock}</div>`;
     const sem = sx.semester ? (String(sx.semester).toUpperCase() === 'Z' ? 'ZS' : 'LS') : '';
     list.appendChild(h(`<div class="row">
       ${gradeEl}
-      <div class="rbody"><div class="t">${esc(sx.name || sx.code || 'Predmet')}</div>
-        <div class="m"><span>${esc(sx.code || '')}</span>${sx.completed ? `<span>${esc(sx.completed)}</span>` : ''}${sem ? `<span>${esc(sem)}</span>` : ''}</div></div>
-      <div class="rmeta"><div class="cr tnum">${esc(sx.credits ?? '–')}</div><div class="cl">kr.</div></div>
+      <div class="rbody"><div class="t">${esc(sx.name || sx.code || t('common.subject'))}</div>
+        <div class="m"><span>${esc(sx.code || '')}</span>${sx.completed ? `<span>${esc(aisTerm(sx.completed))}</span>` : ''}${sem ? `<span>${esc(sem)}</span>` : ''}</div></div>
+      <div class="rmeta"><div class="cr tnum">${esc(sx.credits ?? '–')}</div><div class="cl">${esc(t('subj.cr'))}</div></div>
     </div>`));
   });
   wrap.appendChild(list);
@@ -656,7 +674,7 @@ async function viewSubjects(root) {
 async function renderPlan(wrap) {
   const plan = await load('plan', 'plan');
   const subs = (plan && plan.subjects) || [];
-  if (!subs.length) { wrap.appendChild(empty(I.subjects, 'Plán nie je dostupný')); return; }
+  if (!subs.length) { wrap.appendChild(empty(I.subjects, t('subj.planUnavailable'))); return; }
   // Group by year, then winter/summer semester — the shape students think in.
   const byYear = new Map();
   subs.forEach((p) => {
@@ -667,7 +685,7 @@ async function renderPlan(wrap) {
   [...byYear.keys()].sort().forEach((y) => {
     const items = byYear.get(y);
     const cr = items.reduce((a, p) => a + (Number(p.credits) || 0), 0);
-    wrap.appendChild(h(`<div class="section-h"><h2>${esc(y)}. ročník</h2><span class="muted">${items.length} ${plural(items.length, 'predmet', 'predmety', 'predmetov')} · ${cr} kr.</span></div>`));
+    wrap.appendChild(h(`<div class="section-h"><h2>${esc(t('subj.year', { n: y }))}</h2><span class="muted">${esc(t('subj.subjects', { n: items.length }))} · ${cr} ${esc(t('subj.cr'))}</span></div>`));
     const list = h('<div class="rowlist card" style="padding:2px 16px"></div>');
     items.sort((a, b) => String(a.semester).localeCompare(String(b.semester)));
     items.forEach((p) => {
@@ -675,8 +693,8 @@ async function renderPlan(wrap) {
       list.appendChild(h(`<div class="row">
         <div class="grade ${p.done ? 'g-A' : 'pending'}">${p.done ? I.check : I.dot}</div>
         <div class="rbody"><div class="t">${esc(p.name || p.code)}</div>
-          <div class="m"><span>${esc(sem)}</span>${p.kind ? `<span>${esc(p.kind)}</span>` : ''}</div></div>
-        <div class="rmeta"><div class="cr tnum">${esc(p.credits ?? '–')}</div><div class="cl">kr.</div></div>
+          <div class="m"><span>${esc(sem)}</span>${p.kind ? `<span>${esc(aisTerm(p.kind))}</span>` : ''}</div></div>
+        <div class="rmeta"><div class="cr tnum">${esc(p.credits ?? '–')}</div><div class="cl">${esc(t('subj.cr'))}</div></div>
       </div>`));
     });
     wrap.appendChild(list);
@@ -704,23 +722,23 @@ async function viewPayments(root) {
     // No fee records at all: one clear statement beats a zero card plus an empty state
     // saying the same thing twice.
     wrap.appendChild(h(`<div class="statecard ok">
-      <div class="t">Žiadne poplatky</div>
-      <div class="s">AIS vám zatiaľ nepredpísal žiadnu platbu. Keď pribudne školné alebo poplatok za prihlášku, uvidíte ho tu aj s variabilným symbolom.</div>
+      <div class="t">${esc(t('pay.none'))}</div>
+      <div class="s">${esc(t('pay.noneSub'))}</div>
     </div>`));
     return;
   }
 
-  wrap.appendChild(h(`<div class="owe"><div class="l">Na úhradu</div>
-    <div class="n tnum ${owe ? '' : 'clear'}">${owe ? owe.toFixed(2) + ' €' : 'Všetko uhradené'}</div>
-    ${owe ? `<div class="m">${due.length} ${plural(due.length, 'nezaplatená položka', 'nezaplatené položky', 'nezaplatených položiek')}</div>`
-      : `<div class="m">${pays.length} ${plural(pays.length, 'položka', 'položky', 'položiek')} v histórii, všetky vyrovnané</div>`}</div>`));
+  wrap.appendChild(h(`<div class="owe"><div class="l">${esc(t('pay.due'))}</div>
+    <div class="n tnum ${owe ? '' : 'clear'}">${owe ? owe.toFixed(2) + ' €' : esc(t('pay.allPaid'))}</div>
+    ${owe ? `<div class="m">${esc(t('today.unpaid', { n: due.length }))}</div>`
+      : `<div class="m">${esc(t('pay.historySettled', { items: t('pay.items', { n: pays.length }) }))}</div>`}</div>`));
   const list = h('<div class="card" style="padding:2px 16px"></div>');
   pays.forEach((p) => {
     const paid = !!p.paid;
     list.appendChild(h(`<div class="pay ${paid ? 'paid' : 'due'}">
       <div class="pmark">${paid ? I.check : I.alert}</div>
-      <div class="pbody"><div class="t">${esc(p.title || 'Poplatok')}</div>
-        <div class="m">${paid ? 'Uhradené' : 'Splatnosť ' + esc(p.dueDate || '—')}${p.variableSymbol ? ` · VS ${esc(p.variableSymbol)}` : ''}</div></div>
+      <div class="pbody"><div class="t">${esc(p.title || t('pay.item'))}</div>
+        <div class="m">${esc(paid ? t('pay.paid') : t('pay.dueDate', { d: p.dueDate || '—' }))}${p.variableSymbol ? ` · VS ${esc(p.variableSymbol)}` : ''}</div></div>
       <div class="amt tnum">${Number(p.amount || 0).toFixed(2)} ${esc(p.currency || 'EUR')}</div>
     </div>`));
   });
@@ -733,11 +751,11 @@ async function viewMessages(root) {
   wrap.appendChild(skeletonList(4));
   const msgs = await load('messages', 'messages');
   wrap.innerHTML = '';
-  wrap.appendChild(h(`<div class="section-h"><h2>Správy</h2><span class="muted">${msgs.length ? `${msgs.length} ${plural(msgs.length, 'správa', 'správy', 'správ')}` : 'žiadne'}</span></div>`));
+  wrap.appendChild(h(`<div class="section-h"><h2>${esc(t('msg.title'))}</h2><span class="muted">${esc(msgs.length ? t('msg.count', { n: msgs.length }) : t('msg.none'))}</span></div>`));
   if (!msgs.length) {
     wrap.appendChild(h(`<div class="statecard">
-      <div class="t">Prázdna schránka</div>
-      <div class="s">AIS vám zatiaľ neposlal žiadnu správu. Chodia sem oznamy o platbách, dokumentoch a termínoch.</div>
+      <div class="t">${esc(t('msg.emptyTitle'))}</div>
+      <div class="s">${esc(t('msg.emptySub'))}</div>
     </div>`));
     return;
   }
@@ -745,27 +763,27 @@ async function viewMessages(root) {
   msgs.forEach((m) => {
     const d = m.date ? new Date(m.date) : null;
     const when = d && !isNaN(d) ? fmtDate(d) : '';
-    const cat = m.category || 'Oznam';
+    const cat = m.category || t('msg.notice');
     const href = m.url ? `https://ais2.euba.sk${m.url}` : null;
     const el = h(`<${href ? 'a' : 'div'} class="msg"${href ? ` href="${esc(href)}" target="_blank" rel="noopener noreferrer"` : ''}>
       <div class="av ${msgTone(cat)}">${msgIcon(cat)}</div>
       <div class="mbody"><div class="t">${esc(msgTitle(m.body))}</div>
-        <div class="f"><span class="badge">${esc(cat)}</span>${when ? `<span class="when">${esc(when)}</span>` : ''}</div></div>
+        <div class="f"><span class="badge">${esc(aisTerm(cat))}</span>${when ? `<span class="when">${esc(when)}</span>` : ''}</div></div>
       ${href ? `<span class="go">${I.ext}</span>` : ''}
     </${href ? 'a' : 'div'}>`);
     list.appendChild(el);
   });
   wrap.appendChild(list);
-  wrap.appendChild(h('<p class="footnote">AIS pri správach neposiela odosielateľa ani príznak prečítania, preto ich tu nevidíte. Kliknutím sa správa otvorí priamo v AIS.</p>'));
+  wrap.appendChild(h(`<p class="footnote">${esc(t('msg.footnote'))}</p>`));
 }
 
 /** AIS repeats the subject inside the body: "Mailová správa - Mailová správa". */
 function msgTitle(body) {
-  const t = String(body || '').trim();
-  if (!t) return '(bez textu)';
-  const m = t.match(/^(.+?)\s+-\s+(.+)$/);
+  const body2 = String(body || '').trim();
+  if (!body2) return t('msg.noText');
+  const m = body2.match(/^(.+?)\s+-\s+(.+)$/);
   if (m && m[1].trim() === m[2].trim()) return m[1].trim();
-  return t;
+  return body2;
 }
 
 function msgTone(cat = '') {
@@ -784,7 +802,7 @@ function msgIcon(cat = '') {
 
 // ---- shell + router --------------------------------------------------------
 const VIEWS = { dnes: viewToday, rozvrh: viewSchedule, predmety: viewSubjects, financie: viewPayments, spravy: viewMessages };
-const TITLES = { dnes: 'Dnes', rozvrh: 'Rozvrh', predmety: 'Predmety', financie: 'Financie', spravy: 'Správy' };
+const routeTitle = (route) => t(`nav.${route}`);
 
 /** The title of the current screen, and the line under it. On Dnes it greets by name. */
 function headings() {
@@ -794,21 +812,62 @@ function headings() {
     return {
       title: name ? `${greeting()}, ${name}` : greeting(),
       // The name day is a nicety; the narrowest phones drop it rather than wrap twice.
-      sub: `${esc(fmtDateLong())}${meniny ? `<span class="meniny"> · ${esc(meniny)} má meniny</span>` : ''}`,
+      sub: `${esc(fmtDateLong())}${meniny ? `<span class="meniny"> · ${esc(t('app.nameday', { name: meniny }))}</span>` : ''}`,
     };
   }
-  return { title: TITLES[state.route], sub: esc(fmtDateLong()) };
+  return { title: routeTitle(state.route), sub: esc(fmtDateLong()) };
 }
 
 /** "Aktualizované o 22:58" — how old the numbers on the screen are. */
 function syncLabel() {
-  return fetchedAt ? `Aktualizované o ${hhmm(fetchedAt)}` : 'Načítavam…';
+  return fetchedAt ? t('app.updatedAt', { t: hhmm(fetchedAt) }) : t('app.loading');
 }
 
 function refreshButton(cls = 'iconbtn') {
-  const b = h(`<button class="${cls} refreshbtn" title="Obnoviť údaje" aria-label="Obnoviť údaje">${I.refresh}</button>`);
+  const b = h(`<button class="${cls} refreshbtn" title="${esc(t('app.refresh'))}" aria-label="${esc(t('app.refresh'))}">${I.refresh}</button>`);
   b.addEventListener('click', () => { refreshAll(); });
   return b;
+}
+
+/**
+ * Everything that is not navigation, behind one button: language, theme, sign out.
+ * A phone header has room for a title and two buttons, and language has to live
+ * somewhere a phone can reach — there is no sidebar down there.
+ */
+function settingsMenu() {
+  const wrap = h('<div class="menu"></div>');
+  const btn = h(`<button class="iconbtn" aria-haspopup="true" aria-expanded="false"
+    title="${esc(t('app.menu'))}" aria-label="${esc(t('app.menu'))}">${I.more}</button>`);
+  const panel = h(`<div class="menu__panel" hidden>
+    <div class="menu__label">${esc(t('app.language'))}</div>
+  </div>`);
+  panel.appendChild(langSwitch());
+  panel.appendChild(h(`<p class="menu__note">${esc(t('app.langNote'))}</p>`));
+  const theme = h(`<button class="menu__item">${I.theme}<span>${esc(t('app.theme'))}</span></button>`);
+  const out = h(`<button class="menu__item">${I.logout}<span>${esc(t('app.logout'))}</span></button>`);
+  panel.appendChild(theme);
+  panel.appendChild(out);
+
+  const close = () => {
+    panel.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('click', onDoc, true);
+    document.removeEventListener('keydown', onKey);
+  };
+  function onDoc(e) { if (!wrap.contains(e.target)) close(); }
+  function onKey(e) { if (e.key === 'Escape') { close(); btn.focus(); } }
+  btn.addEventListener('click', () => {
+    if (!panel.hidden) return close();
+    panel.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    document.addEventListener('click', onDoc, true);
+    document.addEventListener('keydown', onKey);
+  });
+  theme.addEventListener('click', () => { toggleTheme(); close(); });
+  out.addEventListener('click', () => { close(); doLogout(); });
+  wrap.appendChild(btn);
+  wrap.appendChild(panel);
+  return wrap;
 }
 
 function shell() {
@@ -816,10 +875,10 @@ function shell() {
   const head = headings();
   // sidebar (desktop)
   const side = h(`<aside class="sidebar">
-    <div class="brand"><div class="mark">${I.mark}</div><div><b>Index</b><span>neoficiálny klient AIS</span></div></div>
+    <div class="brand"><div class="mark">${I.mark}</div><div><b>Index</b><span>${esc(t('app.tagline'))}</span></div></div>
   </aside>`);
-  TABS.forEach((t) => {
-    const a = h(`<a class="navitem ${state.route === t.id ? 'active' : ''}" href="#${t.id}">${t.icon}<span>${t.label}</span></a>`);
+  tabs().forEach((tab) => {
+    const a = h(`<a class="navitem ${state.route === tab.id ? 'active' : ''}" href="#${tab.id}">${tab.icon}<span>${esc(tab.label)}</span></a>`);
     side.appendChild(a);
   });
   side.appendChild(h('<div class="spacer"></div>'));
@@ -828,12 +887,15 @@ function shell() {
   if (state.user && state.user.fullName) {
     side.appendChild(h(`<div class="whoami"><span class="av">${esc(initials(state.user.fullName))}</span>
       <span class="wb"><span class="n">${esc(state.user.fullName)}</span>
-      ${state.user.lastLoginTime ? `<span class="m">naposledy ${esc(state.user.lastLoginTime)}</span>` : ''}</span></div>`));
+      ${state.user.lastLoginTime ? `<span class="m">${esc(t('app.lastLogin', { t: state.user.lastLoginTime }))}</span>` : ''}</span></div>`));
   }
-  const themeBtn = h(`<a class="navitem" href="#" role="button">${I.theme}<span>Motív</span></a>`);
+  const langRow = h(`<div class="navlang"><span class="l">${esc(t('app.language'))}</span></div>`);
+  langRow.appendChild(langSwitch());
+  side.appendChild(langRow);
+  const themeBtn = h(`<a class="navitem" href="#" role="button">${I.theme}<span>${esc(t('app.theme'))}</span></a>`);
   themeBtn.addEventListener('click', (e) => { e.preventDefault(); toggleTheme(); });
   side.appendChild(themeBtn);
-  const outBtn = h(`<a class="navitem" href="#" role="button">${I.logout}<span>Odhlásiť</span></a>`);
+  const outBtn = h(`<a class="navitem" href="#" role="button">${I.logout}<span>${esc(t('app.logout'))}</span></a>`);
   outBtn.addEventListener('click', (e) => { e.preventDefault(); doLogout(); });
   side.appendChild(outBtn);
   app.appendChild(side);
@@ -842,9 +904,7 @@ function shell() {
   const col = h('<div style="flex:1;display:flex;flex-direction:column;min-width:0"></div>');
   const top = h(`<header class="topbar"><div class="tb-txt"><h1>${esc(head.title)}</h1><div class="sub">${head.sub}</div></div><div class="grow"></div></header>`);
   top.appendChild(refreshButton());
-  const tb = h(`<button class="iconbtn" title="Motív" aria-label="Prepnúť motív">${I.theme}</button>`); tb.addEventListener('click', toggleTheme);
-  const ob = h(`<button class="iconbtn" title="Odhlásiť" aria-label="Odhlásiť sa">${I.logout}</button>`); ob.addEventListener('click', doLogout);
-  top.appendChild(tb); top.appendChild(ob);
+  top.appendChild(settingsMenu());
   col.appendChild(top);
   const main = h('<main class="main"></main>'); col.appendChild(main);
   // desktop keeps the title inside the column, where the sidebar cannot carry it
@@ -856,8 +916,8 @@ function shell() {
 
   // bottom tabs (mobile)
   const tab = h('<nav class="tabbar"></nav>');
-  TABS.forEach((t) => {
-    tab.appendChild(h(`<a class="${state.route === t.id ? 'active' : ''}" href="#${t.id}"><span class="ic">${t.icon}</span>${t.label}</a>`));
+  tabs().forEach((item) => {
+    tab.appendChild(h(`<a class="${state.route === item.id ? 'active' : ''}" href="#${item.id}"><span class="ic">${item.icon}</span>${esc(item.label)}</a>`));
   });
   app.appendChild(tab);
   return { app, main };
@@ -887,10 +947,9 @@ async function render() {
       [...main.children].forEach((c) => { if (!c.classList.contains('pagehead')) c.remove(); });
       const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
       const emp = offline
-        ? empty(I.alert, 'Ste offline', 'Údaje ukážeme hneď, ako sa spojenie vráti.')
-        : empty(I.alert, 'AIS neodpovedal',
-          'Údaje sa nepodarilo načítať. Býva to dočasné — AIS býva nedostupný v noci a počas odstávok.');
-      const btn = h(`<button class="btn" style="margin-top:14px">${I.refresh}<span>Skúsiť znova</span></button>`);
+        ? empty(I.alert, t('err.offline'), t('err.offlineSub'))
+        : empty(I.alert, t('err.ais'), t('err.aisSub'));
+      const btn = h(`<button class="btn" style="margin-top:14px">${I.refresh}<span>${esc(t('err.retry'))}</span></button>`);
       btn.addEventListener('click', () => { refreshAll(); });
       emp.appendChild(btn); main.appendChild(emp);
     }
@@ -906,6 +965,7 @@ window.addEventListener('hashchange', onRoute);
 // ---- boot ------------------------------------------------------------------
 async function boot() {
   applyTheme();
+  applyLangToDocument();
   onRoute();
   try {
     const me = await api.get('me');

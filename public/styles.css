@@ -18,6 +18,8 @@
   --accent: #3a35a8;         /* indigo */
   --accent-ink: #ffffff;
   --accent-soft: #e9e8f7;
+  --accent-2: #0d6b64;       /* teal — cvičenia / semináre, so a week is readable at a glance */
+  --accent-2-soft: #dcebe9;
   --now: #c2410c;            /* burnt orange — live/now only */
   --now-soft: #f7e6dc;
 
@@ -70,6 +72,8 @@
     --accent: #9b96ff;
     --accent-ink: #14130f;
     --accent-soft: #26243a;
+    --accent-2: #63cfc2;
+    --accent-2-soft: #16302d;
     --now: #f2884e;
     --now-soft: #362117;
     --ok: #5fbf85;
@@ -97,6 +101,8 @@
   --accent: #9b96ff;
   --accent-ink: #14130f;
   --accent-soft: #26243a;
+  --accent-2: #63cfc2;
+  --accent-2-soft: #16302d;
   --now: #f2884e;
   --now-soft: #362117;
   --ok: #5fbf85;
@@ -118,7 +124,7 @@ body {
   font-family: var(--sans);
   background: var(--paper);
   color: var(--ink);
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -226,7 +232,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
   box-shadow: var(--sh-1);
 }
-.section-h { display: flex; align-items: baseline; gap: 10px; margin: 30px 2px 13px; }
+.section-h { display: flex; align-items: baseline; gap: 10px; margin: 24px 2px 11px; }
 .section-h:first-child { margin-top: 4px; }
 .section-h h2 { font-size: 1.04rem; letter-spacing: -0.01em; }
 .section-h .muted { color: var(--ink-3); font-size: 0.82rem; }
@@ -342,13 +348,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .rowlist { display: flex; flex-direction: column; }
 .row {
-  display: flex; align-items: center; gap: 14px; padding: 15px 4px;
+  display: flex; align-items: center; gap: 13px; padding: 12px 4px;
   border-bottom: 1px solid var(--line); text-decoration: none;
 }
 .row:last-child { border-bottom: none; }
 .grade {
-  width: 42px; height: 42px; flex-shrink: 0; border-radius: 12px; display: grid; place-items: center;
-  font-family: var(--display); font-weight: 700; font-size: 1.05rem;
+  width: 38px; height: 38px; flex-shrink: 0; border-radius: 11px; display: grid; place-items: center;
+  font-family: var(--display); font-weight: 700; font-size: 1rem;
   background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line);
 }
 .grade.g-A, .grade.g-B { background: var(--ok-soft); color: var(--ok); border-color: color-mix(in oklab, var(--ok) 26%, transparent); }
@@ -369,7 +375,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .owe .l { color: var(--ink-3); font-size: 0.82rem; }
 .owe .n { font-family: var(--display); font-size: clamp(2rem, 8vw, 2.6rem); letter-spacing: -0.03em; margin-top: 4px; }
 .owe .n.clear { color: var(--ok); }
-.pay { display: flex; align-items: center; gap: 14px; padding: 15px 4px; border-bottom: 1px solid var(--line); }
+.pay { display: flex; align-items: center; gap: 13px; padding: 13px 4px; border-bottom: 1px solid var(--line); }
 .pay:last-child { border-bottom: none; }
 .pay .pmark { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; flex-shrink: 0; }
 .pay .pmark svg { width: 20px; height: 20px; }
@@ -381,7 +387,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .pay .amt { font-weight: 700; font-variant-numeric: tabular-nums; }
 
 /* ---------------- Messages ---------------- */
-.msg { display: flex; gap: 13px; padding: 15px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }
+.msg { display: flex; gap: 13px; padding: 13px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }
 .msg:last-child { border-bottom: none; }
 .msg .av { width: 40px; height: 40px; border-radius: var(--r-full); background: var(--accent-soft); color: var(--accent);
   display: grid; place-items: center; font-family: var(--display); font-weight: 600; flex-shrink: 0; }
@@ -465,7 +471,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .trust a { color: var(--accent); text-underline-offset: 2px; }
 
 /* ---------------- States ---------------- */
-.empty { text-align: center; padding: 48px 20px; color: var(--ink-3); }
+.empty { text-align: center; padding: 34px 20px 26px; color: var(--ink-3); }
 .empty svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 12px; }
 .empty .t { font-weight: 600; color: var(--ink-2); }
 .skel { background: var(--surface-2); border-radius: var(--r); animation: breathe 1.4s ease-in-out infinite; }
@@ -744,3 +750,107 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* Inputs on paper: surface over paper is a 1.08:1 edge, which reads as a mock-up. */
 .field input { background: color-mix(in oklab, var(--paper) 45%, var(--surface)); border-color: color-mix(in oklab, var(--ink-3) 38%, transparent); }
+
+
+/* =========================================================================
+   Language, and the phone's one header button
+   ========================================================================= */
+/* SK · RU · UA. Three codes, not a dropdown: with three options a menu costs a tap
+   to find out what is inside, and the codes are shorter than the word "Language". */
+.langsw { display: inline-flex; gap: 2px; padding: 3px; border-radius: var(--r-full); background: var(--surface-2); }
+.langsw button {
+  min-width: 34px; padding: 5px 9px; border: 1px solid transparent; border-radius: var(--r-full);
+  background: transparent; color: var(--ink-3); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em;
+  transition: background-color 0.16s var(--ease-out), color 0.16s var(--ease-out);
+}
+.langsw button:hover { color: var(--ink); }
+.langsw button.active { background: var(--surface); color: var(--ink); border-color: var(--line); box-shadow: var(--sh-1); }
+
+.brandline .bgrow { flex: 1; }
+
+/* the header menu */
+.menu { position: relative; }
+.menu__panel {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 40;
+  min-width: 232px; padding: 12px; border-radius: var(--r);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--sh-3);
+  animation: rise 0.14s var(--ease-out) both;
+}
+.menu__panel[hidden] { display: none; }
+.menu__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 8px; }
+.menu__note { color: var(--ink-3); font-size: 0.75rem; line-height: 1.45; margin: 9px 0 4px; }
+.menu__item {
+  display: flex; align-items: center; gap: 11px; width: 100%;
+  padding: 10px 8px; margin-top: 2px; border: none; border-radius: var(--r-sm);
+  background: transparent; color: var(--ink-2); font-weight: 500; text-align: left;
+}
+.menu__item:first-of-type { margin-top: 6px; border-top: 1px solid var(--line); border-radius: 0 0 var(--r-sm) var(--r-sm); padding-top: 12px; }
+.menu__item:hover { background: var(--surface-2); color: var(--ink); }
+.menu__item svg { width: 19px; height: 19px; flex-shrink: 0; }
+
+/* sidebar row: the label on the left, the three codes on the right */
+.navlang { display: none; }
+@media (min-width: 860px) {
+  .navlang { display: flex; align-items: center; gap: 10px; padding: 6px 13px 10px; }
+  .navlang .l { flex: 1; color: var(--ink-3); font-size: 0.78rem; font-weight: 600; }
+}
+
+/* =========================================================================
+   Lecture vs seminar
+   ========================================================================= */
+/* A lecture and a seminar are different kinds of hour — you sit through one and are
+   called on in the other — so they carry different colours, indigo and teal. Burnt
+   orange stays reserved for "now"; the type is still spelled out on the badge and the
+   left edge still thickens, so the distinction survives without colour vision. */
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 2px 12px; color: var(--ink-3); font-size: 0.78rem; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { width: 9px; height: 9px; border-radius: 3px; background: var(--legend-color, var(--accent)); }
+@media (min-width: 860px) { .legend { margin-top: 14px; } }
+
+/* =========================================================================
+   Readability of the photograph heroes on a phone
+   ========================================================================= */
+/* At 390px the copy crossed into the middle of the picture: the 100deg scrim was cut
+   for a wide card. Narrow screens get a scrim that clears the text column first. */
+@media (max-width: 620px) {
+  .hero.quiet::before {
+    background-image: linear-gradient(115deg,
+      var(--surface) 58%,
+      color-mix(in oklab, var(--surface) 55%, transparent) 82%,
+      color-mix(in oklab, var(--surface) 18%, transparent));
+  }
+  .hero.quiet .big { max-width: 15ch; }
+}
+
+
+/* =========================================================================
+   Day switcher: five days, one row
+   ========================================================================= */
+/* Five loose ovals with a solid orange circle among them read as five unrelated
+   buttons and one alarm. They are one control over one week: equal widths, one row,
+   and "today" marked by a ring rather than by the colour reserved for "now". */
+.dayswitch { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; overflow: visible; }
+.dayswitch button {
+  width: 100%; padding: 10px 4px; border-radius: var(--r);
+  font-size: 0.82rem; letter-spacing: 0.01em;
+}
+.dayswitch button.today { border-color: color-mix(in oklab, var(--now) 55%, transparent); color: var(--now); }
+.dayswitch button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.dayswitch button.today.active { background: var(--now); border-color: var(--now); color: #fff; }
+.dayswitch button.has::after { bottom: 4px; }
+
+/* An empty day that is followed by the next real day does not need the full pillow. */
+.empty.tight { padding: 22px 20px 18px; }
+.empty.tight svg { width: 32px; height: 32px; margin-bottom: 8px; }
+
+/* Two-line taglines: keep the second line close to the first. */
+.brand span, .brandline span { line-height: 1.25; }
+
+/* A wrapped period strip left its separator dot alone at the end of the first line. */
+@media (max-width: 520px) { .period .pdot { display: none; } }
+
+/* On the sign-in card the three codes share a line with the product name. */
+@media (max-width: 480px) {
+  .brandline .langsw button { min-width: 30px; padding: 5px 7px; font-size: 0.72rem; }
+}

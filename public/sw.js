@@ -1,7 +1,7 @@
 // Minimal offline shell. App shell is cache-first; API is network-only (never
 // serve stale grades/payments). Bump CACHE to invalidate the shell.
-const CACHE = 'ais-pwa-v3';
-const SHELL = ['/', '/index.html', '/styles.css', '/app.js', '/manifest.webmanifest'];
+const CACHE = 'ais-pwa-v4';
+const SHELL = ['/', '/index.html', '/styles.css', '/app.js', '/i18n.js', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -16,6 +16,7 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET') return;
+  if (url.origin !== location.origin) return; // analytics and other third parties: not ours to cache
   if (url.pathname.startsWith('/api/')) return; // let the network handle data
   e.respondWith(
     caches.match(e.request).then((hit) => hit || fetch(e.request).then((res) => {
