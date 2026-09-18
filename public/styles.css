@@ -400,12 +400,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
   min-height: 34vw; max-height: 210px;
   border-bottom: 1px solid var(--line);
   background-color: var(--surface-2);
+  /* Photograph on top; under it ruled paper, so the panel is deliberate even before
+     the photo exists (and while it is still downloading). */
   background-image:
-    radial-gradient(120% 150% at 80% 0%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%),
-    url('/photos/login-band.webp');
-  background-size: cover, cover;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
+    url('/photos/login-band.webp'),
+    radial-gradient(120% 150% at 80% 0%, color-mix(in oklab, var(--accent) 13%, transparent), transparent 62%),
+    repeating-linear-gradient(to bottom, transparent 0 25px, color-mix(in oklab, var(--ink) 7%, transparent) 25px 26px);
+  background-size: cover, cover, auto;
+  background-position: center, center, left top;
+  background-repeat: no-repeat, no-repeat, repeat;
 }
 .login__pane { display: grid; place-items: center; padding: 26px 22px 40px; }
 .login .box { width: 100%; max-width: 400px; }
@@ -416,8 +419,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
     min-height: 100dvh; max-height: none;
     border-bottom: none; border-right: 1px solid var(--line);
     background-image:
+      url('/photos/login.webp'),
       radial-gradient(90% 60% at 50% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 60%),
-      url('/photos/login.webp');
+      repeating-linear-gradient(to bottom, transparent 0 25px, color-mix(in oklab, var(--ink) 7%, transparent) 25px 26px);
+    background-size: cover, cover, auto;
+    background-position: center, center, left top;
+    background-repeat: no-repeat, no-repeat, repeat;
   }
   .login__pane { padding: 40px; }
 }
