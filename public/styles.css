@@ -397,19 +397,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
    gradient under it still paints, so the panel is never an empty grey box. */
 .login { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr; }
 .login__art {
+  position: relative; isolation: isolate;
   min-height: 34vw; max-height: 210px;
   border-bottom: 1px solid var(--line);
+  /* Ruled paper is the floor: it shows while the photograph loads and if the file is
+     ever missing. The photograph goes on top as its own layer (::after) rather than
+     sharing a background-image list with gradients — a browser that cannot parse one
+     layer of such a list throws away the whole property, photo included. */
   background-color: var(--surface-2);
-  /* Photograph on top; under it ruled paper, so the panel is deliberate even before
-     the photo exists (and while it is still downloading). */
-  background-image:
-    url('/photos/login-band.webp'),
-    radial-gradient(120% 150% at 80% 0%, color-mix(in oklab, var(--accent) 13%, transparent), transparent 62%),
-    repeating-linear-gradient(to bottom, transparent 0 25px, color-mix(in oklab, var(--ink) 7%, transparent) 25px 26px);
-  background-size: cover, cover, auto;
-  background-position: center, center, left top;
-  background-repeat: no-repeat, no-repeat, repeat;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 25px, rgba(23, 21, 15, 0.07) 25px 26px);
 }
+.login__art::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: url('/photos/login-band.webp?v=2');
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+
 .login__pane { display: grid; place-items: center; padding: 26px 22px 40px; }
 .login .box { width: 100%; max-width: 400px; }
 
@@ -418,14 +421,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .login__art {
     min-height: 100dvh; max-height: none;
     border-bottom: none; border-right: 1px solid var(--line);
-    background-image:
-      url('/photos/login.webp'),
-      radial-gradient(90% 60% at 50% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 60%),
-      repeating-linear-gradient(to bottom, transparent 0 25px, color-mix(in oklab, var(--ink) 7%, transparent) 25px 26px);
-    background-size: cover, cover, auto;
-    background-position: center, center, left top;
-    background-repeat: no-repeat, no-repeat, repeat;
   }
+  .login__art::after { background-image: url('/photos/login.webp?v=2'); }
   .login__pane { padding: 40px; }
 }
 @media (prefers-color-scheme: dark) {
@@ -567,27 +564,28 @@ button { font: inherit; color: inherit; cursor: pointer; }
    empty card reads as a skeleton that never finished) and takes a photograph instead. */
 .hero.quiet {
   background-color: var(--surface);
-  background-image:
-    linear-gradient(100deg, var(--surface) 34%, color-mix(in oklab, var(--surface) 62%, transparent) 62%, transparent),
-    url('/photos/quiet.webp');
-  background-size: cover, cover;
-  background-position: center, center right;
-  background-repeat: no-repeat, no-repeat;
+  background-image: url('/photos/quiet.webp?v=2');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
   min-height: 108px;
 }
+/* The scrim that keeps the copy readable is a separate layer for the same reason:
+   a gradient the browser cannot parse must not erase the photograph under it. */
+.hero.quiet::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image: linear-gradient(100deg, var(--surface) 34%, rgba(255, 255, 255, 0) 78%);
+}
+.hero.quiet > * { position: relative; z-index: 1; }
 .hero.quiet .big { font-size: clamp(1.25rem, 4.4vw, 1.65rem); color: var(--ink); max-width: 20ch; }
 .hero.quiet .meta { color: var(--ink-2); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .hero.quiet {
-    background-image:
-      linear-gradient(100deg, var(--surface) 34%, color-mix(in oklab, var(--surface) 70%, transparent) 64%, color-mix(in oklab, var(--surface) 30%, transparent)),
-      url('/photos/quiet.webp');
+  :root:not([data-theme='light']) .hero.quiet::before {
+    background-image: linear-gradient(100deg, var(--surface) 34%, rgba(33, 30, 25, 0.55) 72%, rgba(33, 30, 25, 0.35));
   }
 }
-[data-theme='dark'] .hero.quiet {
-  background-image:
-    linear-gradient(100deg, var(--surface) 34%, color-mix(in oklab, var(--surface) 70%, transparent) 64%, color-mix(in oklab, var(--surface) 30%, transparent)),
-    url('/photos/quiet.webp');
+[data-theme='dark'] .hero.quiet::before {
+  background-image: linear-gradient(100deg, var(--surface) 34%, rgba(33, 30, 25, 0.55) 72%, rgba(33, 30, 25, 0.35));
 }
 
 .nextcard {
