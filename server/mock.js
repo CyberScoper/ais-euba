@@ -40,3 +40,35 @@ export const mockSchedule = [
   { day: 4, from: '09:45', to: '11:15', subject: 'Mikroekonómia', type: 'cvičenie', room: 'B2.14', teacher: 'Ing. Kovář' },
   { day: 5, from: '11:00', to: '12:30', subject: 'Matematika B', type: 'prednáška', room: 'D1.14', teacher: 'doc. Nováková' },
 ];
+
+// University news, as /api/news returns it. Real euba.sk image URLs (so the shape and
+// the aspect ratios are honest), plus one item without a picture — the feed has those
+// too and the UI has to survive them. Nothing here is fetched: mock mode never talks
+// to euba.sk.
+export const mockNews = [
+  {
+    title: 'Pozvánka na slávnostné otvorenie akademického roka 2026/2027',
+    link: 'https://www.euba.sk/aktivity-a-media/aktuality/1760-pozvanka-na-slavnostne-otvorenie-akademickeho-roka-2026-2027',
+    date: '2026-09-07T05:15:00.000Z',
+    summary:
+      'Pozývame všetkých študentov a zamestnancov EU v Bratislave na slávnostné otvorenie akademického roka 2026/2027, ktoré sa uskutoční v pondelok 21. septembra 2026 o 10:00 hod…',
+    image:
+      'https://euba.sk/www_write/files/SK/aktivity-media/aktuality/2026/otvoreniear2026-2027_2000px.jpg',
+  },
+  {
+    title: 'Zápis na zimný semester prebieha do konca septembra',
+    link: 'https://www.euba.sk/aktivity-a-media/aktuality',
+    date: '2026-09-02T08:30:00.000Z',
+    summary:
+      'Študenti druhého a tretieho ročníka si zapisujú predmety cez AIS do 30. septembra 2026. Po tomto termíne sa zápisný list uzatvára a zmeny rieši študijné oddelenie…',
+    image: null,
+  },
+  {
+    title: 'EUBA si pripomenula šesť študentov a učiteľa, hrdinov SNP',
+    link: 'https://www.euba.sk/aktivity-a-media/aktuality/3218-euba-si-pripomenula-sest-studentov-a-ucitela-hrdinov-snp',
+    date: '2026-08-27T08:42:21.000Z',
+    summary:
+      'Pri príležitosti výročia Slovenského národného povstania si zástupcovia univerzity uctili pamiatku študentov a pedagóga, ktorí sa zapojili do povstania…',
+    image: 'https://euba.sk/www_write/files/SK/aktivity-media/aktuality/2026/veniec_2026_01.jpg',
+  },
+];

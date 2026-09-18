@@ -9,6 +9,10 @@ WorkingDirectory=/root/ais-pwa
 Environment=PORT=4176
 Environment=NODE_ENV=production
 ExecStart=/usr/bin/node server/index.js
+# Sessions (and the key that seals a remembered password) live here, outside the repo.
+# systemd creates it as 0700 root:root and hands the path over as $STATE_DIRECTORY.
+StateDirectory=ais-pwa
+StateDirectoryMode=0700
 Restart=on-failure
 RestartSec=3
 NoNewPrivileges=true
