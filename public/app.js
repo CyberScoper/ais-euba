@@ -36,6 +36,7 @@ const I = {
   bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 10a5.5 5.5 0 0 1 11 0c0 4 1.5 5.5 1.5 5.5h-14S6.5 14 6.5 10Z"/><path d="M10.2 19a2 2 0 0 0 3.6 0"/></svg>',
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg>',
   dot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="4.5"/></svg>',
+  install: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v9.5M8.4 9.6 12 13.2l3.6-3.6"/><path d="M5 15v3.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>',
   more: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
   campus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18M5 20.5V9l5-3 5 3v11.5M15 20.5V12l4-2v10.5"/><path d="M8 12.5h2M8 16h2"/></svg>',
   bus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="12.5" rx="2.5"/><path d="M4 10.5h16M7.5 20v-3.5M16.5 20v-3.5"/><circle cx="8" cy="13.6" r="0.9" fill="currentColor" stroke="none"/><circle cx="16" cy="13.6" r="0.9" fill="currentColor" stroke="none"/></svg>',
@@ -160,6 +161,71 @@ async function refreshAll() {
     document.documentElement.classList.remove('syncing');
   }
 }
+
+// ---- install ---------------------------------------------------------------
+/**
+ * Chrome decides on its own when an app is installable and announces it with
+ * beforeinstallprompt; that event is the only handle a page has on the install
+ * dialog, and it is easy to lose — it can arrive before the first render or long
+ * after it. So it is caught at module level, and the places that offer to install
+ * are filled in when it lands rather than on the next render: a re-render here
+ * would wipe whatever is half-typed in the sign-in form.
+ */
+let installPrompt = null;
+
+function isStandalone() {
+  return matchMedia('(display-mode: standalone)').matches
+    || matchMedia('(display-mode: minimal-ui)').matches
+    || navigator.standalone === true;
+}
+
+/** iOS never fires the event: Safari installs only through its own Share sheet. */
+function isIosSafari() {
+  const ua = navigator.userAgent;
+  const ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  return ios && !/CriOS|FxiOS|EdgiOS/.test(ua);
+}
+
+/**
+ * Fills one slot with whatever is true right now: the button when the browser has
+ * handed us a prompt, the Share-sheet sentence on iOS, nothing at all otherwise.
+ * An install item that does nothing when tapped is worse than no item.
+ */
+function fillInstallSlot(slot, onDone = () => {}) {
+  slot.innerHTML = '';
+  if (isStandalone()) return;
+  if (installPrompt) {
+    const b = h(`<button class="${slot.dataset.installSlot === 'menu' ? 'menu__item' : 'installlink'}">${I.install}<span>${esc(t('app.install'))}</span></button>`);
+    b.addEventListener('click', async () => {
+      const ev = installPrompt;
+      installPrompt = null;
+      onDone();
+      refreshInstallSlots();
+      try { await ev.prompt(); } catch {}
+    });
+    slot.appendChild(b);
+    return;
+  }
+  if (isIosSafari()) slot.appendChild(h(`<p class="menu__note">${esc(t('app.installIos'))}</p>`));
+}
+
+function refreshInstallSlots() {
+  document.querySelectorAll('[data-install-slot]').forEach((el) => fillInstallSlot(el));
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Without this Chrome may show its own mini-infobar over the app; the offer
+  // belongs in the app's own menu, where it survives being dismissed once.
+  e.preventDefault();
+  installPrompt = e;
+  refreshInstallSlots();
+});
+
+window.addEventListener('appinstalled', () => {
+  installPrompt = null;
+  refreshInstallSlots();
+  toast(t('app.installed'));
+});
 
 // ---- state / theme ---------------------------------------------------------
 /** The switcher only carries Po-Pi, so a weekend opens on Monday rather than on nothing. */
@@ -299,6 +365,7 @@ function viewLogin() {
             <div class="err" id="le" role="alert">${esc(state.notice || '')}</div>
             <button class="btn primary full" type="submit" id="lb">${esc(t('login.submit'))}</button>
           </form>
+          <div class="installrow" data-install-slot="login"></div>
           <ul class="trust">
             <li>${I.shield}<span>${t('login.trust.notUni')}</span></li>
             <li>${I.key}<span id="pwnote"></span></li>
@@ -308,6 +375,8 @@ function viewLogin() {
       </div>
     </div>`);
   box.querySelector('.brandline').appendChild(langSwitch());
+  // Installing before signing in is the normal order for a first visit.
+  fillInstallSlot(box.querySelector('[data-install-slot]'));
   state.notice = '';
   // What happens to the password depends on the checkbox, so the sentence under the
   // form follows it instead of stating one convenient half of the truth.
@@ -925,6 +994,7 @@ function settingsMenu() {
   const btn = h(`<button class="iconbtn" aria-haspopup="true" aria-expanded="false"
     title="${esc(t('app.menu'))}" aria-label="${esc(t('app.menu'))}">${I.more}</button>`);
   const panel = h(`<div class="menu__panel" hidden>
+    <div class="menu__slot" data-install-slot="menu"></div>
     <div class="menu__label">${esc(t('app.language'))}</div>
   </div>`);
   panel.appendChild(langSwitch());
@@ -947,6 +1017,9 @@ function settingsMenu() {
   function onKey(e) { if (e.key === 'Escape') { close(); btn.focus(); } }
   btn.addEventListener('click', () => {
     if (!panel.hidden) return close();
+    // Filled at open time: the browser may have decided we are installable at any
+    // point since this menu was built.
+    fillInstallSlot(panel.querySelector('[data-install-slot]'), close);
     panel.hidden = false;
     btn.setAttribute('aria-expanded', 'true');
     document.addEventListener('click', onDoc, true);

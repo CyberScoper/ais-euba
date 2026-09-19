@@ -772,7 +772,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .menu { position: relative; }
 .menu__panel {
   position: absolute; right: 0; top: calc(100% + 8px); z-index: 40;
-  min-width: 232px; padding: 12px; border-radius: var(--r);
+  min-width: 252px; padding: 12px; border-radius: var(--r);
   background: var(--surface); border: 1px solid var(--line); box-shadow: var(--sh-3);
   animation: rise 0.14s var(--ease-out) both;
 }
@@ -919,3 +919,47 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* A card wears a photograph where the icon tile would be; the icon stays the fallback. */
 .unicard__head .ic.ph { object-fit: cover; padding: 0; background: none; border: 1px solid var(--line); }
+
+/* =========================================================================
+   Installing the app
+   ========================================================================= */
+/* The offer only exists while the browser is actually willing to install, so both
+   slots collapse to nothing the rest of the time. */
+.menu__slot:empty, .installrow:empty { display: none; }
+.menu__slot .menu__item {
+  margin: 0 0 8px; padding: 10px 8px; border-top: none;
+  border-radius: var(--r-sm); background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+.menu__slot .menu__item:hover { background: color-mix(in oklab, var(--accent) 16%, var(--surface)); }
+.menu__slot .menu__note { margin: 0 0 8px; }
+
+.installrow { margin: 16px 0 4px; }
+.installlink {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 10px 15px; border-radius: var(--r);
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+  font-size: 0.86rem; font-weight: 600;
+  transition: background-color 0.16s var(--ease-out), border-color 0.16s var(--ease-out);
+}
+.installlink:hover { background: var(--surface-2); }
+.installlink svg { width: 17px; height: 17px; }
+
+/* =========================================================================
+   Four languages instead of three
+   ========================================================================= */
+/* The sidebar row was a label and three codes side by side; the fourth code pushed
+   the strip 17px past the sidebar's own edge. Label above, codes as a full-width
+   grid — it now holds however many languages the list grows to. */
+@media (min-width: 860px) {
+  .navlang { display: block; padding: 8px 13px 12px; }
+  .navlang .l { display: block; margin-bottom: 7px; }
+  .navlang .langsw { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+  .navlang .langsw button { min-width: 0; padding: 6px 2px; }
+}
+
+/* On the narrowest phones the codes drop under the product name instead of
+   squeezing it. */
+@media (max-width: 400px) {
+  .brandline { flex-wrap: wrap; row-gap: 10px; }
+  .brandline .langsw { margin-left: auto; }
+}
