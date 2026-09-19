@@ -1152,6 +1152,26 @@ async function boot() {
   render();
 }
 
+/**
+ * Analytics, if this instance is configured for it. Injected rather than written into
+ * the page so that the measurement id belongs to whoever runs the server, and so the
+ * page keeps no inline script — the content security policy is the stricter for it.
+ */
+function loadAnalytics() {
+  const id = (window.APP_CONFIG || {}).gaId;
+  if (!id) return;
+  const tag = document.createElement('script');
+  tag.async = true;
+  tag.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+  document.head.appendChild(tag);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', id);
+}
+loadAnalytics();
+
 // service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
