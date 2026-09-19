@@ -222,7 +222,7 @@
   "Ceny, čipovanie a prevádzkové časy": {
     "ru": "Цены, чипование карты и часы работы",
     "uk": "Ціни, чипування картки і години роботи",
-    "en": "Prices, card top-up (čipovanie) and opening hours"
+    "en": "Prices, card set-up (čipovanie) and opening hours"
   },
   "Slovenská ekonomická knižnica (SEK)": {
     "ru": "Словацкая экономическая библиотека (SEK)",
@@ -1224,11 +1224,6 @@
     "uk": "Де живуть і як подати заявку на місце",
     "en": "Where you live and how to apply for a place"
   },
-  "Semester, kredity a skúšky v skratke": {
-    "ru": "Семестр, кредиты и экзамены вкратце",
-    "uk": "Семестр, кредити та іспити стисло",
-    "en": "Semester, credits and exams in short"
-  },
   "Čo sa v AiS vybavuje okrem rozvrhu": {
     "ru": "Что делают в AiS кроме расписания",
     "uk": "Що роблять в AiS крім розкладу",
@@ -1244,11 +1239,6 @@
     "uk": "Куди можна поїхати крім Erasmus",
     "en": "Where you can go besides Erasmus"
   },
-  "Pomoc pre zahraničných študentov": {
-    "ru": "Помощь иностранным студентам",
-    "uk": "Допомога іноземним студентам",
-    "en": "Help for international students"
-  },
   "Študentská vedecká práca a jej ceny": {
     "ru": "Студенческая научная работа и её призы",
     "uk": "Студентська наукова робота та її призи",
@@ -1259,9 +1249,19 @@
     "uk": "Куди написати студентському парламенту",
     "en": "Where to write to the Student Parliament"
   },
-  "Základné čísla a fakulty": {
-    "ru": "Основные цифры и факультеты",
-    "uk": "Основні цифри і факультети",
-    "en": "Key facts and faculties"
+  "Kde nájdeš harmonogram a rozvrh a ako prebieha skúška": {
+    "ru": "Где искать график и расписание и как проходит экзамен",
+    "uk": "Де шукати графік і розклад та як проходить іспит",
+    "en": "Where the calendar and timetable live, and how an exam works"
+  },
+  "Týždenná výmena s Prahou a Wroclawom": {
+    "ru": "Недельный обмен с Прагой и Вроцлавом",
+    "uk": "Тижневий обмін із Прагою та Вроцлавом",
+    "en": "A week-long exchange with Prague and Wrocław"
+  },
+  "Zameranie školy a jej fakulty": {
+    "ru": "Направление университета и его факультеты",
+    "uk": "Напрям університету та його факультети",
+    "en": "What the university teaches, and its faculties"
   }
 }

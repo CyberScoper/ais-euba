@@ -223,7 +223,7 @@ export const HANDBOOK = [
           "sk": "Ceny, čipovanie a prevádzkové časy",
           "ru": "Цены, чипование карты и часы работы",
           "uk": "Ціни, чипування картки і години роботи",
-          "en": "Prices, card top-up (čipovanie) and opening hours"
+          "en": "Prices, card set-up (čipovanie) and opening hours"
         },
         "url": "https://euba.sk/sluzby/stravovanie"
       }
@@ -876,7 +876,7 @@ export const HANDBOOK = [
           "sk": "Prepojenie budov",
           "ru": "Переход между зданиями",
           "uk": "Перехід між будівлями",
-          "en": "Link between the buildings"
+          "en": "Link between buildings"
         },
         "value": {
           "sk": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch",
@@ -1124,10 +1124,10 @@ export const HANDBOOK = [
       "en": "How studies are organised"
     },
     "summary": {
-      "sk": "Semester, kredity a skúšky v skratke",
-      "ru": "Семестр, кредиты и экзамены вкратце",
-      "uk": "Семестр, кредити та іспити стисло",
-      "en": "Semester, credits and exams in short"
+      "sk": "Kde nájdeš harmonogram a rozvrh a ako prebieha skúška",
+      "ru": "Где искать график и расписание и как проходит экзамен",
+      "uk": "Де шукати графік і розклад та як проходить іспит",
+      "en": "Where the calendar and timetable live, and how an exam works"
     },
     "items": [
       {
@@ -1507,10 +1507,10 @@ export const HANDBOOK = [
       "en": "Euromates"
     },
     "summary": {
-      "sk": "Pomoc pre zahraničných študentov",
-      "ru": "Помощь иностранным студентам",
-      "uk": "Допомога іноземним студентам",
-      "en": "Help for international students"
+      "sk": "Týždenná výmena s Prahou a Wroclawom",
+      "ru": "Недельный обмен с Прагой и Вроцлавом",
+      "uk": "Тижневий обмін із Прагою та Вроцлавом",
+      "en": "A week-long exchange with Prague and Wrocław"
     },
     "items": [
       {
@@ -1532,7 +1532,7 @@ export const HANDBOOK = [
           "sk": "Pre koho",
           "ru": "Для кого",
           "uk": "Для кого",
-          "en": "Who it is for"
+          "en": "Who it's for"
         },
         "value": {
           "sk": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené",
@@ -1609,7 +1609,7 @@ export const HANDBOOK = [
           "sk": "Čo z toho máš",
           "ru": "Что тебе это даёт",
           "uk": "Що тобі це дає",
-          "en": "What you get out of it"
+          "en": "What you get"
         },
         "value": {
           "sk": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu",
@@ -1623,7 +1623,7 @@ export const HANDBOOK = [
           "sk": "Kolá súťaže",
           "ru": "Туры конкурса",
           "uk": "Тури конкурсу",
-          "en": "Competition rounds"
+          "en": "Contest rounds"
         },
         "value": {
           "sk": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni",
@@ -1857,10 +1857,10 @@ export const HANDBOOK = [
       "en": "About the university"
     },
     "summary": {
-      "sk": "Základné čísla a fakulty",
-      "ru": "Основные цифры и факультеты",
-      "uk": "Основні цифри і факультети",
-      "en": "Key facts and faculties"
+      "sk": "Zameranie školy a jej fakulty",
+      "ru": "Направление университета и его факультеты",
+      "uk": "Напрям університету та його факультети",
+      "en": "What the university teaches, and its faculties"
     },
     "items": [
       {

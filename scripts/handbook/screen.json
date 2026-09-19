@@ -1,9 +1,21 @@
 {
   "_note": "The curation layer on top of facts.json: which cards the screen shows, in which order, and the one line each card carries while it is closed. Facts stay in facts.json; taste stays here. An id missing from `order` is not shown.",
   "order": [
-    "doprava", "stravovanie", "kniznica", "isic", "email-teams", "kampus",
-    "internaty", "studium", "ais", "erasmus", "vymenne-programy", "euromates",
-    "svoc", "kontakt", "univerzita"
+    "doprava",
+    "stravovanie",
+    "kniznica",
+    "isic",
+    "email-teams",
+    "kampus",
+    "internaty",
+    "studium",
+    "ais",
+    "erasmus",
+    "vymenne-programy",
+    "euromates",
+    "svoc",
+    "kontakt",
+    "univerzita"
   ],
   "dropped": {
     "prieskumy": "The source page had an empty article body on 2026-09-18 — nothing to show. Re-check later."
@@ -16,13 +28,13 @@
     "email-teams": "Školská pošta, Office 365 a tímy predmetov",
     "kampus": "Ktorá budova, ktorá fakulta a čo v nej nájdeš",
     "internaty": "Kde sa býva a ako sa o miesto žiada",
-    "studium": "Semester, kredity a skúšky v skratke",
+    "studium": "Kde nájdeš harmonogram a rozvrh a ako prebieha skúška",
     "ais": "Čo sa v AiS vybavuje okrem rozvrhu",
     "erasmus": "Štúdium a stáž v zahraničí",
     "vymenne-programy": "Kam sa dá vycestovať mimo Erasmu",
-    "euromates": "Pomoc pre zahraničných študentov",
+    "euromates": "Týždenná výmena s Prahou a Wroclawom",
     "svoc": "Študentská vedecká práca a jej ceny",
     "kontakt": "Kde napísať študentskému parlamentu",
-    "univerzita": "Základné čísla a fakulty"
+    "univerzita": "Zameranie školy a jej fakulty"
   }
 }
