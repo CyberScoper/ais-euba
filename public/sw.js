@@ -1,6 +1,6 @@
 // Minimal offline shell. App shell is cache-first; API is network-only (never
 // serve stale grades/payments). Bump CACHE to invalidate the shell.
-const CACHE = 'ais-pwa-v6';
+const CACHE = 'ais-pwa-v7';
 const SHELL = ['/', '/index.html', '/styles.css', '/app.js', '/i18n.js', '/handbook.js', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {

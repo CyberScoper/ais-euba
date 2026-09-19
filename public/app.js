@@ -54,7 +54,7 @@ const tabs = () => [
   { id: 'rozvrh', label: t('nav.rozvrh'), icon: I.schedule },
   { id: 'predmety', label: t('nav.predmety'), icon: I.subjects },
   { id: 'financie', label: t('nav.financie'), icon: I.finance },
-  { id: 'spravy', label: t('nav.spravy'), icon: I.messages },
+  { id: 'univerzita', label: t('nav.univerzita'), icon: I.campus },
 ];
 
 /**
@@ -234,7 +234,7 @@ function weekdayToday() {
   return d >= 1 && d <= 5 ? d : 1;
 }
 
-const state = { authed: false, user: null, route: 'dnes', day: weekdayToday(), subTab: 'sem', notice: '' };
+const state = { authed: false, user: null, route: 'dnes', day: weekdayToday(), subTab: 'sem', notice: '', anchor: '' };
 
 function applyTheme() {
   // ?theme=dark|light forces a theme (handy for QA and for sharing a link).
@@ -787,12 +787,21 @@ function weightedGpa(graded) {
 }
 
 // --- Payments
-async function viewPayments(root) {
+/**
+ * Fees and the AIS message feed on one screen. They were two tabs, but almost every
+ * message AIS sends is about a payment, and the tab they freed goes to a screen that
+ * was buried in a menu.
+ */
+async function viewFinance(root) {
   const wrap = h('<div class="view"></div>'); root.appendChild(wrap);
   wrap.appendChild(h('<div class="owe skel" style="height:90px"></div>'));
-  const pays = await load('payments', 'payments');
+  const [pays, msgs] = await Promise.all([load('payments', 'payments'), load('messages', 'messages')]);
   wrap.innerHTML = '';
+  renderPayments(wrap, pays);
+  renderMessages(wrap, msgs);
+}
 
+function renderPayments(wrap, pays) {
   const due = pays.filter((p) => !p.paid);
   const owe = due.reduce((s, p) => s + (Number(p.amount) || 0), 0);
 
@@ -806,6 +815,7 @@ async function viewPayments(root) {
     return;
   }
 
+  wrap.appendChild(h(`<div class="section-h"><h2>${esc(t('pay.title'))}</h2></div>`));
   wrap.appendChild(h(`<div class="owe"><div class="l">${esc(t('pay.due'))}</div>
     <div class="n tnum ${owe ? '' : 'clear'}">${owe ? owe.toFixed(2) + ' €' : esc(t('pay.allPaid'))}</div>
     ${owe ? `<div class="m">${esc(t('today.unpaid', { n: due.length }))}</div>`
@@ -824,12 +834,8 @@ async function viewPayments(root) {
 }
 
 // --- Messages
-async function viewMessages(root) {
-  const wrap = h('<div class="view"></div>'); root.appendChild(wrap);
-  wrap.appendChild(skeletonList(4));
-  const msgs = await load('messages', 'messages');
-  wrap.innerHTML = '';
-  wrap.appendChild(h(`<div class="section-h"><h2>${esc(t('msg.title'))}</h2><span class="muted">${esc(msgs.length ? t('msg.count', { n: msgs.length }) : t('msg.none'))}</span></div>`));
+function renderMessages(wrap, msgs) {
+  wrap.appendChild(h(`<div class="section-h" id="sekcia-spravy"><h2>${esc(t('msg.title'))}</h2><span class="muted">${esc(msgs.length ? t('msg.count', { n: msgs.length }) : t('msg.none'))}</span></div>`));
   if (!msgs.length) {
     wrap.appendChild(h(`<div class="statecard">
       <div class="t">${esc(t('msg.emptyTitle'))}</div>
@@ -953,8 +959,14 @@ async function viewUniversity(root) {
 }
 
 // ---- shell + router --------------------------------------------------------
-const VIEWS = { dnes: viewToday, rozvrh: viewSchedule, predmety: viewSubjects, financie: viewPayments, spravy: viewMessages, univerzita: viewUniversity };
-const routeTitle = (route) => t(`nav.${route}`);
+const VIEWS = { dnes: viewToday, rozvrh: viewSchedule, predmety: viewSubjects, financie: viewFinance, univerzita: viewUniversity };
+/** Routes that used to be their own screen and now live inside another one. */
+const ROUTE_ALIAS = { spravy: 'financie' };
+/** An alias that names a section scrolls to it, so the link still means what it said. */
+const ALIAS_ANCHOR = { spravy: 'sekcia-spravy' };
+// The tab strip needs a word that fits under an icon; the page can say what it holds.
+const PAGE_TITLE = { financie: 'fin.title' };
+const routeTitle = (route) => t(PAGE_TITLE[route] || `nav.${route}`);
 
 /** The title of the current screen, and the line under it. On Dnes it greets by name. */
 function headings() {
@@ -999,9 +1011,6 @@ function settingsMenu() {
   </div>`);
   panel.appendChild(langSwitch());
   panel.appendChild(h(`<p class="menu__note">${esc(t('app.langNote'))}</p>`));
-  const uni = h(`<a class="menu__item" href="#univerzita">${I.campus}<span>${esc(t('nav.univerzita'))}</span></a>`);
-  uni.addEventListener('click', () => close());
-  panel.appendChild(uni);
   const theme = h(`<button class="menu__item">${I.theme}<span>${esc(t('app.theme'))}</span></button>`);
   const out = h(`<button class="menu__item">${I.logout}<span>${esc(t('app.logout'))}</span></button>`);
   panel.appendChild(theme);
@@ -1043,8 +1052,6 @@ function shell() {
     const a = h(`<a class="navitem ${state.route === tab.id ? 'active' : ''}" href="#${tab.id}">${tab.icon}<span>${esc(tab.label)}</span></a>`);
     side.appendChild(a);
   });
-  const uniItem = h(`<a class="navitem ${state.route === 'univerzita' ? 'active' : ''}" href="#univerzita">${I.campus}<span>${esc(t('nav.univerzita'))}</span></a>`);
-  side.appendChild(uniItem);
   side.appendChild(h('<div class="spacer"></div>'));
   // Who you are signed in as: an app that holds university credentials should never
   // leave that question open.
@@ -1105,6 +1112,11 @@ async function render() {
     await view(main);
     const synced = main.querySelector('.pagehead .synced');
     if (synced) synced.textContent = syncLabel();
+    if (state.anchor) {
+      const target = main.querySelector(`#${state.anchor}`);
+      state.anchor = '';
+      if (target) target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
   } catch (e) {
     if (e.message !== 'unauth') {
       // Keep the page header; only the view failed.
@@ -1121,7 +1133,9 @@ async function render() {
 }
 
 function onRoute() {
-  const r = (location.hash.replace('#', '') || 'dnes');
+  const raw = (location.hash.replace('#', '') || 'dnes');
+  const r = ROUTE_ALIAS[raw] || raw;
+  state.anchor = ALIAS_ANCHOR[raw] || '';
   if (VIEWS[r]) { state.route = r; if (state.authed) render(); }
 }
 window.addEventListener('hashchange', onRoute);

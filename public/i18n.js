@@ -172,6 +172,8 @@ const SK = {
   'subj.planUnavailable': 'Plán nie je dostupný',
   'subj.year': '{n}. ročník',
 
+  'fin.title': 'Financie a správy',
+  'pay.title': 'Poplatky',
   'pay.none': 'Žiadne poplatky',
   'pay.noneSub': 'AIS vám zatiaľ nepredpísal žiadnu platbu. Keď pribudne školné alebo poplatok za prihlášku, uvidíte ho tu aj s variabilným symbolom.',
   'pay.due': 'Na úhradu',
@@ -309,6 +311,8 @@ const RU = {
   'subj.planUnavailable': 'План недоступен',
   'subj.year': '{n}-й курс',
 
+  'fin.title': 'Финансы и сообщения',
+  'pay.title': 'Платежи',
   'pay.none': 'Платежей нет',
   'pay.noneSub': 'AIS пока не выставил ни одного платежа. Когда появится плата за обучение или сбор за заявление, он будет здесь — вместе с переменным символом.',
   'pay.due': 'К оплате',
@@ -446,6 +450,8 @@ const UK = {
   'subj.planUnavailable': 'План недоступний',
   'subj.year': '{n}-й курс',
 
+  'fin.title': 'Фінанси та повідомлення',
+  'pay.title': 'Платежі',
   'pay.none': 'Платежів немає',
   'pay.noneSub': 'AIS поки не виставив жодного платежу. Коли з’явиться плата за навчання чи збір за заяву, він буде тут — разом зі змінним символом.',
   'pay.due': 'До сплати',
@@ -585,6 +591,8 @@ const EN = {
   'subj.planUnavailable': 'The study plan is not available',
   'subj.year': 'Year {n}',
 
+  'fin.title': 'Finances and messages',
+  'pay.title': 'Fees',
   'pay.none': 'No fees',
   'pay.noneSub': 'AIS has not charged you anything yet. When tuition or an application fee appears, you will find it here together with its variable symbol.',
   'pay.due': 'To pay',
