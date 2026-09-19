@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Maskable: full bleed, no corners of its own, and the glyph stays inside the 80%
+       safe circle so a round Android mask never clips it. -->
+  <rect width="512" height="512" fill="#3a35a8"/>
+  <g fill="none" stroke="#f4f1ea" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="146" y="166" width="220" height="180" rx="34"/>
+    <path d="M211 166v180M266 226h56M266 286h56"/>
+  </g>
+</svg>

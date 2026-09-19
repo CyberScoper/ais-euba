@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- App icon for the "any" purpose: the tile carries its own rounded corners, because
+       platforms that use this variant draw it as supplied. The glyph is the wordmark from
+       the app header (an index card with its spine), not a stock calendar. -->
+  <rect width="512" height="512" rx="114" fill="#3a35a8"/>
+  <g fill="none" stroke="#f4f1ea" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="112" y="136" width="288" height="240" rx="44"/>
+    <path d="M197 136v240M262 216h74M262 296h74"/>
+  </g>
+</svg>

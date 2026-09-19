@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Favicon: a silhouette, not an outline. A 1.4px stroke at 16 CSS pixels turns into
+       grey mush, so the card is filled and the spine is cut out of it instead. -->
+  <rect width="64" height="64" rx="14" fill="#3a35a8"/>
+  <path fill="#f4f1ea" d="M14 22a6 6 0 0 1 6-6h24a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6V22Z"/>
+  <rect x="25" y="16" width="6" height="32" fill="#3a35a8"/>
+  <rect x="35" y="27" width="9" height="4.5" rx="2.25" fill="#3a35a8"/>
+  <rect x="35" y="35" width="9" height="4.5" rx="2.25" fill="#3a35a8"/>
+</svg>
