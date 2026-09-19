@@ -5,7 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/ais-pwa
+# Rendered by deploy.sh from wherever the repository actually sits.
+WorkingDirectory=__WORKDIR__
 # PORT, AIS_GA_ID and anything else instance-specific; the dash means "optional".
 EnvironmentFile=-/etc/default/ais-pwa
 Environment=NODE_ENV=production

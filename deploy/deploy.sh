@@ -30,7 +30,8 @@ umask 077
 umask 022
 
 echo "3/6 systemd service"
-install -m644 deploy/ais-pwa.service /etc/systemd/system/ais-pwa.service
+sed "s#__WORKDIR__#$(pwd)#" deploy/ais-pwa.service >/etc/systemd/system/ais-pwa.service
+chmod 644 /etc/systemd/system/ais-pwa.service
 systemctl daemon-reload
 systemctl enable --now ais-pwa.service
 systemctl is-active ais-pwa.service
