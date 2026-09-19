@@ -916,3 +916,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .unifact { display: block; padding: 10px 0; }
   .unifact dt { max-width: none; margin-bottom: 3px; }
 }
+
+/* A card wears a photograph where the icon tile would be; the icon stays the fallback. */
+.unicard__head .ic.ph { object-fit: cover; padding: 0; background: none; border: 1px solid var(--line); }

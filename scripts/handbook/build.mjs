@@ -4,7 +4,7 @@
 // or renaming a card never orphans them and a reviewer can read the file as a list of
 // pairs. A string with no translation falls back to Slovak, which is the same rule the
 // interface catalogue uses.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -36,20 +36,30 @@ const ICON_ALIAS = {
 };
 
 let missing = 0;
+const TARGETS = ['ru', 'uk', 'en'];
+
 function ml(sk) {
   const s = String(sk ?? '').trim();
   if (!s) return undefined;
   const t = tr[s] || {};
-  if (!t.ru || !t.uk) missing += 1;
-  return { sk: s, ru: t.ru || s, uk: t.uk || s };
+  const out = { sk: s };
+  TARGETS.forEach((lang) => {
+    if (!t[lang]) missing += 1;
+    out[lang] = t[lang] || s;   // a missing translation falls back to Slovak, never to a key
+  });
+  return out;
 }
 
 const out = cards.map((c) => {
   const hint = String(c.icon || c.icon_hint || '').toLowerCase();
   const icon = ICONS.has(hint) ? hint : (ICON_ALIAS[hint] || 'doc');
+  // A card wears a photograph when one exists for it, and falls back to its icon.
+  const photo = `photos/uni/${c.id}.webp`;
+  const hasPhoto = existsSync(join(here, '..', '..', 'public', photo));
   return {
     id: c.id,
     icon,
+    ...(hasPhoto ? { photo: `/${photo}` } : {}),
     title: ml(c.title_sk || c.title),
     summary: ml(c.summary_sk || c.summary),
     items: (c.items || []).map((i) => {
@@ -75,4 +85,4 @@ export const HANDBOOK = ${JSON.stringify(out, null, 2)};
 `;
 writeFileSync(join(here, '..', '..', 'public', 'handbook.js'), header);
 const facts_n = out.reduce((a, c) => a + c.items.length, 0);
-console.log(`public/handbook.js: ${out.length} cards, ${facts_n} facts, ${missing} strings without ru/uk`);
+console.log(`public/handbook.js: ${out.length} cards, ${facts_n} facts, ${missing} missing translations (sk fallback)`);

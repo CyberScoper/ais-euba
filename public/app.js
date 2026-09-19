@@ -852,7 +852,9 @@ function uniFact(item) {
 function uniCard(card, open) {
   const el = h(`<section class="unicard"></section>`);
   const head = h(`<button class="unicard__head" aria-expanded="${open ? 'true' : 'false'}">
-    <span class="ic">${UNI_ICON[card.icon] || I.doc}</span>
+    ${card.photo
+      ? `<img class="ic ph" src="${esc(card.photo)}" alt="" loading="lazy" decoding="async" width="44" height="44" />`
+      : `<span class="ic">${UNI_ICON[card.icon] || I.doc}</span>`}
     <span class="tx"><span class="t">${esc(pick(card.title))}</span><span class="s">${esc(pick(card.summary))}</span></span>
     <span class="chev">${I.chev}</span></button>`);
   const body = h(`<div class="unicard__body"${open ? '' : ' hidden'}><div class="unicard__inner"></div></div>`);

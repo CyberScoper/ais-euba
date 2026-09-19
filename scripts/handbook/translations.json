@@ -1,0 +1,1014 @@
+{
+  "Doprava z internátov na univerzitu": {
+    "ru": "Транспорт из общежитий в университет",
+    "uk": "Транспорт із гуртожитків до університету"
+  },
+  "ŠD Starohájska 4 a 8": {
+    "ru": "ŠD Starohájska 4 и 8",
+    "uk": "ŠD Starohájska 4 і 8"
+  },
+  "Zastávka Starohájska, autobus č. 68": {
+    "ru": "Остановка Starohájska, автобус № 68",
+    "uk": "Зупинка Starohájska, автобус № 68"
+  },
+  "ŠD Ekonóm": {
+    "ru": "ŠD Ekonóm (общежитие)",
+    "uk": "ŠD Ekonóm (гуртожиток)"
+  },
+  "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská": {
+    "ru": "Автобус № 87 – в университет от остановки Prístav, обратно от остановки Plynárenská",
+    "uk": "Автобус № 87 – до університету від зупинки Prístav, назад від зупинки Plynárenská"
+  },
+  "ŠD Vlčie hrdlo": {
+    "ru": "ŠD Vlčie hrdlo (общежитие)",
+    "uk": "ŠD Vlčie hrdlo (гуртожиток)"
+  },
+  "Zastávka Refinery Gallery, autobus č. 87": {
+    "ru": "Остановка Refinery Gallery, автобус № 87",
+    "uk": "Зупинка Refinery Gallery, автобус № 87"
+  },
+  "ŠD HOPA a DOPA": {
+    "ru": "ŠD HOPA и DOPA",
+    "uk": "ŠD HOPA і DOPA"
+  },
+  "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého": {
+    "ru": "Автобус № 84 от остановки Hroboňova, выходить на Bulíková. Во время семестра ещё автобус № 184 – в университет от остановки Hroboňova, обратно выход на Prokopa Veľkého",
+    "uk": "Автобус № 84 від зупинки Hroboňova, виходити на Bulíková. Під час семестру ще автобус № 184 – до університету від зупинки Hroboňova, назад вихід на Prokopa Veľkého"
+  },
+  "Cestovné poriadky MHD": {
+    "ru": "Расписания городского транспорта",
+    "uk": "Розклади міського транспорту"
+  },
+  "imhd.sk/ba, prípadne ich mobilná aplikácia": {
+    "ru": "imhd.sk/ba или их мобильное приложение",
+    "uk": "imhd.sk/ba або їхній мобільний застосунок"
+  },
+  "Internáty a ubytovanie": {
+    "ru": "Общежития и проживание",
+    "uk": "Гуртожитки і проживання"
+  },
+  "Prideľovanie miest": {
+    "ru": "Распределение мест",
+    "uk": "Розподіл місць"
+  },
+  "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov": {
+    "ru": "По рейтингу набранных баллов и свободной вместимости общежитий",
+    "uk": "За рейтингом набраних балів і вільною місткістю гуртожитків"
+  },
+  "Zásady prideľovania (článok 4)": {
+    "ru": "Правила распределения (статья 4)",
+    "uk": "Правила розподілу (стаття 4)"
+  },
+  "PDF s postupom prideľovania a výpočtom bodov": {
+    "ru": "PDF с порядком распределения и расчётом баллов",
+    "uk": "PDF з порядком розподілу і розрахунком балів"
+  },
+  "ŠD Prokopa Veľkého 41 – Hopa": {
+    "ru": "ŠD Prokopa Veľkého 41 – Hopa",
+    "uk": "ŠD Prokopa Veľkého 41 – Hopa"
+  },
+  "Prokopa Veľkého 41, 811 04 Bratislava": {
+    "ru": "Prokopa Veľkého 41, 811 04 Bratislava",
+    "uk": "Prokopa Veľkého 41, 811 04 Bratislava"
+  },
+  "ŠD Dolnozemská": {
+    "ru": "ŠD Dolnozemská",
+    "uk": "ŠD Dolnozemská"
+  },
+  "Dolnozemská cesta 1, 852 19 Bratislava": {
+    "ru": "Dolnozemská cesta 1, 852 19 Bratislava",
+    "uk": "Dolnozemská cesta 1, 852 19 Bratislava"
+  },
+  "ŠD Starohájska 8": {
+    "ru": "ŠD Starohájska 8",
+    "uk": "ŠD Starohájska 8"
+  },
+  "Starohájska 8, 852 19 Bratislava": {
+    "ru": "Starohájska 8, 852 19 Bratislava",
+    "uk": "Starohájska 8, 852 19 Bratislava"
+  },
+  "ŠD Starohájska 4": {
+    "ru": "ŠD Starohájska 4",
+    "uk": "ŠD Starohájska 4"
+  },
+  "Starohájska 4, 852 19 Bratislava": {
+    "ru": "Starohájska 4, 852 19 Bratislava",
+    "uk": "Starohájska 4, 852 19 Bratislava"
+  },
+  "Vlčie Hrdlo 74, 821 07 Bratislava": {
+    "ru": "Vlčie Hrdlo 74, 821 07 Bratislava",
+    "uk": "Vlčie Hrdlo 74, 821 07 Bratislava"
+  },
+  "Prístavná 8, 821 09 Bratislava": {
+    "ru": "Prístavná 8, 821 09 Bratislava",
+    "uk": "Prístavná 8, 821 09 Bratislava"
+  },
+  "ŠD Bellova v Košiciach": {
+    "ru": "ŠD Bellova в Кошице",
+    "uk": "ŠD Bellova в Кошицях"
+  },
+  "Bellova 1, 040 01 Košice": {
+    "ru": "Bellova 1, 040 01 Košice",
+    "uk": "Bellova 1, 040 01 Košice"
+  },
+  "Jedáleň a bufety": {
+    "ru": "Столовая и буфеты",
+    "uk": "Їдальня і буфети"
+  },
+  "Hlavná jedáleň": {
+    "ru": "Главная столовая",
+    "uk": "Головна їдальня"
+  },
+  "V priestoroch ŠD Dolnozemská (v starej budove)": {
+    "ru": "В помещениях ŠD Dolnozemská (в старом здании)",
+    "uk": "У приміщеннях ŠD Dolnozemská (у старій будівлі)"
+  },
+  "Platba za obed": {
+    "ru": "Оплата обеда",
+    "uk": "Оплата обіду"
+  },
+  "ISIC kartou; kartu treba najprv aktivovať a dobiť": {
+    "ru": "Картой ISIC; карту сначала надо активировать и пополнить",
+    "uk": "Карткою ISIC; картку спершу треба активувати й поповнити"
+  },
+  "Objednávanie obedov": {
+    "ru": "Заказ обедов",
+    "uk": "Замовлення обідів"
+  },
+  "Cez internet alebo na termináloch v škole, spravidla na chodbách": {
+    "ru": "Через интернет или на терминалах в университете, обычно в коридорах",
+    "uk": "Через інтернет або на терміналах в університеті, зазвичай у коридорах"
+  },
+  "Bufet – stará budova": {
+    "ru": "Буфет – старое здание",
+    "uk": "Буфет – стара будівля"
+  },
+  "Hneď pri vchode": {
+    "ru": "Сразу у входа",
+    "uk": "Одразу біля входу"
+  },
+  "Bufet – nová budova": {
+    "ru": "Буфет – новое здание",
+    "uk": "Буфет – нова будівля"
+  },
+  "Napravo od výťahov": {
+    "ru": "Справа от лифтов",
+    "uk": "Праворуч від ліфтів"
+  },
+  "Menšie prevádzky": {
+    "ru": "Небольшие точки",
+    "uk": "Невеликі точки"
+  },
+  "Pizza, smoothie, káva": {
+    "ru": "Пицца, смузи, кофе",
+    "uk": "Піца, смузі, кава"
+  },
+  "Jedáleň na internáte": {
+    "ru": "Столовая в общежитии",
+    "uk": "Їдальня в гуртожитку"
+  },
+  "Priamo v budove ŠD Ekonóm": {
+    "ru": "Прямо в здании общежития ŠD Ekonóm",
+    "uk": "Прямо в будівлі гуртожитку ŠD Ekonóm"
+  },
+  "Stravovanie na stránke EUBA": {
+    "ru": "Питание на сайте EUBA",
+    "uk": "Харчування на сайті EUBA"
+  },
+  "Ceny, čipovanie a prevádzkové časy": {
+    "ru": "Цены, чипование карты и часы работы",
+    "uk": "Ціни, чипування картки і години роботи"
+  },
+  "Slovenská ekonomická knižnica (SEK)": {
+    "ru": "Словацкая экономическая библиотека (SEK)",
+    "uk": "Словацька економічна бібліотека (SEK)"
+  },
+  "Kde sídli": {
+    "ru": "Где находится",
+    "uk": "Де розташована"
+  },
+  "Stará budova, 2. až 4. poschodie": {
+    "ru": "Старое здание, со 2-го по 4-й этаж",
+    "uk": "Стара будівля, з 2-го по 4-й поверх"
+  },
+  "Požičovňa": {
+    "ru": "Абонемент (Požičovňa)",
+    "uk": "Абонемент (Požičovňa)"
+  },
+  "2. poschodie starej budovy": {
+    "ru": "2-й этаж старого здания",
+    "uk": "2-й поверх старої будівлі"
+  },
+  "Registrácia": {
+    "ru": "Регистрация",
+    "uk": "Реєстрація"
+  },
+  "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok": {
+    "ru": "Лично в абонементе (Požičovňa): покажешь ISIC, подпишешь заявление и заплатишь регистрационный сбор",
+    "uk": "Особисто в абонементі (Požičovňa): покажеш ISIC, підпишеш заяву і заплатиш реєстраційний збір"
+  },
+  "Prihlásenie do online katalógu": {
+    "ru": "Вход в онлайн-каталог",
+    "uk": "Вхід в онлайн-каталог"
+  },
+  "Číslo ISICu a heslo zadané pri registrácii v knižnici": {
+    "ru": "Номер ISIC и пароль, заданный при регистрации в библиотеке",
+    "uk": "Номер ISIC і пароль, заданий під час реєстрації в бібліотеці"
+  },
+  "Objednanie knihy": {
+    "ru": "Заказ книги",
+    "uk": "Замовлення книжки"
+  },
+  "Iba cez žiadanku v online katalógu": {
+    "ru": "Только через заявку (žiadanka) в онлайн-каталоге",
+    "uk": "Тільки через заявку (žiadanka) в онлайн-каталозі"
+  },
+  "Prevzatie": {
+    "ru": "Получение",
+    "uk": "Отримання"
+  },
+  "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa": {
+    "ru": "В абонементе (Požičovňa) через час после заявки, не позже закрытия следующего рабочего дня",
+    "uk": "В абонементі (Požičovňa) через годину після заявки, не пізніше закриття наступного робочого дня"
+  },
+  "Limit výpožičiek": {
+    "ru": "Лимит выдачи",
+    "uk": "Ліміт видачі"
+  },
+  "30 kníh naraz": {
+    "ru": "30 книг одновременно",
+    "uk": "30 книжок одночасно"
+  },
+  "Výpožičná doba": {
+    "ru": "Срок пользования",
+    "uk": "Термін користування"
+  },
+  "Knihy 1 mesiac, učebnice a skriptá 1 semester": {
+    "ru": "Книги 1 месяц, учебники и методички 1 семестр",
+    "uk": "Книжки 1 місяць, підручники і методички 1 семестр"
+  },
+  "Web knižnice": {
+    "ru": "Сайт библиотеки",
+    "uk": "Сайт бібліотеки"
+  },
+  "sek.euba.sk": {
+    "ru": "sek.euba.sk",
+    "uk": "sek.euba.sk"
+  },
+  "ISIC a prolongácia": {
+    "ru": "ISIC и продление (prolongácia)",
+    "uk": "ISIC і продовження (prolongácia)"
+  },
+  "Čo to je": {
+    "ru": "Что это",
+    "uk": "Що це"
+  },
+  "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa": {
+    "ru": "Студенческое удостоверение; получишь его при записи на первый курс первой ступени",
+    "uk": "Студентське посвідчення; отримаєш його при записі на перший курс першого ступеня"
+  },
+  "Na čo slúži": {
+    "ru": "Для чего нужен",
+    "uk": "Для чого потрібен"
+  },
+  "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy": {
+    "ru": "Вход в AiS и в помещения EUBA, столовая, библиотека, транспорт и другие скидки",
+    "uk": "Вхід в AiS і до приміщень EUBA, їдальня, бібліотека, транспорт та інші знижки"
+  },
+  "Poplatok za prolongáciu": {
+    "ru": "Плата за продление",
+    "uk": "Плата за продовження"
+  },
+  "15 €": {
+    "ru": "15 €",
+    "uk": "15 €"
+  },
+  "IBAN": {
+    "ru": "IBAN",
+    "uk": "IBAN"
+  },
+  "SK47 8180 0000 0070 0008 0671": {
+    "ru": "SK47 8180 0000 0070 0008 0671",
+    "uk": "SK47 8180 0000 0070 0008 0671"
+  },
+  "Variabilný symbol": {
+    "ru": "Variabilný symbol (переменный символ)",
+    "uk": "Variabilný symbol (змінний символ)"
+  },
+  "Rodné číslo bez lomky": {
+    "ru": "Rodné číslo (личный номер) без косой черты",
+    "uk": "Rodné číslo (особистий номер) без скісної риски"
+  },
+  "Špecifický symbol – NHF": {
+    "ru": "Špecifický symbol (специфический символ) – NHF",
+    "uk": "Špecifický symbol (специфічний символ) – NHF"
+  },
+  "1010007": {
+    "ru": "1010007",
+    "uk": "1010007"
+  },
+  "Špecifický symbol – OF": {
+    "ru": "Špecifický symbol – OF",
+    "uk": "Špecifický symbol – OF"
+  },
+  "1020007": {
+    "ru": "1020007",
+    "uk": "1020007"
+  },
+  "Špecifický symbol – FHI": {
+    "ru": "Špecifický symbol – FHI",
+    "uk": "Špecifický symbol – FHI"
+  },
+  "1030007": {
+    "ru": "1030007",
+    "uk": "1030007"
+  },
+  "Špecifický symbol – FPM": {
+    "ru": "Špecifický symbol – FPM",
+    "uk": "Špecifický symbol – FPM"
+  },
+  "1040007": {
+    "ru": "1040007",
+    "uk": "1040007"
+  },
+  "Špecifický symbol – FMV": {
+    "ru": "Špecifický symbol – FMV",
+    "uk": "Špecifický symbol – FMV"
+  },
+  "1050007": {
+    "ru": "1050007",
+    "uk": "1050007"
+  },
+  "Špecifický symbol – FAJ": {
+    "ru": "Špecifický symbol – FAJ",
+    "uk": "Špecifický symbol – FAJ"
+  },
+  "1060007": {
+    "ru": "1060007",
+    "uk": "1060007"
+  },
+  "Špecifický symbol – PHF v Košiciach": {
+    "ru": "Špecifický symbol – PHF в Кошице",
+    "uk": "Špecifický symbol – PHF у Кошицях"
+  },
+  "1070007": {
+    "ru": "1070007",
+    "uk": "1070007"
+  },
+  "Postup": {
+    "ru": "Порядок действий",
+    "uk": "Порядок дій"
+  },
+  "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka": {
+    "ru": "Сначала запись на следующий учебный год, подтверждение записи лично в университете, потом марка о продлении (prolongačná známka)",
+    "uk": "Спершу запис на наступний навчальний рік, підтвердження запису особисто в університеті, потім марка про продовження (prolongačná známka)"
+  },
+  "Kde vyzdvihnúť známku": {
+    "ru": "Где забрать марку",
+    "uk": "Де забрати марку"
+  },
+  "Miestnosť A9.05, treba doklad o zaplatení poplatku": {
+    "ru": "Кабинет A9.05, нужен документ об оплате",
+    "uk": "Кабінет A9.05, потрібен документ про оплату"
+  },
+  "Aktivácia preukazu": {
+    "ru": "Активация карты",
+    "uk": "Активація картки"
+  },
+  "Priložením k čítačke na Univerzitnom termináli, 9. poschodie": {
+    "ru": "Приложить к считывателю на Университетском терминале, 9-й этаж",
+    "uk": "Прикласти до зчитувача на Університетському терміналі, 9-й поверх"
+  },
+  "Preukaz študenta na stránke EUBA": {
+    "ru": "Студенческое удостоверение на сайте EUBA",
+    "uk": "Студентське посвідчення на сайті EUBA"
+  },
+  "Podrobnosti o preukaze a prolongácii": {
+    "ru": "Подробности о карте и продлении",
+    "uk": "Подробиці про картку і продовження"
+  },
+  "Školský e-mail, Office 365 a MS Teams": {
+    "ru": "Университетская почта, Office 365 и MS Teams",
+    "uk": "Університетська пошта, Office 365 і MS Teams"
+  },
+  "Kde nájdeš svoju adresu": {
+    "ru": "Где найти свой адрес",
+    "uk": "Де знайти свою адресу"
+  },
+  "Pridelený školský e-mail je uvedený v AiS": {
+    "ru": "Выданный университетский e-mail указан в AiS",
+    "uk": "Виданий університетський e-mail указано в AiS"
+  },
+  "Heslo": {
+    "ru": "Пароль",
+    "uk": "Пароль"
+  },
+  "Pridelené heslo príde e-mailom": {
+    "ru": "Выданный пароль придёт по e-mail",
+    "uk": "Виданий пароль прийде на e-mail"
+  },
+  "Webmail": {
+    "ru": "Веб-почта",
+    "uk": "Вебпошта"
+  },
+  "http://outlook.com/student.euba.sk": {
+    "ru": "http://outlook.com/student.euba.sk",
+    "uk": "http://outlook.com/student.euba.sk"
+  },
+  "Čo dáva školský e-mail": {
+    "ru": "Что даёт университетская почта",
+    "uk": "Що дає університетська пошта"
+  },
+  "Prístup do MS Office 365 počas celého štúdia": {
+    "ru": "Доступ к MS Office 365 на всё время учёбы",
+    "uk": "Доступ до MS Office 365 на весь час навчання"
+  },
+  "Outlook v počítači": {
+    "ru": "Outlook на компьютере",
+    "uk": "Outlook на комп'ютері"
+  },
+  "Súčasť licencie balíka MS Office": {
+    "ru": "Входит в лицензию пакета MS Office",
+    "uk": "Входить у ліцензію пакета MS Office"
+  },
+  "Outlook v mobile": {
+    "ru": "Outlook в телефоне",
+    "uk": "Outlook у телефоні"
+  },
+  "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia": {
+    "ru": "Приложение, вход по e-mail и паролю – самые быстрые уведомления",
+    "uk": "Застосунок, вхід за e-mail і паролем – найшвидші сповіщення"
+  },
+  "Manuál na inštaláciu Office 365": {
+    "ru": "Инструкция по установке Office 365",
+    "uk": "Інструкція зі встановлення Office 365"
+  },
+  "PDF od Študentského parlamentu": {
+    "ru": "PDF от Студенческого парламента",
+    "uk": "PDF від Студентського парламенту"
+  },
+  "Ako sa dostaneš do Teams": {
+    "ru": "Как попасть в Teams",
+    "uk": "Як потрапити в Teams"
+  },
+  "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu": {
+    "ru": "Зайди в веб-Outlook, нажми на точки слева вверху и выбери Teams; потом скачаешь приложение для ПК или будешь пользоваться веб-версией",
+    "uk": "Зайди у вебверсію Outlook, натисни на крапки ліворуч угорі та вибери Teams; потім завантажиш застосунок для ПК або користуватимешся вебверсією"
+  },
+  "Teams v mobile": {
+    "ru": "Teams в телефоне",
+    "uk": "Teams у телефоні"
+  },
+  "Aplikácia je bezplatne v Google Play aj App Store": {
+    "ru": "Приложение бесплатно в Google Play и App Store",
+    "uk": "Застосунок безкоштовний у Google Play і App Store"
+  },
+  "Tímy predmetov": {
+    "ru": "Команды по предметам",
+    "uk": "Команди з предметів"
+  },
+  "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov": {
+    "ru": "Команды создают преподаватели и сами добавляют туда студентов",
+    "uk": "Команди створюють викладачі й самі додають туди студентів"
+  },
+  "Pripojenie kódom": {
+    "ru": "Вход по коду",
+    "uk": "Приєднання за кодом"
+  },
+  "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu": {
+    "ru": "Путь в Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
+    "uk": "Шлях у Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu"
+  },
+  "Nahrávanie hodín": {
+    "ru": "Запись занятий",
+    "uk": "Запис занять"
+  },
+  "Iba so súhlasom vyučujúceho": {
+    "ru": "Только с согласия преподавателя",
+    "uk": "Тільки за згодою викладача"
+  },
+  "Areál, budovy a orientácia": {
+    "ru": "Кампус, здания и ориентация",
+    "uk": "Кампус, будівлі й орієнтація"
+  },
+  "Stará budova V1": {
+    "ru": "Старое здание V1",
+    "uk": "Стара будівля V1"
+  },
+  "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet": {
+    "ru": "NHF, OF, Словацкая экономическая библиотека, магазин учебной литературы, копицентр и буфет",
+    "uk": "NHF, OF, Словацька економічна бібліотека, магазин навчальної літератури, копіцентр і буфет"
+  },
+  "Nová budova V2 (vyššia)": {
+    "ru": "Новое здание V2 (которое выше)",
+    "uk": "Нова будівля V2 (та, що вища)"
+  },
+  "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP": {
+    "ru": "FPM, FHI, FMV, FAJ, ректорат, буфет, копировальные услуги и EUBA FAN SHOP",
+    "uk": "FPM, FHI, FMV, FAJ, ректорат, буфет, копіювальні послуги і EUBA FAN SHOP"
+  },
+  "Aula": {
+    "ru": "Aula (актовый зал)",
+    "uk": "Aula (актова зала)"
+  },
+  "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu": {
+    "ru": "Aula Ekonomickej univerzity v Bratislave, отдельная часть кампуса",
+    "uk": "Aula Ekonomickej univerzity v Bratislave, окрема частина кампусу"
+  },
+  "Prepojenie budov": {
+    "ru": "Переход между зданиями",
+    "uk": "Перехід між будівлями"
+  },
+  "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch": {
+    "ru": "V1 и V2 соединяет коридор; лекционные и семинарские аудитории есть в обоих",
+    "uk": "V1 і V2 з'єднує коридор; лекційні та семінарські аудиторії є в обох"
+  },
+  "Čísla miestností V1": {
+    "ru": "Номера аудиторий в V1",
+    "uk": "Номери аудиторій у V1"
+  },
+  "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203": {
+    "ru": "Буква блока (B слева, D справа), потом этаж (1 = первый этаж) и две цифры аудитории, например B108, D115, B203",
+    "uk": "Літера блоку (B ліворуч, D праворуч), потім поверх (1 = перший поверх) і дві цифри аудиторії, наприклад B108, D115, B203"
+  },
+  "Čísla miestností V2": {
+    "ru": "Номера аудиторий в V2",
+    "uk": "Номери аудиторій у V2"
+  },
+  "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08": {
+    "ru": "Буква блока (B левое крыло, A центр, C, D, E правое крыло), этаж (1 = первый этаж) и две цифры аудитории, например B1.02, C1.10, A5_08",
+    "uk": "Літера блоку (B ліве крило, A центр, C, D, E праве крило), поверх (1 = перший поверх) і дві цифри аудиторії, наприклад B1.02, C1.10, A5_08"
+  },
+  "Šatňa v budove V1": {
+    "ru": "Гардероб в здании V1",
+    "uk": "Гардероб у будівлі V1"
+  },
+  "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1": {
+    "ru": "В конце вестибюля слева в блоке B, помещение ŠATŇA 1",
+    "uk": "У кінці вестибюля ліворуч у блоці B, приміщення ŠATŇA 1"
+  },
+  "Šatňa v budove V2": {
+    "ru": "Гардероб в здании V2",
+    "uk": "Гардероб у будівлі V2"
+  },
+  "Vo vestibule za výťahmi, miestnosť 1.08": {
+    "ru": "В вестибюле за лифтами, помещение 1.08",
+    "uk": "У вестибюлі за ліфтами, приміщення 1.08"
+  },
+  "EUBA FAN SHOP": {
+    "ru": "EUBA FAN SHOP",
+    "uk": "EUBA FAN SHOP"
+  },
+  "shop.euba.sk": {
+    "ru": "shop.euba.sk",
+    "uk": "shop.euba.sk"
+  },
+  "Čo vybavíš v AiS": {
+    "ru": "Что можно сделать в AiS",
+    "uk": "Що можна зробити в AiS"
+  },
+  "Skúšky": {
+    "ru": "Экзамены",
+    "uk": "Іспити"
+  },
+  "Prihlasovanie na termíny a zapísané známky": {
+    "ru": "Запись на даты экзаменов и выставленные оценки",
+    "uk": "Запис на дати іспитів і виставлені оцінки"
+  },
+  "Zápis predmetov": {
+    "ru": "Запись на предметы",
+    "uk": "Запис на предмети"
+  },
+  "Na nasledujúci semester alebo celý akademický rok": {
+    "ru": "На следующий семестр или на весь учебный год",
+    "uk": "На наступний семестр або на весь навчальний рік"
+  },
+  "Ubytovanie": {
+    "ru": "Проживание",
+    "uk": "Проживання"
+  },
+  "Žiadosť o internát sa podáva cez AiS": {
+    "ru": "Заявка на общежитие подаётся через AiS",
+    "uk": "Заявка на гуртожиток подається через AiS"
+  },
+  "Hodnotenie výučby": {
+    "ru": "Оценка преподавания",
+    "uk": "Оцінювання викладання"
+  },
+  "Prebieha vždy na konci semestra": {
+    "ru": "Проходит всегда в конце семестра",
+    "uk": "Відбувається завжди наприкінці семестру"
+  },
+  "Organizácia štúdia": {
+    "ru": "Организация учёбы",
+    "uk": "Організація навчання"
+  },
+  "Harmonogram akademického roka": {
+    "ru": "График учебного года",
+    "uk": "Графік навчального року"
+  },
+  "Rozpis semestra zverejňuje EUBA pred jeho začiatkom": {
+    "ru": "План семестра EUBA публикует перед его началом",
+    "uk": "План семестру EUBA оприлюднює перед його початком"
+  },
+  "Rozvrh": {
+    "ru": "Расписание",
+    "uk": "Розклад"
+  },
+  "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť": {
+    "ru": "На сайте университета за пару дней до начала занятий; в нём есть и время, и аудитория",
+    "uk": "На сайті університету за пару днів до початку занять; у ньому є і час, і аудиторія"
+  },
+  "Prednáška a seminár": {
+    "ru": "Лекция и семинар",
+    "uk": "Лекція і семінар"
+  },
+  "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku": {
+    "ru": "Лекция для всего потока, семинар или практика в маленькой группе (krúžok)",
+    "uk": "Лекція для всього потоку, семінар чи практичне в малій групі (krúžok)"
+  },
+  "Podmienka pripustenia ku skúške": {
+    "ru": "Условие допуска к экзамену",
+    "uk": "Умова допуску до іспиту"
+  },
+  "Úspešné absolvovanie seminára počas semestra": {
+    "ru": "Успешно пройденный семинар в течение семестра",
+    "uk": "Успішно пройдений семінар протягом семестру"
+  },
+  "Termíny skúšky": {
+    "ru": "Даты экзамена",
+    "uk": "Дати іспиту"
+  },
+  "Jeden riadny a jeden opravný": {
+    "ru": "Одна основная и одна пересдача",
+    "uk": "Одна основна і одна перездача"
+  },
+  "Erasmus+": {
+    "ru": "Erasmus+",
+    "uk": "Erasmus+"
+  },
+  "Čo ponúka": {
+    "ru": "Что предлагает",
+    "uk": "Що пропонує"
+  },
+  "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže": {
+    "ru": "Программа мобильности ЕС: учёба в ЕС и за его пределами, практические и выпускные стажировки",
+    "uk": "Програма мобільності ЄС: навчання в ЄС і поза ним, практичні та випускні стажування"
+  },
+  "Limit mobilít": {
+    "ru": "Лимит мобильностей",
+    "uk": "Ліміт мобільностей"
+  },
+  "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane": {
+    "ru": "Максимум 12 месяцев суммарно на одной ступени учёбы; участвовать можно несколько раз",
+    "uk": "Максимум 12 місяців сумарно на одному ступені навчання; брати участь можна кілька разів"
+  },
+  "Výber – štúdium v EÚ": {
+    "ru": "Отбор – учёба в ЕС",
+    "uk": "Відбір – навчання в ЄС"
+  },
+  "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility": {
+    "ru": "Первый тур на факультете (конкурсы обычно в январе), второй в Oddelenie medzinárodnej mobility (отдел международной мобильности)",
+    "uk": "Перший тур на факультеті (конкурси зазвичай у січні), другий в Oddelenie medzinárodnej mobility (відділ міжнародної мобільності)"
+  },
+  "Výber – štúdium mimo EÚ": {
+    "ru": "Отбор – учёба вне ЕС",
+    "uk": "Відбір – навчання поза ЄС"
+  },
+  "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred": {
+    "ru": "Общеуниверситетский отбор обычно 2× в год (март/октябрь), объявление минимум за 2 недели",
+    "uk": "Загальноуніверситетський відбір зазвичай 2× на рік (березень/жовтень), оголошення щонайменше за 2 тижні"
+  },
+  "Praktické stáže": {
+    "ru": "Практические стажировки",
+    "uk": "Практичні стажування"
+  },
+  "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku": {
+    "ru": "Конкурс объявляет факультет после начала учебного года; стажировку надо пройти в том же учебном году",
+    "uk": "Конкурс оголошує факультет після початку навчального року; стажування треба пройти в тому самому навчальному році"
+  },
+  "Absolventské stáže": {
+    "ru": "Выпускные стажировки",
+    "uk": "Випускні стажування"
+  },
+  "Aj po skončení štúdia, v spolupráci s WorkSpace Europe": {
+    "ru": "Даже после окончания учёбы, вместе с WorkSpace Europe",
+    "uk": "Навіть після закінчення навчання, разом із WorkSpace Europe"
+  },
+  "WorkSpace Europe": {
+    "ru": "WorkSpace Europe",
+    "uk": "WorkSpace Europe"
+  },
+  "workspaceeurope.sk": {
+    "ru": "workspaceeurope.sk",
+    "uk": "workspaceeurope.sk"
+  },
+  "Erasmus+ štúdium v 10 krokoch": {
+    "ru": "Учёба по Erasmus+ за 10 шагов",
+    "uk": "Навчання за Erasmus+ у 10 кроків"
+  },
+  "Postup krok za krokom na stránke EUBA": {
+    "ru": "Пошаговый порядок на сайте EUBA",
+    "uk": "Покроковий порядок на сайті EUBA"
+  },
+  "Manuál k študijnému pobytu": {
+    "ru": "Инструкция по учебному пребыванию",
+    "uk": "Інструкція щодо навчального перебування"
+  },
+  "PDF s podmienkami grantu": {
+    "ru": "PDF с условиями гранта",
+    "uk": "PDF з умовами гранту"
+  },
+  "Ďalšie výmenné programy": {
+    "ru": "Другие обменные программы",
+    "uk": "Інші програми обміну"
+  },
+  "Programy okrem Erasmu": {
+    "ru": "Программы кроме Erasmus",
+    "uk": "Програми крім Erasmus"
+  },
+  "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity": {
+    "ru": "CEEPUS, Národný štipendijný program, Международный вышеградский фонд и двусторонние договоры университета",
+    "uk": "CEEPUS, Národný štipendijný program, Міжнародний вишеградський фонд і двосторонні договори університету"
+  },
+  "Bilaterálne pobyty": {
+    "ru": "Двусторонние обмены",
+    "uk": "Двосторонні обміни"
+  },
+  "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty": {
+    "ru": "Регулируются Внутренней директивой № 2/2012 о направлении студентов на зарубежные учебные пребывания",
+    "uk": "Регулюються Внутрішньою директивою № 2/2012 про направлення студентів на закордонні навчальні перебування"
+  },
+  "Medzinárodné vzťahy EUBA": {
+    "ru": "Международные связи EUBA",
+    "uk": "Міжнародні зв'язки EUBA"
+  },
+  "Všetky informácie o mobilitách": {
+    "ru": "Вся информация о мобильностях",
+    "uk": "Уся інформація про мобільності"
+  },
+  "Euromates": {
+    "ru": "Euromates",
+    "uk": "Euromates"
+  },
+  "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017": {
+    "ru": "Недельная программа обмена с VŠE в Праге и Экономическим университетом во Вроцлаве, работает с 2017 года",
+    "uk": "Тижнева програма обміну з VŠE у Празі та Економічним університетом у Вроцлаві, працює з 2017 року"
+  },
+  "Pre koho": {
+    "ru": "Для кого",
+    "uk": "Для кого"
+  },
+  "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené": {
+    "ru": "Для всех студентов EUBA; проживание и частично питание обеспечены",
+    "uk": "Для всіх студентів EUBA; проживання і частково харчування забезпечені"
+  },
+  "Kedy": {
+    "ru": "Когда",
+    "uk": "Коли"
+  },
+  "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach": {
+    "ru": "Обычно на рубеже октября и ноября; даты обмена и отбора ŠP публикует в соцсетях",
+    "uk": "Зазвичай на межі жовтня і листопада; дати обміну й відбору ŠP публікує в соцмережах"
+  },
+  "Tlačová správa z roku 2018": {
+    "ru": "Пресс-релиз 2018 года",
+    "uk": "Пресреліз 2018 року"
+  },
+  "Popis programu na stránke EUBA": {
+    "ru": "Описание программы на сайте EUBA",
+    "uk": "Опис програми на сайті EUBA"
+  },
+  "ŠVOČ – študentská vedecká odborná činnosť": {
+    "ru": "ŠVOČ – студенческая научная работа",
+    "uk": "ŠVOČ – студентська наукова робота"
+  },
+  "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka": {
+    "ru": "Научная работа студента под руководством преподавателя-исследователя",
+    "uk": "Наукова робота студента під керівництвом викладача-дослідника"
+  },
+  "Čo z toho máš": {
+    "ru": "Что тебе это даёт",
+    "uk": "Що тобі це дає"
+  },
+  "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu": {
+    "ru": "Дополнительные баллы к заявке на общежитие и при отборе на Erasmus+, подготовка к дипломной работе",
+    "uk": "Додаткові бали до заявки на гуртожиток і при відборі на Erasmus+, підготовка до дипломної роботи"
+  },
+  "Kolá súťaže": {
+    "ru": "Туры конкурса",
+    "uk": "Тури конкурсу"
+  },
+  "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni": {
+    "ru": "Факультетские туры; работы-победители идут на общеуниверситетский тур, обычно в июне",
+    "uk": "Факультетські тури; роботи-переможці йдуть на загальноуніверситетський тур, зазвичай у червні"
+  },
+  "Odmena": {
+    "ru": "Награда",
+    "uk": "Нагорода"
+  },
+  "Najlepšie práce sú každoročne ocenené aj finančne": {
+    "ru": "Лучшие работы каждый год награждают и деньгами",
+    "uk": "Найкращі роботи щороку нагороджують і грошима"
+  },
+  "ŠVOČ na EUBA": {
+    "ru": "ŠVOČ в EUBA",
+    "uk": "ŠVOČ в EUBA"
+  },
+  "Celouniverzitné informácie": {
+    "ru": "Общеуниверситетская информация",
+    "uk": "Загальноуніверситетська інформація"
+  },
+  "ŠVOČ – FAJ": {
+    "ru": "ŠVOČ – FAJ",
+    "uk": "ŠVOČ – FAJ"
+  },
+  "Fakulta aplikovaných jazykov": {
+    "ru": "Факультет прикладных языков",
+    "uk": "Факультет прикладних мов"
+  },
+  "ŠVOČ – FHI": {
+    "ru": "ŠVOČ – FHI",
+    "uk": "ŠVOČ – FHI"
+  },
+  "Fakulta hospodárskej informatiky": {
+    "ru": "Факультет хозяйственной информатики",
+    "uk": "Факультет господарської інформатики"
+  },
+  "ŠVOČ – FMV": {
+    "ru": "ŠVOČ – FMV",
+    "uk": "ŠVOČ – FMV"
+  },
+  "Fakulta medzinárodných vzťahov": {
+    "ru": "Факультет международных отношений",
+    "uk": "Факультет міжнародних відносин"
+  },
+  "ŠVOČ – FPM": {
+    "ru": "ŠVOČ – FPM",
+    "uk": "ŠVOČ – FPM"
+  },
+  "Fakulta podnikového manažmentu": {
+    "ru": "Факультет управления предприятием",
+    "uk": "Факультет управління підприємством"
+  },
+  "ŠVOČ – NHF": {
+    "ru": "ŠVOČ – NHF",
+    "uk": "ŠVOČ – NHF"
+  },
+  "Národohospodárska fakulta": {
+    "ru": "Народнохозяйственный факультет",
+    "uk": "Народногосподарський факультет"
+  },
+  "ŠVOČ – OF": {
+    "ru": "ŠVOČ – OF",
+    "uk": "ŠVOČ – OF"
+  },
+  "Obchodná fakulta": {
+    "ru": "Торговый факультет",
+    "uk": "Торговий факультет"
+  },
+  "ŠVOČ – PHF": {
+    "ru": "ŠVOČ – PHF",
+    "uk": "ŠVOČ – PHF"
+  },
+  "Podnikovohospodárska fakulta so sídlom v Košiciach": {
+    "ru": "Факультет экономики предприятия в Кошице",
+    "uk": "Факультет економіки підприємства в Кошицях"
+  },
+  "Prieskumy Študentského parlamentu": {
+    "ru": "Опросы Студенческого парламента",
+    "uk": "Опитування Студентського парламенту"
+  },
+  "Stránka prieskumov": {
+    "ru": "Страница опросов",
+    "uk": "Сторінка опитувань"
+  },
+  "V čase kontroly 18. 9. 2026 bola stránka bez obsahu": {
+    "ru": "На момент проверки 18. 9. 2026 страница была пустой",
+    "uk": "На момент перевірки 18. 9. 2026 сторінка була порожня"
+  },
+  "Kontakt na Študentský parlament": {
+    "ru": "Контакты Студенческого парламента",
+    "uk": "Контакти Студентського парламенту"
+  },
+  "E-mail": {
+    "ru": "E-mail",
+    "uk": "E-mail"
+  },
+  "prezident@sp.euba.sk": {
+    "ru": "prezident@sp.euba.sk",
+    "uk": "prezident@sp.euba.sk"
+  },
+  "Kancelária ŠP": {
+    "ru": "Офис ŠP",
+    "uk": "Офіс ŠP"
+  },
+  "Miestnosť E9.06, kontaktné miesto pre študentov": {
+    "ru": "Кабинет E9.06, контактное место для студентов",
+    "uk": "Кабінет E9.06, контактне місце для студентів"
+  },
+  "Adresa": {
+    "ru": "Адрес",
+    "uk": "Адреса"
+  },
+  "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava": {
+    "ru": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava",
+    "uk": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava"
+  },
+  "Osobné stretnutie": {
+    "ru": "Личная встреча",
+    "uk": "Особиста зустріч"
+  },
+  "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom": {
+    "ru": "Можно договориться по e-mail, как и о сотрудничестве с парламентом",
+    "uk": "Можна домовитися по e-mail, як і про співпрацю з парламентом"
+  },
+  "O univerzite": {
+    "ru": "Об университете",
+    "uk": "Про університет"
+  },
+  "Zameranie": {
+    "ru": "Направление",
+    "uk": "Напрям"
+  },
+  "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia": {
+    "ru": "Экономические и управленческие программы на всех трёх ступенях учёбы",
+    "uk": "Економічні й управлінські програми на всіх трьох ступенях навчання"
+  },
+  "Postavenie": {
+    "ru": "Статус",
+    "uk": "Статус"
+  },
+  "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu": {
+    "ru": "По сайту ŠP крупнейший университет такого профиля в Словакии, часть европейского пространства высшего образования и исследований",
+    "uk": "За сайтом ŠP найбільший університет такого профілю в Словаччині, частина європейського простору вищої освіти й досліджень"
+  },
+  "Fakulty": {
+    "ru": "Факультеты",
+    "uk": "Факультети"
+  },
+  "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach": {
+    "ru": "NHF, OF, FHI, FPM, FMV, FAJ и PHF в Кошице",
+    "uk": "NHF, OF, FHI, FPM, FMV, FAJ і PHF у Кошицях"
+  },
+  "Ktorý autobus ide z internátu a kde vystúpiť": {
+    "ru": "Какой автобус идёт от общежития и где выходить",
+    "uk": "Який автобус їде від гуртожитку і де виходити"
+  },
+  "Obedy, bufety a ako sa za ne platí": {
+    "ru": "Обеды, буфеты и чем за них платить",
+    "uk": "Обіди, буфети і чим за них платити"
+  },
+  "Kde je, ako sa zaregistruješ a čo si požičiaš": {
+    "ru": "Где она, как зарегистрируешься и что возьмёшь",
+    "uk": "Де вона, як зареєструєшся і що візьмеш"
+  },
+  "Na čo slúži, prolongácia a platba": {
+    "ru": "Для чего нужен, продление и оплата",
+    "uk": "Для чого потрібен, продовження і оплата"
+  },
+  "Školská pošta, Office 365 a tímy predmetov": {
+    "ru": "Университетская почта, Office 365 и команды по предметам",
+    "uk": "Університетська пошта, Office 365 і команди з предметів"
+  },
+  "Ktorá budova, ktorá fakulta a čo v nej nájdeš": {
+    "ru": "Какое здание, какой факультет и что в нём найдёшь",
+    "uk": "Яка будівля, який факультет і що в ній знайдеш"
+  },
+  "Kde sa býva a ako sa o miesto žiada": {
+    "ru": "Где живут и как подать заявку на место",
+    "uk": "Де живуть і як подати заявку на місце"
+  },
+  "Semester, kredity a skúšky v skratke": {
+    "ru": "Семестр, кредиты и экзамены вкратце",
+    "uk": "Семестр, кредити та іспити стисло"
+  },
+  "Čo sa v AiS vybavuje okrem rozvrhu": {
+    "ru": "Что делают в AiS кроме расписания",
+    "uk": "Що роблять в AiS крім розкладу"
+  },
+  "Štúdium a stáž v zahraničí": {
+    "ru": "Учёба и стажировка за границей",
+    "uk": "Навчання і стажування за кордоном"
+  },
+  "Kam sa dá vycestovať mimo Erasmu": {
+    "ru": "Куда можно поехать кроме Erasmus",
+    "uk": "Куди можна поїхати крім Erasmus"
+  },
+  "Pomoc pre zahraničných študentov": {
+    "ru": "Помощь иностранным студентам",
+    "uk": "Допомога іноземним студентам"
+  },
+  "Študentská vedecká práca a jej ceny": {
+    "ru": "Студенческая научная работа и её призы",
+    "uk": "Студентська наукова робота та її призи"
+  },
+  "Kde napísať študentskému parlamentu": {
+    "ru": "Куда написать студенческому парламенту",
+    "uk": "Куди написати студентському парламенту"
+  },
+  "Základné čísla a fakulty": {
+    "ru": "Основные цифры и факультеты",
+    "uk": "Основні цифри і факультети"
+  }
+}

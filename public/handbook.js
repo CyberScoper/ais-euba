@@ -9,75 +9,88 @@ export const HANDBOOK = [
   {
     "id": "doprava",
     "icon": "bus",
+    "photo": "/photos/uni/doprava.webp",
     "title": {
       "sk": "Doprava z internátov na univerzitu",
-      "ru": "Doprava z internátov na univerzitu",
-      "uk": "Doprava z internátov na univerzitu"
+      "ru": "Транспорт из общежитий в университет",
+      "uk": "Транспорт із гуртожитків до університету",
+      "en": "Doprava z internátov na univerzitu"
     },
     "summary": {
       "sk": "Ktorý autobus ide z internátu a kde vystúpiť",
-      "ru": "Ktorý autobus ide z internátu a kde vystúpiť",
-      "uk": "Ktorý autobus ide z internátu a kde vystúpiť"
+      "ru": "Какой автобус идёт от общежития и где выходить",
+      "uk": "Який автобус їде від гуртожитку і де виходити",
+      "en": "Ktorý autobus ide z internátu a kde vystúpiť"
     },
     "items": [
       {
         "label": {
           "sk": "ŠD Starohájska 4 a 8",
-          "ru": "ŠD Starohájska 4 a 8",
-          "uk": "ŠD Starohájska 4 a 8"
+          "ru": "ŠD Starohájska 4 и 8",
+          "uk": "ŠD Starohájska 4 і 8",
+          "en": "ŠD Starohájska 4 a 8"
         },
         "value": {
           "sk": "Zastávka Starohájska, autobus č. 68",
-          "ru": "Zastávka Starohájska, autobus č. 68",
-          "uk": "Zastávka Starohájska, autobus č. 68"
+          "ru": "Остановка Starohájska, автобус № 68",
+          "uk": "Зупинка Starohájska, автобус № 68",
+          "en": "Zastávka Starohájska, autobus č. 68"
         }
       },
       {
         "label": {
           "sk": "ŠD Ekonóm",
-          "ru": "ŠD Ekonóm",
-          "uk": "ŠD Ekonóm"
+          "ru": "ŠD Ekonóm (общежитие)",
+          "uk": "ŠD Ekonóm (гуртожиток)",
+          "en": "ŠD Ekonóm"
         },
         "value": {
           "sk": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská",
-          "ru": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská",
-          "uk": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská"
+          "ru": "Автобус № 87 – в университет от остановки Prístav, обратно от остановки Plynárenská",
+          "uk": "Автобус № 87 – до університету від зупинки Prístav, назад від зупинки Plynárenská",
+          "en": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská"
         }
       },
       {
         "label": {
           "sk": "ŠD Vlčie hrdlo",
-          "ru": "ŠD Vlčie hrdlo",
-          "uk": "ŠD Vlčie hrdlo"
+          "ru": "ŠD Vlčie hrdlo (общежитие)",
+          "uk": "ŠD Vlčie hrdlo (гуртожиток)",
+          "en": "ŠD Vlčie hrdlo"
         },
         "value": {
           "sk": "Zastávka Refinery Gallery, autobus č. 87",
-          "ru": "Zastávka Refinery Gallery, autobus č. 87",
-          "uk": "Zastávka Refinery Gallery, autobus č. 87"
+          "ru": "Остановка Refinery Gallery, автобус № 87",
+          "uk": "Зупинка Refinery Gallery, автобус № 87",
+          "en": "Zastávka Refinery Gallery, autobus č. 87"
         }
       },
       {
         "label": {
           "sk": "ŠD HOPA a DOPA",
-          "ru": "ŠD HOPA a DOPA",
-          "uk": "ŠD HOPA a DOPA"
+          "ru": "ŠD HOPA и DOPA",
+          "uk": "ŠD HOPA і DOPA",
+          "en": "ŠD HOPA a DOPA"
         },
         "value": {
           "sk": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého",
-          "ru": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého",
-          "uk": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého"
+          "ru": "Автобус № 84 от остановки Hroboňova, выходить на Bulíková. Во время семестра ещё автобус № 184 – в университет от остановки Hroboňova, обратно выход на Prokopa Veľkého",
+          "uk": "Автобус № 84 від зупинки Hroboňova, виходити на Bulíková. Під час семестру ще автобус № 184 – до університету від зупинки Hroboňova, назад вихід на Prokopa Veľkého",
+          "en": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého"
         }
       },
       {
         "label": {
           "sk": "Cestovné poriadky MHD",
-          "ru": "Cestovné poriadky MHD",
-          "uk": "Cestovné poriadky MHD"
+          "ru": "Расписания городского транспорта",
+          "uk": "Розклади міського транспорту",
+          "en": "Cestovné poriadky MHD"
         },
         "value": {
           "sk": "imhd.sk/ba, prípadne ich mobilná aplikácia",
-          "ru": "imhd.sk/ba, prípadne ich mobilná aplikácia",
-          "uk": "imhd.sk/ba, prípadne ich mobilná aplikácia"
+          "ru": "imhd.sk/ba или их мобильное приложение",
+          "uk": "imhd.sk/ba або їхній мобільний застосунок",
+          "en": "imhd.sk/ba, prípadne ich mobilná aplikácia"
         },
         "url": "https://imhd.sk/ba"
       }
@@ -87,111 +100,130 @@ export const HANDBOOK = [
   {
     "id": "stravovanie",
     "icon": "food",
+    "photo": "/photos/uni/stravovanie.webp",
     "title": {
       "sk": "Jedáleň a bufety",
-      "ru": "Jedáleň a bufety",
-      "uk": "Jedáleň a bufety"
+      "ru": "Столовая и буфеты",
+      "uk": "Їдальня і буфети",
+      "en": "Jedáleň a bufety"
     },
     "summary": {
       "sk": "Obedy, bufety a ako sa za ne platí",
-      "ru": "Obedy, bufety a ako sa za ne platí",
-      "uk": "Obedy, bufety a ako sa za ne platí"
+      "ru": "Обеды, буфеты и чем за них платить",
+      "uk": "Обіди, буфети і чим за них платити",
+      "en": "Obedy, bufety a ako sa za ne platí"
     },
     "items": [
       {
         "label": {
           "sk": "Hlavná jedáleň",
-          "ru": "Hlavná jedáleň",
-          "uk": "Hlavná jedáleň"
+          "ru": "Главная столовая",
+          "uk": "Головна їдальня",
+          "en": "Hlavná jedáleň"
         },
         "value": {
           "sk": "V priestoroch ŠD Dolnozemská (v starej budove)",
-          "ru": "V priestoroch ŠD Dolnozemská (v starej budove)",
-          "uk": "V priestoroch ŠD Dolnozemská (v starej budove)"
+          "ru": "В помещениях ŠD Dolnozemská (в старом здании)",
+          "uk": "У приміщеннях ŠD Dolnozemská (у старій будівлі)",
+          "en": "V priestoroch ŠD Dolnozemská (v starej budove)"
         }
       },
       {
         "label": {
           "sk": "Platba za obed",
-          "ru": "Platba za obed",
-          "uk": "Platba za obed"
+          "ru": "Оплата обеда",
+          "uk": "Оплата обіду",
+          "en": "Platba za obed"
         },
         "value": {
           "sk": "ISIC kartou; kartu treba najprv aktivovať a dobiť",
-          "ru": "ISIC kartou; kartu treba najprv aktivovať a dobiť",
-          "uk": "ISIC kartou; kartu treba najprv aktivovať a dobiť"
+          "ru": "Картой ISIC; карту сначала надо активировать и пополнить",
+          "uk": "Карткою ISIC; картку спершу треба активувати й поповнити",
+          "en": "ISIC kartou; kartu treba najprv aktivovať a dobiť"
         }
       },
       {
         "label": {
           "sk": "Objednávanie obedov",
-          "ru": "Objednávanie obedov",
-          "uk": "Objednávanie obedov"
+          "ru": "Заказ обедов",
+          "uk": "Замовлення обідів",
+          "en": "Objednávanie obedov"
         },
         "value": {
           "sk": "Cez internet alebo na termináloch v škole, spravidla na chodbách",
-          "ru": "Cez internet alebo na termináloch v škole, spravidla na chodbách",
-          "uk": "Cez internet alebo na termináloch v škole, spravidla na chodbách"
+          "ru": "Через интернет или на терминалах в университете, обычно в коридорах",
+          "uk": "Через інтернет або на терміналах в університеті, зазвичай у коридорах",
+          "en": "Cez internet alebo na termináloch v škole, spravidla na chodbách"
         }
       },
       {
         "label": {
           "sk": "Bufet – stará budova",
-          "ru": "Bufet – stará budova",
-          "uk": "Bufet – stará budova"
+          "ru": "Буфет – старое здание",
+          "uk": "Буфет – стара будівля",
+          "en": "Bufet – stará budova"
         },
         "value": {
           "sk": "Hneď pri vchode",
-          "ru": "Hneď pri vchode",
-          "uk": "Hneď pri vchode"
+          "ru": "Сразу у входа",
+          "uk": "Одразу біля входу",
+          "en": "Hneď pri vchode"
         }
       },
       {
         "label": {
           "sk": "Bufet – nová budova",
-          "ru": "Bufet – nová budova",
-          "uk": "Bufet – nová budova"
+          "ru": "Буфет – новое здание",
+          "uk": "Буфет – нова будівля",
+          "en": "Bufet – nová budova"
         },
         "value": {
           "sk": "Napravo od výťahov",
-          "ru": "Napravo od výťahov",
-          "uk": "Napravo od výťahov"
+          "ru": "Справа от лифтов",
+          "uk": "Праворуч від ліфтів",
+          "en": "Napravo od výťahov"
         }
       },
       {
         "label": {
           "sk": "Menšie prevádzky",
-          "ru": "Menšie prevádzky",
-          "uk": "Menšie prevádzky"
+          "ru": "Небольшие точки",
+          "uk": "Невеликі точки",
+          "en": "Menšie prevádzky"
         },
         "value": {
           "sk": "Pizza, smoothie, káva",
-          "ru": "Pizza, smoothie, káva",
-          "uk": "Pizza, smoothie, káva"
+          "ru": "Пицца, смузи, кофе",
+          "uk": "Піца, смузі, кава",
+          "en": "Pizza, smoothie, káva"
         }
       },
       {
         "label": {
           "sk": "Jedáleň na internáte",
-          "ru": "Jedáleň na internáte",
-          "uk": "Jedáleň na internáte"
+          "ru": "Столовая в общежитии",
+          "uk": "Їдальня в гуртожитку",
+          "en": "Jedáleň na internáte"
         },
         "value": {
           "sk": "Priamo v budove ŠD Ekonóm",
-          "ru": "Priamo v budove ŠD Ekonóm",
-          "uk": "Priamo v budove ŠD Ekonóm"
+          "ru": "Прямо в здании общежития ŠD Ekonóm",
+          "uk": "Прямо в будівлі гуртожитку ŠD Ekonóm",
+          "en": "Priamo v budove ŠD Ekonóm"
         }
       },
       {
         "label": {
           "sk": "Stravovanie na stránke EUBA",
-          "ru": "Stravovanie na stránke EUBA",
-          "uk": "Stravovanie na stránke EUBA"
+          "ru": "Питание на сайте EUBA",
+          "uk": "Харчування на сайті EUBA",
+          "en": "Stravovanie na stránke EUBA"
         },
         "value": {
           "sk": "Ceny, čipovanie a prevádzkové časy",
-          "ru": "Ceny, čipovanie a prevádzkové časy",
-          "uk": "Ceny, čipovanie a prevádzkové časy"
+          "ru": "Цены, чипование карты и часы работы",
+          "uk": "Ціни, чипування картки і години роботи",
+          "en": "Ceny, čipovanie a prevádzkové časy"
         },
         "url": "https://euba.sk/sluzby/stravovanie"
       }
@@ -201,123 +233,144 @@ export const HANDBOOK = [
   {
     "id": "kniznica",
     "icon": "book",
+    "photo": "/photos/uni/kniznica.webp",
     "title": {
       "sk": "Slovenská ekonomická knižnica (SEK)",
-      "ru": "Slovenská ekonomická knižnica (SEK)",
-      "uk": "Slovenská ekonomická knižnica (SEK)"
+      "ru": "Словацкая экономическая библиотека (SEK)",
+      "uk": "Словацька економічна бібліотека (SEK)",
+      "en": "Slovenská ekonomická knižnica (SEK)"
     },
     "summary": {
       "sk": "Kde je, ako sa zaregistruješ a čo si požičiaš",
-      "ru": "Kde je, ako sa zaregistruješ a čo si požičiaš",
-      "uk": "Kde je, ako sa zaregistruješ a čo si požičiaš"
+      "ru": "Где она, как зарегистрируешься и что возьмёшь",
+      "uk": "Де вона, як зареєструєшся і що візьмеш",
+      "en": "Kde je, ako sa zaregistruješ a čo si požičiaš"
     },
     "items": [
       {
         "label": {
           "sk": "Kde sídli",
-          "ru": "Kde sídli",
-          "uk": "Kde sídli"
+          "ru": "Где находится",
+          "uk": "Де розташована",
+          "en": "Kde sídli"
         },
         "value": {
           "sk": "Stará budova, 2. až 4. poschodie",
-          "ru": "Stará budova, 2. až 4. poschodie",
-          "uk": "Stará budova, 2. až 4. poschodie"
+          "ru": "Старое здание, со 2-го по 4-й этаж",
+          "uk": "Стара будівля, з 2-го по 4-й поверх",
+          "en": "Stará budova, 2. až 4. poschodie"
         }
       },
       {
         "label": {
           "sk": "Požičovňa",
-          "ru": "Požičovňa",
-          "uk": "Požičovňa"
+          "ru": "Абонемент (Požičovňa)",
+          "uk": "Абонемент (Požičovňa)",
+          "en": "Požičovňa"
         },
         "value": {
           "sk": "2. poschodie starej budovy",
-          "ru": "2. poschodie starej budovy",
-          "uk": "2. poschodie starej budovy"
+          "ru": "2-й этаж старого здания",
+          "uk": "2-й поверх старої будівлі",
+          "en": "2. poschodie starej budovy"
         }
       },
       {
         "label": {
           "sk": "Registrácia",
-          "ru": "Registrácia",
-          "uk": "Registrácia"
+          "ru": "Регистрация",
+          "uk": "Реєстрація",
+          "en": "Registrácia"
         },
         "value": {
           "sk": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok",
-          "ru": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok",
-          "uk": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok"
+          "ru": "Лично в абонементе (Požičovňa): покажешь ISIC, подпишешь заявление и заплатишь регистрационный сбор",
+          "uk": "Особисто в абонементі (Požičovňa): покажеш ISIC, підпишеш заяву і заплатиш реєстраційний збір",
+          "en": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok"
         }
       },
       {
         "label": {
           "sk": "Prihlásenie do online katalógu",
-          "ru": "Prihlásenie do online katalógu",
-          "uk": "Prihlásenie do online katalógu"
+          "ru": "Вход в онлайн-каталог",
+          "uk": "Вхід в онлайн-каталог",
+          "en": "Prihlásenie do online katalógu"
         },
         "value": {
           "sk": "Číslo ISICu a heslo zadané pri registrácii v knižnici",
-          "ru": "Číslo ISICu a heslo zadané pri registrácii v knižnici",
-          "uk": "Číslo ISICu a heslo zadané pri registrácii v knižnici"
+          "ru": "Номер ISIC и пароль, заданный при регистрации в библиотеке",
+          "uk": "Номер ISIC і пароль, заданий під час реєстрації в бібліотеці",
+          "en": "Číslo ISICu a heslo zadané pri registrácii v knižnici"
         }
       },
       {
         "label": {
           "sk": "Objednanie knihy",
-          "ru": "Objednanie knihy",
-          "uk": "Objednanie knihy"
+          "ru": "Заказ книги",
+          "uk": "Замовлення книжки",
+          "en": "Objednanie knihy"
         },
         "value": {
           "sk": "Iba cez žiadanku v online katalógu",
-          "ru": "Iba cez žiadanku v online katalógu",
-          "uk": "Iba cez žiadanku v online katalógu"
+          "ru": "Только через заявку (žiadanka) в онлайн-каталоге",
+          "uk": "Тільки через заявку (žiadanka) в онлайн-каталозі",
+          "en": "Iba cez žiadanku v online katalógu"
         }
       },
       {
         "label": {
           "sk": "Prevzatie",
-          "ru": "Prevzatie",
-          "uk": "Prevzatie"
+          "ru": "Получение",
+          "uk": "Отримання",
+          "en": "Prevzatie"
         },
         "value": {
           "sk": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa",
-          "ru": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa",
-          "uk": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa"
+          "ru": "В абонементе (Požičovňa) через час после заявки, не позже закрытия следующего рабочего дня",
+          "uk": "В абонементі (Požičovňa) через годину після заявки, не пізніше закриття наступного робочого дня",
+          "en": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa"
         }
       },
       {
         "label": {
           "sk": "Limit výpožičiek",
-          "ru": "Limit výpožičiek",
-          "uk": "Limit výpožičiek"
+          "ru": "Лимит выдачи",
+          "uk": "Ліміт видачі",
+          "en": "Limit výpožičiek"
         },
         "value": {
           "sk": "30 kníh naraz",
-          "ru": "30 kníh naraz",
-          "uk": "30 kníh naraz"
+          "ru": "30 книг одновременно",
+          "uk": "30 книжок одночасно",
+          "en": "30 kníh naraz"
         }
       },
       {
         "label": {
           "sk": "Výpožičná doba",
-          "ru": "Výpožičná doba",
-          "uk": "Výpožičná doba"
+          "ru": "Срок пользования",
+          "uk": "Термін користування",
+          "en": "Výpožičná doba"
         },
         "value": {
           "sk": "Knihy 1 mesiac, učebnice a skriptá 1 semester",
-          "ru": "Knihy 1 mesiac, učebnice a skriptá 1 semester",
-          "uk": "Knihy 1 mesiac, učebnice a skriptá 1 semester"
+          "ru": "Книги 1 месяц, учебники и методички 1 семестр",
+          "uk": "Книжки 1 місяць, підручники і методички 1 семестр",
+          "en": "Knihy 1 mesiac, učebnice a skriptá 1 semester"
         }
       },
       {
         "label": {
           "sk": "Web knižnice",
-          "ru": "Web knižnice",
-          "uk": "Web knižnice"
+          "ru": "Сайт библиотеки",
+          "uk": "Сайт бібліотеки",
+          "en": "Web knižnice"
         },
         "value": {
           "sk": "sek.euba.sk",
           "ru": "sek.euba.sk",
-          "uk": "sek.euba.sk"
+          "uk": "sek.euba.sk",
+          "en": "sek.euba.sk"
         },
         "url": "https://sek.euba.sk/"
       }
@@ -327,207 +380,242 @@ export const HANDBOOK = [
   {
     "id": "isic",
     "icon": "card",
+    "photo": "/photos/uni/isic.webp",
     "title": {
       "sk": "ISIC a prolongácia",
-      "ru": "ISIC a prolongácia",
-      "uk": "ISIC a prolongácia"
+      "ru": "ISIC и продление (prolongácia)",
+      "uk": "ISIC і продовження (prolongácia)",
+      "en": "ISIC a prolongácia"
     },
     "summary": {
       "sk": "Na čo slúži, prolongácia a platba",
-      "ru": "Na čo slúži, prolongácia a platba",
-      "uk": "Na čo slúži, prolongácia a platba"
+      "ru": "Для чего нужен, продление и оплата",
+      "uk": "Для чого потрібен, продовження і оплата",
+      "en": "Na čo slúži, prolongácia a platba"
     },
     "items": [
       {
         "label": {
           "sk": "Čo to je",
-          "ru": "Čo to je",
-          "uk": "Čo to je"
+          "ru": "Что это",
+          "uk": "Що це",
+          "en": "Čo to je"
         },
         "value": {
           "sk": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa",
-          "ru": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa",
-          "uk": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa"
+          "ru": "Студенческое удостоверение; получишь его при записи на первый курс первой ступени",
+          "uk": "Студентське посвідчення; отримаєш його при записі на перший курс першого ступеня",
+          "en": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa"
         }
       },
       {
         "label": {
           "sk": "Na čo slúži",
-          "ru": "Na čo slúži",
-          "uk": "Na čo slúži"
+          "ru": "Для чего нужен",
+          "uk": "Для чого потрібен",
+          "en": "Na čo slúži"
         },
         "value": {
           "sk": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy",
-          "ru": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy",
-          "uk": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy"
+          "ru": "Вход в AiS и в помещения EUBA, столовая, библиотека, транспорт и другие скидки",
+          "uk": "Вхід в AiS і до приміщень EUBA, їдальня, бібліотека, транспорт та інші знижки",
+          "en": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy"
         }
       },
       {
         "label": {
           "sk": "Poplatok za prolongáciu",
-          "ru": "Poplatok za prolongáciu",
-          "uk": "Poplatok za prolongáciu"
+          "ru": "Плата за продление",
+          "uk": "Плата за продовження",
+          "en": "Poplatok za prolongáciu"
         },
         "value": {
           "sk": "15 €",
           "ru": "15 €",
-          "uk": "15 €"
+          "uk": "15 €",
+          "en": "15 €"
         }
       },
       {
         "label": {
           "sk": "IBAN",
           "ru": "IBAN",
-          "uk": "IBAN"
+          "uk": "IBAN",
+          "en": "IBAN"
         },
         "value": {
           "sk": "SK47 8180 0000 0070 0008 0671",
           "ru": "SK47 8180 0000 0070 0008 0671",
-          "uk": "SK47 8180 0000 0070 0008 0671"
+          "uk": "SK47 8180 0000 0070 0008 0671",
+          "en": "SK47 8180 0000 0070 0008 0671"
         }
       },
       {
         "label": {
           "sk": "Variabilný symbol",
-          "ru": "Variabilný symbol",
-          "uk": "Variabilný symbol"
+          "ru": "Variabilný symbol (переменный символ)",
+          "uk": "Variabilný symbol (змінний символ)",
+          "en": "Variabilný symbol"
         },
         "value": {
           "sk": "Rodné číslo bez lomky",
-          "ru": "Rodné číslo bez lomky",
-          "uk": "Rodné číslo bez lomky"
+          "ru": "Rodné číslo (личный номер) без косой черты",
+          "uk": "Rodné číslo (особистий номер) без скісної риски",
+          "en": "Rodné číslo bez lomky"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – NHF",
-          "ru": "Špecifický symbol – NHF",
-          "uk": "Špecifický symbol – NHF"
+          "ru": "Špecifický symbol (специфический символ) – NHF",
+          "uk": "Špecifický symbol (специфічний символ) – NHF",
+          "en": "Špecifický symbol – NHF"
         },
         "value": {
           "sk": "1010007",
           "ru": "1010007",
-          "uk": "1010007"
+          "uk": "1010007",
+          "en": "1010007"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – OF",
           "ru": "Špecifický symbol – OF",
-          "uk": "Špecifický symbol – OF"
+          "uk": "Špecifický symbol – OF",
+          "en": "Špecifický symbol – OF"
         },
         "value": {
           "sk": "1020007",
           "ru": "1020007",
-          "uk": "1020007"
+          "uk": "1020007",
+          "en": "1020007"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – FHI",
           "ru": "Špecifický symbol – FHI",
-          "uk": "Špecifický symbol – FHI"
+          "uk": "Špecifický symbol – FHI",
+          "en": "Špecifický symbol – FHI"
         },
         "value": {
           "sk": "1030007",
           "ru": "1030007",
-          "uk": "1030007"
+          "uk": "1030007",
+          "en": "1030007"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – FPM",
           "ru": "Špecifický symbol – FPM",
-          "uk": "Špecifický symbol – FPM"
+          "uk": "Špecifický symbol – FPM",
+          "en": "Špecifický symbol – FPM"
         },
         "value": {
           "sk": "1040007",
           "ru": "1040007",
-          "uk": "1040007"
+          "uk": "1040007",
+          "en": "1040007"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – FMV",
           "ru": "Špecifický symbol – FMV",
-          "uk": "Špecifický symbol – FMV"
+          "uk": "Špecifický symbol – FMV",
+          "en": "Špecifický symbol – FMV"
         },
         "value": {
           "sk": "1050007",
           "ru": "1050007",
-          "uk": "1050007"
+          "uk": "1050007",
+          "en": "1050007"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – FAJ",
           "ru": "Špecifický symbol – FAJ",
-          "uk": "Špecifický symbol – FAJ"
+          "uk": "Špecifický symbol – FAJ",
+          "en": "Špecifický symbol – FAJ"
         },
         "value": {
           "sk": "1060007",
           "ru": "1060007",
-          "uk": "1060007"
+          "uk": "1060007",
+          "en": "1060007"
         }
       },
       {
         "label": {
           "sk": "Špecifický symbol – PHF v Košiciach",
-          "ru": "Špecifický symbol – PHF v Košiciach",
-          "uk": "Špecifický symbol – PHF v Košiciach"
+          "ru": "Špecifický symbol – PHF в Кошице",
+          "uk": "Špecifický symbol – PHF у Кошицях",
+          "en": "Špecifický symbol – PHF v Košiciach"
         },
         "value": {
           "sk": "1070007",
           "ru": "1070007",
-          "uk": "1070007"
+          "uk": "1070007",
+          "en": "1070007"
         }
       },
       {
         "label": {
           "sk": "Postup",
-          "ru": "Postup",
-          "uk": "Postup"
+          "ru": "Порядок действий",
+          "uk": "Порядок дій",
+          "en": "Postup"
         },
         "value": {
           "sk": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka",
-          "ru": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka",
-          "uk": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka"
+          "ru": "Сначала запись на следующий учебный год, подтверждение записи лично в университете, потом марка о продлении (prolongačná známka)",
+          "uk": "Спершу запис на наступний навчальний рік, підтвердження запису особисто в університеті, потім марка про продовження (prolongačná známka)",
+          "en": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka"
         }
       },
       {
         "label": {
           "sk": "Kde vyzdvihnúť známku",
-          "ru": "Kde vyzdvihnúť známku",
-          "uk": "Kde vyzdvihnúť známku"
+          "ru": "Где забрать марку",
+          "uk": "Де забрати марку",
+          "en": "Kde vyzdvihnúť známku"
         },
         "value": {
           "sk": "Miestnosť A9.05, treba doklad o zaplatení poplatku",
-          "ru": "Miestnosť A9.05, treba doklad o zaplatení poplatku",
-          "uk": "Miestnosť A9.05, treba doklad o zaplatení poplatku"
+          "ru": "Кабинет A9.05, нужен документ об оплате",
+          "uk": "Кабінет A9.05, потрібен документ про оплату",
+          "en": "Miestnosť A9.05, treba doklad o zaplatení poplatku"
         }
       },
       {
         "label": {
           "sk": "Aktivácia preukazu",
-          "ru": "Aktivácia preukazu",
-          "uk": "Aktivácia preukazu"
+          "ru": "Активация карты",
+          "uk": "Активація картки",
+          "en": "Aktivácia preukazu"
         },
         "value": {
           "sk": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie",
-          "ru": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie",
-          "uk": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie"
+          "ru": "Приложить к считывателю на Университетском терминале, 9-й этаж",
+          "uk": "Прикласти до зчитувача на Університетському терміналі, 9-й поверх",
+          "en": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie"
         }
       },
       {
         "label": {
           "sk": "Preukaz študenta na stránke EUBA",
-          "ru": "Preukaz študenta na stránke EUBA",
-          "uk": "Preukaz študenta na stránke EUBA"
+          "ru": "Студенческое удостоверение на сайте EUBA",
+          "uk": "Студентське посвідчення на сайті EUBA",
+          "en": "Preukaz študenta na stránke EUBA"
         },
         "value": {
           "sk": "Podrobnosti o preukaze a prolongácii",
-          "ru": "Podrobnosti o preukaze a prolongácii",
-          "uk": "Podrobnosti o preukaze a prolongácii"
+          "ru": "Подробности о карте и продлении",
+          "uk": "Подробиці про картку і продовження",
+          "en": "Podrobnosti o preukaze a prolongácii"
         },
         "url": "https://euba.sk/student/preukaz-studenta-isic"
       }
@@ -537,161 +625,188 @@ export const HANDBOOK = [
   {
     "id": "email-teams",
     "icon": "mail",
+    "photo": "/photos/uni/email-teams.webp",
     "title": {
       "sk": "Školský e-mail, Office 365 a MS Teams",
-      "ru": "Školský e-mail, Office 365 a MS Teams",
-      "uk": "Školský e-mail, Office 365 a MS Teams"
+      "ru": "Университетская почта, Office 365 и MS Teams",
+      "uk": "Університетська пошта, Office 365 і MS Teams",
+      "en": "Školský e-mail, Office 365 a MS Teams"
     },
     "summary": {
       "sk": "Školská pošta, Office 365 a tímy predmetov",
-      "ru": "Školská pošta, Office 365 a tímy predmetov",
-      "uk": "Školská pošta, Office 365 a tímy predmetov"
+      "ru": "Университетская почта, Office 365 и команды по предметам",
+      "uk": "Університетська пошта, Office 365 і команди з предметів",
+      "en": "Školská pošta, Office 365 a tímy predmetov"
     },
     "items": [
       {
         "label": {
           "sk": "Kde nájdeš svoju adresu",
-          "ru": "Kde nájdeš svoju adresu",
-          "uk": "Kde nájdeš svoju adresu"
+          "ru": "Где найти свой адрес",
+          "uk": "Де знайти свою адресу",
+          "en": "Kde nájdeš svoju adresu"
         },
         "value": {
           "sk": "Pridelený školský e-mail je uvedený v AiS",
-          "ru": "Pridelený školský e-mail je uvedený v AiS",
-          "uk": "Pridelený školský e-mail je uvedený v AiS"
+          "ru": "Выданный университетский e-mail указан в AiS",
+          "uk": "Виданий університетський e-mail указано в AiS",
+          "en": "Pridelený školský e-mail je uvedený v AiS"
         }
       },
       {
         "label": {
           "sk": "Heslo",
-          "ru": "Heslo",
-          "uk": "Heslo"
+          "ru": "Пароль",
+          "uk": "Пароль",
+          "en": "Heslo"
         },
         "value": {
           "sk": "Pridelené heslo príde e-mailom",
-          "ru": "Pridelené heslo príde e-mailom",
-          "uk": "Pridelené heslo príde e-mailom"
+          "ru": "Выданный пароль придёт по e-mail",
+          "uk": "Виданий пароль прийде на e-mail",
+          "en": "Pridelené heslo príde e-mailom"
         }
       },
       {
         "label": {
           "sk": "Webmail",
-          "ru": "Webmail",
-          "uk": "Webmail"
+          "ru": "Веб-почта",
+          "uk": "Вебпошта",
+          "en": "Webmail"
         },
         "value": {
           "sk": "http://outlook.com/student.euba.sk",
           "ru": "http://outlook.com/student.euba.sk",
-          "uk": "http://outlook.com/student.euba.sk"
+          "uk": "http://outlook.com/student.euba.sk",
+          "en": "http://outlook.com/student.euba.sk"
         },
         "url": "http://outlook.com/student.euba.sk"
       },
       {
         "label": {
           "sk": "Čo dáva školský e-mail",
-          "ru": "Čo dáva školský e-mail",
-          "uk": "Čo dáva školský e-mail"
+          "ru": "Что даёт университетская почта",
+          "uk": "Що дає університетська пошта",
+          "en": "Čo dáva školský e-mail"
         },
         "value": {
           "sk": "Prístup do MS Office 365 počas celého štúdia",
-          "ru": "Prístup do MS Office 365 počas celého štúdia",
-          "uk": "Prístup do MS Office 365 počas celého štúdia"
+          "ru": "Доступ к MS Office 365 на всё время учёбы",
+          "uk": "Доступ до MS Office 365 на весь час навчання",
+          "en": "Prístup do MS Office 365 počas celého štúdia"
         }
       },
       {
         "label": {
           "sk": "Outlook v počítači",
-          "ru": "Outlook v počítači",
-          "uk": "Outlook v počítači"
+          "ru": "Outlook на компьютере",
+          "uk": "Outlook на комп'ютері",
+          "en": "Outlook v počítači"
         },
         "value": {
           "sk": "Súčasť licencie balíka MS Office",
-          "ru": "Súčasť licencie balíka MS Office",
-          "uk": "Súčasť licencie balíka MS Office"
+          "ru": "Входит в лицензию пакета MS Office",
+          "uk": "Входить у ліцензію пакета MS Office",
+          "en": "Súčasť licencie balíka MS Office"
         }
       },
       {
         "label": {
           "sk": "Outlook v mobile",
-          "ru": "Outlook v mobile",
-          "uk": "Outlook v mobile"
+          "ru": "Outlook в телефоне",
+          "uk": "Outlook у телефоні",
+          "en": "Outlook v mobile"
         },
         "value": {
           "sk": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia",
-          "ru": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia",
-          "uk": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia"
+          "ru": "Приложение, вход по e-mail и паролю – самые быстрые уведомления",
+          "uk": "Застосунок, вхід за e-mail і паролем – найшвидші сповіщення",
+          "en": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia"
         }
       },
       {
         "label": {
           "sk": "Manuál na inštaláciu Office 365",
-          "ru": "Manuál na inštaláciu Office 365",
-          "uk": "Manuál na inštaláciu Office 365"
+          "ru": "Инструкция по установке Office 365",
+          "uk": "Інструкція зі встановлення Office 365",
+          "en": "Manuál na inštaláciu Office 365"
         },
         "value": {
           "sk": "PDF od Študentského parlamentu",
-          "ru": "PDF od Študentského parlamentu",
-          "uk": "PDF od Študentského parlamentu"
+          "ru": "PDF от Студенческого парламента",
+          "uk": "PDF від Студентського парламенту",
+          "en": "PDF od Študentského parlamentu"
         },
         "url": "https://sp.euba.sk/www_write/files/manual_na_instalaciu_balika_ms_office_365.pdf"
       },
       {
         "label": {
           "sk": "Ako sa dostaneš do Teams",
-          "ru": "Ako sa dostaneš do Teams",
-          "uk": "Ako sa dostaneš do Teams"
+          "ru": "Как попасть в Teams",
+          "uk": "Як потрапити в Teams",
+          "en": "Ako sa dostaneš do Teams"
         },
         "value": {
           "sk": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu",
-          "ru": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu",
-          "uk": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu"
+          "ru": "Зайди в веб-Outlook, нажми на точки слева вверху и выбери Teams; потом скачаешь приложение для ПК или будешь пользоваться веб-версией",
+          "uk": "Зайди у вебверсію Outlook, натисни на крапки ліворуч угорі та вибери Teams; потім завантажиш застосунок для ПК або користуватимешся вебверсією",
+          "en": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu"
         }
       },
       {
         "label": {
           "sk": "Teams v mobile",
-          "ru": "Teams v mobile",
-          "uk": "Teams v mobile"
+          "ru": "Teams в телефоне",
+          "uk": "Teams у телефоні",
+          "en": "Teams v mobile"
         },
         "value": {
           "sk": "Aplikácia je bezplatne v Google Play aj App Store",
-          "ru": "Aplikácia je bezplatne v Google Play aj App Store",
-          "uk": "Aplikácia je bezplatne v Google Play aj App Store"
+          "ru": "Приложение бесплатно в Google Play и App Store",
+          "uk": "Застосунок безкоштовний у Google Play і App Store",
+          "en": "Aplikácia je bezplatne v Google Play aj App Store"
         }
       },
       {
         "label": {
           "sk": "Tímy predmetov",
-          "ru": "Tímy predmetov",
-          "uk": "Tímy predmetov"
+          "ru": "Команды по предметам",
+          "uk": "Команди з предметів",
+          "en": "Tímy predmetov"
         },
         "value": {
           "sk": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov",
-          "ru": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov",
-          "uk": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov"
+          "ru": "Команды создают преподаватели и сами добавляют туда студентов",
+          "uk": "Команди створюють викладачі й самі додають туди студентів",
+          "en": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov"
         }
       },
       {
         "label": {
           "sk": "Pripojenie kódom",
-          "ru": "Pripojenie kódom",
-          "uk": "Pripojenie kódom"
+          "ru": "Вход по коду",
+          "uk": "Приєднання за кодом",
+          "en": "Pripojenie kódom"
         },
         "value": {
           "sk": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
-          "ru": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
-          "uk": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu"
+          "ru": "Путь в Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
+          "uk": "Шлях у Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
+          "en": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu"
         }
       },
       {
         "label": {
           "sk": "Nahrávanie hodín",
-          "ru": "Nahrávanie hodín",
-          "uk": "Nahrávanie hodín"
+          "ru": "Запись занятий",
+          "uk": "Запис занять",
+          "en": "Nahrávanie hodín"
         },
         "value": {
           "sk": "Iba so súhlasom vyučujúceho",
-          "ru": "Iba so súhlasom vyučujúceho",
-          "uk": "Iba so súhlasom vyučujúceho"
+          "ru": "Только с согласия преподавателя",
+          "uk": "Тільки за згодою викладача",
+          "en": "Iba so súhlasom vyučujúceho"
         }
       }
     ],
@@ -700,123 +815,144 @@ export const HANDBOOK = [
   {
     "id": "kampus",
     "icon": "campus",
+    "photo": "/photos/uni/kampus.webp",
     "title": {
       "sk": "Areál, budovy a orientácia",
-      "ru": "Areál, budovy a orientácia",
-      "uk": "Areál, budovy a orientácia"
+      "ru": "Кампус, здания и ориентация",
+      "uk": "Кампус, будівлі й орієнтація",
+      "en": "Areál, budovy a orientácia"
     },
     "summary": {
       "sk": "Ktorá budova, ktorá fakulta a čo v nej nájdeš",
-      "ru": "Ktorá budova, ktorá fakulta a čo v nej nájdeš",
-      "uk": "Ktorá budova, ktorá fakulta a čo v nej nájdeš"
+      "ru": "Какое здание, какой факультет и что в нём найдёшь",
+      "uk": "Яка будівля, який факультет і що в ній знайдеш",
+      "en": "Ktorá budova, ktorá fakulta a čo v nej nájdeš"
     },
     "items": [
       {
         "label": {
           "sk": "Stará budova V1",
-          "ru": "Stará budova V1",
-          "uk": "Stará budova V1"
+          "ru": "Старое здание V1",
+          "uk": "Стара будівля V1",
+          "en": "Stará budova V1"
         },
         "value": {
           "sk": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet",
-          "ru": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet",
-          "uk": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet"
+          "ru": "NHF, OF, Словацкая экономическая библиотека, магазин учебной литературы, копицентр и буфет",
+          "uk": "NHF, OF, Словацька економічна бібліотека, магазин навчальної літератури, копіцентр і буфет",
+          "en": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet"
         }
       },
       {
         "label": {
           "sk": "Nová budova V2 (vyššia)",
-          "ru": "Nová budova V2 (vyššia)",
-          "uk": "Nová budova V2 (vyššia)"
+          "ru": "Новое здание V2 (которое выше)",
+          "uk": "Нова будівля V2 (та, що вища)",
+          "en": "Nová budova V2 (vyššia)"
         },
         "value": {
           "sk": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP",
-          "ru": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP",
-          "uk": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP"
+          "ru": "FPM, FHI, FMV, FAJ, ректорат, буфет, копировальные услуги и EUBA FAN SHOP",
+          "uk": "FPM, FHI, FMV, FAJ, ректорат, буфет, копіювальні послуги і EUBA FAN SHOP",
+          "en": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP"
         }
       },
       {
         "label": {
           "sk": "Aula",
-          "ru": "Aula",
-          "uk": "Aula"
+          "ru": "Aula (актовый зал)",
+          "uk": "Aula (актова зала)",
+          "en": "Aula"
         },
         "value": {
           "sk": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu",
-          "ru": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu",
-          "uk": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu"
+          "ru": "Aula Ekonomickej univerzity v Bratislave, отдельная часть кампуса",
+          "uk": "Aula Ekonomickej univerzity v Bratislave, окрема частина кампусу",
+          "en": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu"
         }
       },
       {
         "label": {
           "sk": "Prepojenie budov",
-          "ru": "Prepojenie budov",
-          "uk": "Prepojenie budov"
+          "ru": "Переход между зданиями",
+          "uk": "Перехід між будівлями",
+          "en": "Prepojenie budov"
         },
         "value": {
           "sk": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch",
-          "ru": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch",
-          "uk": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch"
+          "ru": "V1 и V2 соединяет коридор; лекционные и семинарские аудитории есть в обоих",
+          "uk": "V1 і V2 з'єднує коридор; лекційні та семінарські аудиторії є в обох",
+          "en": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch"
         }
       },
       {
         "label": {
           "sk": "Čísla miestností V1",
-          "ru": "Čísla miestností V1",
-          "uk": "Čísla miestností V1"
+          "ru": "Номера аудиторий в V1",
+          "uk": "Номери аудиторій у V1",
+          "en": "Čísla miestností V1"
         },
         "value": {
           "sk": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203",
-          "ru": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203",
-          "uk": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203"
+          "ru": "Буква блока (B слева, D справа), потом этаж (1 = первый этаж) и две цифры аудитории, например B108, D115, B203",
+          "uk": "Літера блоку (B ліворуч, D праворуч), потім поверх (1 = перший поверх) і дві цифри аудиторії, наприклад B108, D115, B203",
+          "en": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203"
         }
       },
       {
         "label": {
           "sk": "Čísla miestností V2",
-          "ru": "Čísla miestností V2",
-          "uk": "Čísla miestností V2"
+          "ru": "Номера аудиторий в V2",
+          "uk": "Номери аудиторій у V2",
+          "en": "Čísla miestností V2"
         },
         "value": {
           "sk": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08",
-          "ru": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08",
-          "uk": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08"
+          "ru": "Буква блока (B левое крыло, A центр, C, D, E правое крыло), этаж (1 = первый этаж) и две цифры аудитории, например B1.02, C1.10, A5_08",
+          "uk": "Літера блоку (B ліве крило, A центр, C, D, E праве крило), поверх (1 = перший поверх) і дві цифри аудиторії, наприклад B1.02, C1.10, A5_08",
+          "en": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08"
         }
       },
       {
         "label": {
           "sk": "Šatňa v budove V1",
-          "ru": "Šatňa v budove V1",
-          "uk": "Šatňa v budove V1"
+          "ru": "Гардероб в здании V1",
+          "uk": "Гардероб у будівлі V1",
+          "en": "Šatňa v budove V1"
         },
         "value": {
           "sk": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1",
-          "ru": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1",
-          "uk": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1"
+          "ru": "В конце вестибюля слева в блоке B, помещение ŠATŇA 1",
+          "uk": "У кінці вестибюля ліворуч у блоці B, приміщення ŠATŇA 1",
+          "en": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1"
         }
       },
       {
         "label": {
           "sk": "Šatňa v budove V2",
-          "ru": "Šatňa v budove V2",
-          "uk": "Šatňa v budove V2"
+          "ru": "Гардероб в здании V2",
+          "uk": "Гардероб у будівлі V2",
+          "en": "Šatňa v budove V2"
         },
         "value": {
           "sk": "Vo vestibule za výťahmi, miestnosť 1.08",
-          "ru": "Vo vestibule za výťahmi, miestnosť 1.08",
-          "uk": "Vo vestibule za výťahmi, miestnosť 1.08"
+          "ru": "В вестибюле за лифтами, помещение 1.08",
+          "uk": "У вестибюлі за ліфтами, приміщення 1.08",
+          "en": "Vo vestibule za výťahmi, miestnosť 1.08"
         }
       },
       {
         "label": {
           "sk": "EUBA FAN SHOP",
           "ru": "EUBA FAN SHOP",
-          "uk": "EUBA FAN SHOP"
+          "uk": "EUBA FAN SHOP",
+          "en": "EUBA FAN SHOP"
         },
         "value": {
           "sk": "shop.euba.sk",
           "ru": "shop.euba.sk",
-          "uk": "shop.euba.sk"
+          "uk": "shop.euba.sk",
+          "en": "shop.euba.sk"
         },
         "url": "https://shop.euba.sk"
       }
@@ -826,39 +962,46 @@ export const HANDBOOK = [
   {
     "id": "internaty",
     "icon": "bed",
+    "photo": "/photos/uni/internaty.webp",
     "title": {
       "sk": "Internáty a ubytovanie",
-      "ru": "Internáty a ubytovanie",
-      "uk": "Internáty a ubytovanie"
+      "ru": "Общежития и проживание",
+      "uk": "Гуртожитки і проживання",
+      "en": "Internáty a ubytovanie"
     },
     "summary": {
       "sk": "Kde sa býva a ako sa o miesto žiada",
-      "ru": "Kde sa býva a ako sa o miesto žiada",
-      "uk": "Kde sa býva a ako sa o miesto žiada"
+      "ru": "Где живут и как подать заявку на место",
+      "uk": "Де живуть і як подати заявку на місце",
+      "en": "Kde sa býva a ako sa o miesto žiada"
     },
     "items": [
       {
         "label": {
           "sk": "Prideľovanie miest",
-          "ru": "Prideľovanie miest",
-          "uk": "Prideľovanie miest"
+          "ru": "Распределение мест",
+          "uk": "Розподіл місць",
+          "en": "Prideľovanie miest"
         },
         "value": {
           "sk": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov",
-          "ru": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov",
-          "uk": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov"
+          "ru": "По рейтингу набранных баллов и свободной вместимости общежитий",
+          "uk": "За рейтингом набраних балів і вільною місткістю гуртожитків",
+          "en": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov"
         }
       },
       {
         "label": {
           "sk": "Zásady prideľovania (článok 4)",
-          "ru": "Zásady prideľovania (článok 4)",
-          "uk": "Zásady prideľovania (článok 4)"
+          "ru": "Правила распределения (статья 4)",
+          "uk": "Правила розподілу (стаття 4)",
+          "en": "Zásady prideľovania (článok 4)"
         },
         "value": {
           "sk": "PDF s postupom prideľovania a výpočtom bodov",
-          "ru": "PDF s postupom prideľovania a výpočtom bodov",
-          "uk": "PDF s postupom prideľovania a výpočtom bodov"
+          "ru": "PDF с порядком распределения и расчётом баллов",
+          "uk": "PDF з порядком розподілу і розрахунком балів",
+          "en": "PDF s postupom prideľovania a výpočtom bodov"
         },
         "url": "https://sp.euba.sk/www_write/files/b-zasady_pridelovania_ubytovania_2022__oprava.pdf"
       },
@@ -866,12 +1009,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠD Prokopa Veľkého 41 – Hopa",
           "ru": "ŠD Prokopa Veľkého 41 – Hopa",
-          "uk": "ŠD Prokopa Veľkého 41 – Hopa"
+          "uk": "ŠD Prokopa Veľkého 41 – Hopa",
+          "en": "ŠD Prokopa Veľkého 41 – Hopa"
         },
         "value": {
           "sk": "Prokopa Veľkého 41, 811 04 Bratislava",
           "ru": "Prokopa Veľkého 41, 811 04 Bratislava",
-          "uk": "Prokopa Veľkého 41, 811 04 Bratislava"
+          "uk": "Prokopa Veľkého 41, 811 04 Bratislava",
+          "en": "Prokopa Veľkého 41, 811 04 Bratislava"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-prokopa-velkeho-41"
       },
@@ -879,12 +1024,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠD Dolnozemská",
           "ru": "ŠD Dolnozemská",
-          "uk": "ŠD Dolnozemská"
+          "uk": "ŠD Dolnozemská",
+          "en": "ŠD Dolnozemská"
         },
         "value": {
           "sk": "Dolnozemská cesta 1, 852 19 Bratislava",
           "ru": "Dolnozemská cesta 1, 852 19 Bratislava",
-          "uk": "Dolnozemská cesta 1, 852 19 Bratislava"
+          "uk": "Dolnozemská cesta 1, 852 19 Bratislava",
+          "en": "Dolnozemská cesta 1, 852 19 Bratislava"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-dolnozemska"
       },
@@ -892,12 +1039,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠD Starohájska 8",
           "ru": "ŠD Starohájska 8",
-          "uk": "ŠD Starohájska 8"
+          "uk": "ŠD Starohájska 8",
+          "en": "ŠD Starohájska 8"
         },
         "value": {
           "sk": "Starohájska 8, 852 19 Bratislava",
           "ru": "Starohájska 8, 852 19 Bratislava",
-          "uk": "Starohájska 8, 852 19 Bratislava"
+          "uk": "Starohájska 8, 852 19 Bratislava",
+          "en": "Starohájska 8, 852 19 Bratislava"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-starohajska-8"
       },
@@ -905,51 +1054,59 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠD Starohájska 4",
           "ru": "ŠD Starohájska 4",
-          "uk": "ŠD Starohájska 4"
+          "uk": "ŠD Starohájska 4",
+          "en": "ŠD Starohájska 4"
         },
         "value": {
           "sk": "Starohájska 4, 852 19 Bratislava",
           "ru": "Starohájska 4, 852 19 Bratislava",
-          "uk": "Starohájska 4, 852 19 Bratislava"
+          "uk": "Starohájska 4, 852 19 Bratislava",
+          "en": "Starohájska 4, 852 19 Bratislava"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-starohajska-4"
       },
       {
         "label": {
           "sk": "ŠD Vlčie hrdlo",
-          "ru": "ŠD Vlčie hrdlo",
-          "uk": "ŠD Vlčie hrdlo"
+          "ru": "ŠD Vlčie hrdlo (общежитие)",
+          "uk": "ŠD Vlčie hrdlo (гуртожиток)",
+          "en": "ŠD Vlčie hrdlo"
         },
         "value": {
           "sk": "Vlčie Hrdlo 74, 821 07 Bratislava",
           "ru": "Vlčie Hrdlo 74, 821 07 Bratislava",
-          "uk": "Vlčie Hrdlo 74, 821 07 Bratislava"
+          "uk": "Vlčie Hrdlo 74, 821 07 Bratislava",
+          "en": "Vlčie Hrdlo 74, 821 07 Bratislava"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-vlcie-hrdlo"
       },
       {
         "label": {
           "sk": "ŠD Ekonóm",
-          "ru": "ŠD Ekonóm",
-          "uk": "ŠD Ekonóm"
+          "ru": "ŠD Ekonóm (общежитие)",
+          "uk": "ŠD Ekonóm (гуртожиток)",
+          "en": "ŠD Ekonóm"
         },
         "value": {
           "sk": "Prístavná 8, 821 09 Bratislava",
           "ru": "Prístavná 8, 821 09 Bratislava",
-          "uk": "Prístavná 8, 821 09 Bratislava"
+          "uk": "Prístavná 8, 821 09 Bratislava",
+          "en": "Prístavná 8, 821 09 Bratislava"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-ekonom"
       },
       {
         "label": {
           "sk": "ŠD Bellova v Košiciach",
-          "ru": "ŠD Bellova v Košiciach",
-          "uk": "ŠD Bellova v Košiciach"
+          "ru": "ŠD Bellova в Кошице",
+          "uk": "ŠD Bellova в Кошицях",
+          "en": "ŠD Bellova v Košiciach"
         },
         "value": {
           "sk": "Bellova 1, 040 01 Košice",
           "ru": "Bellova 1, 040 01 Košice",
-          "uk": "Bellova 1, 040 01 Košice"
+          "uk": "Bellova 1, 040 01 Košice",
+          "en": "Bellova 1, 040 01 Košice"
         },
         "url": "https://sp.euba.sk/ubytovanie/sd-bellova-kosice"
       }
@@ -959,76 +1116,89 @@ export const HANDBOOK = [
   {
     "id": "studium",
     "icon": "schedule",
+    "photo": "/photos/uni/studium.webp",
     "title": {
       "sk": "Organizácia štúdia",
-      "ru": "Organizácia štúdia",
-      "uk": "Organizácia štúdia"
+      "ru": "Организация учёбы",
+      "uk": "Організація навчання",
+      "en": "Organizácia štúdia"
     },
     "summary": {
       "sk": "Semester, kredity a skúšky v skratke",
-      "ru": "Semester, kredity a skúšky v skratke",
-      "uk": "Semester, kredity a skúšky v skratke"
+      "ru": "Семестр, кредиты и экзамены вкратце",
+      "uk": "Семестр, кредити та іспити стисло",
+      "en": "Semester, kredity a skúšky v skratke"
     },
     "items": [
       {
         "label": {
           "sk": "Harmonogram akademického roka",
-          "ru": "Harmonogram akademického roka",
-          "uk": "Harmonogram akademického roka"
+          "ru": "График учебного года",
+          "uk": "Графік навчального року",
+          "en": "Harmonogram akademického roka"
         },
         "value": {
           "sk": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom",
-          "ru": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom",
-          "uk": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom"
+          "ru": "План семестра EUBA публикует перед его началом",
+          "uk": "План семестру EUBA оприлюднює перед його початком",
+          "en": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom"
         },
         "url": "https://euba.sk/student/harmonogram-akademickeho-roka"
       },
       {
         "label": {
           "sk": "Rozvrh",
-          "ru": "Rozvrh",
-          "uk": "Rozvrh"
+          "ru": "Расписание",
+          "uk": "Розклад",
+          "en": "Rozvrh"
         },
         "value": {
           "sk": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť",
-          "ru": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť",
-          "uk": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť"
+          "ru": "На сайте университета за пару дней до начала занятий; в нём есть и время, и аудитория",
+          "uk": "На сайті університету за пару днів до початку занять; у ньому є і час, і аудиторія",
+          "en": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť"
         }
       },
       {
         "label": {
           "sk": "Prednáška a seminár",
-          "ru": "Prednáška a seminár",
-          "uk": "Prednáška a seminár"
+          "ru": "Лекция и семинар",
+          "uk": "Лекція і семінар",
+          "en": "Prednáška a seminár"
         },
         "value": {
           "sk": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku",
-          "ru": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku",
-          "uk": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku"
+          "ru": "Лекция для всего потока, семинар или практика в маленькой группе (krúžok)",
+          "uk": "Лекція для всього потоку, семінар чи практичне в малій групі (krúžok)",
+          "en": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku"
         }
       },
       {
         "label": {
           "sk": "Podmienka pripustenia ku skúške",
-          "ru": "Podmienka pripustenia ku skúške",
-          "uk": "Podmienka pripustenia ku skúške"
+          "ru": "Условие допуска к экзамену",
+          "uk": "Умова допуску до іспиту",
+          "en": "Podmienka pripustenia ku skúške"
         },
         "value": {
           "sk": "Úspešné absolvovanie seminára počas semestra",
-          "ru": "Úspešné absolvovanie seminára počas semestra",
-          "uk": "Úspešné absolvovanie seminára počas semestra"
+          "ru": "Успешно пройденный семинар в течение семестра",
+          "uk": "Успішно пройдений семінар протягом семестру",
+          "en": "Úspešné absolvovanie seminára počas semestra"
         }
       },
       {
         "label": {
           "sk": "Termíny skúšky",
-          "ru": "Termíny skúšky",
-          "uk": "Termíny skúšky"
+          "ru": "Даты экзамена",
+          "uk": "Дати іспиту",
+          "en": "Termíny skúšky"
         },
         "value": {
           "sk": "Jeden riadny a jeden opravný",
-          "ru": "Jeden riadny a jeden opravný",
-          "uk": "Jeden riadny a jeden opravný"
+          "ru": "Одна основная и одна пересдача",
+          "uk": "Одна основна і одна перездача",
+          "en": "Jeden riadny a jeden opravný"
         }
       }
     ],
@@ -1037,63 +1207,74 @@ export const HANDBOOK = [
   {
     "id": "ais",
     "icon": "doc",
+    "photo": "/photos/uni/ais.webp",
     "title": {
       "sk": "Čo vybavíš v AiS",
-      "ru": "Čo vybavíš v AiS",
-      "uk": "Čo vybavíš v AiS"
+      "ru": "Что можно сделать в AiS",
+      "uk": "Що можна зробити в AiS",
+      "en": "Čo vybavíš v AiS"
     },
     "summary": {
       "sk": "Čo sa v AiS vybavuje okrem rozvrhu",
-      "ru": "Čo sa v AiS vybavuje okrem rozvrhu",
-      "uk": "Čo sa v AiS vybavuje okrem rozvrhu"
+      "ru": "Что делают в AiS кроме расписания",
+      "uk": "Що роблять в AiS крім розкладу",
+      "en": "Čo sa v AiS vybavuje okrem rozvrhu"
     },
     "items": [
       {
         "label": {
           "sk": "Skúšky",
-          "ru": "Skúšky",
-          "uk": "Skúšky"
+          "ru": "Экзамены",
+          "uk": "Іспити",
+          "en": "Skúšky"
         },
         "value": {
           "sk": "Prihlasovanie na termíny a zapísané známky",
-          "ru": "Prihlasovanie na termíny a zapísané známky",
-          "uk": "Prihlasovanie na termíny a zapísané známky"
+          "ru": "Запись на даты экзаменов и выставленные оценки",
+          "uk": "Запис на дати іспитів і виставлені оцінки",
+          "en": "Prihlasovanie na termíny a zapísané známky"
         }
       },
       {
         "label": {
           "sk": "Zápis predmetov",
-          "ru": "Zápis predmetov",
-          "uk": "Zápis predmetov"
+          "ru": "Запись на предметы",
+          "uk": "Запис на предмети",
+          "en": "Zápis predmetov"
         },
         "value": {
           "sk": "Na nasledujúci semester alebo celý akademický rok",
-          "ru": "Na nasledujúci semester alebo celý akademický rok",
-          "uk": "Na nasledujúci semester alebo celý akademický rok"
+          "ru": "На следующий семестр или на весь учебный год",
+          "uk": "На наступний семестр або на весь навчальний рік",
+          "en": "Na nasledujúci semester alebo celý akademický rok"
         }
       },
       {
         "label": {
           "sk": "Ubytovanie",
-          "ru": "Ubytovanie",
-          "uk": "Ubytovanie"
+          "ru": "Проживание",
+          "uk": "Проживання",
+          "en": "Ubytovanie"
         },
         "value": {
           "sk": "Žiadosť o internát sa podáva cez AiS",
-          "ru": "Žiadosť o internát sa podáva cez AiS",
-          "uk": "Žiadosť o internát sa podáva cez AiS"
+          "ru": "Заявка на общежитие подаётся через AiS",
+          "uk": "Заявка на гуртожиток подається через AiS",
+          "en": "Žiadosť o internát sa podáva cez AiS"
         }
       },
       {
         "label": {
           "sk": "Hodnotenie výučby",
-          "ru": "Hodnotenie výučby",
-          "uk": "Hodnotenie výučby"
+          "ru": "Оценка преподавания",
+          "uk": "Оцінювання викладання",
+          "en": "Hodnotenie výučby"
         },
         "value": {
           "sk": "Prebieha vždy na konci semestra",
-          "ru": "Prebieha vždy na konci semestra",
-          "uk": "Prebieha vždy na konci semestra"
+          "ru": "Проходит всегда в конце семестра",
+          "uk": "Відбувається завжди наприкінці семестру",
+          "en": "Prebieha vždy na konci semestra"
         }
       }
     ],
@@ -1102,90 +1283,105 @@ export const HANDBOOK = [
   {
     "id": "erasmus",
     "icon": "globe",
+    "photo": "/photos/uni/erasmus.webp",
     "title": {
       "sk": "Erasmus+",
       "ru": "Erasmus+",
-      "uk": "Erasmus+"
+      "uk": "Erasmus+",
+      "en": "Erasmus+"
     },
     "summary": {
       "sk": "Štúdium a stáž v zahraničí",
-      "ru": "Štúdium a stáž v zahraničí",
-      "uk": "Štúdium a stáž v zahraničí"
+      "ru": "Учёба и стажировка за границей",
+      "uk": "Навчання і стажування за кордоном",
+      "en": "Štúdium a stáž v zahraničí"
     },
     "items": [
       {
         "label": {
           "sk": "Čo ponúka",
-          "ru": "Čo ponúka",
-          "uk": "Čo ponúka"
+          "ru": "Что предлагает",
+          "uk": "Що пропонує",
+          "en": "Čo ponúka"
         },
         "value": {
           "sk": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže",
-          "ru": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže",
-          "uk": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže"
+          "ru": "Программа мобильности ЕС: учёба в ЕС и за его пределами, практические и выпускные стажировки",
+          "uk": "Програма мобільності ЄС: навчання в ЄС і поза ним, практичні та випускні стажування",
+          "en": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže"
         }
       },
       {
         "label": {
           "sk": "Limit mobilít",
-          "ru": "Limit mobilít",
-          "uk": "Limit mobilít"
+          "ru": "Лимит мобильностей",
+          "uk": "Ліміт мобільностей",
+          "en": "Limit mobilít"
         },
         "value": {
           "sk": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane",
-          "ru": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane",
-          "uk": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane"
+          "ru": "Максимум 12 месяцев суммарно на одной ступени учёбы; участвовать можно несколько раз",
+          "uk": "Максимум 12 місяців сумарно на одному ступені навчання; брати участь можна кілька разів",
+          "en": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane"
         }
       },
       {
         "label": {
           "sk": "Výber – štúdium v EÚ",
-          "ru": "Výber – štúdium v EÚ",
-          "uk": "Výber – štúdium v EÚ"
+          "ru": "Отбор – учёба в ЕС",
+          "uk": "Відбір – навчання в ЄС",
+          "en": "Výber – štúdium v EÚ"
         },
         "value": {
           "sk": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility",
-          "ru": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility",
-          "uk": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility"
+          "ru": "Первый тур на факультете (конкурсы обычно в январе), второй в Oddelenie medzinárodnej mobility (отдел международной мобильности)",
+          "uk": "Перший тур на факультеті (конкурси зазвичай у січні), другий в Oddelenie medzinárodnej mobility (відділ міжнародної мобільності)",
+          "en": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-v-eu"
       },
       {
         "label": {
           "sk": "Výber – štúdium mimo EÚ",
-          "ru": "Výber – štúdium mimo EÚ",
-          "uk": "Výber – štúdium mimo EÚ"
+          "ru": "Отбор – учёба вне ЕС",
+          "uk": "Відбір – навчання поза ЄС",
+          "en": "Výber – štúdium mimo EÚ"
         },
         "value": {
           "sk": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred",
-          "ru": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred",
-          "uk": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred"
+          "ru": "Общеуниверситетский отбор обычно 2× в год (март/октябрь), объявление минимум за 2 недели",
+          "uk": "Загальноуніверситетський відбір зазвичай 2× на рік (березень/жовтень), оголошення щонайменше за 2 тижні",
+          "en": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-mimo-eu"
       },
       {
         "label": {
           "sk": "Praktické stáže",
-          "ru": "Praktické stáže",
-          "uk": "Praktické stáže"
+          "ru": "Практические стажировки",
+          "uk": "Практичні стажування",
+          "en": "Praktické stáže"
         },
         "value": {
           "sk": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku",
-          "ru": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku",
-          "uk": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku"
+          "ru": "Конкурс объявляет факультет после начала учебного года; стажировку надо пройти в том же учебном году",
+          "uk": "Конкурс оголошує факультет після початку навчального року; стажування треба пройти в тому самому навчальному році",
+          "en": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-prakticke-staze"
       },
       {
         "label": {
           "sk": "Absolventské stáže",
-          "ru": "Absolventské stáže",
-          "uk": "Absolventské stáže"
+          "ru": "Выпускные стажировки",
+          "uk": "Випускні стажування",
+          "en": "Absolventské stáže"
         },
         "value": {
           "sk": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe",
-          "ru": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe",
-          "uk": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe"
+          "ru": "Даже после окончания учёбы, вместе с WorkSpace Europe",
+          "uk": "Навіть після закінчення навчання, разом із WorkSpace Europe",
+          "en": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-absolventske-staze"
       },
@@ -1193,38 +1389,44 @@ export const HANDBOOK = [
         "label": {
           "sk": "WorkSpace Europe",
           "ru": "WorkSpace Europe",
-          "uk": "WorkSpace Europe"
+          "uk": "WorkSpace Europe",
+          "en": "WorkSpace Europe"
         },
         "value": {
           "sk": "workspaceeurope.sk",
           "ru": "workspaceeurope.sk",
-          "uk": "workspaceeurope.sk"
+          "uk": "workspaceeurope.sk",
+          "en": "workspaceeurope.sk"
         },
         "url": "http://www.workspaceeurope.sk/"
       },
       {
         "label": {
           "sk": "Erasmus+ štúdium v 10 krokoch",
-          "ru": "Erasmus+ štúdium v 10 krokoch",
-          "uk": "Erasmus+ štúdium v 10 krokoch"
+          "ru": "Учёба по Erasmus+ за 10 шагов",
+          "uk": "Навчання за Erasmus+ у 10 кроків",
+          "en": "Erasmus+ štúdium v 10 krokoch"
         },
         "value": {
           "sk": "Postup krok za krokom na stránke EUBA",
-          "ru": "Postup krok za krokom na stránke EUBA",
-          "uk": "Postup krok za krokom na stránke EUBA"
+          "ru": "Пошаговый порядок на сайте EUBA",
+          "uk": "Покроковий порядок на сайті EUBA",
+          "en": "Postup krok za krokom na stránke EUBA"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-v-eu#erasmus-v-10-krokoch"
       },
       {
         "label": {
           "sk": "Manuál k študijnému pobytu",
-          "ru": "Manuál k študijnému pobytu",
-          "uk": "Manuál k študijnému pobytu"
+          "ru": "Инструкция по учебному пребыванию",
+          "uk": "Інструкція щодо навчального перебування",
+          "en": "Manuál k študijnému pobytu"
         },
         "value": {
           "sk": "PDF s podmienkami grantu",
-          "ru": "PDF s podmienkami grantu",
-          "uk": "PDF s podmienkami grantu"
+          "ru": "PDF с условиями гранта",
+          "uk": "PDF з умовами гранту",
+          "en": "PDF s podmienkami grantu"
         },
         "url": "https://euba.sk/www_write/files/SK/medzinarodne-vztahy/manual/2019/manual_grant_2019.pdf"
       }
@@ -1234,51 +1436,60 @@ export const HANDBOOK = [
   {
     "id": "vymenne-programy",
     "icon": "globe",
+    "photo": "/photos/uni/vymenne-programy.webp",
     "title": {
       "sk": "Ďalšie výmenné programy",
-      "ru": "Ďalšie výmenné programy",
-      "uk": "Ďalšie výmenné programy"
+      "ru": "Другие обменные программы",
+      "uk": "Інші програми обміну",
+      "en": "Ďalšie výmenné programy"
     },
     "summary": {
       "sk": "Kam sa dá vycestovať mimo Erasmu",
-      "ru": "Kam sa dá vycestovať mimo Erasmu",
-      "uk": "Kam sa dá vycestovať mimo Erasmu"
+      "ru": "Куда можно поехать кроме Erasmus",
+      "uk": "Куди можна поїхати крім Erasmus",
+      "en": "Kam sa dá vycestovať mimo Erasmu"
     },
     "items": [
       {
         "label": {
           "sk": "Programy okrem Erasmu",
-          "ru": "Programy okrem Erasmu",
-          "uk": "Programy okrem Erasmu"
+          "ru": "Программы кроме Erasmus",
+          "uk": "Програми крім Erasmus",
+          "en": "Programy okrem Erasmu"
         },
         "value": {
           "sk": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity",
-          "ru": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity",
-          "uk": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity"
+          "ru": "CEEPUS, Národný štipendijný program, Международный вышеградский фонд и двусторонние договоры университета",
+          "uk": "CEEPUS, Národný štipendijný program, Міжнародний вишеградський фонд і двосторонні договори університету",
+          "en": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity"
         }
       },
       {
         "label": {
           "sk": "Bilaterálne pobyty",
-          "ru": "Bilaterálne pobyty",
-          "uk": "Bilaterálne pobyty"
+          "ru": "Двусторонние обмены",
+          "uk": "Двосторонні обміни",
+          "en": "Bilaterálne pobyty"
         },
         "value": {
           "sk": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty",
-          "ru": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty",
-          "uk": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty"
+          "ru": "Регулируются Внутренней директивой № 2/2012 о направлении студентов на зарубежные учебные пребывания",
+          "uk": "Регулюються Внутрішньою директивою № 2/2012 про направлення студентів на закордонні навчальні перебування",
+          "en": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty"
         }
       },
       {
         "label": {
           "sk": "Medzinárodné vzťahy EUBA",
-          "ru": "Medzinárodné vzťahy EUBA",
-          "uk": "Medzinárodné vzťahy EUBA"
+          "ru": "Международные связи EUBA",
+          "uk": "Міжнародні зв'язки EUBA",
+          "en": "Medzinárodné vzťahy EUBA"
         },
         "value": {
           "sk": "Všetky informácie o mobilitách",
-          "ru": "Všetky informácie o mobilitách",
-          "uk": "Všetky informácie o mobilitách"
+          "ru": "Вся информация о мобильностях",
+          "uk": "Уся інформація про мобільності",
+          "en": "Všetky informácie o mobilitách"
         },
         "url": "https://euba.sk/medzinarodne-vztahy"
       }
@@ -1287,64 +1498,75 @@ export const HANDBOOK = [
   },
   {
     "id": "euromates",
-    "icon": "user",
+    "icon": "globe",
+    "photo": "/photos/uni/euromates.webp",
     "title": {
       "sk": "Euromates",
       "ru": "Euromates",
-      "uk": "Euromates"
+      "uk": "Euromates",
+      "en": "Euromates"
     },
     "summary": {
       "sk": "Pomoc pre zahraničných študentov",
-      "ru": "Pomoc pre zahraničných študentov",
-      "uk": "Pomoc pre zahraničných študentov"
+      "ru": "Помощь иностранным студентам",
+      "uk": "Допомога іноземним студентам",
+      "en": "Pomoc pre zahraničných študentov"
     },
     "items": [
       {
         "label": {
           "sk": "Čo to je",
-          "ru": "Čo to je",
-          "uk": "Čo to je"
+          "ru": "Что это",
+          "uk": "Що це",
+          "en": "Čo to je"
         },
         "value": {
           "sk": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017",
-          "ru": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017",
-          "uk": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017"
+          "ru": "Недельная программа обмена с VŠE в Праге и Экономическим университетом во Вроцлаве, работает с 2017 года",
+          "uk": "Тижнева програма обміну з VŠE у Празі та Економічним університетом у Вроцлаві, працює з 2017 року",
+          "en": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017"
         }
       },
       {
         "label": {
           "sk": "Pre koho",
-          "ru": "Pre koho",
-          "uk": "Pre koho"
+          "ru": "Для кого",
+          "uk": "Для кого",
+          "en": "Pre koho"
         },
         "value": {
           "sk": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené",
-          "ru": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené",
-          "uk": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené"
+          "ru": "Для всех студентов EUBA; проживание и частично питание обеспечены",
+          "uk": "Для всіх студентів EUBA; проживання і частково харчування забезпечені",
+          "en": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené"
         }
       },
       {
         "label": {
           "sk": "Kedy",
-          "ru": "Kedy",
-          "uk": "Kedy"
+          "ru": "Когда",
+          "uk": "Коли",
+          "en": "Kedy"
         },
         "value": {
           "sk": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach",
-          "ru": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach",
-          "uk": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach"
+          "ru": "Обычно на рубеже октября и ноября; даты обмена и отбора ŠP публикует в соцсетях",
+          "uk": "Зазвичай на межі жовтня і листопада; дати обміну й відбору ŠP публікує в соцмережах",
+          "en": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach"
         }
       },
       {
         "label": {
           "sk": "Tlačová správa z roku 2018",
-          "ru": "Tlačová správa z roku 2018",
-          "uk": "Tlačová správa z roku 2018"
+          "ru": "Пресс-релиз 2018 года",
+          "uk": "Пресреліз 2018 року",
+          "en": "Tlačová správa z roku 2018"
         },
         "value": {
           "sk": "Popis programu na stránke EUBA",
-          "ru": "Popis programu na stránke EUBA",
-          "uk": "Popis programu na stránke EUBA"
+          "ru": "Описание программы на сайте EUBA",
+          "uk": "Опис програми на сайті EUBA",
+          "en": "Popis programu na stránke EUBA"
         },
         "url": "https://euba.sk/en/activities/news/1504-euromates-unique-v4-universities-exchange-program"
       }
@@ -1354,75 +1576,88 @@ export const HANDBOOK = [
   {
     "id": "svoc",
     "icon": "doc",
+    "photo": "/photos/uni/svoc.webp",
     "title": {
       "sk": "ŠVOČ – študentská vedecká odborná činnosť",
-      "ru": "ŠVOČ – študentská vedecká odborná činnosť",
-      "uk": "ŠVOČ – študentská vedecká odborná činnosť"
+      "ru": "ŠVOČ – студенческая научная работа",
+      "uk": "ŠVOČ – студентська наукова робота",
+      "en": "ŠVOČ – študentská vedecká odborná činnosť"
     },
     "summary": {
       "sk": "Študentská vedecká práca a jej ceny",
-      "ru": "Študentská vedecká práca a jej ceny",
-      "uk": "Študentská vedecká práca a jej ceny"
+      "ru": "Студенческая научная работа и её призы",
+      "uk": "Студентська наукова робота та її призи",
+      "en": "Študentská vedecká práca a jej ceny"
     },
     "items": [
       {
         "label": {
           "sk": "Čo to je",
-          "ru": "Čo to je",
-          "uk": "Čo to je"
+          "ru": "Что это",
+          "uk": "Що це",
+          "en": "Čo to je"
         },
         "value": {
           "sk": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka",
-          "ru": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka",
-          "uk": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka"
+          "ru": "Научная работа студента под руководством преподавателя-исследователя",
+          "uk": "Наукова робота студента під керівництвом викладача-дослідника",
+          "en": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka"
         }
       },
       {
         "label": {
           "sk": "Čo z toho máš",
-          "ru": "Čo z toho máš",
-          "uk": "Čo z toho máš"
+          "ru": "Что тебе это даёт",
+          "uk": "Що тобі це дає",
+          "en": "Čo z toho máš"
         },
         "value": {
           "sk": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu",
-          "ru": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu",
-          "uk": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu"
+          "ru": "Дополнительные баллы к заявке на общежитие и при отборе на Erasmus+, подготовка к дипломной работе",
+          "uk": "Додаткові бали до заявки на гуртожиток і при відборі на Erasmus+, підготовка до дипломної роботи",
+          "en": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu"
         }
       },
       {
         "label": {
           "sk": "Kolá súťaže",
-          "ru": "Kolá súťaže",
-          "uk": "Kolá súťaže"
+          "ru": "Туры конкурса",
+          "uk": "Тури конкурсу",
+          "en": "Kolá súťaže"
         },
         "value": {
           "sk": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni",
-          "ru": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni",
-          "uk": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni"
+          "ru": "Факультетские туры; работы-победители идут на общеуниверситетский тур, обычно в июне",
+          "uk": "Факультетські тури; роботи-переможці йдуть на загальноуніверситетський тур, зазвичай у червні",
+          "en": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni"
         }
       },
       {
         "label": {
           "sk": "Odmena",
-          "ru": "Odmena",
-          "uk": "Odmena"
+          "ru": "Награда",
+          "uk": "Нагорода",
+          "en": "Odmena"
         },
         "value": {
           "sk": "Najlepšie práce sú každoročne ocenené aj finančne",
-          "ru": "Najlepšie práce sú každoročne ocenené aj finančne",
-          "uk": "Najlepšie práce sú každoročne ocenené aj finančne"
+          "ru": "Лучшие работы каждый год награждают и деньгами",
+          "uk": "Найкращі роботи щороку нагороджують і грошима",
+          "en": "Najlepšie práce sú každoročne ocenené aj finančne"
         }
       },
       {
         "label": {
           "sk": "ŠVOČ na EUBA",
-          "ru": "ŠVOČ na EUBA",
-          "uk": "ŠVOČ na EUBA"
+          "ru": "ŠVOČ в EUBA",
+          "uk": "ŠVOČ в EUBA",
+          "en": "ŠVOČ na EUBA"
         },
         "value": {
           "sk": "Celouniverzitné informácie",
-          "ru": "Celouniverzitné informácie",
-          "uk": "Celouniverzitné informácie"
+          "ru": "Общеуниверситетская информация",
+          "uk": "Загальноуніверситетська інформація",
+          "en": "Celouniverzitné informácie"
         },
         "url": "https://euba.sk/veda-vyskum/aktualne-informacie/svoc"
       },
@@ -1430,12 +1665,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – FAJ",
           "ru": "ŠVOČ – FAJ",
-          "uk": "ŠVOČ – FAJ"
+          "uk": "ŠVOČ – FAJ",
+          "en": "ŠVOČ – FAJ"
         },
         "value": {
           "sk": "Fakulta aplikovaných jazykov",
-          "ru": "Fakulta aplikovaných jazykov",
-          "uk": "Fakulta aplikovaných jazykov"
+          "ru": "Факультет прикладных языков",
+          "uk": "Факультет прикладних мов",
+          "en": "Fakulta aplikovaných jazykov"
         },
         "url": "https://faj.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1443,12 +1680,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – FHI",
           "ru": "ŠVOČ – FHI",
-          "uk": "ŠVOČ – FHI"
+          "uk": "ŠVOČ – FHI",
+          "en": "ŠVOČ – FHI"
         },
         "value": {
           "sk": "Fakulta hospodárskej informatiky",
-          "ru": "Fakulta hospodárskej informatiky",
-          "uk": "Fakulta hospodárskej informatiky"
+          "ru": "Факультет хозяйственной информатики",
+          "uk": "Факультет господарської інформатики",
+          "en": "Fakulta hospodárskej informatiky"
         },
         "url": "https://fhi.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1456,12 +1695,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – FMV",
           "ru": "ŠVOČ – FMV",
-          "uk": "ŠVOČ – FMV"
+          "uk": "ŠVOČ – FMV",
+          "en": "ŠVOČ – FMV"
         },
         "value": {
           "sk": "Fakulta medzinárodných vzťahov",
-          "ru": "Fakulta medzinárodných vzťahov",
-          "uk": "Fakulta medzinárodných vzťahov"
+          "ru": "Факультет международных отношений",
+          "uk": "Факультет міжнародних відносин",
+          "en": "Fakulta medzinárodných vzťahov"
         },
         "url": "https://fmv.euba.sk/veda-a-vyskum/svoc/pravidla-pre-svoc"
       },
@@ -1469,12 +1710,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – FPM",
           "ru": "ŠVOČ – FPM",
-          "uk": "ŠVOČ – FPM"
+          "uk": "ŠVOČ – FPM",
+          "en": "ŠVOČ – FPM"
         },
         "value": {
           "sk": "Fakulta podnikového manažmentu",
-          "ru": "Fakulta podnikového manažmentu",
-          "uk": "Fakulta podnikového manažmentu"
+          "ru": "Факультет управления предприятием",
+          "uk": "Факультет управління підприємством",
+          "en": "Fakulta podnikového manažmentu"
         },
         "url": "https://fpm.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1482,12 +1725,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – NHF",
           "ru": "ŠVOČ – NHF",
-          "uk": "ŠVOČ – NHF"
+          "uk": "ŠVOČ – NHF",
+          "en": "ŠVOČ – NHF"
         },
         "value": {
           "sk": "Národohospodárska fakulta",
-          "ru": "Národohospodárska fakulta",
-          "uk": "Národohospodárska fakulta"
+          "ru": "Народнохозяйственный факультет",
+          "uk": "Народногосподарський факультет",
+          "en": "Národohospodárska fakulta"
         },
         "url": "https://nhf.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1495,12 +1740,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – OF",
           "ru": "ŠVOČ – OF",
-          "uk": "ŠVOČ – OF"
+          "uk": "ŠVOČ – OF",
+          "en": "ŠVOČ – OF"
         },
         "value": {
           "sk": "Obchodná fakulta",
-          "ru": "Obchodná fakulta",
-          "uk": "Obchodná fakulta"
+          "ru": "Торговый факультет",
+          "uk": "Торговий факультет",
+          "en": "Obchodná fakulta"
         },
         "url": "https://of.euba.sk/veda-a-vyskum/svoc/statut-svoc"
       },
@@ -1508,12 +1755,14 @@ export const HANDBOOK = [
         "label": {
           "sk": "ŠVOČ – PHF",
           "ru": "ŠVOČ – PHF",
-          "uk": "ŠVOČ – PHF"
+          "uk": "ŠVOČ – PHF",
+          "en": "ŠVOČ – PHF"
         },
         "value": {
           "sk": "Podnikovohospodárska fakulta so sídlom v Košiciach",
-          "ru": "Podnikovohospodárska fakulta so sídlom v Košiciach",
-          "uk": "Podnikovohospodárska fakulta so sídlom v Košiciach"
+          "ru": "Факультет экономики предприятия в Кошице",
+          "uk": "Факультет економіки підприємства в Кошицях",
+          "en": "Podnikovohospodárska fakulta so sídlom v Košiciach"
         },
         "url": "https://phf.euba.sk/veda-a-vyskum/vedeckovyskumna-cinnost/svoc"
       }
@@ -1523,64 +1772,75 @@ export const HANDBOOK = [
   {
     "id": "kontakt",
     "icon": "user",
+    "photo": "/photos/uni/kontakt.webp",
     "title": {
       "sk": "Kontakt na Študentský parlament",
-      "ru": "Kontakt na Študentský parlament",
-      "uk": "Kontakt na Študentský parlament"
+      "ru": "Контакты Студенческого парламента",
+      "uk": "Контакти Студентського парламенту",
+      "en": "Kontakt na Študentský parlament"
     },
     "summary": {
       "sk": "Kde napísať študentskému parlamentu",
-      "ru": "Kde napísať študentskému parlamentu",
-      "uk": "Kde napísať študentskému parlamentu"
+      "ru": "Куда написать студенческому парламенту",
+      "uk": "Куди написати студентському парламенту",
+      "en": "Kde napísať študentskému parlamentu"
     },
     "items": [
       {
         "label": {
           "sk": "E-mail",
           "ru": "E-mail",
-          "uk": "E-mail"
+          "uk": "E-mail",
+          "en": "E-mail"
         },
         "value": {
           "sk": "prezident@sp.euba.sk",
           "ru": "prezident@sp.euba.sk",
-          "uk": "prezident@sp.euba.sk"
+          "uk": "prezident@sp.euba.sk",
+          "en": "prezident@sp.euba.sk"
         },
         "url": "mailto:prezident@sp.euba.sk"
       },
       {
         "label": {
           "sk": "Kancelária ŠP",
-          "ru": "Kancelária ŠP",
-          "uk": "Kancelária ŠP"
+          "ru": "Офис ŠP",
+          "uk": "Офіс ŠP",
+          "en": "Kancelária ŠP"
         },
         "value": {
           "sk": "Miestnosť E9.06, kontaktné miesto pre študentov",
-          "ru": "Miestnosť E9.06, kontaktné miesto pre študentov",
-          "uk": "Miestnosť E9.06, kontaktné miesto pre študentov"
+          "ru": "Кабинет E9.06, контактное место для студентов",
+          "uk": "Кабінет E9.06, контактне місце для студентів",
+          "en": "Miestnosť E9.06, kontaktné miesto pre študentov"
         }
       },
       {
         "label": {
           "sk": "Adresa",
-          "ru": "Adresa",
-          "uk": "Adresa"
+          "ru": "Адрес",
+          "uk": "Адреса",
+          "en": "Adresa"
         },
         "value": {
           "sk": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava",
           "ru": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava",
-          "uk": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava"
+          "uk": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava",
+          "en": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava"
         }
       },
       {
         "label": {
           "sk": "Osobné stretnutie",
-          "ru": "Osobné stretnutie",
-          "uk": "Osobné stretnutie"
+          "ru": "Личная встреча",
+          "uk": "Особиста зустріч",
+          "en": "Osobné stretnutie"
         },
         "value": {
           "sk": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom",
-          "ru": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom",
-          "uk": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom"
+          "ru": "Можно договориться по e-mail, как и о сотрудничестве с парламентом",
+          "uk": "Можна домовитися по e-mail, як і про співпрацю з парламентом",
+          "en": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom"
         }
       }
     ],
@@ -1589,51 +1849,60 @@ export const HANDBOOK = [
   {
     "id": "univerzita",
     "icon": "campus",
+    "photo": "/photos/uni/univerzita.webp",
     "title": {
       "sk": "O univerzite",
-      "ru": "O univerzite",
-      "uk": "O univerzite"
+      "ru": "Об университете",
+      "uk": "Про університет",
+      "en": "O univerzite"
     },
     "summary": {
       "sk": "Základné čísla a fakulty",
-      "ru": "Základné čísla a fakulty",
-      "uk": "Základné čísla a fakulty"
+      "ru": "Основные цифры и факультеты",
+      "uk": "Основні цифри і факультети",
+      "en": "Základné čísla a fakulty"
     },
     "items": [
       {
         "label": {
           "sk": "Zameranie",
-          "ru": "Zameranie",
-          "uk": "Zameranie"
+          "ru": "Направление",
+          "uk": "Напрям",
+          "en": "Zameranie"
         },
         "value": {
           "sk": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia",
-          "ru": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia",
-          "uk": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia"
+          "ru": "Экономические и управленческие программы на всех трёх ступенях учёбы",
+          "uk": "Економічні й управлінські програми на всіх трьох ступенях навчання",
+          "en": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia"
         }
       },
       {
         "label": {
           "sk": "Postavenie",
-          "ru": "Postavenie",
-          "uk": "Postavenie"
+          "ru": "Статус",
+          "uk": "Статус",
+          "en": "Postavenie"
         },
         "value": {
           "sk": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu",
-          "ru": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu",
-          "uk": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu"
+          "ru": "По сайту ŠP крупнейший университет такого профиля в Словакии, часть европейского пространства высшего образования и исследований",
+          "uk": "За сайтом ŠP найбільший університет такого профілю в Словаччині, частина європейського простору вищої освіти й досліджень",
+          "en": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu"
         }
       },
       {
         "label": {
           "sk": "Fakulty",
-          "ru": "Fakulty",
-          "uk": "Fakulty"
+          "ru": "Факультеты",
+          "uk": "Факультети",
+          "en": "Fakulty"
         },
         "value": {
           "sk": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach",
-          "ru": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach",
-          "uk": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach"
+          "ru": "NHF, OF, FHI, FPM, FMV, FAJ и PHF в Кошице",
+          "uk": "NHF, OF, FHI, FPM, FMV, FAJ і PHF у Кошицях",
+          "en": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach"
         }
       }
     ],
