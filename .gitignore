@@ -8,3 +8,4 @@ scripts/handbook/raw/
 scripts/photos/
 # Per-instance front-end configuration, written by the server from its environment.
 public/config.js
+docs/readme/raw/

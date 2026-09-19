@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" width="1600" height="420" role="img" aria-label="Index — an unofficial client for AIS2 at the University of Economics in Bratislava">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f4ee"/>
+      <stop offset="1" stop-color="#efece3"/>
+    </linearGradient>
+    <linearGradient id="wash" x1="1" y1="0" x2="0.25" y2="1">
+      <stop offset="0" stop-color="#3a35a8" stop-opacity="0.16"/>
+      <stop offset="0.55" stop-color="#0d6b64" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#0d6b64" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="420" fill="url(#paper)"/>
+  <rect width="1600" height="420" fill="url(#wash)"/>
+
+  <!-- Ruled paper: the app's own surface, drawn faintly. -->
+  <g stroke="#17150f" stroke-opacity="0.055" stroke-width="2">
+    <path d="M0 60.5h1600M0 120.5h1600M0 180.5h1600M0 240.5h1600M0 300.5h1600M0 360.5h1600"/>
+  </g>
+
+  <!-- The mark: an index card with its spine, the same glyph the app header wears. -->
+  <g transform="translate(120 130) scale(0.31)">
+    <rect width="512" height="512" rx="114" fill="#3a35a8"/>
+    <g fill="none" stroke="#f4f1ea" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="112" y="136" width="288" height="240" rx="44"/>
+      <path d="M197 136v240M262 216h74M262 296h74"/>
+    </g>
+  </g>
+
+  <g font-family="'Space Grotesk','Inter',system-ui,-apple-system,'Segoe UI',sans-serif">
+    <text x="320" y="196" font-size="96" font-weight="700" letter-spacing="-3" fill="#17150f">Index</text>
+    <text x="322" y="252" font-size="31" font-weight="500" fill="#524d40">rozvrh, predmety a financie z AIS2 na jednej obrazovke</text>
+    <text x="322" y="300" font-size="25" font-weight="500" fill="#6f6959">An unofficial, self-hosted client for AIS2 at the University of Economics in Bratislava</text>
+  </g>
+
+  <!-- Two lessons, the way the week grid paints them: a lecture and a seminar. -->
+  <g transform="translate(1180 96)">
+    <rect x="0" y="0" width="150" height="104" rx="18" fill="#e9e8f7" stroke="#3a35a8" stroke-opacity="0.3" stroke-width="2"/>
+    <rect x="0" y="0" width="5" height="104" rx="2.5" fill="#3a35a8"/>
+    <text x="24" y="44" font-family="'Inter',system-ui,sans-serif" font-size="19" font-weight="600" fill="#17150f">08:00</text>
+    <text x="24" y="74" font-family="'Inter',system-ui,sans-serif" font-size="16" fill="#524d40">prednáška</text>
+
+    <rect x="172" y="46" width="150" height="104" rx="18" fill="#dcebe9" stroke="#0d6b64" stroke-opacity="0.32" stroke-width="2"/>
+    <rect x="172" y="46" width="5" height="104" rx="2.5" fill="#0d6b64"/>
+    <text x="196" y="90" font-family="'Inter',system-ui,sans-serif" font-size="19" font-weight="600" fill="#17150f">09:45</text>
+    <text x="196" y="120" font-family="'Inter',system-ui,sans-serif" font-size="16" fill="#524d40">cvičenie</text>
+  </g>
+
+  <g font-family="'Inter',system-ui,sans-serif" font-size="22" font-weight="600" fill="#6f6959">
+    <text x="322" y="356">PWA · Node · sk · ru · uk · en</text>
+  </g>
+</svg>
