@@ -1,3 +1,10 @@
 node_modules/
 *.log
 calibration/
+
+# Internal tooling and source material that is not ours to publish:
+# the handbook's raw page dumps (the university's own text) and the photo recipes.
+scripts/handbook/raw/
+scripts/photos/
+# Per-instance front-end configuration, written by the server from its environment.
+public/config.js

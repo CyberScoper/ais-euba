@@ -138,6 +138,42 @@ export class LoginGuard {
   }
 }
 
+// One breaker per account, not one for the whole process.
+//
+// The breaker exists to keep AIS from locking an account after repeated bad
+// passwords, so the account name is the thing it should be keyed by. A single global
+// breaker meant that anyone who mistyped a password three times paused signing in for
+// every other student as well — a denial of service that any stranger could trigger.
+// Abuse of the endpoint itself is handled separately, by the per-IP limiter.
+const guards = new Map();
+const GUARD_IDLE_MS = 60 * 60 * 1000;
+const MAX_GUARDS = 500;
+
+function pruneGuards() {
+  const now = Date.now();
+  for (const [k, g] of guards) {
+    // Never drop a breaker that is currently holding someone back: forgetting it
+    // would hand the attacker a reset.
+    if (now > g.blockedUntil && now - (g.seen || 0) > GUARD_IDLE_MS) guards.delete(k);
+  }
+  if (guards.size >= MAX_GUARDS) {
+    const oldest = [...guards.entries()].sort((a, b) => (a[1].seen || 0) - (b[1].seen || 0));
+    for (const [k] of oldest.slice(0, Math.floor(oldest.length / 2))) guards.delete(k);
+  }
+}
+
+export function loginGuardFor(account, opts) {
+  const key = String(account || '').trim().toLowerCase() || '(unknown)';
+  let g = guards.get(key);
+  if (!g) {
+    if (guards.size >= MAX_GUARDS) pruneGuards();
+    g = new LoginGuard(opts);
+    guards.set(key, g);
+  }
+  g.seen = Date.now();
+  return g;
+}
+
 // --- read-only allowlist ---------------------------------------------------
 // AIS exposes destructive operations over plain GET (slavnosti/odhlasit,
 // statne-skusky/ziadost-zrusit, zaverecne-prace/odhlasit, rozvrh-odhlasit ...).

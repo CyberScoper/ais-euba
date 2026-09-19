@@ -1,30 +1,20 @@
-# Справочник «Univerzita» — данные
+# Handbook data
 
-Источник — сайт Студенческого парламента EUBA `sp.euba.sk`: разделы `/student/*`
-(организация учёбы, AiS, ориентация в кампусе, питание, транспорт, библиотека,
-ISIC, почта и MS Teams), `/ubytovanie`, `/zapoj-sa/*` (опросы, ŠVOČ, Euromates,
-Erasmus+, обменные программы), `/univerzita/zakladne-informacie` и `/kontakt` —
-всего 16 страниц. В `raw/` лежит их текст на момент выгрузки (первые две строки
-каждого файла — исходный URL и дата), в `facts.json` — разобранные факты:
-остановки и номера автобусов от общежитий, столовая и буфеты, библиотека, взнос
-за пролонгацию ISIC с IBAN и символами, почта и Teams, какой факультет в каком
-корпусе, контакты. Цифры, IBAN, номера маршрутов, этажи, цены и ссылки
-перенесены дословно; формулировки — свои, с ссылкой на источник в каждой записи
-(`source_url`).
+`public/handbook.js` is generated. Never edit it by hand — edit the sources here and rebuild:
 
-Это снимок, а не парсер в рантайме. Страницы статические, меняются раз в год и
-вместе весят около 23 КБ текста; живой парсер чужой вёрстки означал бы
-постоянную зависимость от неё, ещё один сетевой запрос на открытие экрана и
-поломку экрана в тот день, когда парламент поменяет шаблон Joomla. Снимок же
-даёт диффабельный текст, ревью изменений глазами и экран, который работает
-офлайн. Цена — устаревание: у каждой записи есть поле `checked`, и именно оно
-показывает, когда факты проверялись в последний раз.
+```bash
+bash scripts/handbook/fetch.sh          # refresh raw/ from sp.euba.sk (git-ignored)
+node scripts/handbook/build.mjs         # facts.json + translations.json -> public/handbook.js
+```
 
-Обновление: `bash scripts/handbook/fetch.sh` (можно и точечно —
-`bash scripts/handbook/fetch.sh /student/isic /kontakt`), затем `git diff raw/` —
-он покажет, что именно поменялось на сайте. Изменившиеся факты правятся в
-`facts.json` вручную, после чего у затронутых записей обновляется `checked`, а
-файл проверяется через `python3 -m json.tool scripts/handbook/facts.json`.
-Спорные и недосказанные места сайта собраны в массиве `notes` в конце
-`facts.json` — там лежит точная цитата и вопрос к ней; разрешённый вопрос
-удаляется из `notes` вместе с добавлением факта.
+| File | What it holds |
+| --- | --- |
+| `screen.json` | the cards, their order, icons and source links |
+| `facts.json` | the facts themselves, in Slovak, written in our own words |
+| `translations.json` | the same facts in ru, uk and en; a missing string falls back to Slovak |
+| `fetch.sh` | downloads the public pages into `raw/` so a change is a `git diff` away |
+| `thumbs.sh` | turns the full-size images into the 240px thumbnails the cards wear |
+
+`raw/` is deliberately not part of the repository: it is the university's own text, downloaded to
+compare against, not to republish. The facts that ship are rewritten, each card carries a link to
+its source page and the date it was last checked.

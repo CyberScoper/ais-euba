@@ -22,6 +22,9 @@ import * as mock from './mock.js';
 import { isReadOnly } from './guard.js';
 import { getNews } from './news.js';
 import { SessionStore, DEFAULT_TTL_MS } from './sessionStore.js';
+import {
+  securityHeaders, noStore, sameOriginOnly, rateLimit, isSafePath,
+} from './security.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 4173;
@@ -33,7 +36,20 @@ const SESSION_TTL_MS = Number(process.env.AIS_SESSION_DAYS) > 0
   : DEFAULT_TTL_MS;
 
 const app = express();
-app.use(express.json());
+// The version of the framework is not the client's business.
+app.disable('x-powered-by');
+app.use(securityHeaders);
+// Every request body here is a short JSON object; the default 100kb is an invitation.
+app.use(express.json({ limit: '32kb' }));
+
+// Two limits, different jobs. The wide one keeps a single client from turning this
+// proxy into a request generator against AIS — a screen costs about six calls, so a
+// hundred a minute is far beyond honest use. The narrow one sits in front of the
+// sign-in form, above the per-account circuit breaker, because the breaker protects
+// the AIS account while this protects the server from being ground through.
+const apiLimiter = rateLimit({ windowMs: 60_000, max: 120, name: 'api' });
+const loginLimiter = rateLimit({ windowMs: 15 * 60_000, max: 12, name: 'login' });
+app.use('/api', noStore, apiLimiter);
 
 // --- Sessions --------------------------------------------------------------
 // `store` holds the session records: id, login, expiry and — only when the user ticked
@@ -142,6 +158,8 @@ const wrap = (fn) => (req, res) =>
 // --- Auth ------------------------------------------------------------------
 app.post(
   '/api/login',
+  sameOriginOnly,
+  loginLimiter,
   wrap(async (req, res) => {
     const { login, password, remember } = req.body || {};
     const stay = truthy(remember);
@@ -160,13 +178,16 @@ app.post(
   })
 );
 
-app.post('/api/logout', (req, res) => {
+app.post('/api/logout', sameOriginOnly, (req, res) => {
   const sid = parseCookies(req).sid;
   if (sid) {
     live.delete(sid);
     store.destroy(sid); // drops the entry and the sealed credential with it
   }
   clearSidCookie(res);
+  // Cookies only: "storage" would take the offline shell and the chosen language
+  // with it, and signing out is not meant to uninstall the app.
+  res.setHeader('Clear-Site-Data', '"cookies"');
   store.flush().then(() => res.json({ ok: true }), () => res.json({ ok: true }));
 });
 
@@ -317,24 +338,57 @@ app.get(
   })
 );
 
-// Escape hatch for calibrating adapters. Explicitly allowlisted: AIS exposes
-// destructive actions over GET too (slavnosti/odhlasit, zaverecne-prace/odhlasit,
-// statne-skusky/ziadost-zrusit), so refusing by verb would not be enough.
+// Escape hatch for calibrating adapters against live AIS responses. It is off unless
+// AIS_RAW=1 is set for that run, because a passthrough is the one endpoint here that
+// can reach an AIS path nobody reviewed — and production never needs it.
+//
+// When it is on, a path must survive two checks in this order. First that it is a
+// plain relative path: the allowlist below matches the string as written, but `new
+// URL()` resolves `..` afterwards, so "znamky/../../rozvrh-odhlasit/9" used to pass
+// as a grades read and arrive at AIS as an unenrolment. Then the allowlist itself,
+// which names endpoints explicitly because AIS exposes destructive actions over GET
+// (slavnosti/odhlasit, zaverecne-prace/odhlasit, statne-skusky/ziadost-zrusit) and
+// refusing by verb would not be enough.
+const RAW_ENABLED = process.env.AIS_RAW === '1';
 app.get(
   '/api/raw/:path(*)',
   requireAuth,
   wrap(async (req, res) => {
+    if (!RAW_ENABLED) return res.status(404).json({ error: 'not_found' });
     if (MOCK) return res.status(400).json({ error: 'raw disabled in mock mode' });
-    if (!isReadOnly(req.params.path)) {
-      return res.status(403).json({ error: 'not a read-only endpoint', path: req.params.path });
+    const path_ = req.params.path;
+    if (!isSafePath(path_)) return res.status(400).json({ error: 'bad_path' });
+    if (!isReadOnly(path_)) {
+      return res.status(403).json({ error: 'not a read-only endpoint', path: path_ });
     }
-    res.json(await req.ais.get(req.params.path, { query: req.query }));
+    res.json(await req.ais.get(path_, { query: req.query }));
   })
 );
 
+// Instance configuration for the page: whatever the operator set, and nothing else.
+// Analytics is per-instance by nature — a fork should not report into someone else's
+// property — so the id arrives from the environment rather than from the source.
+app.get('/config.js', (_req, res) => {
+  const config = { gaId: String(process.env.AIS_GA_ID || '') };
+  res.type('application/javascript');
+  res.setHeader('Cache-Control', 'no-store');
+  res.send(`window.APP_CONFIG = ${JSON.stringify(config)};`);
+});
+
 // --- Static PWA ------------------------------------------------------------
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.get('*', (_req, res) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')));
+
+// The SPA fallback answered every unknown path with the shell, including
+// /anything.css and /anything.json. Behind a CDN that is how a cache is taught to
+// keep an HTML page under a filename that looks like a stylesheet; a missing file
+// should simply be missing.
+const LOOKS_LIKE_A_FILE = /\.[a-z0-9]{1,8}$/i;
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api/') || LOOKS_LIKE_A_FILE.test(req.path)) {
+    return res.status(404).type('text/plain').send('Not found');
+  }
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
 
 app.listen(PORT, () => {
   const where = store.persistent ? store.file : 'memory only';

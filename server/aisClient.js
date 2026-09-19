@@ -12,7 +12,7 @@
 // the fields defensively and fall back to returning the raw payload, so the UI keeps
 // working; correct them once a live response is seen (see README "Calibrating adapters").
 
-import { Pacer, SingleFlight, TtlCache, ttlFor, LoginGuard } from './guard.js';
+import { Pacer, SingleFlight, TtlCache, ttlFor, loginGuardFor } from './guard.js';
 
 const BASE = process.env.AIS_BASE || 'https://ais2.euba.sk';
 const LNG = (process.env.AIS_LNG || 'SK').toUpperCase();
@@ -24,9 +24,9 @@ const TOKEN_HEADER_VALUE = '2llVM1Fl3M';
 const UA =
   'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Mobile Safari/537.36';
 
-// One pacer and one login guard for the whole process: AIS sees a single client.
+// One pacer for the whole process: AIS sees a single client. The login breaker is
+// per account (see guard.js), because it protects an account, not the process.
 const pacer = new Pacer();
-const loginGuard = new LoginGuard();
 
 function parseSetCookie(headers) {
   // Node fetch exposes multiple Set-Cookie via getSetCookie() (Node 20.15+/undici).
@@ -59,7 +59,8 @@ export class AisSession {
   }
 
   async login(login, password) {
-    await loginGuard.beforeAttempt();
+    const guard = loginGuardFor(login);
+    await guard.beforeAttempt();
     await pacer.slot();
     const body = new URLSearchParams({ login, password }).toString();
     const res = await fetch(`${BASE}/ais/login.do`, {
@@ -77,16 +78,16 @@ export class AisSession {
     // A 302 to the portal means success; a 200 (login page again) means bad credentials.
     const redirected = res.status >= 300 && res.status < 400;
     if (!redirected && !this.jsessionid) {
-      loginGuard.failure();
+      guard.failure();
       throw new AisError(401, 'Login failed (no session established)');
     }
     this.creds = { login, password };
     await this.retrieveToken();
     if (!this.token) {
-      loginGuard.failure();
+      guard.failure();
       throw new AisError(401, 'Login failed (wrong username or password)');
     }
-    loginGuard.success();
+    guard.success();
     this.cache.clear();
     return true;
   }

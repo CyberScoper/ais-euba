@@ -1,22 +1,46 @@
 [Unit]
-Description=AIS PWA (convenient client over ais2.euba.sk)
+Description=AIS PWA (convenient client over AIS2)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/root/ais-pwa
-Environment=PORT=4176
+WorkingDirectory=/opt/ais-pwa
+# PORT, AIS_GA_ID and anything else instance-specific; the dash means "optional".
+EnvironmentFile=-/etc/default/ais-pwa
 Environment=NODE_ENV=production
 ExecStart=/usr/bin/node server/index.js
-# Sessions (and the key that seals a remembered password) live here, outside the repo.
-# systemd creates it as 0700 root:root and hands the path over as $STATE_DIRECTORY.
-StateDirectory=ais-pwa
-StateDirectoryMode=0700
 Restart=on-failure
 RestartSec=3
+
+# Sessions and the key that seals a remembered password live here, created 0700.
+StateDirectory=ais-pwa
+StateDirectoryMode=0700
+UMask=0077
+
+# This process holds someone's university password in memory, so it gets the
+# smallest surface systemd can give it while still being a plain Node server.
 NoNewPrivileges=true
 PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectProc=invisible
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
 
 [Install]
 WantedBy=multi-user.target
