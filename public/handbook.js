@@ -14,13 +14,13 @@ export const HANDBOOK = [
       "sk": "Doprava z internátov na univerzitu",
       "ru": "Транспорт из общежитий в университет",
       "uk": "Транспорт із гуртожитків до університету",
-      "en": "Doprava z internátov na univerzitu"
+      "en": "Getting from the dorms to the university"
     },
     "summary": {
       "sk": "Ktorý autobus ide z internátu a kde vystúpiť",
       "ru": "Какой автобус идёт от общежития и где выходить",
       "uk": "Який автобус їде від гуртожитку і де виходити",
-      "en": "Ktorý autobus ide z internátu a kde vystúpiť"
+      "en": "Which bus goes from your dorm and where to get off"
     },
     "items": [
       {
@@ -28,13 +28,13 @@ export const HANDBOOK = [
           "sk": "ŠD Starohájska 4 a 8",
           "ru": "ŠD Starohájska 4 и 8",
           "uk": "ŠD Starohájska 4 і 8",
-          "en": "ŠD Starohájska 4 a 8"
+          "en": "ŠD Starohájska 4 and 8"
         },
         "value": {
           "sk": "Zastávka Starohájska, autobus č. 68",
           "ru": "Остановка Starohájska, автобус № 68",
           "uk": "Зупинка Starohájska, автобус № 68",
-          "en": "Zastávka Starohájska, autobus č. 68"
+          "en": "Starohájska stop, bus 68"
         }
       },
       {
@@ -42,13 +42,13 @@ export const HANDBOOK = [
           "sk": "ŠD Ekonóm",
           "ru": "ŠD Ekonóm (общежитие)",
           "uk": "ŠD Ekonóm (гуртожиток)",
-          "en": "ŠD Ekonóm"
+          "en": "ŠD Ekonóm (dorm)"
         },
         "value": {
           "sk": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská",
           "ru": "Автобус № 87 – в университет от остановки Prístav, обратно от остановки Plynárenská",
           "uk": "Автобус № 87 – до університету від зупинки Prístav, назад від зупинки Plynárenská",
-          "en": "Autobus č. 87 – na univerzitu zo zastávky Prístav, späť zo zastávky Plynárenská"
+          "en": "Bus 87 – to the university from the Prístav stop, back from the Plynárenská stop"
         }
       },
       {
@@ -56,13 +56,13 @@ export const HANDBOOK = [
           "sk": "ŠD Vlčie hrdlo",
           "ru": "ŠD Vlčie hrdlo (общежитие)",
           "uk": "ŠD Vlčie hrdlo (гуртожиток)",
-          "en": "ŠD Vlčie hrdlo"
+          "en": "ŠD Vlčie hrdlo (dorm)"
         },
         "value": {
           "sk": "Zastávka Refinery Gallery, autobus č. 87",
           "ru": "Остановка Refinery Gallery, автобус № 87",
           "uk": "Зупинка Refinery Gallery, автобус № 87",
-          "en": "Zastávka Refinery Gallery, autobus č. 87"
+          "en": "Refinery Gallery stop, bus 87"
         }
       },
       {
@@ -70,13 +70,13 @@ export const HANDBOOK = [
           "sk": "ŠD HOPA a DOPA",
           "ru": "ŠD HOPA и DOPA",
           "uk": "ŠD HOPA і DOPA",
-          "en": "ŠD HOPA a DOPA"
+          "en": "ŠD HOPA and DOPA"
         },
         "value": {
           "sk": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého",
           "ru": "Автобус № 84 от остановки Hroboňova, выходить на Bulíková. Во время семестра ещё автобус № 184 – в университет от остановки Hroboňova, обратно выход на Prokopa Veľkého",
           "uk": "Автобус № 84 від зупинки Hroboňova, виходити на Bulíková. Під час семестру ще автобус № 184 – до університету від зупинки Hroboňova, назад вихід на Prokopa Veľkého",
-          "en": "Autobus č. 84 zo zastávky Hroboňova, výstup Bulíková. Počas semestra aj autobus č. 184 – na univerzitu zo zastávky Hroboňova, späť výstup Prokopa Veľkého"
+          "en": "Bus 84 from the Hroboňova stop, get off at Bulíková. During the semester also bus 184 – to the university from Hroboňova, back get off at Prokopa Veľkého"
         }
       },
       {
@@ -84,13 +84,13 @@ export const HANDBOOK = [
           "sk": "Cestovné poriadky MHD",
           "ru": "Расписания городского транспорта",
           "uk": "Розклади міського транспорту",
-          "en": "Cestovné poriadky MHD"
+          "en": "Public transport timetables"
         },
         "value": {
           "sk": "imhd.sk/ba, prípadne ich mobilná aplikácia",
           "ru": "imhd.sk/ba или их мобильное приложение",
           "uk": "imhd.sk/ba або їхній мобільний застосунок",
-          "en": "imhd.sk/ba, prípadne ich mobilná aplikácia"
+          "en": "imhd.sk/ba, or their mobile app"
         },
         "url": "https://imhd.sk/ba"
       }
@@ -105,13 +105,13 @@ export const HANDBOOK = [
       "sk": "Jedáleň a bufety",
       "ru": "Столовая и буфеты",
       "uk": "Їдальня і буфети",
-      "en": "Jedáleň a bufety"
+      "en": "Canteen and snack bars"
     },
     "summary": {
       "sk": "Obedy, bufety a ako sa za ne platí",
       "ru": "Обеды, буфеты и чем за них платить",
       "uk": "Обіди, буфети і чим за них платити",
-      "en": "Obedy, bufety a ako sa za ne platí"
+      "en": "Lunches, snack bars and how you pay"
     },
     "items": [
       {
@@ -119,13 +119,13 @@ export const HANDBOOK = [
           "sk": "Hlavná jedáleň",
           "ru": "Главная столовая",
           "uk": "Головна їдальня",
-          "en": "Hlavná jedáleň"
+          "en": "Main canteen"
         },
         "value": {
           "sk": "V priestoroch ŠD Dolnozemská (v starej budove)",
           "ru": "В помещениях ŠD Dolnozemská (в старом здании)",
           "uk": "У приміщеннях ŠD Dolnozemská (у старій будівлі)",
-          "en": "V priestoroch ŠD Dolnozemská (v starej budove)"
+          "en": "In ŠD Dolnozemská (in the old building)"
         }
       },
       {
@@ -133,13 +133,13 @@ export const HANDBOOK = [
           "sk": "Platba za obed",
           "ru": "Оплата обеда",
           "uk": "Оплата обіду",
-          "en": "Platba za obed"
+          "en": "Paying for lunch"
         },
         "value": {
           "sk": "ISIC kartou; kartu treba najprv aktivovať a dobiť",
           "ru": "Картой ISIC; карту сначала надо активировать и пополнить",
           "uk": "Карткою ISIC; картку спершу треба активувати й поповнити",
-          "en": "ISIC kartou; kartu treba najprv aktivovať a dobiť"
+          "en": "With your ISIC; activate and top up the card first"
         }
       },
       {
@@ -147,13 +147,13 @@ export const HANDBOOK = [
           "sk": "Objednávanie obedov",
           "ru": "Заказ обедов",
           "uk": "Замовлення обідів",
-          "en": "Objednávanie obedov"
+          "en": "Ordering lunch"
         },
         "value": {
           "sk": "Cez internet alebo na termináloch v škole, spravidla na chodbách",
           "ru": "Через интернет или на терминалах в университете, обычно в коридорах",
           "uk": "Через інтернет або на терміналах в університеті, зазвичай у коридорах",
-          "en": "Cez internet alebo na termináloch v škole, spravidla na chodbách"
+          "en": "Online or at the terminals in the building, usually in the corridors"
         }
       },
       {
@@ -161,13 +161,13 @@ export const HANDBOOK = [
           "sk": "Bufet – stará budova",
           "ru": "Буфет – старое здание",
           "uk": "Буфет – стара будівля",
-          "en": "Bufet – stará budova"
+          "en": "Snack bar – old building"
         },
         "value": {
           "sk": "Hneď pri vchode",
           "ru": "Сразу у входа",
           "uk": "Одразу біля входу",
-          "en": "Hneď pri vchode"
+          "en": "Right by the entrance"
         }
       },
       {
@@ -175,13 +175,13 @@ export const HANDBOOK = [
           "sk": "Bufet – nová budova",
           "ru": "Буфет – новое здание",
           "uk": "Буфет – нова будівля",
-          "en": "Bufet – nová budova"
+          "en": "Snack bar – new building"
         },
         "value": {
           "sk": "Napravo od výťahov",
           "ru": "Справа от лифтов",
           "uk": "Праворуч від ліфтів",
-          "en": "Napravo od výťahov"
+          "en": "To the right of the lifts"
         }
       },
       {
@@ -189,13 +189,13 @@ export const HANDBOOK = [
           "sk": "Menšie prevádzky",
           "ru": "Небольшие точки",
           "uk": "Невеликі точки",
-          "en": "Menšie prevádzky"
+          "en": "Smaller outlets"
         },
         "value": {
           "sk": "Pizza, smoothie, káva",
           "ru": "Пицца, смузи, кофе",
           "uk": "Піца, смузі, кава",
-          "en": "Pizza, smoothie, káva"
+          "en": "Pizza, smoothie, coffee"
         }
       },
       {
@@ -203,13 +203,13 @@ export const HANDBOOK = [
           "sk": "Jedáleň na internáte",
           "ru": "Столовая в общежитии",
           "uk": "Їдальня в гуртожитку",
-          "en": "Jedáleň na internáte"
+          "en": "Canteen at the dorm"
         },
         "value": {
           "sk": "Priamo v budove ŠD Ekonóm",
           "ru": "Прямо в здании общежития ŠD Ekonóm",
           "uk": "Прямо в будівлі гуртожитку ŠD Ekonóm",
-          "en": "Priamo v budove ŠD Ekonóm"
+          "en": "Right in the ŠD Ekonóm building"
         }
       },
       {
@@ -217,13 +217,13 @@ export const HANDBOOK = [
           "sk": "Stravovanie na stránke EUBA",
           "ru": "Питание на сайте EUBA",
           "uk": "Харчування на сайті EUBA",
-          "en": "Stravovanie na stránke EUBA"
+          "en": "Meals on the EUBA site"
         },
         "value": {
           "sk": "Ceny, čipovanie a prevádzkové časy",
           "ru": "Цены, чипование карты и часы работы",
           "uk": "Ціни, чипування картки і години роботи",
-          "en": "Ceny, čipovanie a prevádzkové časy"
+          "en": "Prices, card top-up (čipovanie) and opening hours"
         },
         "url": "https://euba.sk/sluzby/stravovanie"
       }
@@ -238,13 +238,13 @@ export const HANDBOOK = [
       "sk": "Slovenská ekonomická knižnica (SEK)",
       "ru": "Словацкая экономическая библиотека (SEK)",
       "uk": "Словацька економічна бібліотека (SEK)",
-      "en": "Slovenská ekonomická knižnica (SEK)"
+      "en": "Slovak Economic Library (SEK)"
     },
     "summary": {
       "sk": "Kde je, ako sa zaregistruješ a čo si požičiaš",
       "ru": "Где она, как зарегистрируешься и что возьмёшь",
       "uk": "Де вона, як зареєструєшся і що візьмеш",
-      "en": "Kde je, ako sa zaregistruješ a čo si požičiaš"
+      "en": "Where it is, how you register and what you can borrow"
     },
     "items": [
       {
@@ -252,13 +252,13 @@ export const HANDBOOK = [
           "sk": "Kde sídli",
           "ru": "Где находится",
           "uk": "Де розташована",
-          "en": "Kde sídli"
+          "en": "Where it is"
         },
         "value": {
           "sk": "Stará budova, 2. až 4. poschodie",
           "ru": "Старое здание, со 2-го по 4-й этаж",
           "uk": "Стара будівля, з 2-го по 4-й поверх",
-          "en": "Stará budova, 2. až 4. poschodie"
+          "en": "Old building, floors 2 to 4"
         }
       },
       {
@@ -266,13 +266,13 @@ export const HANDBOOK = [
           "sk": "Požičovňa",
           "ru": "Абонемент (Požičovňa)",
           "uk": "Абонемент (Požičovňa)",
-          "en": "Požičovňa"
+          "en": "Lending desk (Požičovňa)"
         },
         "value": {
           "sk": "2. poschodie starej budovy",
           "ru": "2-й этаж старого здания",
           "uk": "2-й поверх старої будівлі",
-          "en": "2. poschodie starej budovy"
+          "en": "2nd floor of the old building"
         }
       },
       {
@@ -280,13 +280,13 @@ export const HANDBOOK = [
           "sk": "Registrácia",
           "ru": "Регистрация",
           "uk": "Реєстрація",
-          "en": "Registrácia"
+          "en": "Registration"
         },
         "value": {
           "sk": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok",
           "ru": "Лично в абонементе (Požičovňa): покажешь ISIC, подпишешь заявление и заплатишь регистрационный сбор",
           "uk": "Особисто в абонементі (Požičovňa): покажеш ISIC, підпишеш заяву і заплатиш реєстраційний збір",
-          "en": "Osobne v Požičovni: preukážeš sa ISICom, podpíšeš prihlášku a zaplatíš registračný poplatok"
+          "en": "In person at the lending desk (Požičovňa): show your ISIC, sign the form and pay the registration fee"
         }
       },
       {
@@ -294,13 +294,13 @@ export const HANDBOOK = [
           "sk": "Prihlásenie do online katalógu",
           "ru": "Вход в онлайн-каталог",
           "uk": "Вхід в онлайн-каталог",
-          "en": "Prihlásenie do online katalógu"
+          "en": "Logging in to the online catalogue"
         },
         "value": {
           "sk": "Číslo ISICu a heslo zadané pri registrácii v knižnici",
           "ru": "Номер ISIC и пароль, заданный при регистрации в библиотеке",
           "uk": "Номер ISIC і пароль, заданий під час реєстрації в бібліотеці",
-          "en": "Číslo ISICu a heslo zadané pri registrácii v knižnici"
+          "en": "Your ISIC number and the password you set when registering"
         }
       },
       {
@@ -308,13 +308,13 @@ export const HANDBOOK = [
           "sk": "Objednanie knihy",
           "ru": "Заказ книги",
           "uk": "Замовлення книжки",
-          "en": "Objednanie knihy"
+          "en": "Ordering a book"
         },
         "value": {
           "sk": "Iba cez žiadanku v online katalógu",
           "ru": "Только через заявку (žiadanka) в онлайн-каталоге",
           "uk": "Тільки через заявку (žiadanka) в онлайн-каталозі",
-          "en": "Iba cez žiadanku v online katalógu"
+          "en": "Only via a request (žiadanka) in the online catalogue"
         }
       },
       {
@@ -322,13 +322,13 @@ export const HANDBOOK = [
           "sk": "Prevzatie",
           "ru": "Получение",
           "uk": "Отримання",
-          "en": "Prevzatie"
+          "en": "Pick-up"
         },
         "value": {
           "sk": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa",
           "ru": "В абонементе (Požičovňa) через час после заявки, не позже закрытия следующего рабочего дня",
           "uk": "В абонементі (Požičovňa) через годину після заявки, не пізніше закриття наступного робочого дня",
-          "en": "V Požičovni hodinu po zadaní žiadanky, najneskôr do konca prevádzkových hodín nasledujúceho pracovného dňa"
+          "en": "At the lending desk an hour after you order, at the latest by closing time the next working day"
         }
       },
       {
@@ -336,13 +336,13 @@ export const HANDBOOK = [
           "sk": "Limit výpožičiek",
           "ru": "Лимит выдачи",
           "uk": "Ліміт видачі",
-          "en": "Limit výpožičiek"
+          "en": "Borrowing limit"
         },
         "value": {
           "sk": "30 kníh naraz",
           "ru": "30 книг одновременно",
           "uk": "30 книжок одночасно",
-          "en": "30 kníh naraz"
+          "en": "30 books at a time"
         }
       },
       {
@@ -350,13 +350,13 @@ export const HANDBOOK = [
           "sk": "Výpožičná doba",
           "ru": "Срок пользования",
           "uk": "Термін користування",
-          "en": "Výpožičná doba"
+          "en": "Loan period"
         },
         "value": {
           "sk": "Knihy 1 mesiac, učebnice a skriptá 1 semester",
           "ru": "Книги 1 месяц, учебники и методички 1 семестр",
           "uk": "Книжки 1 місяць, підручники і методички 1 семестр",
-          "en": "Knihy 1 mesiac, učebnice a skriptá 1 semester"
+          "en": "Books 1 month, textbooks and course booklets 1 semester"
         }
       },
       {
@@ -364,7 +364,7 @@ export const HANDBOOK = [
           "sk": "Web knižnice",
           "ru": "Сайт библиотеки",
           "uk": "Сайт бібліотеки",
-          "en": "Web knižnice"
+          "en": "Library website"
         },
         "value": {
           "sk": "sek.euba.sk",
@@ -385,13 +385,13 @@ export const HANDBOOK = [
       "sk": "ISIC a prolongácia",
       "ru": "ISIC и продление (prolongácia)",
       "uk": "ISIC і продовження (prolongácia)",
-      "en": "ISIC a prolongácia"
+      "en": "ISIC and prolongation"
     },
     "summary": {
       "sk": "Na čo slúži, prolongácia a platba",
       "ru": "Для чего нужен, продление и оплата",
       "uk": "Для чого потрібен, продовження і оплата",
-      "en": "Na čo slúži, prolongácia a platba"
+      "en": "What it is for, prolongation and payment"
     },
     "items": [
       {
@@ -399,13 +399,13 @@ export const HANDBOOK = [
           "sk": "Čo to je",
           "ru": "Что это",
           "uk": "Що це",
-          "en": "Čo to je"
+          "en": "What it is"
         },
         "value": {
           "sk": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa",
           "ru": "Студенческое удостоверение; получишь его при записи на первый курс первой ступени",
           "uk": "Студентське посвідчення; отримаєш його при записі на перший курс першого ступеня",
-          "en": "Identifikačný preukaz študenta; dostaneš ho pri zápise do prvého ročníka prvého stupňa"
+          "en": "Your student ID card; you get it when you enrol in the first year of the first degree"
         }
       },
       {
@@ -413,13 +413,13 @@ export const HANDBOOK = [
           "sk": "Na čo slúži",
           "ru": "Для чего нужен",
           "uk": "Для чого потрібен",
-          "en": "Na čo slúži"
+          "en": "What it is for"
         },
         "value": {
           "sk": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy",
           "ru": "Вход в AiS и в помещения EUBA, столовая, библиотека, транспорт и другие скидки",
           "uk": "Вхід в AiS і до приміщень EUBA, їдальня, бібліотека, транспорт та інші знижки",
-          "en": "Prístup do AiS a do priestorov EUBA, jedáleň, knižnica, doprava a ďalšie zľavy"
+          "en": "Access to AiS and EUBA buildings, canteen, library, transport and other discounts"
         }
       },
       {
@@ -427,7 +427,7 @@ export const HANDBOOK = [
           "sk": "Poplatok za prolongáciu",
           "ru": "Плата за продление",
           "uk": "Плата за продовження",
-          "en": "Poplatok za prolongáciu"
+          "en": "Prolongation fee"
         },
         "value": {
           "sk": "15 €",
@@ -455,13 +455,13 @@ export const HANDBOOK = [
           "sk": "Variabilný symbol",
           "ru": "Variabilný symbol (переменный символ)",
           "uk": "Variabilný symbol (змінний символ)",
-          "en": "Variabilný symbol"
+          "en": "Variabilný symbol (payment reference)"
         },
         "value": {
           "sk": "Rodné číslo bez lomky",
           "ru": "Rodné číslo (личный номер) без косой черты",
           "uk": "Rodné číslo (особистий номер) без скісної риски",
-          "en": "Rodné číslo bez lomky"
+          "en": "Rodné číslo (birth number), no slash"
         }
       },
       {
@@ -469,7 +469,7 @@ export const HANDBOOK = [
           "sk": "Špecifický symbol – NHF",
           "ru": "Špecifický symbol (специфический символ) – NHF",
           "uk": "Špecifický symbol (специфічний символ) – NHF",
-          "en": "Špecifický symbol – NHF"
+          "en": "Špecifický symbol (payment code) – NHF"
         },
         "value": {
           "sk": "1010007",
@@ -553,7 +553,7 @@ export const HANDBOOK = [
           "sk": "Špecifický symbol – PHF v Košiciach",
           "ru": "Špecifický symbol – PHF в Кошице",
           "uk": "Špecifický symbol – PHF у Кошицях",
-          "en": "Špecifický symbol – PHF v Košiciach"
+          "en": "Špecifický symbol – PHF in Košice"
         },
         "value": {
           "sk": "1070007",
@@ -567,13 +567,13 @@ export const HANDBOOK = [
           "sk": "Postup",
           "ru": "Порядок действий",
           "uk": "Порядок дій",
-          "en": "Postup"
+          "en": "Steps"
         },
         "value": {
           "sk": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka",
           "ru": "Сначала запись на следующий учебный год, подтверждение записи лично в университете, потом марка о продлении (prolongačná známka)",
           "uk": "Спершу запис на наступний навчальний рік, підтвердження запису особисто в університеті, потім марка про продовження (prolongačná známka)",
-          "en": "Najprv zápis do ďalšieho akademického roka, potvrdenie zápisu osobne v škole, potom prolongačná známka"
+          "en": "First enrol for the next academic year, confirm the enrolment in person at school, then the prolongation sticker (prolongačná známka)"
         }
       },
       {
@@ -581,13 +581,13 @@ export const HANDBOOK = [
           "sk": "Kde vyzdvihnúť známku",
           "ru": "Где забрать марку",
           "uk": "Де забрати марку",
-          "en": "Kde vyzdvihnúť známku"
+          "en": "Where to pick up the sticker"
         },
         "value": {
           "sk": "Miestnosť A9.05, treba doklad o zaplatení poplatku",
           "ru": "Кабинет A9.05, нужен документ об оплате",
           "uk": "Кабінет A9.05, потрібен документ про оплату",
-          "en": "Miestnosť A9.05, treba doklad o zaplatení poplatku"
+          "en": "Room A9.05, bring proof of payment"
         }
       },
       {
@@ -595,13 +595,13 @@ export const HANDBOOK = [
           "sk": "Aktivácia preukazu",
           "ru": "Активация карты",
           "uk": "Активація картки",
-          "en": "Aktivácia preukazu"
+          "en": "Activating the card"
         },
         "value": {
           "sk": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie",
           "ru": "Приложить к считывателю на Университетском терминале, 9-й этаж",
           "uk": "Прикласти до зчитувача на Університетському терміналі, 9-й поверх",
-          "en": "Priložením k čítačke na Univerzitnom termináli, 9. poschodie"
+          "en": "Tap it on the reader at the University terminal, 9th floor"
         }
       },
       {
@@ -609,13 +609,13 @@ export const HANDBOOK = [
           "sk": "Preukaz študenta na stránke EUBA",
           "ru": "Студенческое удостоверение на сайте EUBA",
           "uk": "Студентське посвідчення на сайті EUBA",
-          "en": "Preukaz študenta na stránke EUBA"
+          "en": "Student card on the EUBA site"
         },
         "value": {
           "sk": "Podrobnosti o preukaze a prolongácii",
           "ru": "Подробности о карте и продлении",
           "uk": "Подробиці про картку і продовження",
-          "en": "Podrobnosti o preukaze a prolongácii"
+          "en": "Details on the card and prolongation"
         },
         "url": "https://euba.sk/student/preukaz-studenta-isic"
       }
@@ -630,13 +630,13 @@ export const HANDBOOK = [
       "sk": "Školský e-mail, Office 365 a MS Teams",
       "ru": "Университетская почта, Office 365 и MS Teams",
       "uk": "Університетська пошта, Office 365 і MS Teams",
-      "en": "Školský e-mail, Office 365 a MS Teams"
+      "en": "University e-mail, Office 365 and MS Teams"
     },
     "summary": {
       "sk": "Školská pošta, Office 365 a tímy predmetov",
       "ru": "Университетская почта, Office 365 и команды по предметам",
       "uk": "Університетська пошта, Office 365 і команди з предметів",
-      "en": "Školská pošta, Office 365 a tímy predmetov"
+      "en": "University mail, Office 365 and course teams"
     },
     "items": [
       {
@@ -644,13 +644,13 @@ export const HANDBOOK = [
           "sk": "Kde nájdeš svoju adresu",
           "ru": "Где найти свой адрес",
           "uk": "Де знайти свою адресу",
-          "en": "Kde nájdeš svoju adresu"
+          "en": "Where to find your address"
         },
         "value": {
           "sk": "Pridelený školský e-mail je uvedený v AiS",
           "ru": "Выданный университетский e-mail указан в AiS",
           "uk": "Виданий університетський e-mail указано в AiS",
-          "en": "Pridelený školský e-mail je uvedený v AiS"
+          "en": "Your assigned university e-mail is in AiS"
         }
       },
       {
@@ -658,13 +658,13 @@ export const HANDBOOK = [
           "sk": "Heslo",
           "ru": "Пароль",
           "uk": "Пароль",
-          "en": "Heslo"
+          "en": "Password"
         },
         "value": {
           "sk": "Pridelené heslo príde e-mailom",
           "ru": "Выданный пароль придёт по e-mail",
           "uk": "Виданий пароль прийде на e-mail",
-          "en": "Pridelené heslo príde e-mailom"
+          "en": "The password is sent to you by e-mail"
         }
       },
       {
@@ -687,13 +687,13 @@ export const HANDBOOK = [
           "sk": "Čo dáva školský e-mail",
           "ru": "Что даёт университетская почта",
           "uk": "Що дає університетська пошта",
-          "en": "Čo dáva školský e-mail"
+          "en": "What the university e-mail gets you"
         },
         "value": {
           "sk": "Prístup do MS Office 365 počas celého štúdia",
           "ru": "Доступ к MS Office 365 на всё время учёбы",
           "uk": "Доступ до MS Office 365 на весь час навчання",
-          "en": "Prístup do MS Office 365 počas celého štúdia"
+          "en": "Access to MS Office 365 for your whole studies"
         }
       },
       {
@@ -701,13 +701,13 @@ export const HANDBOOK = [
           "sk": "Outlook v počítači",
           "ru": "Outlook на компьютере",
           "uk": "Outlook на комп'ютері",
-          "en": "Outlook v počítači"
+          "en": "Outlook on a computer"
         },
         "value": {
           "sk": "Súčasť licencie balíka MS Office",
           "ru": "Входит в лицензию пакета MS Office",
           "uk": "Входить у ліцензію пакета MS Office",
-          "en": "Súčasť licencie balíka MS Office"
+          "en": "Part of the MS Office licence"
         }
       },
       {
@@ -715,13 +715,13 @@ export const HANDBOOK = [
           "sk": "Outlook v mobile",
           "ru": "Outlook в телефоне",
           "uk": "Outlook у телефоні",
-          "en": "Outlook v mobile"
+          "en": "Outlook on the phone"
         },
         "value": {
           "sk": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia",
           "ru": "Приложение, вход по e-mail и паролю – самые быстрые уведомления",
           "uk": "Застосунок, вхід за e-mail і паролем – найшвидші сповіщення",
-          "en": "Aplikácia, prihlásenie e-mailom a heslom – najrýchlejšie upozornenia"
+          "en": "App, sign in with e-mail and password – fastest notifications"
         }
       },
       {
@@ -729,13 +729,13 @@ export const HANDBOOK = [
           "sk": "Manuál na inštaláciu Office 365",
           "ru": "Инструкция по установке Office 365",
           "uk": "Інструкція зі встановлення Office 365",
-          "en": "Manuál na inštaláciu Office 365"
+          "en": "Office 365 installation guide"
         },
         "value": {
           "sk": "PDF od Študentského parlamentu",
           "ru": "PDF от Студенческого парламента",
           "uk": "PDF від Студентського парламенту",
-          "en": "PDF od Študentského parlamentu"
+          "en": "PDF from the Student Parliament"
         },
         "url": "https://sp.euba.sk/www_write/files/manual_na_instalaciu_balika_ms_office_365.pdf"
       },
@@ -744,13 +744,13 @@ export const HANDBOOK = [
           "sk": "Ako sa dostaneš do Teams",
           "ru": "Как попасть в Teams",
           "uk": "Як потрапити в Teams",
-          "en": "Ako sa dostaneš do Teams"
+          "en": "How to get into Teams"
         },
         "value": {
           "sk": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu",
           "ru": "Зайди в веб-Outlook, нажми на точки слева вверху и выбери Teams; потом скачаешь приложение для ПК или будешь пользоваться веб-версией",
           "uk": "Зайди у вебверсію Outlook, натисни на крапки ліворуч угорі та вибери Teams; потім завантажиш застосунок для ПК або користуватимешся вебверсією",
-          "en": "Prihlás sa do webového Outlooku, klikni na bodky vľavo hore a vyber Teams; potom si stiahneš aplikáciu pre PC alebo použiješ webovú verziu"
+          "en": "Sign in to Outlook on the web, click the dots at the top left and pick Teams; then download the PC app or use the web version"
         }
       },
       {
@@ -758,13 +758,13 @@ export const HANDBOOK = [
           "sk": "Teams v mobile",
           "ru": "Teams в телефоне",
           "uk": "Teams у телефоні",
-          "en": "Teams v mobile"
+          "en": "Teams on the phone"
         },
         "value": {
           "sk": "Aplikácia je bezplatne v Google Play aj App Store",
           "ru": "Приложение бесплатно в Google Play и App Store",
           "uk": "Застосунок безкоштовний у Google Play і App Store",
-          "en": "Aplikácia je bezplatne v Google Play aj App Store"
+          "en": "The app is free on Google Play and the App Store"
         }
       },
       {
@@ -772,13 +772,13 @@ export const HANDBOOK = [
           "sk": "Tímy predmetov",
           "ru": "Команды по предметам",
           "uk": "Команди з предметів",
-          "en": "Tímy predmetov"
+          "en": "Course teams"
         },
         "value": {
           "sk": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov",
           "ru": "Команды создают преподаватели и сами добавляют туда студентов",
           "uk": "Команди створюють викладачі й самі додають туди студентів",
-          "en": "Tímy vytvárajú vyučujúci a sami do nich pridávajú študentov"
+          "en": "Teachers create the teams and add students themselves"
         }
       },
       {
@@ -786,13 +786,13 @@ export const HANDBOOK = [
           "sk": "Pripojenie kódom",
           "ru": "Вход по коду",
           "uk": "Приєднання за кодом",
-          "en": "Pripojenie kódom"
+          "en": "Joining with a code"
         },
         "value": {
           "sk": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
           "ru": "Путь в Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
           "uk": "Шлях у Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu",
-          "en": "Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu"
+          "en": "Path in Teams: Tímy → Pripojiť sa alebo vytvoriť tím → Zadajte kód → Pripojiť k tímu"
         }
       },
       {
@@ -800,13 +800,13 @@ export const HANDBOOK = [
           "sk": "Nahrávanie hodín",
           "ru": "Запись занятий",
           "uk": "Запис занять",
-          "en": "Nahrávanie hodín"
+          "en": "Recording classes"
         },
         "value": {
           "sk": "Iba so súhlasom vyučujúceho",
           "ru": "Только с согласия преподавателя",
           "uk": "Тільки за згодою викладача",
-          "en": "Iba so súhlasom vyučujúceho"
+          "en": "Only with the teacher's consent"
         }
       }
     ],
@@ -820,13 +820,13 @@ export const HANDBOOK = [
       "sk": "Areál, budovy a orientácia",
       "ru": "Кампус, здания и ориентация",
       "uk": "Кампус, будівлі й орієнтація",
-      "en": "Areál, budovy a orientácia"
+      "en": "Campus, buildings and finding your way"
     },
     "summary": {
       "sk": "Ktorá budova, ktorá fakulta a čo v nej nájdeš",
       "ru": "Какое здание, какой факультет и что в нём найдёшь",
       "uk": "Яка будівля, який факультет і що в ній знайдеш",
-      "en": "Ktorá budova, ktorá fakulta a čo v nej nájdeš"
+      "en": "Which building, which faculty and what is inside"
     },
     "items": [
       {
@@ -834,13 +834,13 @@ export const HANDBOOK = [
           "sk": "Stará budova V1",
           "ru": "Старое здание V1",
           "uk": "Стара будівля V1",
-          "en": "Stará budova V1"
+          "en": "Old building V1"
         },
         "value": {
           "sk": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet",
           "ru": "NHF, OF, Словацкая экономическая библиотека, магазин учебной литературы, копицентр и буфет",
           "uk": "NHF, OF, Словацька економічна бібліотека, магазин навчальної літератури, копіцентр і буфет",
-          "en": "NHF, OF, Slovenská ekonomická knižnica, predajňa študijnej literatúry, kopírovacie centrum a bufet"
+          "en": "NHF, OF, the Slovak Economic Library, the study bookshop, the copy centre and a snack bar"
         }
       },
       {
@@ -848,13 +848,13 @@ export const HANDBOOK = [
           "sk": "Nová budova V2 (vyššia)",
           "ru": "Новое здание V2 (которое выше)",
           "uk": "Нова будівля V2 (та, що вища)",
-          "en": "Nová budova V2 (vyššia)"
+          "en": "New building V2 (the taller one)"
         },
         "value": {
           "sk": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP",
           "ru": "FPM, FHI, FMV, FAJ, ректорат, буфет, копировальные услуги и EUBA FAN SHOP",
           "uk": "FPM, FHI, FMV, FAJ, ректорат, буфет, копіювальні послуги і EUBA FAN SHOP",
-          "en": "FPM, FHI, FMV, FAJ, rektorát, bufet, kopírovacie služby a EUBA FAN SHOP"
+          "en": "FPM, FHI, FMV, FAJ, the rectorate, a snack bar, copy services and the EUBA FAN SHOP"
         }
       },
       {
@@ -862,13 +862,13 @@ export const HANDBOOK = [
           "sk": "Aula",
           "ru": "Aula (актовый зал)",
           "uk": "Aula (актова зала)",
-          "en": "Aula"
+          "en": "Aula (assembly hall)"
         },
         "value": {
           "sk": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu",
           "ru": "Aula Ekonomickej univerzity v Bratislave, отдельная часть кампуса",
           "uk": "Aula Ekonomickej univerzity v Bratislave, окрема частина кампусу",
-          "en": "Aula Ekonomickej univerzity v Bratislave, samostatná časť areálu"
+          "en": "Aula Ekonomickej univerzity v Bratislave, a separate part of the campus"
         }
       },
       {
@@ -876,13 +876,13 @@ export const HANDBOOK = [
           "sk": "Prepojenie budov",
           "ru": "Переход между зданиями",
           "uk": "Перехід між будівлями",
-          "en": "Prepojenie budov"
+          "en": "Link between the buildings"
         },
         "value": {
           "sk": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch",
           "ru": "V1 и V2 соединяет коридор; лекционные и семинарские аудитории есть в обоих",
           "uk": "V1 і V2 з'єднує коридор; лекційні та семінарські аудиторії є в обох",
-          "en": "V1 a V2 spája chodba; prednáškové aj seminárne miestnosti sú v oboch"
+          "en": "A corridor connects V1 and V2; lecture and seminar rooms are in both"
         }
       },
       {
@@ -890,13 +890,13 @@ export const HANDBOOK = [
           "sk": "Čísla miestností V1",
           "ru": "Номера аудиторий в V1",
           "uk": "Номери аудиторій у V1",
-          "en": "Čísla miestností V1"
+          "en": "Room numbers in V1"
         },
         "value": {
           "sk": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203",
           "ru": "Буква блока (B слева, D справа), потом этаж (1 = первый этаж) и две цифры аудитории, например B108, D115, B203",
           "uk": "Літера блоку (B ліворуч, D праворуч), потім поверх (1 = перший поверх) і дві цифри аудиторії, наприклад B108, D115, B203",
-          "en": "Písmeno bloku (B naľavo, D napravo), potom poschodie (1 = prízemie) a dve čísla miestnosti, napr. B108, D115, B203"
+          "en": "Block letter (B on the left, D on the right), then the floor (1 = ground floor) and two room digits, e.g. B108, D115, B203"
         }
       },
       {
@@ -904,13 +904,13 @@ export const HANDBOOK = [
           "sk": "Čísla miestností V2",
           "ru": "Номера аудиторий в V2",
           "uk": "Номери аудиторій у V2",
-          "en": "Čísla miestností V2"
+          "en": "Room numbers in V2"
         },
         "value": {
           "sk": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08",
           "ru": "Буква блока (B левое крыло, A центр, C, D, E правое крыло), этаж (1 = первый этаж) и две цифры аудитории, например B1.02, C1.10, A5_08",
           "uk": "Літера блоку (B ліве крило, A центр, C, D, E праве крило), поверх (1 = перший поверх) і дві цифри аудиторії, наприклад B1.02, C1.10, A5_08",
-          "en": "Písmeno bloku (B ľavé krídlo, A stred, C, D, E pravé krídlo), poschodie (1 = prízemie) a dvojčíslie miestnosti, napr. B1.02, C1.10, A5_08"
+          "en": "Block letter (B left wing, A centre, C, D, E right wing), the floor (1 = ground floor) and two room digits, e.g. B1.02, C1.10, A5_08"
         }
       },
       {
@@ -918,13 +918,13 @@ export const HANDBOOK = [
           "sk": "Šatňa v budove V1",
           "ru": "Гардероб в здании V1",
           "uk": "Гардероб у будівлі V1",
-          "en": "Šatňa v budove V1"
+          "en": "Cloakroom in V1"
         },
         "value": {
           "sk": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1",
           "ru": "В конце вестибюля слева в блоке B, помещение ŠATŇA 1",
           "uk": "У кінці вестибюля ліворуч у блоці B, приміщення ŠATŇA 1",
-          "en": "Na konci vestibulu vľavo v bloku B, miestnosť ŠATŇA 1"
+          "en": "At the end of the lobby on the left in block B, room ŠATŇA 1"
         }
       },
       {
@@ -932,13 +932,13 @@ export const HANDBOOK = [
           "sk": "Šatňa v budove V2",
           "ru": "Гардероб в здании V2",
           "uk": "Гардероб у будівлі V2",
-          "en": "Šatňa v budove V2"
+          "en": "Cloakroom in V2"
         },
         "value": {
           "sk": "Vo vestibule za výťahmi, miestnosť 1.08",
           "ru": "В вестибюле за лифтами, помещение 1.08",
           "uk": "У вестибюлі за ліфтами, приміщення 1.08",
-          "en": "Vo vestibule za výťahmi, miestnosť 1.08"
+          "en": "In the lobby behind the lifts, room 1.08"
         }
       },
       {
@@ -967,13 +967,13 @@ export const HANDBOOK = [
       "sk": "Internáty a ubytovanie",
       "ru": "Общежития и проживание",
       "uk": "Гуртожитки і проживання",
-      "en": "Internáty a ubytovanie"
+      "en": "Dorms and housing"
     },
     "summary": {
       "sk": "Kde sa býva a ako sa o miesto žiada",
       "ru": "Где живут и как подать заявку на место",
       "uk": "Де живуть і як подати заявку на місце",
-      "en": "Kde sa býva a ako sa o miesto žiada"
+      "en": "Where you live and how to apply for a place"
     },
     "items": [
       {
@@ -981,13 +981,13 @@ export const HANDBOOK = [
           "sk": "Prideľovanie miest",
           "ru": "Распределение мест",
           "uk": "Розподіл місць",
-          "en": "Prideľovanie miest"
+          "en": "How places are given out"
         },
         "value": {
           "sk": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov",
           "ru": "По рейтингу набранных баллов и свободной вместимости общежитий",
           "uk": "За рейтингом набраних балів і вільною місткістю гуртожитків",
-          "en": "Podľa poradia získaných bodov a voľnej kapacity jednotlivých internátov"
+          "en": "By your points ranking and the free capacity of each dorm"
         }
       },
       {
@@ -995,13 +995,13 @@ export const HANDBOOK = [
           "sk": "Zásady prideľovania (článok 4)",
           "ru": "Правила распределения (статья 4)",
           "uk": "Правила розподілу (стаття 4)",
-          "en": "Zásady prideľovania (článok 4)"
+          "en": "Allocation rules (article 4)"
         },
         "value": {
           "sk": "PDF s postupom prideľovania a výpočtom bodov",
           "ru": "PDF с порядком распределения и расчётом баллов",
           "uk": "PDF з порядком розподілу і розрахунком балів",
-          "en": "PDF s postupom prideľovania a výpočtom bodov"
+          "en": "PDF with the allocation process and how points are counted"
         },
         "url": "https://sp.euba.sk/www_write/files/b-zasady_pridelovania_ubytovania_2022__oprava.pdf"
       },
@@ -1070,7 +1070,7 @@ export const HANDBOOK = [
           "sk": "ŠD Vlčie hrdlo",
           "ru": "ŠD Vlčie hrdlo (общежитие)",
           "uk": "ŠD Vlčie hrdlo (гуртожиток)",
-          "en": "ŠD Vlčie hrdlo"
+          "en": "ŠD Vlčie hrdlo (dorm)"
         },
         "value": {
           "sk": "Vlčie Hrdlo 74, 821 07 Bratislava",
@@ -1085,7 +1085,7 @@ export const HANDBOOK = [
           "sk": "ŠD Ekonóm",
           "ru": "ŠD Ekonóm (общежитие)",
           "uk": "ŠD Ekonóm (гуртожиток)",
-          "en": "ŠD Ekonóm"
+          "en": "ŠD Ekonóm (dorm)"
         },
         "value": {
           "sk": "Prístavná 8, 821 09 Bratislava",
@@ -1100,7 +1100,7 @@ export const HANDBOOK = [
           "sk": "ŠD Bellova v Košiciach",
           "ru": "ŠD Bellova в Кошице",
           "uk": "ŠD Bellova в Кошицях",
-          "en": "ŠD Bellova v Košiciach"
+          "en": "ŠD Bellova in Košice"
         },
         "value": {
           "sk": "Bellova 1, 040 01 Košice",
@@ -1121,13 +1121,13 @@ export const HANDBOOK = [
       "sk": "Organizácia štúdia",
       "ru": "Организация учёбы",
       "uk": "Організація навчання",
-      "en": "Organizácia štúdia"
+      "en": "How studies are organised"
     },
     "summary": {
       "sk": "Semester, kredity a skúšky v skratke",
       "ru": "Семестр, кредиты и экзамены вкратце",
       "uk": "Семестр, кредити та іспити стисло",
-      "en": "Semester, kredity a skúšky v skratke"
+      "en": "Semester, credits and exams in short"
     },
     "items": [
       {
@@ -1135,13 +1135,13 @@ export const HANDBOOK = [
           "sk": "Harmonogram akademického roka",
           "ru": "График учебного года",
           "uk": "Графік навчального року",
-          "en": "Harmonogram akademického roka"
+          "en": "Academic year schedule"
         },
         "value": {
           "sk": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom",
           "ru": "План семестра EUBA публикует перед его началом",
           "uk": "План семестру EUBA оприлюднює перед його початком",
-          "en": "Rozpis semestra zverejňuje EUBA pred jeho začiatkom"
+          "en": "EUBA publishes the semester plan before it starts"
         },
         "url": "https://euba.sk/student/harmonogram-akademickeho-roka"
       },
@@ -1150,13 +1150,13 @@ export const HANDBOOK = [
           "sk": "Rozvrh",
           "ru": "Расписание",
           "uk": "Розклад",
-          "en": "Rozvrh"
+          "en": "Timetable"
         },
         "value": {
           "sk": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť",
           "ru": "На сайте университета за пару дней до начала занятий; в нём есть и время, и аудитория",
           "uk": "На сайті університету за пару днів до початку занять; у ньому є і час, і аудиторія",
-          "en": "Na stránke univerzity pár dní pred začiatkom výučby; nájdeš v ňom čas aj miestnosť"
+          "en": "On the university site a few days before classes start; it gives the time and the room"
         }
       },
       {
@@ -1164,13 +1164,13 @@ export const HANDBOOK = [
           "sk": "Prednáška a seminár",
           "ru": "Лекция и семинар",
           "uk": "Лекція і семінар",
-          "en": "Prednáška a seminár"
+          "en": "Lecture and seminar"
         },
         "value": {
           "sk": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku",
           "ru": "Лекция для всего потока, семинар или практика в маленькой группе (krúžok)",
           "uk": "Лекція для всього потоку, семінар чи практичне в малій групі (krúžok)",
-          "en": "Prednáška pre celý odbor, seminár či cvičenie v menšej skupine – krúžku"
+          "en": "A lecture for the whole programme, a seminar or practical in a smaller group (krúžok)"
         }
       },
       {
@@ -1178,13 +1178,13 @@ export const HANDBOOK = [
           "sk": "Podmienka pripustenia ku skúške",
           "ru": "Условие допуска к экзамену",
           "uk": "Умова допуску до іспиту",
-          "en": "Podmienka pripustenia ku skúške"
+          "en": "What lets you sit the exam"
         },
         "value": {
           "sk": "Úspešné absolvovanie seminára počas semestra",
           "ru": "Успешно пройденный семинар в течение семестра",
           "uk": "Успішно пройдений семінар протягом семестру",
-          "en": "Úspešné absolvovanie seminára počas semestra"
+          "en": "Passing the seminar during the semester"
         }
       },
       {
@@ -1192,13 +1192,13 @@ export const HANDBOOK = [
           "sk": "Termíny skúšky",
           "ru": "Даты экзамена",
           "uk": "Дати іспиту",
-          "en": "Termíny skúšky"
+          "en": "Exam dates"
         },
         "value": {
           "sk": "Jeden riadny a jeden opravný",
           "ru": "Одна основная и одна пересдача",
           "uk": "Одна основна і одна перездача",
-          "en": "Jeden riadny a jeden opravný"
+          "en": "One regular and one retake"
         }
       }
     ],
@@ -1212,13 +1212,13 @@ export const HANDBOOK = [
       "sk": "Čo vybavíš v AiS",
       "ru": "Что можно сделать в AiS",
       "uk": "Що можна зробити в AiS",
-      "en": "Čo vybavíš v AiS"
+      "en": "What you do in AiS"
     },
     "summary": {
       "sk": "Čo sa v AiS vybavuje okrem rozvrhu",
       "ru": "Что делают в AiS кроме расписания",
       "uk": "Що роблять в AiS крім розкладу",
-      "en": "Čo sa v AiS vybavuje okrem rozvrhu"
+      "en": "What AiS is for besides the timetable"
     },
     "items": [
       {
@@ -1226,13 +1226,13 @@ export const HANDBOOK = [
           "sk": "Skúšky",
           "ru": "Экзамены",
           "uk": "Іспити",
-          "en": "Skúšky"
+          "en": "Exams"
         },
         "value": {
           "sk": "Prihlasovanie na termíny a zapísané známky",
           "ru": "Запись на даты экзаменов и выставленные оценки",
           "uk": "Запис на дати іспитів і виставлені оцінки",
-          "en": "Prihlasovanie na termíny a zapísané známky"
+          "en": "Signing up for exam dates and your recorded grades"
         }
       },
       {
@@ -1240,13 +1240,13 @@ export const HANDBOOK = [
           "sk": "Zápis predmetov",
           "ru": "Запись на предметы",
           "uk": "Запис на предмети",
-          "en": "Zápis predmetov"
+          "en": "Enrolling in courses"
         },
         "value": {
           "sk": "Na nasledujúci semester alebo celý akademický rok",
           "ru": "На следующий семестр или на весь учебный год",
           "uk": "На наступний семестр або на весь навчальний рік",
-          "en": "Na nasledujúci semester alebo celý akademický rok"
+          "en": "For the next semester or the whole academic year"
         }
       },
       {
@@ -1254,13 +1254,13 @@ export const HANDBOOK = [
           "sk": "Ubytovanie",
           "ru": "Проживание",
           "uk": "Проживання",
-          "en": "Ubytovanie"
+          "en": "Housing"
         },
         "value": {
           "sk": "Žiadosť o internát sa podáva cez AiS",
           "ru": "Заявка на общежитие подаётся через AiS",
           "uk": "Заявка на гуртожиток подається через AiS",
-          "en": "Žiadosť o internát sa podáva cez AiS"
+          "en": "You apply for a dorm through AiS"
         }
       },
       {
@@ -1268,13 +1268,13 @@ export const HANDBOOK = [
           "sk": "Hodnotenie výučby",
           "ru": "Оценка преподавания",
           "uk": "Оцінювання викладання",
-          "en": "Hodnotenie výučby"
+          "en": "Course evaluation"
         },
         "value": {
           "sk": "Prebieha vždy na konci semestra",
           "ru": "Проходит всегда в конце семестра",
           "uk": "Відбувається завжди наприкінці семестру",
-          "en": "Prebieha vždy na konci semestra"
+          "en": "Always runs at the end of the semester"
         }
       }
     ],
@@ -1294,7 +1294,7 @@ export const HANDBOOK = [
       "sk": "Štúdium a stáž v zahraničí",
       "ru": "Учёба и стажировка за границей",
       "uk": "Навчання і стажування за кордоном",
-      "en": "Štúdium a stáž v zahraničí"
+      "en": "Study and placements abroad"
     },
     "items": [
       {
@@ -1302,13 +1302,13 @@ export const HANDBOOK = [
           "sk": "Čo ponúka",
           "ru": "Что предлагает",
           "uk": "Що пропонує",
-          "en": "Čo ponúka"
+          "en": "What it offers"
         },
         "value": {
           "sk": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže",
           "ru": "Программа мобильности ЕС: учёба в ЕС и за его пределами, практические и выпускные стажировки",
           "uk": "Програма мобільності ЄС: навчання в ЄС і поза ним, практичні та випускні стажування",
-          "en": "Mobilitný program EÚ: štúdium v EÚ aj mimo nej, praktické a absolventské stáže"
+          "en": "EU mobility programme: study in the EU and outside it, work and graduate placements"
         }
       },
       {
@@ -1316,13 +1316,13 @@ export const HANDBOOK = [
           "sk": "Limit mobilít",
           "ru": "Лимит мобильностей",
           "uk": "Ліміт мобільностей",
-          "en": "Limit mobilít"
+          "en": "Mobility limit"
         },
         "value": {
           "sk": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane",
           "ru": "Максимум 12 месяцев суммарно на одной ступени учёбы; участвовать можно несколько раз",
           "uk": "Максимум 12 місяців сумарно на одному ступені навчання; брати участь можна кілька разів",
-          "en": "Najviac 12 mesiacov spolu na jednom stupni štúdia; zúčastniť sa možno opakovane"
+          "en": "Up to 12 months in total per degree level; you can go more than once"
         }
       },
       {
@@ -1330,13 +1330,13 @@ export const HANDBOOK = [
           "sk": "Výber – štúdium v EÚ",
           "ru": "Отбор – учёба в ЕС",
           "uk": "Відбір – навчання в ЄС",
-          "en": "Výber – štúdium v EÚ"
+          "en": "Selection – study in the EU"
         },
         "value": {
           "sk": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility",
           "ru": "Первый тур на факультете (конкурсы обычно в январе), второй в Oddelenie medzinárodnej mobility (отдел международной мобильности)",
           "uk": "Перший тур на факультеті (конкурси зазвичай у січні), другий в Oddelenie medzinárodnej mobility (відділ міжнародної мобільності)",
-          "en": "Prvé kolo na fakulte (výzvy spravidla v januári), druhé na Oddelení medzinárodnej mobility"
+          "en": "First round at your faculty (calls usually in January), second at Oddelenie medzinárodnej mobility (international mobility office)"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-v-eu"
       },
@@ -1345,13 +1345,13 @@ export const HANDBOOK = [
           "sk": "Výber – štúdium mimo EÚ",
           "ru": "Отбор – учёба вне ЕС",
           "uk": "Відбір – навчання поза ЄС",
-          "en": "Výber – štúdium mimo EÚ"
+          "en": "Selection – study outside the EU"
         },
         "value": {
           "sk": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred",
           "ru": "Общеуниверситетский отбор обычно 2× в год (март/октябрь), объявление минимум за 2 недели",
           "uk": "Загальноуніверситетський відбір зазвичай 2× на рік (березень/жовтень), оголошення щонайменше за 2 тижні",
-          "en": "Celouniverzitné konanie zvyčajne 2× ročne (marec/október), výzva najmenej 2 týždne vopred"
+          "en": "University-wide selection usually 2× a year (March/October), the call at least 2 weeks ahead"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-mimo-eu"
       },
@@ -1360,13 +1360,13 @@ export const HANDBOOK = [
           "sk": "Praktické stáže",
           "ru": "Практические стажировки",
           "uk": "Практичні стажування",
-          "en": "Praktické stáže"
+          "en": "Work placements"
         },
         "value": {
           "sk": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku",
           "ru": "Конкурс объявляет факультет после начала учебного года; стажировку надо пройти в том же учебном году",
           "uk": "Конкурс оголошує факультет після початку навчального року; стажування треба пройти в тому самому навчальному році",
-          "en": "Výzvu vyhlasuje fakulta po začiatku akademického roka; stáž treba absolvovať v tom istom akademickom roku"
+          "en": "The faculty announces the call after the academic year starts; you must do the placement in that same academic year"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-prakticke-staze"
       },
@@ -1375,13 +1375,13 @@ export const HANDBOOK = [
           "sk": "Absolventské stáže",
           "ru": "Выпускные стажировки",
           "uk": "Випускні стажування",
-          "en": "Absolventské stáže"
+          "en": "Graduate placements"
         },
         "value": {
           "sk": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe",
           "ru": "Даже после окончания учёбы, вместе с WorkSpace Europe",
           "uk": "Навіть після закінчення навчання, разом із WorkSpace Europe",
-          "en": "Aj po skončení štúdia, v spolupráci s WorkSpace Europe"
+          "en": "Even after you finish, together with WorkSpace Europe"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-absolventske-staze"
       },
@@ -1405,13 +1405,13 @@ export const HANDBOOK = [
           "sk": "Erasmus+ štúdium v 10 krokoch",
           "ru": "Учёба по Erasmus+ за 10 шагов",
           "uk": "Навчання за Erasmus+ у 10 кроків",
-          "en": "Erasmus+ štúdium v 10 krokoch"
+          "en": "Erasmus+ study in 10 steps"
         },
         "value": {
           "sk": "Postup krok za krokom na stránke EUBA",
           "ru": "Пошаговый порядок на сайте EUBA",
           "uk": "Покроковий порядок на сайті EUBA",
-          "en": "Postup krok za krokom na stránke EUBA"
+          "en": "Step-by-step guide on the EUBA site"
         },
         "url": "https://euba.sk/medzinarodne-vztahy/odchadzajuci-studenti/erasmus-studium-v-eu#erasmus-v-10-krokoch"
       },
@@ -1420,13 +1420,13 @@ export const HANDBOOK = [
           "sk": "Manuál k študijnému pobytu",
           "ru": "Инструкция по учебному пребыванию",
           "uk": "Інструкція щодо навчального перебування",
-          "en": "Manuál k študijnému pobytu"
+          "en": "Guide to the study stay"
         },
         "value": {
           "sk": "PDF s podmienkami grantu",
           "ru": "PDF с условиями гранта",
           "uk": "PDF з умовами гранту",
-          "en": "PDF s podmienkami grantu"
+          "en": "PDF with the grant conditions"
         },
         "url": "https://euba.sk/www_write/files/SK/medzinarodne-vztahy/manual/2019/manual_grant_2019.pdf"
       }
@@ -1441,13 +1441,13 @@ export const HANDBOOK = [
       "sk": "Ďalšie výmenné programy",
       "ru": "Другие обменные программы",
       "uk": "Інші програми обміну",
-      "en": "Ďalšie výmenné programy"
+      "en": "Other exchange programmes"
     },
     "summary": {
       "sk": "Kam sa dá vycestovať mimo Erasmu",
       "ru": "Куда можно поехать кроме Erasmus",
       "uk": "Куди можна поїхати крім Erasmus",
-      "en": "Kam sa dá vycestovať mimo Erasmu"
+      "en": "Where you can go besides Erasmus"
     },
     "items": [
       {
@@ -1455,13 +1455,13 @@ export const HANDBOOK = [
           "sk": "Programy okrem Erasmu",
           "ru": "Программы кроме Erasmus",
           "uk": "Програми крім Erasmus",
-          "en": "Programy okrem Erasmu"
+          "en": "Programmes besides Erasmus"
         },
         "value": {
           "sk": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity",
           "ru": "CEEPUS, Národný štipendijný program, Международный вышеградский фонд и двусторонние договоры университета",
           "uk": "CEEPUS, Národný štipendijný program, Міжнародний вишеградський фонд і двосторонні договори університету",
-          "en": "CEEPUS, Národný štipendijný program, Medzinárodný vyšehradský fond a bilaterálne zmluvy univerzity"
+          "en": "CEEPUS, Národný štipendijný program, the International Visegrad Fund and the university's bilateral agreements"
         }
       },
       {
@@ -1469,13 +1469,13 @@ export const HANDBOOK = [
           "sk": "Bilaterálne pobyty",
           "ru": "Двусторонние обмены",
           "uk": "Двосторонні обміни",
-          "en": "Bilaterálne pobyty"
+          "en": "Bilateral exchanges"
         },
         "value": {
           "sk": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty",
           "ru": "Регулируются Внутренней директивой № 2/2012 о направлении студентов на зарубежные учебные пребывания",
           "uk": "Регулюються Внутрішньою директивою № 2/2012 про направлення студентів на закордонні навчальні перебування",
-          "en": "Riadia sa Internou smernicou č. 2/2012 o vysielaní študentov na zahraničné študijné pobyty"
+          "en": "Governed by Internal directive no. 2/2012 on sending students on study stays abroad"
         }
       },
       {
@@ -1483,13 +1483,13 @@ export const HANDBOOK = [
           "sk": "Medzinárodné vzťahy EUBA",
           "ru": "Международные связи EUBA",
           "uk": "Міжнародні зв'язки EUBA",
-          "en": "Medzinárodné vzťahy EUBA"
+          "en": "EUBA international relations"
         },
         "value": {
           "sk": "Všetky informácie o mobilitách",
           "ru": "Вся информация о мобильностях",
           "uk": "Уся інформація про мобільності",
-          "en": "Všetky informácie o mobilitách"
+          "en": "All the information on mobilities"
         },
         "url": "https://euba.sk/medzinarodne-vztahy"
       }
@@ -1510,7 +1510,7 @@ export const HANDBOOK = [
       "sk": "Pomoc pre zahraničných študentov",
       "ru": "Помощь иностранным студентам",
       "uk": "Допомога іноземним студентам",
-      "en": "Pomoc pre zahraničných študentov"
+      "en": "Help for international students"
     },
     "items": [
       {
@@ -1518,13 +1518,13 @@ export const HANDBOOK = [
           "sk": "Čo to je",
           "ru": "Что это",
           "uk": "Що це",
-          "en": "Čo to je"
+          "en": "What it is"
         },
         "value": {
           "sk": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017",
           "ru": "Недельная программа обмена с VŠE в Праге и Экономическим университетом во Вроцлаве, работает с 2017 года",
           "uk": "Тижнева програма обміну з VŠE у Празі та Економічним університетом у Вроцлаві, працює з 2017 року",
-          "en": "Týždenný výmenný program s VŠE v Prahe a Ekonomickou univerzitou vo Wroclawe, funguje od roku 2017"
+          "en": "A week-long exchange with VŠE in Prague and the economics university in Wroclaw, running since 2017"
         }
       },
       {
@@ -1532,13 +1532,13 @@ export const HANDBOOK = [
           "sk": "Pre koho",
           "ru": "Для кого",
           "uk": "Для кого",
-          "en": "Pre koho"
+          "en": "Who it is for"
         },
         "value": {
           "sk": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené",
           "ru": "Для всех студентов EUBA; проживание и частично питание обеспечены",
           "uk": "Для всіх студентів EUBA; проживання і частково харчування забезпечені",
-          "en": "Pre všetkých študentov EUBA; ubytovanie a čiastočne aj strava sú zabezpečené"
+          "en": "For all EUBA students; housing and partly meals are covered"
         }
       },
       {
@@ -1546,13 +1546,13 @@ export const HANDBOOK = [
           "sk": "Kedy",
           "ru": "Когда",
           "uk": "Коли",
-          "en": "Kedy"
+          "en": "When"
         },
         "value": {
           "sk": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach",
           "ru": "Обычно на рубеже октября и ноября; даты обмена и отбора ŠP публикует в соцсетях",
           "uk": "Зазвичай на межі жовтня і листопада; дати обміну й відбору ŠP публікує в соцмережах",
-          "en": "Zvyčajne na prelome októbra a novembra; termíny výmeny aj výberu zverejňuje ŠP na sociálnych sieťach"
+          "en": "Usually around the turn of October and November; ŠP posts the exchange and selection dates on social media"
         }
       },
       {
@@ -1560,13 +1560,13 @@ export const HANDBOOK = [
           "sk": "Tlačová správa z roku 2018",
           "ru": "Пресс-релиз 2018 года",
           "uk": "Пресреліз 2018 року",
-          "en": "Tlačová správa z roku 2018"
+          "en": "Press release from 2018"
         },
         "value": {
           "sk": "Popis programu na stránke EUBA",
           "ru": "Описание программы на сайте EUBA",
           "uk": "Опис програми на сайті EUBA",
-          "en": "Popis programu na stránke EUBA"
+          "en": "Programme description on the EUBA site"
         },
         "url": "https://euba.sk/en/activities/news/1504-euromates-unique-v4-universities-exchange-program"
       }
@@ -1581,13 +1581,13 @@ export const HANDBOOK = [
       "sk": "ŠVOČ – študentská vedecká odborná činnosť",
       "ru": "ŠVOČ – студенческая научная работа",
       "uk": "ŠVOČ – студентська наукова робота",
-      "en": "ŠVOČ – študentská vedecká odborná činnosť"
+      "en": "ŠVOČ – student research work"
     },
     "summary": {
       "sk": "Študentská vedecká práca a jej ceny",
       "ru": "Студенческая научная работа и её призы",
       "uk": "Студентська наукова робота та її призи",
-      "en": "Študentská vedecká práca a jej ceny"
+      "en": "Student research work and its prizes"
     },
     "items": [
       {
@@ -1595,13 +1595,13 @@ export const HANDBOOK = [
           "sk": "Čo to je",
           "ru": "Что это",
           "uk": "Що це",
-          "en": "Čo to je"
+          "en": "What it is"
         },
         "value": {
           "sk": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka",
           "ru": "Научная работа студента под руководством преподавателя-исследователя",
           "uk": "Наукова робота студента під керівництвом викладача-дослідника",
-          "en": "Odborná práca študenta pod vedením vedecko-pedagogického pracovníka"
+          "en": "A research paper by a student supervised by an academic"
         }
       },
       {
@@ -1609,13 +1609,13 @@ export const HANDBOOK = [
           "sk": "Čo z toho máš",
           "ru": "Что тебе это даёт",
           "uk": "Що тобі це дає",
-          "en": "Čo z toho máš"
+          "en": "What you get out of it"
         },
         "value": {
           "sk": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu",
           "ru": "Дополнительные баллы к заявке на общежитие и при отборе на Erasmus+, подготовка к дипломной работе",
           "uk": "Додаткові бали до заявки на гуртожиток і при відборі на Erasmus+, підготовка до дипломної роботи",
-          "en": "Body navyše k žiadosti o ubytovanie aj pri výbere na Erasmus+, príprava na záverečnú prácu"
+          "en": "Extra points for your dorm application and for Erasmus+ selection, practice for your thesis"
         }
       },
       {
@@ -1623,13 +1623,13 @@ export const HANDBOOK = [
           "sk": "Kolá súťaže",
           "ru": "Туры конкурса",
           "uk": "Тури конкурсу",
-          "en": "Kolá súťaže"
+          "en": "Competition rounds"
         },
         "value": {
           "sk": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni",
           "ru": "Факультетские туры; работы-победители идут на общеуниверситетский тур, обычно в июне",
           "uk": "Факультетські тури; роботи-переможці йдуть на загальноуніверситетський тур, зазвичай у червні",
-          "en": "Fakultné kolá; víťazné práce postupujú do celouniverzitného kola, spravidla v júni"
+          "en": "Faculty rounds; winning papers go on to the university-wide round, usually in June"
         }
       },
       {
@@ -1637,13 +1637,13 @@ export const HANDBOOK = [
           "sk": "Odmena",
           "ru": "Награда",
           "uk": "Нагорода",
-          "en": "Odmena"
+          "en": "Reward"
         },
         "value": {
           "sk": "Najlepšie práce sú každoročne ocenené aj finančne",
           "ru": "Лучшие работы каждый год награждают и деньгами",
           "uk": "Найкращі роботи щороку нагороджують і грошима",
-          "en": "Najlepšie práce sú každoročne ocenené aj finančne"
+          "en": "The best papers get a cash prize every year"
         }
       },
       {
@@ -1651,13 +1651,13 @@ export const HANDBOOK = [
           "sk": "ŠVOČ na EUBA",
           "ru": "ŠVOČ в EUBA",
           "uk": "ŠVOČ в EUBA",
-          "en": "ŠVOČ na EUBA"
+          "en": "ŠVOČ at EUBA"
         },
         "value": {
           "sk": "Celouniverzitné informácie",
           "ru": "Общеуниверситетская информация",
           "uk": "Загальноуніверситетська інформація",
-          "en": "Celouniverzitné informácie"
+          "en": "University-wide information"
         },
         "url": "https://euba.sk/veda-vyskum/aktualne-informacie/svoc"
       },
@@ -1672,7 +1672,7 @@ export const HANDBOOK = [
           "sk": "Fakulta aplikovaných jazykov",
           "ru": "Факультет прикладных языков",
           "uk": "Факультет прикладних мов",
-          "en": "Fakulta aplikovaných jazykov"
+          "en": "Faculty of Applied Languages"
         },
         "url": "https://faj.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1687,7 +1687,7 @@ export const HANDBOOK = [
           "sk": "Fakulta hospodárskej informatiky",
           "ru": "Факультет хозяйственной информатики",
           "uk": "Факультет господарської інформатики",
-          "en": "Fakulta hospodárskej informatiky"
+          "en": "Faculty of Economic Informatics"
         },
         "url": "https://fhi.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1702,7 +1702,7 @@ export const HANDBOOK = [
           "sk": "Fakulta medzinárodných vzťahov",
           "ru": "Факультет международных отношений",
           "uk": "Факультет міжнародних відносин",
-          "en": "Fakulta medzinárodných vzťahov"
+          "en": "Faculty of International Relations"
         },
         "url": "https://fmv.euba.sk/veda-a-vyskum/svoc/pravidla-pre-svoc"
       },
@@ -1717,7 +1717,7 @@ export const HANDBOOK = [
           "sk": "Fakulta podnikového manažmentu",
           "ru": "Факультет управления предприятием",
           "uk": "Факультет управління підприємством",
-          "en": "Fakulta podnikového manažmentu"
+          "en": "Faculty of Business Management"
         },
         "url": "https://fpm.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1732,7 +1732,7 @@ export const HANDBOOK = [
           "sk": "Národohospodárska fakulta",
           "ru": "Народнохозяйственный факультет",
           "uk": "Народногосподарський факультет",
-          "en": "Národohospodárska fakulta"
+          "en": "Faculty of National Economy"
         },
         "url": "https://nhf.euba.sk/veda-a-vyskum/svoc"
       },
@@ -1747,7 +1747,7 @@ export const HANDBOOK = [
           "sk": "Obchodná fakulta",
           "ru": "Торговый факультет",
           "uk": "Торговий факультет",
-          "en": "Obchodná fakulta"
+          "en": "Faculty of Commerce"
         },
         "url": "https://of.euba.sk/veda-a-vyskum/svoc/statut-svoc"
       },
@@ -1762,7 +1762,7 @@ export const HANDBOOK = [
           "sk": "Podnikovohospodárska fakulta so sídlom v Košiciach",
           "ru": "Факультет экономики предприятия в Кошице",
           "uk": "Факультет економіки підприємства в Кошицях",
-          "en": "Podnikovohospodárska fakulta so sídlom v Košiciach"
+          "en": "Faculty of Business Economics in Košice"
         },
         "url": "https://phf.euba.sk/veda-a-vyskum/vedeckovyskumna-cinnost/svoc"
       }
@@ -1777,13 +1777,13 @@ export const HANDBOOK = [
       "sk": "Kontakt na Študentský parlament",
       "ru": "Контакты Студенческого парламента",
       "uk": "Контакти Студентського парламенту",
-      "en": "Kontakt na Študentský parlament"
+      "en": "Contact the Student Parliament"
     },
     "summary": {
       "sk": "Kde napísať študentskému parlamentu",
       "ru": "Куда написать студенческому парламенту",
       "uk": "Куди написати студентському парламенту",
-      "en": "Kde napísať študentskému parlamentu"
+      "en": "Where to write to the Student Parliament"
     },
     "items": [
       {
@@ -1806,13 +1806,13 @@ export const HANDBOOK = [
           "sk": "Kancelária ŠP",
           "ru": "Офис ŠP",
           "uk": "Офіс ŠP",
-          "en": "Kancelária ŠP"
+          "en": "ŠP office"
         },
         "value": {
           "sk": "Miestnosť E9.06, kontaktné miesto pre študentov",
           "ru": "Кабинет E9.06, контактное место для студентов",
           "uk": "Кабінет E9.06, контактне місце для студентів",
-          "en": "Miestnosť E9.06, kontaktné miesto pre študentov"
+          "en": "Room E9.06, the contact point for students"
         }
       },
       {
@@ -1820,7 +1820,7 @@ export const HANDBOOK = [
           "sk": "Adresa",
           "ru": "Адрес",
           "uk": "Адреса",
-          "en": "Adresa"
+          "en": "Address"
         },
         "value": {
           "sk": "Ekonomická univerzita v Bratislave, Dolnozemská cesta 1, 852 35 Bratislava",
@@ -1834,13 +1834,13 @@ export const HANDBOOK = [
           "sk": "Osobné stretnutie",
           "ru": "Личная встреча",
           "uk": "Особиста зустріч",
-          "en": "Osobné stretnutie"
+          "en": "Meeting in person"
         },
         "value": {
           "sk": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom",
           "ru": "Можно договориться по e-mail, как и о сотрудничестве с парламентом",
           "uk": "Можна домовитися по e-mail, як і про співпрацю з парламентом",
-          "en": "Dá sa dohodnúť e-mailom, rovnako ako spolupráca s parlamentom"
+          "en": "Can be arranged by e-mail, same as working with the parliament"
         }
       }
     ],
@@ -1854,13 +1854,13 @@ export const HANDBOOK = [
       "sk": "O univerzite",
       "ru": "Об университете",
       "uk": "Про університет",
-      "en": "O univerzite"
+      "en": "About the university"
     },
     "summary": {
       "sk": "Základné čísla a fakulty",
       "ru": "Основные цифры и факультеты",
       "uk": "Основні цифри і факультети",
-      "en": "Základné čísla a fakulty"
+      "en": "Key facts and faculties"
     },
     "items": [
       {
@@ -1868,13 +1868,13 @@ export const HANDBOOK = [
           "sk": "Zameranie",
           "ru": "Направление",
           "uk": "Напрям",
-          "en": "Zameranie"
+          "en": "Focus"
         },
         "value": {
           "sk": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia",
           "ru": "Экономические и управленческие программы на всех трёх ступенях учёбы",
           "uk": "Економічні й управлінські програми на всіх трьох ступенях навчання",
-          "en": "Ekonomické a manažérske študijné programy na všetkých troch stupňoch štúdia"
+          "en": "Economics and management programmes at all three degree levels"
         }
       },
       {
@@ -1882,13 +1882,13 @@ export const HANDBOOK = [
           "sk": "Postavenie",
           "ru": "Статус",
           "uk": "Статус",
-          "en": "Postavenie"
+          "en": "Standing"
         },
         "value": {
           "sk": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu",
           "ru": "По сайту ŠP крупнейший университет такого профиля в Словакии, часть европейского пространства высшего образования и исследований",
           "uk": "За сайтом ŠP найбільший університет такого профілю в Словаччині, частина європейського простору вищої освіти й досліджень",
-          "en": "Podľa stránky ŠP najväčšia univerzita tohto zamerania v SR, súčasť európskeho priestoru vysokoškolského vzdelávania a výskumu"
+          "en": "Per the ŠP site, the largest university of this kind in Slovakia, part of the European higher education and research area"
         }
       },
       {
@@ -1896,13 +1896,13 @@ export const HANDBOOK = [
           "sk": "Fakulty",
           "ru": "Факультеты",
           "uk": "Факультети",
-          "en": "Fakulty"
+          "en": "Faculties"
         },
         "value": {
           "sk": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach",
           "ru": "NHF, OF, FHI, FPM, FMV, FAJ и PHF в Кошице",
           "uk": "NHF, OF, FHI, FPM, FMV, FAJ і PHF у Кошицях",
-          "en": "NHF, OF, FHI, FPM, FMV, FAJ a PHF so sídlom v Košiciach"
+          "en": "NHF, OF, FHI, FPM, FMV, FAJ and PHF in Košice"
         }
       }
     ],
