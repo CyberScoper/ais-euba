@@ -22,6 +22,7 @@ export const LANGS = [
   { id: 'sk', short: 'SK', native: 'Slovenčina' },
   { id: 'ru', short: 'RU', native: 'Русский' },
   { id: 'uk', short: 'UA', native: 'Українська' },
+  { id: 'en', short: 'EN', native: 'English' },
 ];
 
 const IDS = LANGS.map((l) => l.id);
@@ -49,7 +50,20 @@ const CAL = {
     dayIn: ['у неділю', 'у понеділок', 'у вівторок', 'у середу', 'у четвер', "у п'ятницю", 'у суботу'],
     date: (d, m) => `${d} ${m}`,
   },
+  en: {
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    dayIn: ['on Sunday', 'on Monday', 'on Tuesday', 'on Wednesday', 'on Thursday', 'on Friday', 'on Saturday'],
+    date: (d, m) => `${d} ${m}`,
+  },
 };
+
+/**
+ * en-GB rather than en: with hour12:false some engines answer "24:00" for midnight
+ * in en-US, and a timetable that says 24:00 is a timetable nobody trusts.
+ */
+const LOCALE = { sk: 'sk', ru: 'ru', uk: 'uk', en: 'en-GB' };
 
 // ---- strings ---------------------------------------------------------------
 const SK = {
@@ -454,7 +468,143 @@ const UK = {
   'common.tomorrow': 'завтра',
 };
 
-const DICT = { sk: SK, ru: RU, uk: UK };
+// English is the fourth language and the only one with two count forms rather than
+// three; the arrays below are two long and pluralIndex knows it.
+const EN = {
+  'meta.title': 'Index — timetable and grades from AIS',
+  'meta.desc': 'Timetable, subjects, grades, finances and messages from the AIS of the University of Economics in Bratislava — fast and readable.',
+
+  'nav.dnes': 'Today',
+  'nav.rozvrh': 'Timetable',
+  'nav.predmety': 'Subjects',
+  'nav.financie': 'Finances',
+  'nav.spravy': 'Messages',
+  'nav.univerzita': 'University',
+
+  'uni.intro': 'The practical things AIS never tells you: transport, the canteens, the library, ISIC, university e-mail.',
+  'uni.source': 'Source on sp.euba.sk',
+  'uni.footnote': 'Taken from the pages of the EU Student Parliament and last checked on {date}. If something has changed, the university page is the one that counts.',
+  'uni.copy': 'Copy',
+  'uni.copied': 'Copied',
+  'uni.copyFailed': 'Could not copy',
+
+  'app.tagline': 'unofficial AIS client',
+  'app.updatedAt': 'Updated at {t}',
+  'app.loading': 'Loading…',
+  'app.refresh': 'Refresh',
+  'app.theme': 'Theme',
+  'app.themeToggle': 'Switch theme',
+  'app.logout': 'Sign out',
+  'app.menu': 'Settings',
+  'app.language': 'Language',
+  'app.langNote': 'Subject names, messages and news arrive from AIS in Slovak.',
+  'app.lastLogin': 'last sign-in {t}',
+  'app.nameday': 'name day: {name}',
+
+  'greeting.night': 'Good night',
+  'greeting.morning': 'Good morning',
+  'greeting.day': 'Good afternoon',
+  'greeting.evening': 'Good evening',
+
+  'login.title': 'Your timetable, subjects and finances from AIS on one screen',
+  'login.sub': 'Sign in with the same details as AIS2 of the University of Economics. You see exactly what AIS shows — only faster, and on your phone.',
+  'login.user': 'Username',
+  'login.password': 'Password',
+  'login.remember': 'Stay signed in on this device',
+  'login.submit': 'Sign in',
+  'login.submitting': 'Signing in…',
+  'login.trust.notUni': '<b>This is not the university\'s site.</b> An unofficial client, running on a private server rather than on euba.sk.',
+  'login.trust.direct': '<b>Your details go straight to AIS2.</b>',
+  'login.trust.openAis': 'Open the official AIS',
+  'login.pw.on': '<b>Your password stays on the server, encrypted</b>, so you do not have to sign in after every restart. The key sits on that same server, so this protects you from a stolen backup, not from someone who reaches the server itself. Signing out erases it.',
+  'login.pw.off': '<b>Your password is never written to disk.</b> It is held only in the server\'s memory, so after a restart you sign in again.',
+  'login.expired': 'Your session has expired. Please sign in again.',
+  'login.err.blocked': 'Too many failed attempts. Signing in is paused for 15 minutes so that your AIS account does not get locked.',
+  'login.err.missing': 'Enter both your username and your password.',
+  'login.err.wrong': 'Wrong username or password. These are the same details as for AIS2.',
+  'login.err.ais': 'AIS is not answering right now. Try again shortly — it is not your password.',
+  'login.err.generic': 'Sign-in failed. Please try again.',
+
+  'today.live': 'Happening now',
+  'today.next': 'Next lesson',
+  'today.atTime': 'at {t}',
+  'today.semStarts': '{title} starts {when}',
+  'today.inDays': ['in {n} day', 'in {n} days'],
+  'today.firstLesson': 'first lesson {dayIn} at {t}',
+  'today.done': 'Today\'s lessons are behind you',
+  'today.none': 'No lessons today',
+  'today.nearest': 'Next one {when} at {t}',
+  'today.headingToday': 'Today',
+  'today.headingNext': 'Next lesson',
+  'today.freeDay': 'Free day',
+  'today.freeDaySub': 'Nothing scheduled for today.',
+  'today.moreThatDay': ['+ {n} more lesson that day', '+ {n} more lessons that day'],
+  'today.news': 'From the university',
+  'today.oweNothing': 'Nothing owed',
+  'today.unpaid': ['{n} unpaid item', '{n} unpaid items'],
+  'today.inbox': ['message', 'messages'],
+  'today.inboxEmpty': 'inbox empty',
+
+  'period.week': 'week {n}',
+  'period.left': ['{n} day left', '{n} days left'],
+
+  'sched.validFrom': 'Timetable applies from {d}',
+  'sched.freeDayFor': '{dayIn} there is nothing in your timetable.',
+  'sched.showDay': 'Show {day}',
+  'sched.nextWithLessons': 'next day with lessons',
+
+  'subj.noGrades': 'No grades yet',
+  'subj.noGradesSub': 'Enrolled in {subjects} for {credits}. Grades appear in AIS during the exam period.',
+  'subj.subjects': ['{n} subject', '{n} subjects'],
+  'subj.credits': ['{n} credit', '{n} credits'],
+  'subj.examFrom': '{title} from {d}',
+  'subj.creditsEarned': 'credits earned',
+  'subj.gpa': 'weighted average',
+  'subj.graded': 'graded',
+  'subj.exams': 'Exams',
+  'subj.terms': ['{n} date', '{n} dates'],
+  'subj.exam': 'Exam',
+  'subj.seats': 'seats',
+  'subj.semester': 'Semester',
+  'subj.plan': 'Study plan',
+  'subj.none': 'No subjects',
+  'subj.pending': 'not graded yet',
+  'subj.cr': 'cr.',
+  'subj.planUnavailable': 'The study plan is not available',
+  'subj.year': 'Year {n}',
+
+  'pay.none': 'No fees',
+  'pay.noneSub': 'AIS has not charged you anything yet. When tuition or an application fee appears, you will find it here together with its variable symbol.',
+  'pay.due': 'To pay',
+  'pay.allPaid': 'All paid',
+  'pay.items': ['{n} item', '{n} items'],
+  'pay.historySettled': '{items} in the history, all settled',
+  'pay.item': 'Fee',
+  'pay.paid': 'Paid',
+  'pay.dueDate': 'Due {d}',
+
+  'msg.title': 'Messages',
+  'msg.none': 'none',
+  'msg.count': ['{n} message', '{n} messages'],
+  'msg.emptyTitle': 'Empty inbox',
+  'msg.emptySub': 'AIS has not sent you a message yet. Notices about payments, documents and deadlines arrive here.',
+  'msg.notice': 'Notice',
+  'msg.noText': '(no text)',
+  'msg.footnote': 'AIS sends neither the sender nor a read flag with its messages, which is why you do not see them here. Tapping a message opens it in AIS.',
+
+  'err.offline': 'You are offline',
+  'err.offlineSub': 'We will show your data as soon as the connection is back.',
+  'err.ais': 'AIS did not answer',
+  'err.aisSub': 'The data could not be loaded. It is usually temporary — AIS tends to be down at night and during maintenance.',
+  'err.retry': 'Try again',
+
+  'common.subject': 'Subject',
+  'common.now': 'now {t}',
+  'common.today': 'today',
+  'common.tomorrow': 'tomorrow',
+};
+
+const DICT = { sk: SK, ru: RU, uk: UK, en: EN };
 
 // ---- plurals ---------------------------------------------------------------
 /**
@@ -464,6 +614,7 @@ const DICT = { sk: SK, ru: RU, uk: UK };
  */
 function pluralIndex(lang, n) {
   const x = Math.abs(Math.trunc(Number(n) || 0));
+  if (lang === 'en') return x === 1 ? 0 : 1;
   if (lang === 'sk') return x === 1 ? 0 : (x >= 2 && x <= 4 ? 1 : 2);
   const d = x % 10;
   const dd = x % 100;
@@ -531,7 +682,9 @@ export function t(key, vars) {
   const lang = getLang();
   const entry = (DICT[lang] && DICT[lang][key]) ?? SK[key];
   if (entry == null) return key;
-  const s = Array.isArray(entry) ? entry[pluralIndex(lang, vars && vars.n)] : entry;
+  const s = Array.isArray(entry)
+    ? entry[Math.min(pluralIndex(lang, vars && vars.n), entry.length - 1)]
+    : entry;
   return interpolate(s, vars);
 }
 
@@ -612,6 +765,36 @@ const AIS_TERMS = {
     'o štúdiu': 'про навчання',
     'o skúškach': 'про іспити',
   },
+  en: {
+    'prednáška': 'lecture',
+    'cvičenie': 'seminar',
+    'seminár': 'seminar',
+    'skúška': 'exam',
+    'zápočet': 'credit test',
+    'klasifikovaný zápočet': 'graded credit',
+    'priebežné hodnotenie': 'continuous assessment',
+    'zimný semester': 'winter semester',
+    'letný semester': 'summer semester',
+    'zimné skúškové obdobie': 'winter exam period',
+    'letné skúškové obdobie': 'summer exam period',
+    'skúškové obdobie': 'exam period',
+    'prázdniny': 'holidays',
+    'rozvrh': 'timetable',
+    'hodnotenie': 'grades',
+    'štúdium': 'studies',
+    'platby': 'payments',
+    'predpis platby': 'payment notice',
+    'dokumenty': 'documents',
+    'mailová správa': 'e-mail',
+    'oznam': 'notice',
+    'o platbách': 'about payments',
+    'o predpisoch platieb': 'about payment notices',
+    'o dokumentoch': 'about documents',
+    'o rozvrhu': 'about the timetable',
+    'o hodnoteniach': 'about grades',
+    'o štúdiu': 'about studies',
+    'o skúškach': 'about exams',
+  },
 };
 
 export function aisTerm(value) {
@@ -644,7 +827,7 @@ export function fmtDateLong(d = new Date()) {
 }
 
 export function hhmm(d) {
-  return d.toLocaleTimeString(getLang(), { hour: '2-digit', minute: '2-digit', hour12: false });
+  return d.toLocaleTimeString(LOCALE[getLang()] || getLang(), { hour: '2-digit', minute: '2-digit', hour12: false });
 }
 
 export function greeting(d = new Date()) {
